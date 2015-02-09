@@ -1,0 +1,136 @@
+{
+    "manager": {
+        "language": "Language",
+        "chose_lang": "Swedish/Svenska",
+        "management": "Management",
+        "order": "Order",
+        "schedule": "Schedule",
+        "aboutus": "About us",
+        "user_mangement": "User mangement",
+        "get_user": "Get user",
+        "change_authority": "Change authority",
+        "credit": "Credit",
+        "repay_debt": "Repay dept",
+        "beer_mangement": "Beer mangement",
+        "beer_statistic": "Beer statistic",
+        "hthree": "Statistic and stat",
+        "sales_this_year": "Sales this year",
+        "sales_this_month": "Sales this month",
+        "sales_this_week": "Sales this week",
+        "beer_of_the_week": "Beer of the week",
+        "order_pages": "Order pages",
+        "update_stock_of_beer": "Update stock of beer",
+        "order_low_on_stock": "Order low on stock",
+        "delivery": "Delivery",
+        "logoff": "Log out",
+        "your_page": "Your page"
+    },
+    "order": {
+        "title": "Order your favorite Beers",
+        "order": "Order",
+        "schedule": "Schedule",
+        "about_us": "About Us",
+        "five_latest_purchases": "5 latest purchases",
+        "search_for_a_beer": "Search for a beer",
+        "searchoption": "Searchoption",
+        "country": "Country",
+        "part_of_beer_name": "Part of beer name",
+        "search": "Search",
+        "list_all": "List all",
+        "your_order": "Your order: "
+    },
+    "delivery": {
+        "new_delivery": "New delivery",
+        "artikleid": "ArtikleID:",
+        "amount": "Amount:",
+        "price_per_unit": "Price per unit:"
+    },
+    "changeauthority": {
+        "change_authority": "Change Authority",
+        "username": "Username:",
+        "new_authority": "New autority:"
+    },
+    "footer": {
+        "home": "Home",
+        "schedule": "Schedule",
+        "about_us": "About Us"
+    },
+    "index": {
+        "home": "Home",
+        "schedule": "Schedule",
+        "about_us": "About Us",
+        "latest_news": "Latest News",
+        "new_website": "New Website Launched",
+        "nov": "November 20th, 2014",
+        "para": "2014 sees the redisign of our website. Take a look around and let us know what you think"
+    },
+    "login": {
+        "login": "Login",
+        "username": "Username:",
+        "create_new": "Create new member"
+    },
+    "menubar": {
+        "home": "Home",
+        "schedule": "Schedule",
+        "about_us": "About Us"
+    },
+    "menubarloggedin": {
+        "home": "Home",
+        "your_page": "Your Page",
+        "schedule": "Schedule",
+        "about_us": "About Us",
+        "log_out": "Log Out"
+    },
+    "createnewmember": {
+        "title": "Create New Member",
+        "home": "Home",
+        "schedule": "Schedule",
+        "about_us": "About Us",
+        "create_new": "Create New Member",
+        "username": "*Username:",
+        "name": "*Name:",
+        "family_name": "*Family name:",
+        "email": "*Email:",
+        "phone": "*Phone:",
+        "password": "*Password:",
+        "confirm": "*Confirm Password:"
+    },
+    "repaydebt": {
+        "debt_credit": "Dept credit",
+        "username": "Username:",
+        "amount": "Amount:"
+    },
+    "setcredit": {
+        "set_credit": "Set credit",
+        "username": "Username:",
+        "New credit": "New credit:"
+    },
+    "sidebar": {
+        "latest_news": "Latest News",
+        "new_website": "New Website Launched",
+        "nov": "November 20th, 2014",
+        "para": "2014 sees the redisign of our website. Take a look around and let us know what you think"
+    },
+    "updatestock": {
+        "update_stock": "Update Stock",
+        "id": "ID:",
+        "new_amount": "New amount"
+    },
+    "yourpage": {
+        "order": "Order",
+        "schedule": "Schedule",
+        "about_us": "About Us",
+        "your_page": "Your Page",
+        "current_debt": "Your current debt is: ",
+        "line_of_credit": "Your current line of credit is: ",
+        "calc_alch": "Calculate your alcohol level:",
+        "alch_gram": "Alcohol in gramm:",
+        "weight": "Weight:",
+        "sex": "Your sex",
+        "male": "Male",
+        "female": "Female",
+        "submit": "Submit",
+        "alch_level": "Your alcohol level is: ",
+        "not_calc": "Not yet calculated"
+    }
+}

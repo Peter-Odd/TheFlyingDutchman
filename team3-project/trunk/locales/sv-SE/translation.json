@@ -1,0 +1,136 @@
+{
+    "manager": {
+        "language": "Språk",
+        "chose_lang": "Engelska/English",
+        "management": "Hantering",
+        "order": "Beställa",
+        "schedule": "Schema",
+        "aboutus": "Om oss",
+        "user_mangement": "Användarhantering",
+        "get_user": "Hämta änvandare",
+        "change_authority": "Ändra behörighet",
+        "credit": "Kredit",
+        "repay_debt": "Återbetala skuld",
+        "beer_mangement": "Dryck hantering",
+        "beer_statistic": "Dryck statistik",
+        "hthree": "Statistik och nummer",
+        "sales_this_year": "Försäljning i år",    
+        "sales_this_month": "Försäljning den här månaden",
+        "sales_this_week": "Försäljning den här veckan",
+        "beer_of_the_week": "Veckans dryck",
+        "order_pages": "Beställnings sidor",
+        "update_stock_of_beer": "Uppdatera lagret av dryck",
+        "order_low_on_stock": "Beställ varor med låg lägerstatus",
+        "delivery": "Leverans",
+        "logoff": "Logga ut",
+        "your_page": "Din sida"
+    },
+    "order": {
+        "title": "Bestall din favorit ol",
+        "order": "Bestall",
+        "schedule": "Schema",
+        "about_us": "Om oss",
+        "five_latest_purchases": "5 senaste kop",
+        "search_for_a_beer": "Sok efter ol",
+        "searchoption": "Sokinstallningar",
+        "country": "Land",
+        "part_of_beer_name": "Del av ol namn",
+        "search": "Sok",
+        "list_all": "Lista alla",
+        "your_order": "Din order: "
+    },
+    "delivery": {
+        "new_delivery": "Ny leverans",
+        "artikleid": "ArtikelID:",
+        "amount": "Mangd:",
+        "price_per_unit": "Pris per enhet:"
+    },
+    "changeauthority": {
+        "change_authority": "Andra behorighet",
+        "username": "Anvandarnamn:",
+        "new_authority": "Ny behorighet:"
+    },
+    "footer": {
+        "home": "Hem",
+        "schedule": "Schema",
+        "about_us": "Om oss"
+    },
+    "index": {
+        "home": "Hem",
+        "schedule": "Schema",
+        "about_us": "Om oss",
+        "latest_news": "Senaste nytt",
+        "new_website": "Ny hemsida",
+        "nov": "Den 20:e November, 2014",
+        "para": "2014 sker en ny design av var hemsida. Titta runt och beratta vad du tycker."
+    },
+    "login": {
+        "login": "Logga in",
+        "username": "Anvandarnamn:",
+        "create_new": "Skapa ny medlem"
+    },
+    "menubar": {
+        "home": "Hem",
+        "schedule": "Schema",
+        "about_us": "Om oss"
+    },
+    "menubarloggedin": {
+        "home": "Hem",
+        "your_page": "Din sida",
+        "schedule": "Schema",
+        "about_us": "Om oss",
+        "log_out": "Logga ut"
+    },
+    "createnewmember": {
+        "title": "Skapa ny medlem",
+        "home": "Hem",
+        "schedule": "Schema",
+        "about_us": "Om oss",
+        "create_new": "Skapa ny medlem",
+        "username": "*Anvandarnamn:",
+        "name": "*Namn:",
+        "family_name": "*Efternamn:",
+        "email": "*Email:",
+        "phone": "*Telefon:",
+        "password": "*Losenord:",
+        "confirm": "*Bekrafta losenord:"
+    },
+    "repaydebt": {
+        "debt_credit": "Skuld kredit",
+        "username": "Anvandarnamn:",
+        "amount": "Mangd:"
+    },
+    "setcredit": {
+        "set_credit": "Satt kredit",
+        "username": "Anvandarnamn:",
+        "New credit": "Ny kredit:"
+    },
+    "sidebar": {
+        "latest_news": "Senaste nytt",
+        "new_website": "Ny hemsida",
+        "nov": "Den 20:e November, 2014",
+        "para": "2014 sker en ny design av var hemsida. Titta runt och beratta vad du tycker."
+    },
+    "updatestock": {
+        "update_stock": "Uppdatera lager",
+        "id": "ID:",
+        "new_amount": "Ny mangd"
+    },
+    "yourpage": {
+        "order": "Bestallning",
+        "schedule": "Schema",
+        "about_us": "Om oss",
+        "your_page": "Din sida",
+        "current_debt": "Din nuvarande skuld ar: ",
+        "line_of_credit": "Your current line of credit is: ",
+        "calc_alch": "Berakna din alkohol halt:",
+        "alch_gram": "Alkohol i gramm:",
+        "weight": "Vikt:",
+        "sex": "Ditt kon",
+        "male": "Man",
+        "female": "Kvinna",
+        "submit": "Skicka",
+        "alch_level": "Din alkohol halt ar: ",
+        "not_calc": "Annu inte beraknad"
+    }
+}

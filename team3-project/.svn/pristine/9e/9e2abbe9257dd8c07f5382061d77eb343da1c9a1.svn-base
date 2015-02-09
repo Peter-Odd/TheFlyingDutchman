@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Flying dutchman</title>
+    <meta name='description' content='website description' />
+    <meta name='keywords' content='website keywords, website keywords' />
+    <meta http-equiv='content-type' content='text/html; charset=windows-1252' />
+    <link rel='stylesheet' type='text/css' href='style/style.css' />
+    <link rel="shortcut icon" href="style/reflection.png" />
+    <script type="text/javascript" src="js/sohuflash_1.js"></script>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript" src="js/floating_sohuflash.js"></script>
+</head>
+
+<body>
+
+<div id='main'>
+    <div id='header'>
+        <div id='reflection'>
+            <h1><a><img src='style/PUBLOGO.png'/></a></h1>
+        </div>
+    </div>
+        <div id='menubar'> <ul id='menu'>
+                <!-- put class='selected' in the li tag for the selected page - to highlight which page you're on -->
+                <li class='selected'><a href='index.html' >Home</a></li>
+                <li><a href='schedule.php'>Schedule</a></li>
+                <li><a href='aboutUs.php'>About Us</a></li>
+</ul>
+      </div>
+
+    <div id='site_content'>
+
+        <script>
+		login();
+        </script>
+        
+        <div class="content" align="center" >        
+        <p id="table"></p>
+            <div id="close">
+                <div id='flashcontent01'></div><a id="c" href="javascript:void(0);" onclick="closediv01()" title="closed" style="display:inline-block">close</a>
+            </div>
+        </div>
+        <div id="sidebar" class='sidebar'>
+            <h2>Latest News</h2>
+            <h3>New Website Launched</h3>
+            <h5>November 20th, 2014</h5>
+            <p>2014 sees the redesign of our website. Take a look around and let us know what you think.<br /></p>
+        </div>
+    </div>
+
+<div id='footer'>
+        <p> &#169 2014 The Flying Dutchman All Rights Reserved</p>
+</div>
+
+</div>
+<script type="text/javascript">
+    // <!this script is for advertisement change the picture and size of picture[CDATA[
+    var pics='images/01.jpg|images/02.jpg|images/03.jpg|images/04.jpg|images/05.jpg';
+    var spics='images/1.jpg|images/2.jpg|images/3.jpg|images/4.jpg|images/5.jpg';
+    var mylinks='index.html|index.html|index.html|index.html|index.html';
+    var texts='beer1|beer2|beer3|beer4|beer5';
+    var sohuFlash2 = new sohuFlash("swf/ent_kkkk.swf","sohuFlashID01","388","165","7");
+    sohuFlash2.addParam("quality", "high");
+    sohuFlash2.addParam("wmode", "transparent");
+    sohuFlash2.addParam("wmode", "opaque");
+    sohuFlash2.addParam("salign", "t");
+    sohuFlash2.addVariable("p",pics);
+    sohuFlash2.addVariable("p_s",spics);
+    sohuFlash2.addVariable("l",mylinks);
+    sohuFlash2.addVariable("icon",texts);
+    sohuFlash2.write("flashcontent01");
+    // ]]>
+</script>
+<script>
+    function closediv01(){
+        flashcontent01.style.display = "none";
+        c.style.display="none";
+    }
+</script>
+</body>
+</html>
