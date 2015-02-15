@@ -1,13 +1,13 @@
 html
 {
-    height: 100%;
+    height: 97%;
     background: rgb(11, 15, 17);
     font-family: Palatino, serif;
 }
 
 body
 {
-    height: 97%;
+    height: 100%;
     text-align: center;
 }
 .div
@@ -35,15 +35,15 @@ body
 {
     background: rgba(17, 24, 27, 0.5);
     height: 5%;
-    margin: 0 95px 0 95px;
+    margin:0 auto;
 }
 
 #main
 {
     height: 100%;
-    margin: 0 190px 0 190px;
     text-align: center;
-    background-image: url("../images/start/start.png");
+    margin:0 auto;
+    background-image: url("../images/start/body-img.jpg");
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -52,9 +52,14 @@ body
 
 #buttom
 {
+    position: absolute;
+    clear: both;
     background: rgba(17, 24, 27, 0.5);
-    height: 6%;
-    margin: 55% 95px 0 95px;
+    height:46px;
+    width: 100%;
+    top: 93%;
+    color: grey;
+    font-size: 10px;
 }
 
 #username
@@ -105,4 +110,15 @@ body
     cursor: pointer;
     border-radius: 15px;
     border: 0px;
+}
+
+#logo
+{
+    height: 300px;
+    width: 300px;
+    background-image: url("../images/start/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin:0 auto;
 }
