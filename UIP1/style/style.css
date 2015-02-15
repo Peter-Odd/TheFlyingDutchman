@@ -93,4 +93,5 @@ body
     width:60px;
     height:25px;
     cursor: pointer;
+    border-radius: 15px;
 }
