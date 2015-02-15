@@ -1,0 +1,111 @@
+html
+{
+    height: 100%;
+    background: rgb(11, 15, 17);
+    font-family: Palatino, serif;
+}
+
+body
+{
+    height: 97%;
+    text-align: center;
+}
+.div
+{
+    margin: 0 auto;
+}
+
+#logoin
+{
+    height: 160px;
+    width: 265px;
+    text-align: center;
+    margin:0 auto;
+    font-size: small;
+    text-shadow: 0 1px 0 #000;
+    border-radius: 15px;
+    background: rgba(17, 24, 27, 0.5);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#top
+{
+    background: rgba(17, 24, 27, 0.5);
+    height: 5%;
+    margin: 0 95px 0 95px;
+}
+
+#main
+{
+    height: 100%;
+    margin: 0 190px 0 190px;
+    text-align: center;
+    background-image: url("../images/start/start.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#buttom
+{
+    background: rgba(17, 24, 27, 0.5);
+    height: 6%;
+    margin: 55% 95px 0 95px;
+}
+
+#username
+{
+    color: gray;
+    height: 20px;
+    width: 150px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+#password
+{
+    color: gray;
+    height: 20px;
+    width: 150px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+#log_frm
+{
+    text-align: center;
+    margin:0 auto;
+}
+
+#login_table
+{
+    text-align: center;
+    margin:0 auto;
+
+}
+
+#submit_btn
+{
+    background-image: url("../images/start/logoinbutton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display:block;
+    font-size:0;
+    line-height:0;
+    text-indent:-9999px;
+    width:60px;
+    height:25px;
+    cursor: pointer;
+<<<<<<< HEAD:UIP1/style/style.css
+    border-radius: 15px;
+=======
+    border: 0px;
+>>>>>>> origin/master:css/tfd_start.css
+}
