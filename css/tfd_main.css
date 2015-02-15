@@ -17,6 +17,7 @@ input:-moz-placeholder { color: white; }
 #wrapper {
 	position: relative;
 	margin: 0 auto;
+	/*background-image: url(images/start_background_800_white.jpg);*/
 }
 
 #wrapper img {

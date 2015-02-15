@@ -1,7 +1,8 @@
 html
 {
     height: 100%;
-    background-color: black;
+    background: rgb(11, 15, 17);
+    font-family: Palatino, serif;
 }
 
 body
@@ -23,8 +24,7 @@ body
     font-size: small;
     text-shadow: 0 1px 0 #000;
     border-radius: 15px;
-    /*background-color:#263233 ;*/
-    background-image: url("logoin_back.png");
+    background: rgba(17, 24, 27, 0.5);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@ body
 
 #top
 {
-    background-image: url("top.png");
+    background: rgba(17, 24, 27, 0.5);
     height: 5%;
     margin: 0 95px 0 95px;
 }
@@ -43,7 +43,7 @@ body
     height: 100%;
     margin: 0 190px 0 190px;
     text-align: center;
-    background-image: url("start.png");
+    background-image: url("../images/start/start.png");
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ body
 
 #buttom
 {
-    background-image: url("top.png");
+    background: rgba(17, 24, 27, 0.5);
     height: 6%;
     margin: 55% 95px 0 95px;
 }
@@ -60,11 +60,21 @@ body
 #username
 {
     color: gray;
+    height: 20px;
+    width: 150px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 5px;
 }
 
 #password
 {
     color: gray;
+    height: 20px;
+    width: 150px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 5px;
 }
 
 #log_frm
@@ -82,7 +92,7 @@ body
 
 #submit_btn
 {
-    background-image: url("logoinbutton.png");
+    background-image: url("../images/start/logoinbutton.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -93,4 +103,5 @@ body
     width:60px;
     height:25px;
     cursor: pointer;
+    border: 0px;
 }
