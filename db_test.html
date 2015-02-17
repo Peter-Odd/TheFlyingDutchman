@@ -5,8 +5,10 @@
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	</head>
 
+	<!-- THIS FILE WILL BE REFACTORED BEFORE USE -->
+
 	<script>
-		var inventory = null;
+		var barInventory = null;
 		var purchases = null;
 		
 		/* These should be set when user logs in */
@@ -16,6 +18,7 @@
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
 
+		/* Contains all data about the beverages in the bar */
 		function inventoryObject() {
 			this.inven = Object.create(null);
 
@@ -23,6 +26,7 @@
 				this.inven[name] = [price, id, count];
 			}
 
+			/* If set count then make sure the API is updated */
 			this.setCount = function(name, count) { 
 				console.log(this.getId("yeti") +" "+ this.getPrice("yeti"));
 				httpGet(api+'inventory_append&beer_id='+this.getId(name)+'&amount='+count+'&price='+this.getPrice(name), null);
@@ -30,14 +34,15 @@
 				return true;
 			}
 
+			/* returns array with all the beverages in the bar. [0]=price [1]=id [2]=amount */
 			this.getAllInventory = function() {
-				var returnMe = [];
+				var inventory = new Object();
 				for (bev in this.inven) {
-					console.log(bev);
-					console.log(this.inven[bev][0]);
-					returnMe[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ] ;
+					if (bev == "")
+						continue;
+					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ];
 				}
-				return returnMe;
+				return inventory;
 			}
 
 			this.getBeerInfo = function(name) {
@@ -58,14 +63,15 @@
 			return this;
 		}
 
+		/* Contains purchase data, NOT IMPLEMENTED */
 		function purchaseObject() {
 			this.purch = Object.create(null);
-
-
 
 			return this;
 		}
 
+
+		/* Used to access the API */
 		function httpGet(url, callback_success, callback_error) {
 		$.ajax({
 			url: url,
@@ -78,12 +84,13 @@
 			});
 		}
 
-
+		/* Check if the user can log in to the system NOT WORKING YET */ 
 		function login(username, password) {
 			//if true redirect the user to the main page, and if admin redirect to admin page
 			return false; //ask the user to enter the correct credentials
 		}
 
+		/* Create a new user. THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
 		function createNewUser(new_username, new_password, first_name, last_name, email, phone) {
 			httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
 				function callback_success() { 
@@ -101,24 +108,29 @@
 			// });
 		}
 
+		/* Returns user balance */
 		function getUserBalance(username) {
-			/*Returns the total amount that the specified user has at his disposal for buying beer. 
-			A negative balance means that the user has a debt.
-			action = iou_get
-			*/
-			return;
+			var userBalance = [];
+			httpGet(api+'iou_get',
+				function callback_success(data) {
+					userBalance = data.payload[0].assets;
+				},
+				function callback_error(data) {
+					console.log("Something went wrong");
+				});
+			return parseInt(userBalance);
 		}
 
 
 
 
-		/* Beverage specific functions (inventory) */
+		/* Create the inventory object */
 		function createInventory() {
-			inventory = new inventoryObject();
+			barInventory = new inventoryObject();
 			httpGet(api+'inventory_get', 
 				function callback_success(data) {
 					$.each(data.payload, function(key, item) {
-						inventory.setValue(item.namn.toLowerCase(), 
+						barInventory.setValue(item.namn.toLowerCase(), 
 							parseInt(item.pub_price.toLowerCase()), 
 							parseInt(item.beer_id.toLowerCase()), 
 							parseInt(item.count.toLowerCase()));
@@ -128,32 +140,48 @@
 			});	
 		}
 
-		function getAllBeverages() {
-			/*returns all beverages in the system*/
-			if (inventory == null) { createInventory(); }
-
-			return;
+		/* Buy a beer.. now it buys two. Why?! */
+		function buyBeer(name) {
+			if (barInventory == null) { createInventory(); }
+			httpGet(api+'purchases_append&beer_id='+barInventory.getBeerInfo(name.toLowerCase())[1],
+				function callback_success(data) {
+					console.log("You just bought yourself a beer!");
+					//subtract beer count for name by 1
+				}, function callback_error(data) {
+					console.log('An error occurred: ' + data);
+				});
 		}
 
-		// 0=price, 1=id, 2=count
+		/*returns all beverages in the system*/
+		function getAllBeverages() {
+			if (barInventory == null) { createInventory(); }
+			return barInventory.getAllInventory();
+		}
+
+		// return data for specific beer. [0]=price, [1]=id, [2]=count
 		function getBeer(beer) {
-			if (inventory == null) { createInventory(); }
-			//var myForm = document.search;
-			//var beerName = myForm.beername.value; //beer name is fetched from input form
-			//var count = inventory.getBeerInfo(beerName);
-			var beerData = inventory.getBeerInfo(beer);
-			//console.log(beerData);
+			if (barInventory == null) { createInventory(); }
+			var beerData = barInventory.getBeerInfo(beer.toLowerCase());
 			return beerData;
 		}
 
+		/* Update the beer count for a specific beer */
+		//NOT WORKING PERFECT
 		function setBeerCount(beer, newCount) {
-			if (inventory == null) { createInventory(); }
-			return inventory.setCount(beer, newCount);
+			if (newCount === parseInt(newCount, 10)) {
+				if (barInventory == null) { createInventory(); }
+				return barInventory.setCount(beer.toLowerCase(), newCount);
+			} else {
+				console.log(newCount + ' is not an integer.');
+			}
 
 		}
 
 
-
+			/* TEMP CODE BELOW */
+			//var myForm = document.search;
+			//var beerName = myForm.beername.value; //beer name is fetched from input form
+			//var count = inventory.getBeerInfo(beerName);
 	</script>
 
 	<body>
