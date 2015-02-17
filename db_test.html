@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+	<head>
+		<title>DB-handler</title>
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	</head>
+
+	<script>
+		var inventory = null;
+		var purchases = null;
+		
+		/* These should be set when user logs in */
+		var username = "ervtod";
+		var password = "ervtod";
+
+		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
+
+
+		function inventoryObject() {
+			this.inven = Object.create(null);
+
+			this.setValue = function(name, price, id, count) {
+				this.inven[name] = [price, id, count];
+			}
+
+			this.setCount = function(name, count) { 
+				console.log(this.getId("yeti") +" "+ this.getPrice("yeti"));
+				httpGet(api+'inventory_append&beer_id='+this.getId(name)+'&amount='+count+'&price='+this.getPrice(name), null);
+				this.inven[name][2] += count;
+				return true;
+			}
+
+			this.getAllInventory = function() {
+				var returnMe = [];
+				for (bev in this.inven) {
+					console.log(bev);
+					console.log(this.inven[bev][0]);
+					returnMe[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ] ;
+				}
+				return returnMe;
+			}
+
+			this.getBeerInfo = function(name) {
+				return this.inven[name];
+			}
+
+			this.getPrice = function(name) {
+				return this.inven[name][0];
+			}
+
+			this.getId = function(name) {
+				return this.inven[name][1];
+			}
+
+			this.getCount = function(name) {
+				return this.inven[name][2];
+			}
+			return this;
+		}
+
+		function purchaseObject() {
+			this.purch = Object.create(null);
+
+
+
+			return this;
+		}
+
+		function httpGet(url, callback_success, callback_error) {
+		$.ajax({
+			url: url,
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',
+			async: false,
+			success: callback_success,
+			error: callback_error
+			});
+		}
+
+
+		function login(username, password) {
+			//if true redirect the user to the main page, and if admin redirect to admin page
+			return false; //ask the user to enter the correct credentials
+		}
+
+		function createNewUser(new_username, new_password, first_name, last_name, email, phone) {
+			httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
+				function callback_success() { 
+					return true;
+				}, 
+				function callback_error(data) {
+					console.log('An error occurred: ' + data);
+				});
+		}
+
+		/* User specific functions (purchases) */
+		function getFiveLastPurchases() {
+			// httpGet(api+'purchases_get', function callback(data) {
+
+			// });
+		}
+
+		function getUserBalance(username) {
+			/*Returns the total amount that the specified user has at his disposal for buying beer. 
+			A negative balance means that the user has a debt.
+			action = iou_get
+			*/
+			return;
+		}
+
+
+
+
+		/* Beverage specific functions (inventory) */
+		function createInventory() {
+			inventory = new inventoryObject();
+			httpGet(api+'inventory_get', 
+				function callback_success(data) {
+					$.each(data.payload, function(key, item) {
+						inventory.setValue(item.namn.toLowerCase(), 
+							parseInt(item.pub_price.toLowerCase()), 
+							parseInt(item.beer_id.toLowerCase()), 
+							parseInt(item.count.toLowerCase()));
+				});
+			}, function callback_error(data) {
+				console.log('An error occurred: ' + data);
+			});	
+		}
+
+		function getAllBeverages() {
+			/*returns all beverages in the system*/
+			if (inventory == null) { createInventory(); }
+
+			return;
+		}
+
+		// 0=price, 1=id, 2=count
+		function getBeer(beer) {
+			if (inventory == null) { createInventory(); }
+			//var myForm = document.search;
+			//var beerName = myForm.beername.value; //beer name is fetched from input form
+			//var count = inventory.getBeerInfo(beerName);
+			var beerData = inventory.getBeerInfo(beer);
+			//console.log(beerData);
+			return beerData;
+		}
+
+		function setBeerCount(beer, newCount) {
+			if (inventory == null) { createInventory(); }
+			return inventory.setCount(beer, newCount);
+
+		}
+
+
+
+	</script>
+
+	<body>
+		<form name="search">
+			<label for="beername">What beer are you looking for?</label>
+			<input id="beername" name="beername" placeholder="Enter beer" type="text">
+			<button id="searchbeer" onclick="getBeer()" type="button">Search beer</button>
+		</form>
+		
+		<form name="beerStock">
+			<label for="username">Who are you?</label>
+			<input id="username" name="username" placeholder="Enter your username" type="text">
+			<button id="getstock" onclick="getStock()" type="button">Get credit for user</button>
+		</form>
+
+
+
+	</body>
+
+</html>
