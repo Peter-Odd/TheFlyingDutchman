@@ -45,4 +45,9 @@
       }
     mysqli_close($db);
     }
+
+    /* TO BE IMPLEMENTED: 
+        * create a new user to this database if a new user is created in the API
+
+    */
 ?>
