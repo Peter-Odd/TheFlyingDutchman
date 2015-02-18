@@ -87,6 +87,13 @@
 		/* Check if the user can log in to the system NOT WORKING YET */ 
 		function login(username, password) {
 			//if true redirect the user to the main page, and if admin redirect to admin page
+			httpGet(api,
+				function callback_success() {
+					
+				},
+				function callback_error() {
+					
+				});
 			return false; //ask the user to enter the correct credentials
 		}
 
@@ -101,16 +108,32 @@
 				});
 		}
 
-		/* User specific functions (purchases) */
+		/* User specific functions (purchases) WORKS */
 		function getFiveLastPurchases() {
-			// httpGet(api+'purchases_get', function callback(data) {
-
-			// });
+			var lastFive = [];
+			httpGet(api+'purchases_get', 
+			 	function callback_success(data) {
+			 		for (var i=0; i<5; i++) {
+			 			lastFive[i] = data.payload[i];
+			 		}
+			 	},
+			 	function callback_error(data) {
+			 		console.log('An error occurred: ' + data);
+			 	});
+			// Data can be accessed this way:
+			// console.log(lastFive[0].namn);
+			// console.log(lastFive[0].namn2);
+			// console.log(lastFive[0].transaction_id);
+			// console.log(lastFive[0].user_id);
+			// console.log(lastFive[0].beer_id);
+			// console.log(lastFive[0].price);
+			// console.log(lastFive[0].timestamp);
+			return lastFive;
 		}
 
-		/* Returns user balance */
+		/* Returns user balance WORKS */
 		function getUserBalance(username) {
-			var userBalance = [];
+			var userBalance = 0;
 			httpGet(api+'iou_get',
 				function callback_success(data) {
 					userBalance = data.payload[0].assets;
@@ -121,23 +144,24 @@
 			return parseInt(userBalance);
 		}
 
-
-
-
-		/* Create the inventory object */
+		/* Create the inventory object WORKS */
 		function createInventory() {
 			barInventory = new inventoryObject();
 			httpGet(api+'inventory_get', 
 				function callback_success(data) {
 					$.each(data.payload, function(key, item) {
-						barInventory.setValue(item.namn.toLowerCase(), 
-							parseInt(item.pub_price.toLowerCase()), 
-							parseInt(item.beer_id.toLowerCase()), 
-							parseInt(item.count.toLowerCase()));
-				});
-			}, function callback_error(data) {
-				console.log('An error occurred: ' + data);
-			});	
+						if (item.namn == "") { /* remove beers with no name */ } 
+							else {
+								barInventory.setValue(item.namn.toLowerCase(), 
+								parseInt(item.pub_price.toLowerCase()), 
+								parseInt(item.beer_id.toLowerCase()), 
+								parseInt(item.count.toLowerCase()));
+							}
+					});
+				}, 
+				function callback_error(data) {
+					console.log('An error occurred: ' + data);
+				});	
 		}
 
 		/* Buy a beer.. now it buys two. Why?! */
@@ -152,13 +176,13 @@
 				});
 		}
 
-		/*returns all beverages in the system*/
+		/*returns all beverages in the system WORKS */
 		function getAllBeverages() {
 			if (barInventory == null) { createInventory(); }
 			return barInventory.getAllInventory();
 		}
 
-		// return data for specific beer. [0]=price, [1]=id, [2]=count
+		/* return data for specific beer. [0]=price, [1]=id, [2]=count WORKS*/
 		function getBeer(beer) {
 			if (barInventory == null) { createInventory(); }
 			var beerData = barInventory.getBeerInfo(beer.toLowerCase());
