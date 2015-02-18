@@ -9,6 +9,16 @@
 
   <form> 
   
+  <label for="usernameField">Username:</label>
+  <input id="usernameField" type="text" placeholder="Enter your username">
+  <br>
+  <label for="passwordField">Password:</label>
+  <input id="passwordField" type="password" placeholder="Enter your pasword">
+  <br>
+  <button id="loginButton" onclick="login()" type="button"> Login </button><br>
+
+
+<!--
   <label for="firstNameField">First name:</label>
   <input id="firstNameField" type="text" placeholder="Enter your first name">
   <button id="findUserButton" onclick="getUserCredentials(firstNameField.value)" type="button"> Find user </button><br>
@@ -20,96 +30,95 @@
   <button id="getCreditButton" onclick="getCredit(usernameField.value)" type="button"> Get Credit </button>
   
   <button id="getAllBeersButton" onclick="getAllBeers(usernameField.value)" type="button"> List all beer </button>
-
+-->
   </form>
-
+  <br>
   <div id="output">SQL Query reply will be displayed here</div>
   
-
   <script id="source" language="javascript" type="text/javascript">
 
-  /*
-    get user credentials
-  */
-  function getUserCredentials(name) {
-    $.ajax({      
-      type: 'POST',                        
-      url: '/api.php',                  
-      data: { 
-        name : name,
-        func_id : "1" 
-      },                        
-      dataType: 'json',                 
-      success: function(data)           
-      {
-        if (data == null) { 
-          //Decide where to display error message:   
-          $('#output').html("Didn't found what you're looking for, try again.")
-        } else {
-          var userId = data[0];              
-          var username = data[3];           
-          var firstName = data[4];      
-          var lastName = data[5];
-          //Decide where to display the query from sql:   
-          $('#output').html("<b>id: </b>"+userId+"<b> firstName: </b>"+firstName+"<b> lastName: </b>"+lastName+"<b> user name: </b>"+username+"."); 
-          array = [userId, username, firstName, lastName];   
-          console.log(array);
-       }
-      }
-    });
-  }; 
-
-  /*
-    enter username, get users credit
-  */
-  function getCredit(username) {
+  /* Login user */
+  function login(username, password) {
     $.ajax({      
       type: 'POST',                        
       url: '/api.php',                  
       data: { 
         username : username,
-        func_id : "2" 
+        password : password,
+        func_id : "0" 
       },                        
       dataType: 'json',                 
-      success: function(data)           
-      {
-        if (data == null) { 
-          //Decide where to display error message:
-          $('#output').html("Didn't found what you're looking for, try again.")
-        } else {
-          var credit = data[0];
-          //Decide where to display the query from sql:               
-          $('#output').html("<b>Credit: </b>"+credit+".");
-          console.log("Credit: "+ credit); //prints to console
-       }
+      success: function(data) {
+        console.log("login correct");
+       //  if (data == null) { 
+       //    //Decide where to display error message:   
+       //    $('#output').html("Didn't found what you're looking for, try again.")
+       //  } else {
+       //    var userId = data[0];              
+       //    var username = data[3];           
+       //    var firstName = data[4];      
+       //    var lastName = data[5];
+       //    //Decide where to display the query from sql:   
+       //    $('#output').html("<b>id: </b>"+userId+"<b> firstName: </b>"+firstName+"<b> lastName: </b>"+lastName+"<b> user name: </b>"+username+"."); 
+       //    array = [userId, username, firstName, lastName];   
+       //    console.log(array);
+       // }
+      },
+      error: function(data) {
+        console.log("login not correct");
       }
     });
+  }; 
 
-  };
 
-  function getAllBeers() {
-    $.ajax({      
-      type: 'POST',                        
-      url: '/api.php',                  
-      data: { 
-        func_id : "3" 
-      },                        
-      dataType: 'json',                 
-      success: function(data)           
-      {
-        if (data == null) { 
-          //Decide where to display error message:   
-          $('#output').html("Didn't found what you're looking for, try again.")
-        } else {
-          var tmp = data[0];              
-          //Decide where to display the query from sql:   
-          $('#output').html("<b>id: </b>"+tmp+".");
-          array = [tmp];   
-          console.log(array);
-       }
-      }
-    });
-  };  
+  // function getCredit(username) {
+  //   $.ajax({      
+  //     type: 'POST',                        
+  //     url: '/api.php',                  
+  //     data: { 
+  //       username : username,
+  //       func_id : "2" 
+  //     },                        
+  //     dataType: 'json',                 
+  //     success: function(data)           
+  //     {
+  //       if (data == null) { 
+  //         //Decide where to display error message:
+  //         $('#output').html("Didn't found what you're looking for, try again.")
+  //       } else {
+  //         var credit = data[0];
+  //         //Decide where to display the query from sql:               
+  //         $('#output').html("<b>Credit: </b>"+credit+".");
+  //         console.log("Credit: "+ credit); //prints to console
+  //      }
+  //     }
+  //   });
+
+  // };
+
+  // function getAllBeers() {
+  //   $.ajax({      
+  //     type: 'POST',                        
+  //     url: '/api.php',                  
+  //     data: { 
+  //       func_id : "3" 
+  //     },                        
+  //     dataType: 'json',                 
+  //     success: function(data)           
+  //     {
+  //       if (data == null) { 
+  //         //Decide where to display error message:   
+  //         $('#output').html("Didn't found what you're looking for, try again.")
+  //       } else {
+  //         var tmp = data[0];              
+  //         //Decide where to display the query from sql:   
+  //         $('#output').html("<b>id: </b>"+tmp+".");
+  //         array = [tmp];   
+  //         console.log(array);
+  //      }
+  //     }
+  //   });
+  // };  
   
 
   
