@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Access DB</title>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+  </head>
+  <body>
+  <h2> DB Access </h2>
+
+  <form> 
+  
+  <label for="usernameField">Username:</label>
+  <input id="usernameField" type="text" placeholder="Enter your username">
+  <br>
+  <label for="passwordField">Password:</label>
+  <input id="passwordField" type="password" placeholder="Enter your pasword">
+  <br>
+  <button id="loginButton" onclick="login(usernameField.value, passwordField.value)" type="button"> Login </button><br>
+
+  </form>
+  <br>
+  <div id="output">SQL Query reply will be displayed here</div>
+  
+  <script id="source" language="javascript" type="text/javascript">
+
+  /* Login user */
+  function login(username, password) {
+    $.ajax({      
+      type: 'POST',                        
+      url: '/api.php',                  
+      data: { 
+        username : username,
+        password : password,
+        func_id : "0" 
+      },                        
+      dataType: 'json',                 
+      // success: function(data) {
+      //   console.log("login correct");
+      // },
+      // error: function(data) {
+      //   console.log("login not correct");
+      // }
+    });
+  }; 
+  </script>
+   
+  </body>
+</html>  
