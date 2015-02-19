@@ -1,8 +1,28 @@
+<!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 
+    <style>
+    #result {
+        display: none;
+        background: green;
+        position: absolute;
+        margin-left: 100px;
+        margin-top: 100px;
+        width: 150px;
+        border-radius: 5px;
+        padding: 5px;
+        }
+    </style>
+
+
+<script language="javascript" type="text/javascript" src="jquery.js"></script>
 <script>
+
+
 function showHint(str) {
+    $("#result").show();
     if (str.length == 0) { 
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -10,22 +30,80 @@ function showHint(str) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                document.getElementById("result").innerHTML = xmlhttp.responseText;
             }
         }
         xmlhttp.open("GET", "gethint.php?q=" + str, true);
         xmlhttp.send();
     }
 }
+
+function getValue(name) {
+    $("#searchField").val(name);
+    showHint(name);
+    $("#result").hide();
+}
+
+
+/* http://jsfiddle.net/zumot/Hc3FK/2/ 
+$("[title][data-scan]").bind("mouseleave", function (event) {
+    event.stopImmediatePropagation();
+    var fixed = setTimeout('$("[title][data-scan]").tooltip("close")', 100);
+    $(".ui-tooltip").click(function () {
+        alert("I am clickable");
+        return false;
+    });
+    $(".ui-tooltip").hover(
+
+    function () {
+        clearTimeout(fixed);
+    },
+
+    function () {
+        $("[title][data-scan]").tooltip("close");
+    });
+}).tooltip({
+    items: "img, [data-scan], [title]",
+    content: function () {
+        var element = $(this);
+        if (element.is("[data-scan]")) {
+            var text = element.attr("href");
+            return "<a href='http://www.google.com'>You are trying to open a tooltip  <span>" + text + "</span></a>";
+        }
+        if (element.is("[title]")) {
+            return element.attr("title");
+        }
+        if (element.is("img")) {
+            return element.attr("alt");
+        }
+    },
+    position: {
+        my: "right center",
+        at: "left center",
+        delay: 200,
+        using: function (position, feedback) {
+            $(this).css(position);
+            $("<div>")
+                //.addClass("arrow")
+                .addClass(feedback.vertical)
+                .addClass(feedback.horizontal)
+                .appendTo(this);
+        }
+    }
+}) ;*/
+
+
+
 </script>
 </head>
 <body>
 
 <p><b>Start typing a name in the input field below:</b></p>
 <form> 
-First name: <input type="text" onkeyup="showHint(this.value)">
+First name: <input id="searchField" type="text" onkeyup="showHint(this.value)">
+
 </form>
-<p>Suggestions: <span id="txtHint"></span></p>
+<div id="result"> </div>
 </body>
 </html>
 

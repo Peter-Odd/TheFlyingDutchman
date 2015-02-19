@@ -1,4 +1,6 @@
 <?php
+//header('Content-Type: text/html; charset=utf-8');
+
 $a[] = "anchor steam beer";
 $a[] = "beck's";
 $a[] = "bedarö bitter";
@@ -154,9 +156,16 @@ if ($q !== "") {
     foreach($a as $name) {
         if (stristr($q, substr($name, 0, $len))) {
             if ($hint === "") {
-                $hint = $name;
+                $name_return = ucwords($name);
+                $name = addslashes($name);
+                $name = str_replace(" ", "\u0020", $name);
+                $hint = "<a onclick=getValue('$name')>$name_return</a>";
             } else {
-                $hint .= ", $name";
+                //$name = addslashes($name);
+                $name_return = ucwords($name);
+                $name = addslashes($name);
+                $name = str_replace(" ", "\u0020", $name);
+                $hint .= "<br> <a onclick=getValue('$name')>$name_return</a>";
             }
         }
     }
