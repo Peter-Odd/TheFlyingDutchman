@@ -3,108 +3,57 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 
+    <!-- FILE NEEDS TO BE REFACTORED BEFORE USE --> 
+
     <style>
     #result {
         display: none;
-        background: green;
+        background: grey;
         position: absolute;
-        margin-left: 100px;
-        margin-top: 100px;
-        width: 150px;
+        margin-left: 50px;
+        margin-top: 50px;
+        max-width: 250px;
+        min-width: 100px;
         border-radius: 5px;
         padding: 5px;
         }
     </style>
 
-
 <script language="javascript" type="text/javascript" src="jquery.js"></script>
 <script>
 
 
-function showHint(str) {
-    $("#result").show();
-    if (str.length == 0) { 
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("result").innerHTML = xmlhttp.responseText;
+    function showHint(str) {
+        $("#result").show();
+        if (str.length == 0) { 
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("result").innerHTML = xmlhttp.responseText;
+                }
             }
-        }
-        xmlhttp.open("GET", "gethint.php?q=" + str, true);
-        xmlhttp.send();
-    }
-}
-
-function getValue(name) {
-    $("#searchField").val(name);
-    showHint(name);
-    $("#result").hide();
-}
-
-
-/* http://jsfiddle.net/zumot/Hc3FK/2/ 
-$("[title][data-scan]").bind("mouseleave", function (event) {
-    event.stopImmediatePropagation();
-    var fixed = setTimeout('$("[title][data-scan]").tooltip("close")', 100);
-    $(".ui-tooltip").click(function () {
-        alert("I am clickable");
-        return false;
-    });
-    $(".ui-tooltip").hover(
-
-    function () {
-        clearTimeout(fixed);
-    },
-
-    function () {
-        $("[title][data-scan]").tooltip("close");
-    });
-}).tooltip({
-    items: "img, [data-scan], [title]",
-    content: function () {
-        var element = $(this);
-        if (element.is("[data-scan]")) {
-            var text = element.attr("href");
-            return "<a href='http://www.google.com'>You are trying to open a tooltip  <span>" + text + "</span></a>";
-        }
-        if (element.is("[title]")) {
-            return element.attr("title");
-        }
-        if (element.is("img")) {
-            return element.attr("alt");
-        }
-    },
-    position: {
-        my: "right center",
-        at: "left center",
-        delay: 200,
-        using: function (position, feedback) {
-            $(this).css(position);
-            $("<div>")
-                //.addClass("arrow")
-                .addClass(feedback.vertical)
-                .addClass(feedback.horizontal)
-                .appendTo(this);
+            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.send();
         }
     }
-}) ;*/
 
-
+    function getValue(name) {
+        $("#searchField").val(name);
+        showHint(name);
+        $("#result").hide();
+    }
 
 </script>
 </head>
 <body>
+    <p><b>Search for a beer below:</b></p>
+    <form> 
+    Beer name: <input id="searchField" type="text" placeholder="Beer name" onkeyup="showHint(this.value)">
 
-<p><b>Start typing a name in the input field below:</b></p>
-<form> 
-First name: <input id="searchField" type="text" onkeyup="showHint(this.value)">
-
-</form>
-<div id="result"> </div>
+    </form>
+    <div id="result"> </div>
 </body>
 </html>
-
-<!-- http://www.w3schools.com/ajax/ajax_php.asp -->

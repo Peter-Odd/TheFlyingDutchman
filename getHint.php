@@ -1,6 +1,4 @@
 <?php
-//header('Content-Type: text/html; charset=utf-8');
-
 $a[] = "anchor steam beer";
 $a[] = "beck's";
 $a[] = "bedarö bitter";
