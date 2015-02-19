@@ -41,7 +41,7 @@ input:-moz-placeholder { color: white; }
 	max-width: 1103px;
 	display: block;
 	width: 100%;
-	background: rgba(17, 24, 27, 0.5);
+	/*background: rgba(17, 24, 27, 0.5);*/
 }
 
 #logosearch {
