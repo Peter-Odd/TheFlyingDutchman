@@ -154,16 +154,16 @@ if ($q !== "") {
     foreach($a as $name) {
         if (stristr($q, substr($name, 0, $len))) {
             if ($hint === "") {
-                $name_return = ucwords($name);
-                $name = addslashes($name);
-                $name = str_replace(" ", "\u0020", $name);
-                $hint = "<a onclick=getValue('$name')>$name_return</a>";
+                
+                //$name = addslashes($name);
+                $name = ucwords($name);
+                // $name = str_replace(" ", "\u0020", $name);
+                $hint = "<div class='beerButton' onclick='alert($name)'>$name</div><br>";
             } else {
                 //$name = addslashes($name);
-                $name_return = ucwords($name);
-                $name = addslashes($name);
-                $name = str_replace(" ", "\u0020", $name);
-                $hint .= "<br> <a onclick=getValue('$name')>$name_return</a>";
+                $name = ucwords($name);
+                // $name = str_replace(" ", "\u0020", $name);
+                $hint .= "<div class='beerButton' onclick='alert($name)' >$name</div><br>";
             }
         }
     }

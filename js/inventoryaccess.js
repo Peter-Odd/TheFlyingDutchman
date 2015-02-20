@@ -170,6 +170,8 @@
 
 		}
 
+
+
 		/* Returns user balance WORKS */
 		function getUserBalance(username) {
 			var userBalance = 0;

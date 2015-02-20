@@ -7,6 +7,36 @@
 		<script src="js/inventoryaccess.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
+		<script>
+
+		function showHint(str) {
+        
+        if (str.length == 0) { 
+            document.getElementById("searchBeer2").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("searchBeer2").innerHTML = xmlhttp.responseText;
+
+                    	
+                    
+                    
+                }
+            }
+            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    	}
+
+	    function getValue(name) {
+	        $("#searchField").val(name);
+	        showHint(name);
+	        $("#result").hide();
+	    }
+    </script>
+
 	</head>
 
 	<body>
@@ -25,7 +55,7 @@
 			<div id="logosearch">
 				<div id="ls_main">
 					<img id="magnify" src="images/main/magnify.png" alt=""/> 
-					<input id="search" type="text" placeholder="SEARCH FOR BEER" >
+					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value)">
 				</div>
 				<div id="ls_right"> </div>
 			</div>
