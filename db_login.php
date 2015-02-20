@@ -37,15 +37,11 @@
           echo "Wrong password";
           //TODO: Ask the user to enter credentials again
         } else if($row[1]== 0){
-            header("Location:main.html");
-            mysqli_close($db);
-            exit;
+              echo "dddddddddd";
         }
           else if ($row[1]== 3)
           {
-              header("Location:http://www.google.com");
-              mysqli_close($db);
-              exit;
+              echo "dddddddddd";
           }
           //TODO: Redirect the use to correct page
       }
