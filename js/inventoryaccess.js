@@ -1,6 +1,4 @@
-<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
-	<script>
 		var barInventory = null;
 		var purchases = null;
 		
@@ -124,6 +122,54 @@
 			return lastFive;
 		}
 
+			/* User specific functions (purchases) WORKS */
+		function getFiveLastPurchasesAdmin() {
+			var lastFive = new Set();
+
+			httpGet(api+'purchases_get_all', 
+			 	function callback_success(data) {
+			 		var i = 0;
+			 		 while(lastFive.size < 5){
+			 			
+						 if(data.payload[i].namn == "") {
+						 	i++;
+						 }
+						 else{
+			 		 		lastFive.add(data.payload[i].namn);
+			 		 		i++;
+			 		 	}
+			 		 }
+			 		 for (item of lastFive) {
+				 		 var tmphtml = $('#searchBeer2').html();
+				 		 console.log(tmphtml);
+				 		 $('#searchBeer2').html(tmphtml+"<div class='beerButton' onclick='placeOrder("+item+")'>"+item+", "+getBeer(item)[0]+" SEK</div><br>");
+			 		}
+			 	},
+
+			 	function callback_error(data) {
+			 		console.log('An error occurred: ' + data);
+			 	});
+			// Data can be accessed this way:
+			// console.log(lastFive[0].namn);
+			// console.log(lastFive[0].namn2);
+			// console.log(lastFive[0].transaction_id);
+			// console.log(lastFive[0].user_id);
+			// console.log(lastFive[0].beer_id);
+			// console.log(lastFive[0].price);
+			// console.log(lastFive[0].timestamp);
+			return lastFive;
+		}
+
+
+
+		function placeOrder(item){
+			var element = document.getElementById(beerButton);
+			var item = $(this).text();
+			var tmphtml = $('#main').html();
+			$('#main').html(tmphtml+"<div class='beerButton'>"+item+"</div><br>");
+
+		}
+
 		/* Returns user balance WORKS */
 		function getUserBalance(username) {
 			var userBalance = 0;
@@ -194,9 +240,7 @@
 
 		}
 
-
 			/* TEMP CODE BELOW */
 			//var myForm = document.search;
 			//var beerName = myForm.beername.value; //beer name is fetched from input form
 			//var count = inventory.getBeerInfo(beerName);
-	</script>
