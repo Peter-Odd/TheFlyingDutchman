@@ -37,11 +37,14 @@
 			/* returns array with all the beverages in the bar. [0]=price [1]=id [2]=amount */
 			this.getAllInventory = function() {
 				var inventory = new Object();
+				var str = "";
 				for (bev in this.inven) {
 					if (bev == "")
 						continue;
 					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ];
+					str = str + "<br>" + bev;
 				}
+				$('#output').html(str);
 				return inventory;
 			}
 
@@ -220,6 +223,8 @@
 			<input id="username" name="username" placeholder="Enter your username" type="text">
 			<button id="getstock" onclick="getStock()" type="button">Get credit for user</button>
 		</form>
+
+		<div id="output"> <!-- API query will be displayed here --> </div>
 
 
 

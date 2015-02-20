@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <!-- FILE NEEDS TO BE REFACTORED BEFORE USE --> 
+
+    <style>
+    #result {
+        display: none;
+        background: grey;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 50px;
+        max-width: 250px;
+        min-width: 100px;
+        border-radius: 5px;
+        padding: 5px;
+        }
+    </style>
+
+<script language="javascript" type="text/javascript" src="jquery.js"></script>
+<script>
+
+
+    function showHint(str) {
+        $("#result").show();
+        if (str.length == 0) { 
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("result").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
+
+    function getValue(name) {
+        $("#searchField").val(name);
+        showHint(name);
+        $("#result").hide();
+    }
+
+</script>
+</head>
+<body>
+    <p><b>Search for a beer below:</b></p>
+    <form> 
+    Beer name: <input id="searchField" type="text" placeholder="Beer name" onkeyup="showHint(this.value)">
+
+    </form>
+    <div id="result"> </div>
+</body>
+</html>
