@@ -42,7 +42,7 @@
 					if (bev == "")
 						continue;
 					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ];
-					str = str + "<br>" + "1\""+bev+"\"";
+					str = str + "<br>" + bev;
 				}
 				$('#output').html(str);
 				return inventory;
