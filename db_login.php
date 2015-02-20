@@ -6,7 +6,7 @@
   }
 
   function db_connect() {
-    $db = mysqli_connect("localhost", "root", "root", "tfd_db");
+    $db = mysqli_connect("localhost", "root", "", "tfd_db");
     if (mysql_errno()) {
       printf("Connection failed: %s\n", mysqli_connect_error());
       exit();
@@ -32,18 +32,26 @@
         $row[2] = stripslashes($row[2]);
         //echo $row[2], PHP_EOL;
         $password = md5($password);
+          $row[1] = stripslashes($row[1]);
         if ($password != $row[2]) {
           echo "Wrong password";
           //TODO: Ask the user to enter credentials again
-        } else {
-          echo "Correct password";
-          //TODO: Redirect the use to correct page
+        } else if($row[1]== 0){
+            header("Location:main.html");
+            mysqli_close($db);
+            exit;
         }
+          else if ($row[1]== 3)
+          {
+              header("Location:http://www.google.com");
+              mysqli_close($db);
+              exit;
+          }
+          //TODO: Redirect the use to correct page
       }
     } else {
         echo "0 results";
       }
-    mysqli_close($db);
     }
 
     /* TO BE IMPLEMENTED: 

@@ -5,18 +5,19 @@
 		<title>The Flying Dutchman</title>
 		<link href="css/tfd_start.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="images/start/logo.png" />
+		<script language="javascript" type="text/javascript" src="jquery.js"></script>
 	</head>
 	<body>
 		<div id="main">
 			<div id="top"> </div>
 			<div id="logo"></div>
 			<div id="logoin">
-				<form action="" method="post" id="log_frm">
+				<form action="db_login.php" method="post" id="log_frm">
 					<table id='login_table'>
 						<tr><br><th colspan=2 style="color: white; font-family: times; font-size: 130%"> Please, Login below! </th></tr>
-						<tr><td><input type="text" id="username" required maxlength="40" value="Enter username" onfocus="this.value=''" onclick="color(this)"></td></tr>
-						<tr><td><input type="password" id="password" required name="pass" maxlength="50" value="Enter password" onfocus="this.value=''" onclick="color(this)"></td></tr>
-						<tr><td colspan="2" align="right"><br><input type="submit" class="button" id="submit_btn" value="Login"></td></tr>
+						<tr><td><input type="text" id="usernameFiled" required maxlength="40" placeholder="Enter your username" onclick="color(this)"></td></tr>
+						<tr><td><input type="password" id="passwordFiled" required name="pass" maxlength="50" placeholder="Enter your pasword" onclick="color(this)"></td></tr>
+						<tr><td colspan="2" align="right"><br><button type="submit" id="submit_btn" onclick="login(usernameFiled.value,usernameFiled.value)"></button></td></tr>
 						<!--<tr><td colspan="2" align="center" style="color: white; font-size: 120%"> press <a href="" style="color: blue"> here </a> to continue as a guest</td></tr>-->
 					</table>
 				</form>
@@ -32,6 +33,28 @@
 			{
 				target.style.color="black";
 			}
+		}
+	</script>
+
+	<script id="source" language="javascript" type="text/javascript">
+		/* Login user */
+		function login(username, password) {
+			$.ajax({
+				type: 'POST',
+				url: 'db_login.php',
+				data: {
+					username : username,
+					password : password,
+					func_id : "0"
+				},
+				dataType: 'json'
+				// success: function(data) {
+				//   console.log("login correct");
+				// },
+				// error: function(data) {
+				//   console.log("login not correct");
+				// }
+			});
 		}
 	</script>
 </html>
