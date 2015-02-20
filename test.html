@@ -1,51 +1,83 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-	<head lang="en">
-		<meta charset="UTF-8">
+	<head>
 		<title>The Flying Dutchman</title>
-		<link href="css/test.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/test.css">
 		<link rel="shortcut icon" href="images/start/logo.png" />
 	</head>
-	
+
 	<body>
-		<div id="main">
-			<div id="top"></div>
-			<div id="help" class="button" align="right"></div>
-			<div id="logo"></div>
-			<div id="logoin">
-				<form action="" method="post" id="log_frm">
-					<table id='login_table'>
-						<tr>
-							<br><th colspan=2 style="color: white; font-family: verdana; font-size: 130%">VIP? Login below!</th>
-						</tr>
-						
-						<tr>
-							<td><input id="username" style="font-style: italic" type="text" required maxlength="40" value="Enter username" onfocus="this.value=''" onclick="color(this)"></td>
-						</tr>
-						
-						<tr>
-							<td><input id="password" style="font-style: italic" type="password" required name="pass" maxlength="50" value="Enter password" onfocus="this.value=''" onclick="color(this)"></td>
-						</tr>
-						
-						<tr>
-							<td colspan="2" align="right"><br><input id="submit_btn" type="submit" class="button" value="Login"></td>
-						</tr>
-						<!--<tr><td colspan="2" align="center" style="color: white; font-size: 120%"> press <a href="" style="color: blue"> here </a> to continue as a guest</td></tr>-->
-					</table>
-				</form>
+		<div id="wrapper"> 
+			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" />
+			<div id="header">
+				<div id="header_left">
+					<h4 id="welcome"> Welcome XYZ! </h4>
+					<h5 id="credit"> Credit: 000 SEK </h5>
+				</div>
+				
+				<div id="header_right">
+					<button id="button"> LOG OUT </button>
+					<button id="button"> HELP </button>
+					<button id="button"> ACCOUNTS </button>
+				</div>
 			</div>
-			<b id="guest text" style="color: white"> press <a href="" style="color: blue"> here </a> to continue as a guest </b>
-			<div id="buttom"><br><br>&copy; The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015</div>
+				<div id="logosearch">
+					<div id="ls_left">
+						<img id="tfd_logo" src="images/main/tfd_logo.png" alt=""/> 
+					</div>
+					
+					<div id="ls_main">
+						<img id="magnify" src="images/main/magnify.png" alt=""/> 
+						<input id="search" type="text" placeholder="SEARCH FOR BEER">
+					</div>
+					
+					<div id="ls_right">
+					</div>
+				</div>
+
+			<div id="content">
+				<div id="menu">
+					<table>
+						<tr>
+							<td> BEER </td>
+						</tr>
+						
+						<tr>
+							<td> DINKS & SNACKS </td>
+						</tr>
+						
+						<tr>
+							<td> FAVORITE </td>
+						</tr>
+						
+						<tr>
+							<td> Previous Purchases </td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="main">
+				beer thumbnails...
+				</div>
+				
+				<div id="order_area"> 
+					<div id="order">
+						<h4> ORDER LIST </h4>
+					</div>
+					
+					<div id="orderbutton">
+						PLACE ORDER 
+					</div>
+				</div>
+			</div>
+
+			<div id="space">
+			</div>
+			
+			<div id="footer">
+				&copy; The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015 
+				<img id="logo_noship" src="images/main/tfd_logo_noship.png" alt=""/>
+			</div>
 		</div>
 	</body>
-	
-	<script type="text/javascript">
-		function color(target)
-		{
-			if(target.value=='')
-			{
-				target.style.color="black";
-			}
-		}
-	</script>
 </html>

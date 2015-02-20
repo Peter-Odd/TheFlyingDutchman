@@ -1,140 +1,266 @@
-html
-{
-    height: 100%;
-    background: rgb(11, 15, 17);
-    font-family: Palatino, serif;
+html {
+	background: rgb(11, 15, 17);
+	font-family: Palatino, serif;
+	color: white;
 }
 
-body
-{
-    height: 100%;
-    text-align: center;
-}
-.div
-{
-    margin: 0 auto;
+body {
+	margin: 0;
 }
 
-#main
-{
-    height: 100%;
-    text-align: center;
-    margin:0 auto;
-    background-image: url("../images/start/body-img.jpg");
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: contain;
+/* font color input field place holder text */
+::-webkit-input-placeholder { color: white; }
+::-moz-placeholder { color: white; } /* firefox 19+ */
+:-ms-input-placeholder { color: white; } /* ie */
+input:-moz-placeholder { color: white; }
+
+#wrapper {
+	position: relative;
+	margin: 0 auto;
 }
 
-#top
-{
-    background: rgba(17, 24, 27, 0.5);
-    height: 5%;
-    margin:0 auto;
+#wrapper img {
+	background-image: url(start_background_800.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	border: solid 1px #fff;
 }
 
-#help
-{
-	background-image: url("../images/start/help_3.png");
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: block;
-    font-size:0;
-    line-height:0;
-    text-indent:-9999px;
-    width:60px;
-    height:25px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: 0px;
+#header {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	height: 52px;
+	text-align: center;
 }
 
-#logo
-{
-    height: 300px;
-    width: 300px;
-    background-image: url("../images/start/logo.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin:0 auto;
+#header_left{
+	float: left;
+	width: 300px;
+	height: 50px;
+	padding: 0px;
+	margin-left: 0px;
 }
 
-#logoin
-{
-    height: 160px;
-    width: 265px;
-    text-align: center;
-    margin:0 auto;
-    font-size: small;
-    text-shadow: 0 1px 0 #000;
-    border-radius: 15px;
-    background: rgba(17, 24, 27, 0.5);
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: contain;
+#welcome {
+margin-top: 7px;
+color: white;
 }
 
-#login_table
-{
-    text-align: center;
-	margin:0 auto;
+#credit {
+margin-top: -20px;
+color: white;
 }
 
-#username
-{
-    color: gray;
-    height: 20px;
-    width: 150px;
-    border: 0px;
-    border-radius: 5px;
-    padding-left: 5px;
+#header_right {
+	float: right;
+	width: 480px;
+	margin-right: 20px;
+	height: 50px;
+	padding: 0px;
+	margin-left: 0px;
 }
 
-#password
-{
-    color: gray;
-    height: 20px;
-    width: 150px;
-    border: 0px;
-    border-radius: 5px;
-    padding-left: 5px;
+#button {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	width: 100px;
+	padding: 5px;
+	text-align: center;
+	cursor: pointer;
+	float:right;
+	padding: 16px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+    margin-right: 2px;
+    margin-bottom: 1px;
+    border: none;
 }
 
-#submit_btn
-{
-    background-image: url("../images/start/logoinbutton.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: block;
-    font-size:0;
-    line-height:0;
-    text-indent:-9999px;
-    width:60px;
-    height:25px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: 0px;
+#logosearch {
+	position: absolute;
+	top: 56px;
+	left: 1px;
+	margin-top: 18px;
+	width: 1104px;
+	height: 74px;
 }
 
-#buttom
-{
-    position: absolute;
-    clear: both;
-    background: rgba(17, 24, 27, 0.5);
-    height:46px;
-    width: 100%;
-    top: 93%;
-    color: grey;
-    font-size: 10px;
+#ls_left {
+	float: left;
+	width: 300px;
+	height: 74px;
 }
 
-#log_frm
-{
-    text-align: center;
-    margin:0 auto;
+#ls_left #tfd_logo {
+	width: auto;
+	border: 0px;
+	margin-top: -16px;
+	margin-left: 170px;
+	height: 100px;
+	width: auto;
+}
+
+#ls_main {
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	margin-left: 0px;
+	width: 475px;
+	height: 40px;
+	border-radius: 15px;
+	padding: 10px;
+}
+
+#ls_main #magnify {
+	margin-top: 0px;
+	margin-left: 5px;
+	border: 0px;
+	height: 40px;
+	width: auto;
+}
+
+#ls_main #search {
+	position: absolute;
+	text-transform: uppercase;
+	font-family: Palatino, serif;
+	font-size: 20px;
+	color: white;
+	border: 0px;
+	top: 10px;
+	background: rgba(17, 24, 27, 0);
+	margin-left: 15px;
+	height: 40px;
+	width: 400px;
+	padding-left: 10px;
+}
+
+#header, #footer {
+	max-width: 1103px;
+	display: block;
+	width: 100%;
+	background: rgba(17, 24, 27, 0.5);
+}
+
+#ls_right {
+	float: left;
+	width: 225px;
+	height: 54px;
+	padding: 32px;
+	margin-left: 0px;
+}
+
+#content {
+	position: absolute;
+	margin-top: 14px;
+	top: 145px;
+	left: 1px;
+}
+
+#menu {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	width: 200px;
+	height: 475px;
+	margin-left: 20px;
+	border-radius: 15px;
+}
+
+table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   border-bottom-color: white;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   width: 100%;
+
+}
+
+th,td {
+    padding: 15px;
+}
+
+#main {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	width: 520px;
+	height: 550px;
+	margin-left: 20px;
+	border-radius: 15px;
+}
+
+#order_area {
+	position: absolute;
+	left: 795px;
+	top: 0px;
+}
+
+#order {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	width: 250px;
+	height: 475px;
+	margin-left: 20px;
+	border-radius: 15px;	
+}
+
+#order h4 {
+	margin-top: -30px;
+	margin-left: 0px;
+	color: white;
+}
+
+#orderbutton {
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	border-radius: 15px;
+	margin-left: 20px;
+	margin-top: 10px;
+	width: 250px;
+	padding: 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+/*
+#left {
+	float: left;
+	width: 150px;
+	height: 550px;
+}
+*/
+
+#space {
+	clear: both;
+	position: absolute;
+	top: 709px;
+	margin-top: 14px;
+	left: 1px;
+	width: 1104px;
+	height: 14px;
+}
+
+#footer {
+	position: absolute;
+	left: 1px;
+	top: 750px;
+	padding-top: 5px;
+	text-align: center;
+	font-size: 10px;
+	height: 45px;
+	color: grey;
+}
+
+#footer #logo_noship {
+	position: absolute;
+	margin-left: 200px;
+	margin-top: 3px;
+	border: 0px;
+	height: 35px;
+	width: auto;
 }

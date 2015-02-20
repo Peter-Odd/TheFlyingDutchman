@@ -213,7 +213,7 @@ input:-moz-placeholder { color: white; }
 }
 
 table, th, td {
-    border: 1px solid black;
+   border: 1px solid black;
    border-collapse: collapse;
    border-bottom-color: white;
    border-top: none;
