@@ -179,9 +179,11 @@ input:-moz-placeholder { color: white; }
 }
 
 #total_text {
-	margin-left: 20px;
+	
+	
+	 margin-left: 20px;
 	margin-top:20px;
-	font-size: 30px;
+	font-size: 25px; 
 }
 
 /* search columns */
@@ -208,6 +210,7 @@ input:-moz-placeholder { color: white; }
 	border-bottom-color: white;
 	margin-bottom: -15px;
 	border-bottom: solid 1px;
+	cursor:pointer;
 
 
 }

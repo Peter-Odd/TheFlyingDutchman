@@ -14,15 +14,12 @@
         if (str.length == 0) { 
             document.getElementById("searchBeer2").innerHTML = "";
             return;
-        } else {
+        } 
+        else {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("searchBeer2").innerHTML = xmlhttp.responseText;
-
-                    	
-                    
-                    
                 }
             }
             xmlhttp.open("GET", "gethint.php?q=" + str, true);
@@ -65,7 +62,7 @@
 					<div id="searchBeer1"> 
 						<table>
 						  <tr>
-						    <td>POPULAR</td>
+						    <td onclick="getFiveLastPurchasesAdmin()">POPULAR</td> <!-- to click only once: this.onclick=null; -->
 						  </tr>
 						  <tr>
 						    <td>BRAND 1</td>
@@ -87,13 +84,9 @@
 						  </tr>
 						</table>
 					</div>
-					<div id="searchBeer2"> 
-
-					</div>
+					<div id="searchBeer2"></div>
 				<div id="main"></div>
-				<div id="main_total">
-					<p id="total_text">TOTAL: XX SEK</p>
-				</div>
+				<div id="main_total"></div>
 				<div id="main_button_area"> 
 				<button id="main_button">CASH</button>
 				<button id="main_button">CARD</button>

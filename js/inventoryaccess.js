@@ -5,6 +5,7 @@
 		/* These should be set when user logs in */
 		var username = "ervtod";
 		var password = "ervtod";
+		var sum = 0;
 
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
@@ -122,13 +123,16 @@
 			return lastFive;
 		}
 
+	
+
 			/* User specific functions (purchases) WORKS */
-		function getFiveLastPurchasesAdmin() {
+/*		function getFiveLastPurchasesAdmin() {
 			var lastFive = new Set();
 
 			httpGet(api+'purchases_get_all', 
 			 	function callback_success(data) {
 			 		var i = 0;
+			 		var a = 0;
 			 		 while(lastFive.size < 5){
 			 			
 						 if(data.payload[i].namn == "") {
@@ -139,16 +143,24 @@
 			 		 		i++;
 			 		 	}
 			 		 }
+
 			 		 for (item of lastFive) {
+
 				 		 var tmphtml = $('#searchBeer2').html();
-				 		 console.log(tmphtml);
-				 		 $('#searchBeer2').html(tmphtml+"<div class='beerButton' onclick='placeOrder("+item+")'>"+item+", "+getBeer(item)[0]+" SEK</div><br>");
+				 	
+				 		 $('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+item+'\'')">"+item+", "+getBeer(item)[0]+'' SEK</div><br>'');
+				 	//	 $('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+'</div><br>');
+				 		// console.log(item);
+
+				 		 a++;
+
 			 		}
 			 	},
 
 			 	function callback_error(data) {
 			 		console.log('An error occurred: ' + data);
 			 	});
+
 			// Data can be accessed this way:
 			// console.log(lastFive[0].namn);
 			// console.log(lastFive[0].namn2);
@@ -159,15 +171,50 @@
 			// console.log(lastFive[0].timestamp);
 			return lastFive;
 		}
+*/
+
+	function getFiveLastPurchasesAdmin(){
+			var lastFive = new Array();
+			var uniqueLastFive = new Array();
+
+			httpGet(api+'purchases_get_all', 
+			 	function callback_success(data) {
+			 		var i = 0;
+
+			 	while(uniqueLastFive.length < 5){
+			 		if(data.payload[i].namn == "") {
+			 			i++;
+			 		}
+			 		else{
+			 			lastFive.push(data.payload[i].namn);
+			 		 	$.each(lastFive, function(i, el){
+    					if($.inArray(el, uniqueLastFive) === -1) uniqueLastFive.push(el);
+						})
+			 		 	i++;
+			 		}
+			 	}
+			 	for(a = 0; a < 5; a++){
+					var txt = uniqueLastFive[a];
+					var tmphtml = $('#searchBeer2').html();
+				 	$('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>');
+			 	}
+			 		},
+
+			 	function callback_error(data) {
+			 		console.log('An error occurred: ' + data);
+			 	});
+					return uniqueLastFive;
+				}
 
 
+		function placeOrder(txt){
+			sum = sum + getBeer(txt)[0];
 
-		function placeOrder(item){
-			var element = document.getElementById(beerButton);
-			var item = $(this).text();
+			console.log(sum);
 			var tmphtml = $('#main').html();
-			$('#main').html(tmphtml+"<div class='beerButton'>"+item+"</div><br>");
-
+			$('#main').html(tmphtml+"<div class='beerButton'>"+txt+", "+getBeer(txt)[0]+" SEK</div><br>");
+		
+			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 		}
 
 
