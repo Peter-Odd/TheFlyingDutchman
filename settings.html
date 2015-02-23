@@ -1,35 +1,75 @@
 <!DOCTYPE HTML> 
 <html>
 	<head>
-		<!-- <link rel="stylesheet" href="css/tfd_settings.css"> -->
+		<link rel="stylesheet" href="css/tfd_settings.css">
 		<script src="js/inventoryaccess.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+		<script>
+			/* Validate email address */
+			function validateEmail(email, htmlresult) { 
+    			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    			if (htmlresult == '1') {
+	    			if (re.test(email))
+	    				document.getElementById("resultemail").innerHTML = "<img class='valid' src='images/settings/valid.png' alt='Email valid' title='Email valid'>";
+	    			else 
+	    				document.getElementById("resultemail").innerHTML = "<img class='valid' src='images/settings/notvalid.png' alt='Email not valid' title='Email not valid'>";
+	    		} else 
+	    			return re.test(email);
+			} 
+
+			/* Validate phone */
+			function validatePhone(phone, htmlresult) {
+				re = /^\+?(0|[0-9]\d*)$/;;
+				if (htmlresult == '1') {
+					if (re.test(phone))
+	    				document.getElementById("resultphone").innerHTML = "<img class='valid' src='images/settings/valid.png' alt='Phone number valid' title='Phone number valid'>";
+	    			else 
+	    				document.getElementById("resultphone").innerHTML = "<img class='valid' src='images/settings/notvalid.png' alt='Phone number not valid' title='Phone number not valid (Valid format [+][0-9])'>";
+	    		} else 
+	    			return re.test(phone);
+			}
+
+			function callNewUser(uname, pword, re_password, firstname, lastname, email, phone) {
+				if ( (pword == re_password) && (validateEmail(email, '0')) && (validatePhone(phone, '0')) ) 
+					console.log("It works");
+					//createNewUser(uname, pword, re_password, firstname, lastname, email, phone)
+				else 
+					console.log("Some problems");
+			}
+
+		</script>
 	</head>
 
 	<body>
-		<h3> Create a new user (OBS if you create a user you add it to the API (for all students)) </h3>
+		<h3> Create a new user (OBS if you create a user you add it to the API (for all students in the course)) </h3>
+		<form id="newUserForm">
 		<label for="firstname">Enter first name</label>	<br>
-		<input id="firstname" type="text" placeholder="Enter first name" required onkeyup="">
+		<input id="firstname" type="text" placeholder="Enter first name" required>
 		<br><br>
 		<label for="lastname">Enter last name</label>	<br>
-		<input id="lastname" type="text" placeholder="Enter last name" required onkeyup="">
+		<input id="lastname" type="text" placeholder="Enter last name" required>
 		<br><br>
 		<label for="uname">Enter username</label>	<br>
-		<input id="uname" type="text" placeholder="Enter username" required onkeyup="">
+		<input id="uname" type="text" placeholder="Enter username" required>
 		<br><br>
 		<label for="pword">Enter password</label>	<br>
-		<input id="pword" type="password" placeholder="Enter password" required onkeyup="">
+		<input id="pword" type="password" placeholder="Enter password" required>
 		<br><br>
 		<label for="re_password">Re-enter password</label>	<br>
-		<input id="re_password" type="password" placeholder="Re-enter password" required onkeyup="">
+		<input id="re_password" type="password" placeholder="Re-enter password" required>
 		<br><br>
 		<label for="email">Enter your email address</label>	<br>
-		<input id="email" type="text" placeholder="Enter your email address" required onkeyup="">
+		<input id="email" type="text" onkeyup="validateEmail(email.value, '1')" placeholder="Enter your email address" required>
+		<span id="resultemail"><img class='valid' src='images/settings/15x15.png'></span>
 		<br><br>
 		<label for="phone">Enter your phone number</label> <br>
-		<input id="phone" type="text" placeholder="Enter your phone number" required onkeyup="">
+		<input id="phone" type="text" onkeyup="validatePhone(phone.value, '1')" placeholder="Enter your phone number" required>
+		<span id="resultphone"><img class='valid' src='images/settings/15x15.png'></span>
 		<br><br>
-		<button id="" onclick="createNewUser(uname.value, pword.value, re_password.value, firstname.value, lastname.value, email.value, phone.value)">Create new user</button>
+		</form>
+		<button id="createUserBtn" onclick="callNewUser(uname.value, pword.value, re_password.value, firstname.value, lastname.value, email.value, phone.value)">Create new user</button>
+		<button id="clearFieldBtn" onclick="document.getElementById('newUserForm').reset(), document.getElementById('resultphone').innerHTML = '', document.getElementById('resultemail').innerHTML = '', document.getElementById('firstname').focus()">Clear fields</button>
 	</body>
 </html>
 
