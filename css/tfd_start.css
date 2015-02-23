@@ -113,9 +113,11 @@ body
 
 #logo
 {
-    height: 300px;
-    width: 300px;
-    background-image: url("../images/start/logo.png");
+    height: 270px;
+    width: 270px;
+    opacity: .8;
+    padding-bottom: 50px;
+    background-image: url("../images/start/tfd_logo_beer.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
