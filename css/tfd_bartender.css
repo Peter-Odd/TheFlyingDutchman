@@ -165,6 +165,8 @@ input:-moz-placeholder { color: white; }
 	height: 375px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
+	overflow:scroll;	
+
 }
 
 #main_total {
@@ -174,14 +176,12 @@ input:-moz-placeholder { color: white; }
 	position: relative;
 	left: 20px;
 	top: 3px;
-	width: 465px;
+	width: 465px; 
 	height: 75px;
 }
 
 #total_text {
-	
-	
-	 margin-left: 20px;
+	margin-left: 20px;
 	margin-top:20px;
 	font-size: 25px; 
 }
@@ -202,17 +202,38 @@ input:-moz-placeholder { color: white; }
 	margin-left: 20px;
 	border-bottom-right-radius: 15px;
 	border-bottom-left-radius: 15px;
+	overflow:scroll;	
+
 }
 
 .beerButton {
 	/*background: black;*/
 	padding: 10px;
 	border-bottom-color: white;
-	margin-bottom: -15px;
+	margin-bottom: 0px;
 	border-bottom: solid 1px;
 	cursor:pointer;
+	width: 90%;
+	display: inline-block;
+}
 
+input[type="image"] {
+	float: right;
+	 width: 20px;
+	 height: 20px;
+}
 
+input[type="number"] {
+  /*display: block;*/
+  float: right;
+  margin-right: 20px;
+  width: 5%;
+  font-family: sans-serif;
+  font-size: 15px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  outline: none;
 }
 
 table, th, td {
@@ -236,7 +257,8 @@ th,td {
 	width: 250px;
 	height: 475px;
 	margin-left: 20px;
-	border-radius: 15px;	
+	border-radius: 15px;
+	overflow: scroll;	
 	
 }
 

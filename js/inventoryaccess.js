@@ -6,6 +6,7 @@
 		var username = "ervtod";
 		var password = "ervtod";
 		var sum = 0;
+		var orderArr = new Array();
 
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
@@ -174,6 +175,8 @@
 */
 
 	function getFiveLastPurchasesAdmin(){
+			$('#searchBeer2').html('<div class="searchBeer2"</div><br>');
+
 			var lastFive = new Array();
 			var uniqueLastFive = new Array();
 
@@ -196,7 +199,7 @@
 			 	for(a = 0; a < 5; a++){
 					var txt = uniqueLastFive[a];
 					var tmphtml = $('#searchBeer2').html();
-				 	$('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>');
+				 	$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 			 	}
 			 		},
 
@@ -209,14 +212,43 @@
 
 		function placeOrder(txt){
 			sum = sum + getBeer(txt)[0];
+			var oldLength = orderArr.length;
+			
+			/*	for(var i = 0; i < orderArr.length; i++){
+					if(txt == orderArr[i]){
+					// add one more to same beer
+    				var currentQuant = document.getElementById("quantity").value;
+    				document.getElementById("quantity").value = currentQuant + 1;
 
-			console.log(sum);
-			var tmphtml = $('#main').html();
-			$('#main').html(tmphtml+"<div class='beerButton'>"+txt+", "+getBeer(txt)[0]+" SEK</div><br>");
-		
-			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+					}
+					else{}
+				}
+				if(oldLength == orderArr.length){
+					orderArr[orderArr.length] = txt; */
+					var tmphtml = $('#main').html();
+					$('#main').html(tmphtml+'<div class="beerButton">'+txt+', '+getBeer(txt)[0]+' SEK <input type="image" class="delete" src="images/bartender/delete.png" alt="Delete"></input><input type="number" class="quantity" value="1" min="1"></input></div>');
+					$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+					/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
+					$('.delete').on('click',function(){
+    					$(this).parent('div.beerButton').remove();
+    					sum = sum - getBeer(txt)[0];
+						$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+					});
+
+					/* UPDATE SUM WHEN ADD BEERS BY INPUT FIELD*/
+					$(':input').bind('keyup mouseup',function(){
+						var currentQuant = $(this).val();
+    				//add value	$(this).val(newQuant);
+    				//	console.log(newQuant);
+					});
+				
+
+			//	}
+			//	else{}
 		}
 
+	
 
 
 		/* Returns user balance WORKS */
@@ -286,8 +318,26 @@
 			} else {
 				console.log(newCount + ' is not an integer.');
 			}
-
 		}
+
+
+		//NEW FUNCTIONS, SHOLUD MAYBE BE MOVED SOMEWHERE ELSE(?)
+
+		/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BYED BEER FROM DATABASE */
+		function finishOrder() {
+			//TODO: delete beers from database when finish order
+			/*Deletes all beerButtons, change class on searchBeer2 if we dont wnat them to be deleted*/
+			$( ".beerButton" ).remove();
+			/* Deletes only main, keeps beerButtons in searchBeer2 */
+			//$('#main').html("<div class='main'></div><br>");
+
+			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+			sum = 0;
+		}
+
+
+
+
 
 			/* TEMP CODE BELOW */
 			//var myForm = document.search;
