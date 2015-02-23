@@ -30,9 +30,10 @@
 	    			return re.test(phone);
 			}
 
-			function callNewUser(uname, pword, re_password, firstname, lastname, email, phone) {
+			function callCreateNewUser(uname, pword, re_password, firstname, lastname, email, phone) {
 				if ( (pword == re_password) && (validateEmail(email, '0')) && (validatePhone(phone, '0')) ) 
 					console.log("It works");
+					//uncomment row below before presentation
 					//createNewUser(uname, pword, re_password, firstname, lastname, email, phone)
 				else 
 					console.log("Some problems");
@@ -68,7 +69,7 @@
 		<span id="resultphone"><img class='valid' src='images/settings/15x15.png'></span>
 		<br><br>
 		</form>
-		<button id="createUserBtn" onclick="callNewUser(uname.value, pword.value, re_password.value, firstname.value, lastname.value, email.value, phone.value)">Create new user</button>
+		<button id="createUserBtn" onclick="callCreateNewUser(uname.value, pword.value, re_password.value, firstname.value, lastname.value, email.value, phone.value)">Create new user</button>
 		<button id="clearFieldBtn" onclick="document.getElementById('newUserForm').reset(), document.getElementById('resultphone').innerHTML = '', document.getElementById('resultemail').innerHTML = '', document.getElementById('firstname').focus()">Clear fields</button>
 	</body>
 </html>

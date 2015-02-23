@@ -77,30 +77,6 @@
 			});
 		}
 
-		/* Check if the user can log in to the system NOT WORKING YET */ 
-		function login(username, password) {
-			//if true redirect the user to the main page, and if admin redirect to admin page
-			httpGet(api,
-				function callback_success() {
-					
-				},
-				function callback_error() {
-					
-				});
-			return false; //ask the user to enter the correct credentials
-		}
-
-		// /* Validate email address */
-		// function validateEmail(email) { 
-  //   		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //   		return re.test(email);
-		// } 
-
-		// /* Validate phone */
-		// function validatePhone(phone) {
-		// 	return /^\+?(0|[0-9]\d*)$/.test(phone);
-		// }
-
 		/* Create a new user. OBS: THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
 		function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
 			//if ( new_password === re_password && validateEmail(email) && validatePhone(phone) ) {
@@ -350,12 +326,3 @@
 			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
 			sum = 0;
 		}
-
-
-
-
-
-			/* TEMP CODE BELOW */
-			//var myForm = document.search;
-			//var beerName = myForm.beername.value; //beer name is fetched from input form
-			//var count = inventory.getBeerInfo(beerName);
