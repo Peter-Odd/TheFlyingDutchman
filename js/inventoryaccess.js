@@ -90,15 +90,31 @@
 			return false; //ask the user to enter the correct credentials
 		}
 
-		/* Create a new user. THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
-		function createNewUser(new_username, new_password, first_name, last_name, email, phone) {
-			httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
-				function callback_success() { 
-					return true;
-				}, 
-				function callback_error(data) {
-					console.log('An error occurred: ' + data);
-				});
+		/* Validate email address */
+		function validateEmail(email) { 
+    		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    		return re.test(email);
+		} 
+
+		/* Validate phone */
+		function validatePhone(phone) {
+			return /^\+?(0|[0-9]\d*)$/.test(phone);
+		}
+
+		/* Create a new user. OBS: THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
+		function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
+			if ( new_password === re_password && validateEmail(email) && validatePhone(phone) ) {
+				//console.log(new_username + " " + new_password + " " + re_password + " " + first_name + " " + last_name + " " + email + " " + phone + ".");
+				httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
+					function callback_success() { 
+						return true;
+					}, 
+					function callback_error(data) {
+						console.log('An error occurred: ' + data);
+					});
+			} else {
+				console.log("Password fields don't match");
+			}
 		}
 
 		/* User specific functions (purchases) WORKS */

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML> 
+<html>
+	<head>
+		<!-- <link rel="stylesheet" href="css/tfd_settings.css"> -->
+		<script src="js/inventoryaccess.js"></script>
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	</head>
+
+	<body>
+		<h3> Create a new user </h3>
+		<label for="firstname">Enter first name</label>	<br>
+		<input id="firstname" type="text" placeholder="Enter first name" required onkeyup="">
+		<br><br>
+		<label for="lastname">Enter last name</label>	<br>
+		<input id="lastname" type="text" placeholder="Enter last name" required onkeyup="">
+		<br><br>
+		<label for="uname">Enter username</label>	<br>
+		<input id="uname" type="text" placeholder="Enter username" required onkeyup="">
+		<br><br>
+		<label for="pword">Enter password</label>	<br>
+		<input id="pword" type="password" placeholder="Enter password" required onkeyup="">
+		<br><br>
+		<label for="re_password">Re-enter password</label>	<br>
+		<input id="re_password" type="password" placeholder="Re-enter password" required onkeyup="">
+		<br><br>
+		<label for="email">Enter your email address</label>	<br>
+		<input id="email" type="text" placeholder="Enter your email address" required onkeyup="">
+		<br><br>
+		<label for="phone">Enter your phone number</label> <br>
+		<input id="phone" type="text" placeholder="Enter your phone number" required onkeyup="">
+		<br><br>
+		<button id="" onclick="createNewUser(uname.value, pword.value, re_password.value, firstname.value, lastname.value, email.value, phone.value)">Create new user</button>
+	</body>
+</html>
+
