@@ -7,6 +7,10 @@ if ($func_id == "0") {
 } elseif ($func_id == "1") {
 	getLastFive();
 }
+// $q = $_REQUEST["q"]; 
+// if ($q == "1") {
+// 	getLastFive();
+// }
 
 function db_connect() {
 	$db = mysqli_connect("localhost", "root", "root", "tfd_db");
@@ -14,7 +18,7 @@ function db_connect() {
 		printf("Connection failed: %s\n", mysqli_connect_error());
 		exit();
 	} else {
-		echo "Connection established", PHP_EOL;
+		//echo "Connection established", PHP_EOL;
 	}
 	return $db;
 }
@@ -27,7 +31,7 @@ function addPurchase() {
 	$date = $date->format('Y-m-d H:i:s');
 	$numberSql = "SELECT number FROM beers WHERE number=(SELECT max(number) FROM beers)";
 	$number = mysqli_query($db, $numberSql);
-	if ($number >= 5) {
+	if ($number >= 5) { //ev 4
 		$numToDelete = $number-4;
 		$deleteSql = "DELETE FROM beers WHERE number='$numToDelete'";
 		mysqli_query($db, $deleteSql);
@@ -46,23 +50,29 @@ function addPurchase() {
 
 function getLastFive() {
 	$db = db_connect();
+	$resultArray = [];
 	$sql = "SELECT * FROM beers";
 	$result = mysqli_query($db, $sql);
-	// printf("Result %d.\n", $result);
-	
-	//echo "before while", PHP_EOL;
-
-	// $rowResult = mysqli_num_rows($result);
-	// printf("rowResult %d.\n", $rowResult);
 
 	if (mysqli_num_rows($result) > 0) {
     	while ($row = mysqli_fetch_row($result)) {
-    		echo $row[0], PHP_EOL;
-    		//echo "in while", PHP_EOL;
+    		$tmp = [$row[0], $row[1], $row[2], $row[3], $row[4], $row[5]];
+    		$resultArray[] = $tmp;
+    		// echo $row[0], PHP_EOL;
+    		// echo $row[1], PHP_EOL;
+    		// echo $row[2], PHP_EOL;
+    		// echo $row[3], PHP_EOL;
+    		// echo $row[4], PHP_EOL;
+    		// echo $row[5], PHP_EOL;
+    		// echo PHP_EOL;
     	}
-    }
-    //echo "after while", PHP_EOL;
+    }   
+    //var_dump($resultArray);
     mysqli_close($db);
+    //echo json_encode($resultArray);
+    //var_dump($resultArray);
+    print json_encode($resultArray);
+    
 }
 
 

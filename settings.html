@@ -47,15 +47,44 @@
 			      data: { 
 			        func_id : "1" 
 			      },                        
-			      dataType: 'json'
-			      // success: function(data) {
-			      //   console.log("login correct");
-			      // },
-			      // error: function(data) {
-			      //   console.log("login not correct");
-			      // }
+			      dataType: 'json',
+			      success: function(data) {
+			      	console.log(data[0]);
+			      	console.log(data[1]);
+			      	console.log(data[2]);
+			      	console.log(data[3]);
+			      	console.log(data[4]);
+
+			      	// if (data == null) {
+			      	// 	console.log("db correct");	
+			      	// } else {
+			      	// 	for (x in data) {
+			      	// 		console.log(x);
+			      	// 	}
+			      	// }
+ 			        
+
+			      },
+			      error: function(data) {
+			        console.log("db not correct");
+			      }
 			    });
   			}
+
+
+  			// function getLastFive() {
+			  //       var xmlhttp = new XMLHttpRequest();
+			  //       xmlhttp.onreadystatechange = function() {
+			  //           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			  //           	var el = document.createElement('a');
+			  //           	el.innerHTML = xmlhttp.responseText;
+			  //           	var b = el.getElementsById()
+			  //               document.getElementById("output").innerHTML = xmlhttp.responseText;
+			  //           }
+			  //       }
+			  //       xmlhttp.open("GET", "settings.php?q=1", true);
+			  //       xmlhttp.send();
+			  //   }
 
 		</script>
 	</head>
@@ -94,7 +123,7 @@
 
 		<h3> Get five last purchases </h3>
 		<button id="getLastFivePurchases" onclick="getLastFive()" type="button"> Get Last Five Purchases </button>
-		<br><div id="output"> SQL Query reply will be displayed here </div>
+		<br><span id="output"> SQL Query reply will be displayed here </span>
 
 		<br><br><br><br>
 
