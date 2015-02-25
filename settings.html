@@ -49,25 +49,37 @@
 			      },                        
 			      dataType: 'json',
 			      success: function(data) {
-			      	console.log(data[0]);
-			      	console.log(data[1]);
-			      	console.log(data[2]);
-			      	console.log(data[3]);
-			      	console.log(data[4]);
-
-			      	// if (data == null) {
-			      	// 	console.log("db correct");	
-			      	// } else {
-			      	// 	for (x in data) {
-			      	// 		console.log(x);
-			      	// 	}
-			      	// }
- 			        
-
+			      	console.log(data.length);
+			      	for (var i = 0; i < data.length; i++) {
+			      		console.log(data[i]);
+			      		// if (data[i][0]
+			      	};
 			      },
 			      error: function(data) {
 			        console.log("db not correct");
 			      }
+			    });
+  			}
+
+  			function addPurchases(str) {
+			    $.ajax({      
+			      type: 'POST',                        
+			      url: 'settings.php',
+			      data: { 
+			        func_id : "0",
+			        str : str 
+			      },                        
+			      dataType: 'json',
+			      // success: function(data) {
+			      // 	console.log(data[0]);
+			      // 	console.log(data[1]);
+			      // 	console.log(data[2]);
+			      // 	console.log(data[3]);
+			      // 	console.log(data[4]);
+			      // },
+			      // error: function(data) {
+			      //   console.log("db not correct");
+			      // }
 			    });
   			}
 
