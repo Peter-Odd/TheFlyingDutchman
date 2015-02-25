@@ -7,10 +7,6 @@ if ($func_id == "0") {
 } elseif ($func_id == "1") {
 	getLastFive();
 }
-// $q = $_REQUEST["q"]; 
-// if ($q == "1") {
-// 	getLastFive();
-// }
 
 function db_connect() {
 	$db = mysqli_connect("localhost", "root", "root", "tfd_db");
@@ -28,7 +24,6 @@ function db_connect() {
 function addPurchase() {
 	$db = db_connect();
 	$str = $_POST['str']; 
-	//var_dump($str);
 
 	$inputArray = explode(',', $str);
 	$date = new DateTime();
@@ -38,30 +33,21 @@ function addPurchase() {
 	$result = mysqli_query($db, $numberSql);
 	if (mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_row($result);
-		//printf("row: %d\n", $row[0]);
 		$number = $row[0];
 	}
-	//$number = mysqli_fetch_row($result)
 
-	printf("number: %d\n", $number);
-	if ($number >= 5) { //ev 4
+	if ($number >= 5) { 
 		$numToDelete = $number-4;
 		$deleteSql = "DELETE FROM beers WHERE number='$numToDelete'";
 		mysqli_query($db, $deleteSql);
 	}
 	$numToAdd = $number+1;
-	//printf("numtoadd: %d\n", $numToAdd);
     
 	$max = sizeof($inputArray);
 	for ($i=0; $i < $max; $i += 3) { 
     	$name = $inputArray[$i];
     	$price = $inputArray[$i+1];
     	$amount = $inputArray[$i+2];
-    	// printf("name: %s\n", $name);
-    	// printf("name: %s\n", $numToAdd);
-    	// printf("name: %s\n", $date);
-    	// printf("name: %s\n", $price);
-    	// printf("name: %s\n", $amount);
 
     	$sql = "INSERT INTO beers(number, time, name, price, amount) VALUES ('$numToAdd', '$date', '$name', '$price', '$amount')";
     	if (mysqli_query($db, $sql)) {
@@ -75,45 +61,44 @@ function addPurchase() {
 
 function getLastFive() {
 	$db = db_connect();
-	$resultArray = [];
+	$resultArray = new ArrayObject();
+	$tmpArray = [];
+
+	$numberSql = "SELECT number FROM beers WHERE number=(SELECT min(number) FROM beers)";
+	
+	$result1 = mysqli_query($db, $numberSql);
+	if (mysqli_num_rows($result1) > 0) {
+		$row1 = mysqli_fetch_row($result1);
+		$number = $row1[0];
+	}
+
 	$sql = "SELECT * FROM beers ORDER BY number";
 	$result = mysqli_query($db, $sql);
 
 	if (mysqli_num_rows($result) > 0) {
+		$tmp2 = $number;
+		$tmp = "";
+		$oldDate = [];
     	while ($row = mysqli_fetch_row($result)) {
-    		$tmp = [ $row[0], $row[1], $row[2], $row[3], $row[4] ];
-    		$resultArray[] = $tmp;
+    		if ($tmp2 == $row[0]) {
+    			$tmp .= "$row[2],$row[3],$row[4],";
+    			$oldDate = $row[1];
+    		} else {
+    			$tmp .= "$oldDate";
+    			$resultArray[] = $tmp;
+				$tmp2 = $row[0];
+				$tmp = "";
+				$tmp = "$row[2],$row[3],$row[4],";
+				$oldDate = $row[1];
+			}
+    		// $tmp = [ $row[0], $row[1], $row[2], $row[3], $row[4] ];
+    		// $resultArray[] = $tmp;
     	}
+    	$tmp .= $oldDate;
+    	$resultArray[] = $tmp;
     }   
-    //var_dump($resultArray);
     mysqli_close($db);
     print json_encode($resultArray);   
 }
-
-
-
-//         $password = stripslashes($password);
-//         //echo $password, PHP_EOL;
-//         $row[2] = stripslashes($row[2]);
-//         //echo $row[2], PHP_EOL;
-//         $password = md5($password);
-//           $row[1] = stripslashes($row[1]);
-//         if ($password != $row[2]) {
-//           echo "Wrong password";
-//           //TODO: Ask the user to enter credentials again
-//         } else if($row[1]== 0){
-//               echo "dddddddddd";
-//         }
-//           else if ($row[1]== 3)
-//           {
-//               echo "dddddddddd";
-//           }
-//           //TODO: Redirect the use to correct page
-//       }
-//     } else {
-//         echo "0 results";
-//       }
-//     }
-// }
 
 ?>

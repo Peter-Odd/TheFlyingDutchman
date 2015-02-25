@@ -49,11 +49,13 @@
 			      },                        
 			      dataType: 'json',
 			      success: function(data) {
-			      	console.log(data.length);
-			      	for (var i = 0; i < data.length; i++) {
-			      		console.log(data[i]);
-			      		// if (data[i][0]
-			      	};
+			      	// console.log(data[0]);
+			      	// console.log(data[1]);
+			      	// console.log(data[2]);
+			      	// console.log(data[3]);
+			      	// console.log(data[4]);
+			      	$('#output').html('<br>'+data[0]+'<br> '+data[1]+'<br> '+data[2]+'<br> '+data[3]+'<br> '+data[4]+'');
+
 			      },
 			      error: function(data) {
 			        console.log("db not correct");
@@ -61,7 +63,7 @@
 			    });
   			}
 
-  			function addPurchases(str) {
+  			function addReceipt(str) {
 			    $.ajax({      
 			      type: 'POST',                        
 			      url: 'settings.php',
@@ -83,20 +85,6 @@
 			    });
   			}
 
-
-  			// function getLastFive() {
-			  //       var xmlhttp = new XMLHttpRequest();
-			  //       xmlhttp.onreadystatechange = function() {
-			  //           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			  //           	var el = document.createElement('a');
-			  //           	el.innerHTML = xmlhttp.responseText;
-			  //           	var b = el.getElementsById()
-			  //               document.getElementById("output").innerHTML = xmlhttp.responseText;
-			  //           }
-			  //       }
-			  //       xmlhttp.open("GET", "settings.php?q=1", true);
-			  //       xmlhttp.send();
-			  //   }
 
 		</script>
 	</head>
@@ -139,8 +127,8 @@
 
 		<br><br><br><br>
 
-		<h3> Add purchases to system </h3>
-		<button id="addPurchases" onclick="addPurchases()" type="button"> Add Purchases </button>
+		<h3> Add receipt to system </h3>
+		<button id="addReceipt" onclick="addReceipt()" type="button"> Add Receipt </button>
 	</body>
 </html>
 
