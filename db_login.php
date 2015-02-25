@@ -3,10 +3,12 @@
 
   if ($func_id == "0") {
     login();
+  } elseif ($func_id == "1") {
+    createUser();
   }
 
   function db_connect() {
-    $db = mysqli_connect("localhost", "root", "", "tfd_db");
+    $db = mysqli_connect("sql3.freesqldatabase.com", "sql368767", "kG4%mU7*", "sql368767");
     if (mysql_errno()) {
       printf("Connection failed: %s\n", mysqli_connect_error());
       exit();
@@ -37,11 +39,11 @@
           echo "Wrong password";
           //TODO: Ask the user to enter credentials again
         } else if($row[1]== 0){
-              echo "dddddddddd";
+              echo "admin";
         }
           else if ($row[1]== 3)
           {
-              echo "dddddddddd";
+              echo "vip";
           }
           //TODO: Redirect the use to correct page
       }
@@ -50,8 +52,30 @@
       }
     }
 
-    /* TO BE IMPLEMENTED: 
-        * create a new user to this database if a new user is created in the API
-
-    */
+    /* create a new user to this database if a new user is created in the API */
+    /* This doesn't work */
+    function createUser() {
+      $db = db_connect();
+      $uname = mysqli_real_escape_string($db, $_POST['uname'];
+      $pword = mysqli_real_escape_string($db, $_POST['pword'];
+      $firstname = mysqli_real_escape_string($db, $_POST['firstname'];
+      $lastname = mysqli_real_escape_string($db, $_POST['lastname'];
+      $email = mysqli_real_escape_string($db, $_POST['email'];
+      $phone = mysqli_real_escape_string($db, $_POST['phone']; 
+      // var_dump($uname);
+      // var_dump($pword);
+      // var_dump($firstname);
+      // var_dump($lastname);
+      // var_dump($email);
+      // var_dump($phone);
+      printf("hejsan");
+      $password = md5($pword);
+      $sql = "INSERT INTO users(credentials, password, username, first_name, last_name, email, phone, credit, debt) VALUES (3,'$password','$uname','$firstname','$lastname','$email','$phone',0,0)";
+      if (mysqli_query($db, $sql)) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($db);
+      }
+      mysqli_close($db);      
+    }
 ?>

@@ -32,11 +32,26 @@
 
 			/* Used to validate password, email and phone before the real API-function gets called */
 			function callCreateNewUser(uname, pword, re_password, firstname, lastname, email, phone) {
-				if ( (pword == re_password) && (validateEmail(email, '0')) && (validatePhone(phone, '0')) ) 
+				if ( (pword == re_password) && (validateEmail(email, '0')) && (validatePhone(phone, '0')) ) {
 					console.log("It works");
 					//uncomment row below before presentation
 					//createNewUser(uname, pword, re_password, firstname, lastname, email, phone)
-				else 
+					//CALL createUser in db_login.php to create user in our local DB as well
+					$.ajax({      
+				      type: 'POST',                        
+				      url: 'db_login.php',
+				      data: { 
+				        func_id : "1",
+				        uname : uname,
+				        pword : pword,
+				        firstname : firstname,
+				        lastname : lastname,
+				        email : email,
+				        phone : phone 
+				      },                        
+				      dataType: 'json'
+				    });
+				} else 
 					console.log("Some problems");
 			}
 
