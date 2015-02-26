@@ -39,11 +39,11 @@
           echo "Wrong password";
           //TODO: Ask the user to enter credentials again
         } else if($row[1]== 0){
-              echo "admin";
+            header("Location:bartender.html");
         }
           else if ($row[1]== 3)
           {
-              echo "vip";
+              header("Location:vip.html");
           }
           //TODO: Redirect the use to correct page
       }
