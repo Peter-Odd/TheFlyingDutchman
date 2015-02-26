@@ -201,68 +201,91 @@
 					return uniqueLastFive;
 				}
 
-
-		function placeOrder(txt){
-			
-		/*	if find beer in order LIST
-				add quantity to input
-			else
-				create new div */
-
-
-			sum = sum + getBeer(txt)[0];
-			var tmphtml = $('#main').html();
-			$('#main').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+txt+', '+getBeer(txt)[0]+' SEK</div><div class="quantity"><input type="image" class="incButton" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value="1"><input type="image" class="decButton" src="images/bartender/minus.png" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" alt="Delete"></input></div>');
-			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-
-			/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
-			$('.deleteButton').on('click',function(){
-    			$(this).parent('div.beerButtonOrder').remove();
-    			var $button = $(this);
-				var amount = $button.parent().find("input").val();
-    			sum = sum - (getBeer(txt)[0] * amount);
+	
+	/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
+			function deleteFromlist(txt) {
+				var index = orderArr.indexOf(txt);
+				var amount = orderArr[index + 2];
+    			sum = sum - (orderArr[index+1] * amount);
 				$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+				orderArr.splice(index, 3);
+				console.log(orderArr);
+			}
+
+
+			function incButton(txt) {
+				var index = orderArr.indexOf(txt);
+				orderArr[index + 2] += 1;
+
+				sum = sum + orderArr[index+1];
+
+		      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+			}
+
+		
+		function placeOrder(txt){
+
+			var index = orderArr.indexOf(txt);
+			if(index != -1){
+				orderArr[index + 2] += 1;
+			}
+			else{
+				orderArr.push(txt);
+				orderArr.push(getBeer(txt)[0]);
+				orderArr.push(1);
+			}
+
+			var tmphtml = "";
+			for (var i = 0; i < orderArr.length; i+=3) {
+				sum = sum + orderArr[index+1];
+				$('#main').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity"><input type="image" class="incButton" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value='+orderArr[i+2]+'><input type="image" class="decButton" src="images/bartender/minus.png" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" onclick="deleteFromlist(\''+orderArr[i]+'\')" alt="Delete"></input></div>');
+				tmphtml = $('#main').html();
+				$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+			//onclick="incButton('+txt+')"
+			};
+			console.log("----");
+
+
+			$('.deleteButton').on('click',function(){ 
+    			$(this).parent('div.beerButtonOrder').remove();
 			});
-
+		
 			/* INCREASE INPUT WHEN + IS CLICKED*/
-			$(".incButton").on("click", function() {
-				var $button = $(this);
-				 
-				if( ($button.parent().find("input").val()) > 1) {
-					var oldValue = $button.parent().find("input").val();
-		      		var newVal = parseFloat(oldValue) + 1;
-		      		sum = sum + getBeer(txt)[0];
-		      		$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-				}
-				else{
-					var newVal = 2;
-					sum = sum + getBeer(txt)[0];				
-					$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-				}
+			$(".incButton").on("click",function() {
 
-		 		$button.parent().find("input").val(newVal);
+				var index = orderArr.indexOf(txt);
+				orderArr[index + 2] += 1;
+
+				var $button = $(this);
+		 		$button.parent().find("input").val(orderArr[index + 2]);
+
+				sum = sum + orderArr[index+1];
+		      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+		 		console.log(orderArr);
 			});
 
 			/* DECREASE INPUT WHEN - IS CLICKED*/
 				$(".decButton").on("click", function() {
-		  			var $button = $(this);
-		  			var oldValue = $button.parent().find("input").val();
+					var $button = $(this);
+					var index = orderArr.indexOf(txt);
+					 
+					if(orderArr[index +2] > 1){
+						orderArr[index +2] -= 1;
+					}
 
-	    			if (oldValue > 1) {
-	      				var newVal = parseFloat(oldValue) - 1;
-	      				sum = sum - getBeer(txt)[0];
-		      			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-
-	    			} 
-	    			else {
-	      				newVal = 1;
-	    			}
-
-	 			$button.parent().find("input").val(newVal);
+	      			sum = sum - orderArr[index +1];
+		      		$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+	 				$button.parent().find("input").val(orderArr[index + 2]);
+	 			//	console.log(orderArr);
 			});
 		}
 
-	
+
+
+
 
 
 		/* Returns user balance WORKS */
