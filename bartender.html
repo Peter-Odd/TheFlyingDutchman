@@ -27,7 +27,8 @@
 					for(var i = 0; i < beerArr.length; i++) {
 						var element = beerArr[i];
 						var beerName = element.innerHTML;
-				 		$('#searchBeer2').html('<div class ="beerButton" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+ ' SEK</div><br>'+tmphtml);
+				 		$('#searchBeer2').html('<div class ="beerButtonSearch" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+ ' SEK</div><br>'+tmphtml);
+
 				 		tmphtml = $('#searchBeer2').html();
         			}
                 }
@@ -56,6 +57,7 @@
 				<button id="button">HELP</button>
 				<button id="button">LOG OUT</button>
 				<button id="button">ACCOUNTS</button> 
+
 			</div>
 			</div>
 			<div id="logosearch">
