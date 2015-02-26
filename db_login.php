@@ -53,22 +53,16 @@
     }
 
     /* create a new user to this database if a new user is created in the API */
-    /* This doesn't work */
     function createUser() {
-      $db = db_connect();
-      $uname = mysqli_real_escape_string($db, $_POST['uname'];
-      $pword = mysqli_real_escape_string($db, $_POST['pword'];
-      $firstname = mysqli_real_escape_string($db, $_POST['firstname'];
-      $lastname = mysqli_real_escape_string($db, $_POST['lastname'];
-      $email = mysqli_real_escape_string($db, $_POST['email'];
-      $phone = mysqli_real_escape_string($db, $_POST['phone']; 
-      // var_dump($uname);
-      // var_dump($pword);
-      // var_dump($firstname);
-      // var_dump($lastname);
-      // var_dump($email);
-      // var_dump($phone);
       printf("hejsan");
+      $db = db_connect();
+      $uname = mysqli_real_escape_string($db, $_POST['uname']);
+      $pword = mysqli_real_escape_string($db, $_POST['pword']);
+      $firstname = mysqli_real_escape_string($db, $_POST['firstname']);
+      $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
+      $email = mysqli_real_escape_string($db, $_POST['email']);
+      $phone = mysqli_real_escape_string($db, $_POST['phone']); 
+
       $password = md5($pword);
       $sql = "INSERT INTO users(credentials, password, username, first_name, last_name, email, phone, credit, debt) VALUES (3,'$password','$uname','$firstname','$lastname','$email','$phone',0,0)";
       if (mysqli_query($db, $sql)) {

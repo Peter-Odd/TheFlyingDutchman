@@ -40,7 +40,8 @@
 					$.ajax({      
 				      type: 'POST',                        
 				      url: 'db_login.php',
-				      data: { 
+				      data: 
+				      { 
 				        func_id : "1",
 				        uname : uname,
 				        pword : pword,
@@ -100,6 +101,9 @@
 			    });
   			}
 
+  			function tmp() {
+
+  			}
 
 		</script>
 	</head>
@@ -144,6 +148,8 @@
 
 		<h3> Add receipt to system </h3>
 		<button id="addReceipt" onclick="addReceipt()" type="button"> Add Receipt </button>
+		<br><br>
+		<button id="tmp" onclick="tmp()" type="button"> TMP </button>
 	</body>
 </html>
 
