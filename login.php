@@ -1,34 +1,56 @@
 <?php
-session_start();
+//if the login form is submitted
+if (isset($_POST['submit'])) {
+    // if form has been submitted
+    // makes sure they filled it in
 
-//注销登录
-if($_GET['action'] == "logout"){
-    unset($_SESSION['userid']);
-    unset($_SESSION['username']);
-    echo '注销登录成功！点击此处 <a href="index.html">登录</a>';
-    exit;
+    if(!$_POST['username'] | !$_POST['password']) {
+        die('You did not fill in a required field.');
+    }
+
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+
+    include_once "conn.php";
+    loggin($_POST['username'],$_POST['password']);
+
+    //then redirect them to the maneger area or member area
+    if ($_COOKIE['credentials']==0){
+        header("Location: vip.html");
+    }
+    else{
+        header("Location: bartender.html");
+    }
 }
 
-//登录
-if(!isset($_POST['submit'])){
-    exit('Error');
-}
-$username = htmlspecialchars($_POST['username']);
-$password = MD5($_POST['password']);
-
-//包含数据库连接文件
-include_once "conn.php";
-$conn = new conn;
-$conn -> loggin($username, $password);
-//检测用户名及密码是否正确
-$check_query = mysql_query("SELECT * FROM users WHERE username='$username'");
-if($result = mysql_fetch_array($check_query)){
-    //登录成功
-    $_SESSION['username'] = $username;
-    $_SESSION['userid'] = $result['uid'];
-    echo $username,' 欢迎你！进入 <a href="my.php">用户中心</a><br />';
-    echo '点击此处 <a href="login.php?action=logout">注销</a> 登录！<br />';
-    exit;
-} else {
-    exit('登录失败！点击此处 <a href="javascript:history.back(-1);">返回</a> 重试');
+else{}
+function loggin($username,$password){
+    $db = db_connect();
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($db, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_row($result)) {
+            $password = stripslashes($password);
+            //echo $password, PHP_EOL;
+            $row[2] = stripslashes($row[2]);
+            //echo $row[2], PHP_EOL;
+            $password = md5($password);
+            $row[1] = stripslashes($row[1]);
+            $hour = time() + 3600;
+            setcookie("user_id", $result['user_id'], $hour);
+            setcookie("user", $result['username'], $hour);
+            setcookie("fname", $result['first_name'], $hour);
+            setcookie("lname", $result['last_name'], $hour);
+            setcookie("email", $result['email'], $hour);
+            setcookie("credentials", $result['credentials'], $hour);
+            setcookie("id", $result['password'], $hour);
+            setcookie("credit", $result['credit'], $hour);
+            setcookie("debt", $result['debt'], $hour);
+        }
+    } else {
+        echo "That user does not exist in our database. <a href=newCustomer.php>Click Here to Register</a> <a href=index.html>Click Back to homepage</a>";
+    }
+    $result->close();
 }
