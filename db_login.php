@@ -54,7 +54,6 @@
 
     /* create a new user to this database if a new user is created in the API */
     function createUser() {
-      printf("hejsan");
       $db = db_connect();
       $uname = mysqli_real_escape_string($db, $_POST['uname']);
       $pword = mysqli_real_escape_string($db, $_POST['pword']);

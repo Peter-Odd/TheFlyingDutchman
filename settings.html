@@ -53,7 +53,7 @@
 				      dataType: 'json'
 				    });
 				} else 
-					console.log("Some problems");
+					console.log("Either not matching password-fields, incorrect email or phone");
 			}
 
 			function getLastFive() {
@@ -65,16 +65,11 @@
 			      },                        
 			      dataType: 'json',
 			      success: function(data) {
-			      	// console.log(data[0]);
-			      	// console.log(data[1]);
-			      	// console.log(data[2]);
-			      	// console.log(data[3]);
-			      	// console.log(data[4]);
-			      	$('#output').html('<br>'+data[0]+'<br> '+data[1]+'<br> '+data[2]+'<br> '+data[3]+'<br> '+data[4]+'');
-
-			      },
-			      error: function(data) {
-			        console.log("db not correct");
+			      	if (data.status == 'success') {
+			      		$('#output').html('<br>'+data[0]+'<br> '+data[1]+'<br> '+data[2]+'<br> '+data[3]+'<br> '+data[4]+'');
+			      	} else {
+			      		console.log("db query not correct");	
+			      	}
 			      }
 			    });
   			}
@@ -88,21 +83,14 @@
 			        str : str 
 			      },                        
 			      dataType: 'json',
-			      // success: function(data) {
-			      // 	console.log(data[0]);
-			      // 	console.log(data[1]);
-			      // 	console.log(data[2]);
-			      // 	console.log(data[3]);
-			      // 	console.log(data[4]);
-			      // },
-			      // error: function(data) {
-			      //   console.log("db not correct");
-			      // }
+			      success: function(data) {
+				  	if (data.status == 'success') {
+				  		console.log("db query success");
+				  	} else {
+				  		console.log("db query failed");
+				  	}
+			      }
 			    });
-  			}
-
-  			function tmp() {
-
   			}
 
 		</script>
@@ -148,8 +136,6 @@
 
 		<h3> Add receipt to system </h3>
 		<button id="addReceipt" onclick="addReceipt()" type="button"> Add Receipt </button>
-		<br><br>
-		<button id="tmp" onclick="tmp()" type="button"> TMP </button>
 	</body>
 </html>
 
