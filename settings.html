@@ -56,6 +56,7 @@
 					console.log("Either not matching password-fields, incorrect email or phone");
 			}
 
+			/* Queries the db for five last receipts */
 			function getLastFive() {
 			    $.ajax({      
 			      type: 'POST',                        
@@ -74,6 +75,7 @@
 			    });
   			}
 
+  			/* Add receipt to the db */
   			function addReceipt(str) {
 			    $.ajax({      
 			      type: 'POST',                        

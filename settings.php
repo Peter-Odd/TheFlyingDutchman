@@ -63,6 +63,7 @@ function addReceipt() {
     echo json_encode($responseArray);
 }
 
+/* Queries the db for five last receipts */
 function getLastFive() {
 	$db = db_connect();
 	$receipt = new ArrayObject();
