@@ -206,7 +206,7 @@ input:-moz-placeholder { color: white; }
 
 }
 
-.beerButton {
+.beerButtonSearch {
 	/*background: black;*/
 	padding: 10px;
 	border-bottom-color: white;
@@ -217,14 +217,79 @@ input:-moz-placeholder { color: white; }
 	display: inline-block;
 }
 
-input[type="image"] {
-	float: right;
-	 width: 20px;
-	 height: 20px;
+.beerButtonOrder {
+/*	background: black; */
+	padding: 10px; 
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	border-bottom: solid 1px;
+	width: 445px;
+	display: inline-block;
 }
 
-input[type="number"] {
-  /*display: block;*/
+.orderText {
+	width: 250px;
+	position: absolute;
+	display: inline-block; 
+	padding: 12px;
+
+
+}
+
+.quantity {
+	padding: 10px;
+	position: absolute;
+	left: 250px;
+/*	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	border-bottom: solid 1px; */
+	/*cursor:pointer; */
+	width: 150px;
+/*	height: 20px;*/
+	display: inline-block; 
+}
+
+
+.deleteButton{
+	padding: 10px;
+	float: right;
+	cursor: pointer;
+}
+
+/*
+.deleteArea {
+	padding: 10px;  
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	border-bottom: solid 1px;
+	/*cursor:pointer; 
+	width: 20px;
+	/*height: 20px;
+	display: inline-block; 
+}
+*/
+
+input[type="image"] {
+/*	float: right;*/
+	width: 20px;
+	height: 20px; 
+	margin-left: 10px; 
+	margin-right: 10px;
+	float: right;
+}
+
+input[type="text"] {
+width: 8%;
+height: 10px;
+font-size: 12px;
+float:right;
+}
+
+/*
+input[type="text"] {
+  display: block;
   float: right;
   margin-right: 20px;
   width: 5%;
@@ -235,6 +300,7 @@ input[type="number"] {
   border-radius: none;
   outline: none;
 }
+*/
 
 table, th, td {
    border: 1px solid black;

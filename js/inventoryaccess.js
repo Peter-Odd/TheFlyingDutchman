@@ -191,7 +191,7 @@
 			 	for(a = 0; a < 5; a++){
 					var txt = uniqueLastFive[a];
 					var tmphtml = $('#searchBeer2').html();
-				 	$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+				 	$('#searchBeer2').html('<div class="beerButtonSearch" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 			 	}
 			 		},
 
@@ -203,41 +203,63 @@
 
 
 		function placeOrder(txt){
-			sum = sum + getBeer(txt)[0];
-			var oldLength = orderArr.length;
 			
-			/*	for(var i = 0; i < orderArr.length; i++){
-					if(txt == orderArr[i]){
-					// add one more to same beer
-    				var currentQuant = document.getElementById("quantity").value;
-    				document.getElementById("quantity").value = currentQuant + 1;
+		/*	if find beer in order LIST
+				add quantity to input
+			else
+				create new div */
 
-					}
-					else{}
+
+			sum = sum + getBeer(txt)[0];
+			var tmphtml = $('#main').html();
+			$('#main').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+txt+', '+getBeer(txt)[0]+' SEK</div><div class="quantity"><input type="image" class="incButton" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value="1"><input type="image" class="decButton" src="images/bartender/minus.png" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" alt="Delete"></input></div>');
+			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+			/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
+			$('.deleteButton').on('click',function(){
+    			$(this).parent('div.beerButtonOrder').remove();
+    			var $button = $(this);
+				var amount = $button.parent().find("input").val();
+    			sum = sum - (getBeer(txt)[0] * amount);
+				$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+			});
+
+			/* INCREASE INPUT WHEN + IS CLICKED*/
+			$(".incButton").on("click", function() {
+				var $button = $(this);
+				 
+				if( ($button.parent().find("input").val()) > 1) {
+					var oldValue = $button.parent().find("input").val();
+		      		var newVal = parseFloat(oldValue) + 1;
+		      		sum = sum + getBeer(txt)[0];
+		      		$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 				}
-				if(oldLength == orderArr.length){
-					orderArr[orderArr.length] = txt; */
-					var tmphtml = $('#main').html();
-					$('#main').html(tmphtml+'<div class="beerButton">'+txt+', '+getBeer(txt)[0]+' SEK <input type="image" class="delete" src="images/bartender/delete.png" alt="Delete"></input><input type="number" class="quantity" value="1" min="1"></input></div>');
+				else{
+					var newVal = 2;
+					sum = sum + getBeer(txt)[0];				
 					$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+				}
 
-					/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
-					$('.delete').on('click',function(){
-    					$(this).parent('div.beerButton').remove();
-    					sum = sum - getBeer(txt)[0];
-						$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-					});
+		 		$button.parent().find("input").val(newVal);
+			});
 
-					/* UPDATE SUM WHEN ADD BEERS BY INPUT FIELD*/
-					$(':input').bind('keyup mouseup',function(){
-						var currentQuant = $(this).val();
-    				//add value	$(this).val(newQuant);
-    				//	console.log(newQuant);
-					});
-				
+			/* DECREASE INPUT WHEN - IS CLICKED*/
+				$(".decButton").on("click", function() {
+		  			var $button = $(this);
+		  			var oldValue = $button.parent().find("input").val();
 
-			//	}
-			//	else{}
+	    			if (oldValue > 1) {
+	      				var newVal = parseFloat(oldValue) - 1;
+	      				sum = sum - getBeer(txt)[0];
+		      			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+
+	    			} 
+	    			else {
+	      				newVal = 1;
+	    			}
+
+	 			$button.parent().find("input").val(newVal);
+			});
 		}
 
 	
@@ -315,13 +337,14 @@
 
 		//NEW FUNCTIONS, SHOLUD MAYBE BE MOVED SOMEWHERE ELSE(?)
 
-		/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BYED BEER FROM DATABASE */
+		/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BOUGHT BEER FROM DATABASE */
 		function finishOrder() {
-			//TODO: delete beers from database when finish order
+
 			/*Deletes all beerButtons, change class on searchBeer2 if we dont wnat them to be deleted*/
-			$( ".beerButton" ).remove();
+			//$( ".beerButton" ).remove();
+
 			/* Deletes only main, keeps beerButtons in searchBeer2 */
-			//$('#main').html("<div class='main'></div><br>");
+			$('#main').html("<div class='main'></div><br>");
 
 			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
 			sum = 0;
