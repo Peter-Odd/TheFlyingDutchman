@@ -1,0 +1,364 @@
+html {
+	<!-- background: rgb(11, 15, 17); -->
+	font-family: Palatino, serif;
+	color: white;
+}
+
+body {
+	margin: 0;
+}
+
+/* font color input field place holder text */
+::-webkit-input-placeholder { color: white; }
+::-moz-placeholder { color: white; } /* firefox 19+ */
+:-ms-input-placeholder { color: white; } /* ie */
+input:-moz-placeholder { color: white; }
+
+#content {
+	/*border: 0px;*/
+	width: 1104px;
+	height: 800px;
+}
+
+#wrapper {
+	position: relative;
+	margin: 0 auto;
+	background-image: url(images/main/start_background_800_white.jpg);
+}
+
+#wrapper img {
+	background-image: url(start_background_800.jpg) no-repeat center center fixed;
+	background-color: white;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	border: solid 1px #fff;
+}
+
+#header {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	height: 52px;
+	text-align: center;
+}
+
+#header_left{
+	float: left;
+	width: 300px;
+	height: 50px;
+	padding: 0px;
+	margin-left: 0px;
+
+}
+
+#header_right {
+	float: right;
+	width: 480px;
+	margin-right: 20px;
+	height: 50px;
+	padding: 0px;
+	margin-left: 0px;
+
+}
+#header, #footer {
+	max-width: 1103px;
+	display: block;
+	width: 100%;
+	background: rgba(17, 24, 27, 0.5);
+}
+
+#logosearch {
+	position: absolute;
+	top: 56px;
+	left: 1px;
+	margin-top: 18px;
+	width: 1104px;
+	height: 50px;
+}
+
+/*#ls_left {
+	background-color: red;
+	float: left;
+	width: 10px;
+	height: 0px;
+}
+
+#ls_left #tfd_logo {
+	width: auto;
+	border: 0px;
+	margin-top: -16px;
+	margin-left: 10px;
+	height: 100px;
+	width: auto;
+}*/
+
+#ls_main {
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	margin-left: 20px;
+	width: 270px;
+	height: 46px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	padding: 0px;
+}
+
+#ls_main #magnify {
+	background: rgba(17, 24, 27, 0);
+	margin-top: 5px;
+	margin-left: 10px;
+	border: 0px;
+	height: 30px;
+	width: auto;
+}
+
+#ls_main #search {
+	position: absolute;
+	text-transform: uppercase;
+	font-family: Palatino, serif;
+	font-size: 15px;
+	color: white;
+	border: 0px;
+	top: 0px;
+	background: rgba(17, 24, 27, 0);
+	margin-left: 15px;
+	height: 42px;
+	width: 200px;
+	padding-left: 10px;
+}
+
+#ls_right {
+	float: left;
+	width: 225px;
+	height: 54px;
+	padding: 10px;
+	margin-left: 20px;
+
+}
+
+#content {
+	position: absolute;
+	margin-top: 14px;
+	top: 145px;
+	left: 1px;
+}
+
+#left {
+	float: left;
+	width: 150px;
+	height: 550px;
+}
+
+#main_button_area {
+	position: relative;
+	left: 600px;
+	width: 485px;
+	height: 50px;
+	margin-top: 5px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+#main {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	position: relative;
+	left: 20px;
+	width: 465px;
+	height: 375px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	overflow:scroll;	
+
+}
+
+#main_total {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	position: relative;
+	left: 20px;
+	top: 3px;
+	width: 465px; 
+	height: 75px;
+}
+
+#total_text {
+	margin-left: 20px;
+	margin-top:20px;
+	font-size: 25px; 
+}
+
+/* search columns */
+#searchBeer_area {
+	position: relative;
+	left: 0px;
+	top: -40px;
+}
+
+#searchBeer1 {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	width: 250px;
+	height: 475px;
+	margin-left: 20px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	overflow:scroll;	
+
+}
+
+.beerButton {
+	/*background: black;*/
+	padding: 10px;
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	border-bottom: solid 1px;
+	cursor:pointer;
+	width: 90%;
+	display: inline-block;
+}
+
+input[type="image"] {
+	float: right;
+	 width: 20px;
+	 height: 20px;
+}
+
+input[type="number"] {
+  /*display: block;*/
+  float: right;
+  margin-right: 20px;
+  width: 5%;
+  font-family: sans-serif;
+  font-size: 15px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  outline: none;
+}
+
+table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   border-bottom-color: white;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   width: 100%;
+
+}
+th,td {
+    padding: 15px;
+}
+
+#searchBeer2 {
+	padding: 10px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	width: 250px;
+	height: 475px;
+	margin-left: 20px;
+	border-radius: 15px;
+	overflow: scroll;	
+	
+}
+
+#order h4 {
+	margin-top: -23px;
+	margin-left: 3px;
+	color: black;
+}
+
+#button {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	width: 100px;
+	padding: 5px;
+	text-align: center;
+	cursor: pointer;
+	float:right;
+	padding: 16px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+    margin-right: 2px;
+    margin-bottom: 1px;
+    border: none;
+
+}
+#main_right_button{
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	width: 119.75px;
+	padding: 0px;
+	text-align: center;
+	cursor: pointer;
+	float:right;
+	padding: 16px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border: none;
+
+}
+
+
+#main_button {
+	background: rgba(17, 24, 27, 0.3);
+	color:white;
+	width: 119.75px;
+	margin-left: 2px;
+	padding: 0px;
+	text-align: center;
+	cursor: pointer;
+	float:right;
+	padding: 16px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-color: rgba(17, 24, 27, 0.3);
+	border: none;
+}
+
+#space {
+	clear:both;
+	position: absolute;
+	top: 709px;
+	margin-top: 14px;
+	left: 1px;
+	width: 1104px;
+	height: 14px;
+}
+
+#footer {
+	position: absolute;
+	left: 1px;
+	top: 750px;
+	padding-top: 5px;
+	text-align: center;
+	font-size: 10px;
+	height: 45px;
+	color: grey;
+
+}
+
+#logo_noship {
+	position: relative;
+	float:left;
+	margin-left: 25px;
+	margin-top: 5px;
+	border: 0px;
+	height: 30px;
+	width: auto;
+}
+
+#footer {
+	position: absolute;
+	margin-left: 200px;
+	margin-top: 3px;
+	border: 0px;
+	height: 35px;
+	width: auto;
+}
