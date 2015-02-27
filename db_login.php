@@ -42,8 +42,8 @@
                 $row[5] = stripslashes($row[5]);
                 $row[6] = stripslashes($row[6]);
                 $row[7] = stripslashes($row[7]);
-                $row[1] = stripslashes($row[8]);
-                $row[1] = stripslashes($row[9]);
+                $row[8] = stripslashes($row[8]);
+                $row[9] = stripslashes($row[9]);
                 $hour = time() + 3600;
                 setcookie("user_id", $row[0], $hour);
                 setcookie("credentials", $row[1], $hour);
