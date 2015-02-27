@@ -191,7 +191,6 @@ th,td {
 
 #main {
 	padding: 10px;
-	background-image: url("C:\Users\JARIR\Desktop\TheFlyingDutchman\images\misc\beer_engine3.jpg");
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
 	width: 550px;
@@ -331,3 +330,26 @@ th,td {
 	height: 35px;
 	width: auto;
 }
+
+
+    .beerImageDiv {
+        margin-top: 20px;
+        border-radius: 10px;
+        background: grey;
+        height: 200px;
+        width: 150px;
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .beerImageDiv h5 {
+        position: absolute;
+        margin-top: 155px;
+        margin-left: 5px;
+    }
+
+    .beerImageDiv h6 {
+        position: absolute;
+        margin-top: 175px;
+        margin-left: 5px;
+    }
