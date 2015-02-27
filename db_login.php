@@ -35,6 +35,26 @@ if (isset($_POST['submit'])){
         //echo $row[2], PHP_EOL;
         $password = md5($password);
           $row[1] = stripslashes($row[1]);
+          $row[0] = stripslashes($row[0]);
+          $row[3] = stripslashes($row[3]);
+          $row[4] = stripslashes($row[4]);
+          $row[5] = stripslashes($row[5]);
+          $row[6] = stripslashes($row[6]);
+          $row[7] = stripslashes($row[7]);
+          $row[1] = stripslashes($row[8]);
+          $row[1] = stripslashes($row[9]);
+          $hour = time() + 3600;
+          setcookie("user_id", $row[0], $hour);
+          setcookie("credentials", $row[1], $hour);
+          setcookie("password", $row[2], $hour);
+          setcookie("username", $row[3], $hour);
+          setcookie("fname", $row[4], $hour);
+          setcookie("lname", $row[5], $hour);
+          setcookie("email", $row[6], $hour);
+          setcookie("phone", $row[7], $hour);
+          setcookie("credit",$row[8], $hour);
+          setcookie("debt", $row[9], $hour);
+
         if ($password != $row[2]) {
           echo "Wrong password";
           //TODO: Ask the user to enter credentials again
