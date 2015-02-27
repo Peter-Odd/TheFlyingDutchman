@@ -232,6 +232,7 @@
 				orderArr[index + 2] += 1;
 			}
 			else{
+
 				orderArr.push(txt);
 				orderArr.push(getBeer(txt)[0]);
 				orderArr.push(1);

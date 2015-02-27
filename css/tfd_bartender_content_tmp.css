@@ -128,9 +128,6 @@ input:-moz-placeholder { color: white; }
     border: none;
 }
 
-
-
-
 .beerButton {
 	padding: 10px;
 	border-bottom-color: white;
@@ -141,23 +138,63 @@ input:-moz-placeholder { color: white; }
 	display: inline-block;
 }
 
-input[type="image"] {
-	float: right;
-	 width: 20px;
-	 height: 20px;
+.beerButtonOrder {
+/*	background: black; */
+	padding: 10px; 
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	border-bottom: solid 1px;
+	width: 445px;
+	display: inline-block;
 }
 
-input[type="number"] {
-  float: right;
-  margin-right: 20px;
-  width: 5%;
-  font-family: sans-serif;
-  font-size: 15px;
-  appearance: none;
-  box-shadow: none;
-  border-radius: none;
-  outline: none;
+.orderText {
+	width: 250px;
+	position: absolute;
+	display: inline-block; 
+	padding: 12px;
+
+
 }
+
+.quantity {
+	padding: 10px;
+	position: absolute;
+	left: 250px;
+/*	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	border-bottom: solid 1px; */
+	/*cursor:pointer; */
+	width: 150px;
+/*	height: 20px;*/
+	display: inline-block; 
+}
+
+
+.deleteButton{
+	padding: 10px;
+	float: right;
+	cursor: pointer;
+}
+
+
+input[type="image"] {
+	width: 20px;
+	height: 20px; 
+	margin-left: 10px; 
+	margin-right: 10px;
+	float: right;
+}
+
+input[type="text"] {
+width: 8%;
+height: 10px;
+font-size: 12px;
+float:right;
+}
+
 
 table, th, td {
    border: 1px solid black;
