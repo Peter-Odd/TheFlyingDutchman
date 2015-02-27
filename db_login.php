@@ -44,24 +44,35 @@
                 $row[7] = stripslashes($row[7]);
                 $row[8] = stripslashes($row[8]);
                 $row[9] = stripslashes($row[9]);
-                $hour = time() + 3600;
-                setcookie("user_id", $row[0], $hour);
-                setcookie("credentials", $row[1], $hour);
-                setcookie("password", $row[2], $hour);
-                setcookie("username", $row[3], $hour);
-                setcookie("fname", $row[4], $hour);
-                setcookie("lname", $row[5], $hour);
-                setcookie("email", $row[6], $hour);
-                setcookie("phone", $row[7], $hour);
-                setcookie("credit", $row[8], $hour);
-                setcookie("debt", $row[9], $hour);
 
                 if ($password != $row[2]) {
 
                     header("Location:index.html");
                 } else if ($row[1] == 0) {
+                    $hour = time() + 3600;
+                    setcookie("user_id", $row[0], $hour);
+                    setcookie("credentials", $row[1], $hour);
+                    setcookie("password", $row[2], $hour);
+                    setcookie("username", $row[3], $hour);
+                    setcookie("fname", $row[4], $hour);
+                    setcookie("lname", $row[5], $hour);
+                    setcookie("email", $row[6], $hour);
+                    setcookie("phone", $row[7], $hour);
+                    setcookie("credit", $row[8], $hour);
+                    setcookie("debt", $row[9], $hour);
                     header("Location:bartender.html");
                 } else if ($row[1] == 3) {
+                    $hour = time() + 3600;
+                    setcookie("user_id", $row[0], $hour);
+                    setcookie("credentials", $row[1], $hour);
+                    setcookie("password", $row[2], $hour);
+                    setcookie("username", $row[3], $hour);
+                    setcookie("fname", $row[4], $hour);
+                    setcookie("lname", $row[5], $hour);
+                    setcookie("email", $row[6], $hour);
+                    setcookie("phone", $row[7], $hour);
+                    setcookie("credit", $row[8], $hour);
+                    setcookie("debt", $row[9], $hour);
                     header("Location:vip.html");
                 }
             }

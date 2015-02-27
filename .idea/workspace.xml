@@ -42,12 +42,12 @@
       <file leaf-file-name="db_login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48430493" vertical-offset="486" max-vertical-offset="1782">
-              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.40807176" vertical-offset="537" max-vertical-offset="1980">
+              <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
               <folding>
                 <element signature="e#7#132#0#PHP" expanded="true" />
-                <marker date="1425045816056" expanded="true" signature="749:795" placeholder="SELECT * FRO..users..." />
-                <marker date="1425045816056" expanded="true" signature="3174:3354" placeholder="INSERT INTO ..." />
+                <marker date="1425045940351" expanded="true" signature="749:795" placeholder="SELECT * FRO..users..." />
+                <marker date="1425045940351" expanded="true" signature="3835:4015" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -731,12 +731,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48430493" vertical-offset="486" max-vertical-offset="1782">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.40807176" vertical-offset="537" max-vertical-offset="1980">
+          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
           <folding>
             <element signature="e#7#132#0#PHP" expanded="true" />
-            <marker date="1425045816056" expanded="true" signature="749:795" placeholder="SELECT * FRO..users..." />
-            <marker date="1425045816056" expanded="true" signature="3174:3354" placeholder="INSERT INTO ..." />
+            <marker date="1425045940351" expanded="true" signature="749:795" placeholder="SELECT * FRO..users..." />
+            <marker date="1425045940351" expanded="true" signature="3835:4015" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
