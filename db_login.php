@@ -17,7 +17,7 @@
     }
     return $db;
   }
-
+Session_Start();
     if (isset($_POST['submit'])) {
         //function login() {
         $db = db_connect();
@@ -47,6 +47,16 @@
                 if ($password != $row[2]) {
                     header("Location:passwordwrong.html");
                 } else if ($row[1] == 0) {
+                    $_SESSION['user_id']=$row[0];
+                    $_SESSION['credentials']=$row[1];
+                    $_SESSION['password']=$row[2];
+                    $_SESSION['username']=$row[3];
+                    $_SESSION['fname']=$row[4];
+                    $_SESSION['lname']=$row[5];
+                    $_SESSION['email']=$row[6];
+                    $_SESSION['phone']=$row[7];
+                    $_SESSION['credit']=$row[8];
+                    $_SESSION['debt']=$row[9];
                     $hour = time() + 3600;
                     setcookie("user_id", $row[0], $hour);
                     setcookie("credentials", $row[1], $hour);
@@ -62,6 +72,16 @@
                     mysqli_close($db);
                     exit;
                 } else if ($row[1] == 3) {
+                    $_SESSION['user_id']=$row[0];
+                    $_SESSION['credentials']=$row[1];
+                    $_SESSION['password']=$row[2];
+                    $_SESSION['username']=$row[3];
+                    $_SESSION['fname']=$row[4];
+                    $_SESSION['lname']=$row[5];
+                    $_SESSION['email']=$row[6];
+                    $_SESSION['phone']=$row[7];
+                    $_SESSION['credit']=$row[8];
+                    $_SESSION['debt']=$row[9];
                     $hour = time() + 3600;
                     setcookie("user_id", $row[0], $hour);
                     setcookie("credentials", $row[1], $hour);
