@@ -9,7 +9,7 @@
 
 
 		<script>
-		function showHint(str) {
+		function showHint(str, choice) {
 
         if (str.length == 0) { 
             document.getElementById("searchBeer2").innerHTML = "";
@@ -33,7 +33,7 @@
         			}
                 }
             }
-            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.open("GET", "gethint.php?q=" + str + "&choice=" + choice, true);
             xmlhttp.send();
         }
     	}
@@ -63,7 +63,7 @@
 			<div id="logosearch">
 				<div id="ls_main">
 					<img id="magnify" src="images/main/magnify.png" alt=""/> 
-					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value)">
+					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
 				</div>
 				<div id="ls_right"> </div>
 			</div>
