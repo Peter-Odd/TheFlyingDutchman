@@ -1,47 +1,33 @@
+<!DOCTYPE HTML>
 <html>
-
 <head>
-	
-	<link rel="stylesheet" href="css/tfd_bartender_tmp.css">
+	<link rel="stylesheet" href="css/tfd_bartender_content_tmp.css">
 </head>
 
 <body>
+		<div id="top">
+			<img id="magnify" src="images/main/magnify.png" alt=""/> 
+			<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value)">
+		</div>
+
 	<div id="searchBeer_area"> 
 		<div id="searchBeer1"> 
 			<table>
 				<tr>
-					<td onclick="getFiveLastPurchasesAdmin()">POPULAR</td> <!-- to click only once: this.onclick=null; -->
-				</tr>
-				<tr>
-					<td>BRAND 1</td>
-				</tr>
-				<tr>
-					<td>BRAND 2</td>
-				</tr>
-				<tr>
-					<td>BRAND 3</td>
-				</tr>
-				<tr>
-					<td>BRAND 4</td>
-				</tr>
-				<tr>
-					<td>COCKTAIL</td>
-				</tr>
-				<tr>
-					<td>WHISKEY</td>
+					<td onclick="getFiveLastPurchasesAdmin()">POPULAR</td>
 				</tr>
 			</table>
 		</div>
 		<div id="searchBeer2"></div>
-		<div id="main"></div>
+ 		<div id="main"></div>
 		<div id="main_total">
 			<p id="total_text"> TOTAL: </p>
 		</div>
 		<div id="main_button_area"> 
-			<button id="main_button" onclick="finishOrder()">CASH</button>
-			<button id="main_button" onclick="finishOrder()">CARD</button>
-			<button id="main_button">BILL</button>
-			<button id="main_right_button" onclick="finishOrder()">CREDIT</button>
+			<button class="main_button" onclick="finishOrder()">CASH</button>
+			<button class="main_button" onclick="finishOrder()">CARD</button>
+			<button class="main_button">BILL</button>
+			<button class="main_button" onclick="finishOrder()">CREDIT</button>
 		</div> 
 	</body>
 	</html>

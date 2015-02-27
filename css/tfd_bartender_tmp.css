@@ -1,5 +1,4 @@
 html {
-	<!-- background: rgb(11, 15, 17); -->
 	font-family: Palatino, serif;
 	color: white;
 }
@@ -15,14 +14,18 @@ body {
 input:-moz-placeholder { color: white; }
 
 #content {
-	/*border: 0px;*/
+	border: 9px;
 	width: 1104px;
 	height: 800px;
+	position: absolute;
+	/*margin-top: 14px;*/
+	top: 54px;
+	left: 1px;
 }
 
 #wrapper {
-	position: relative;
-	margin: 0 auto;
+	/*position: relative;*/
+	/*margin: 0 auto;*/
 	background-image: url(images/main/start_background_800_white.jpg);
 }
 
@@ -138,12 +141,12 @@ input:-moz-placeholder { color: white; }
 
 }
 
-#content {
+/*#content {
 	position: absolute;
 	margin-top: 14px;
 	top: 145px;
 	left: 1px;
-}
+}*/
 
 #left {
 	float: left;

@@ -7,26 +7,49 @@
 
     <style>
     #result {
-        display: none;
+        /*display: none;*/
         background: grey;
         position: absolute;
         margin-left: 50px;
         margin-top: 50px;
-        max-width: 250px;
+        max-width: 550px;
         min-width: 100px;
         border-radius: 5px;
         padding: 5px;
         }
+
+    .beerImageDiv {
+        margin-top: 20px;
+        border-radius: 10px;
+        background: grey;
+        height: 200px;
+        width: 150px;
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .beerImageDiv h5 {
+        position: absolute;
+        margin-top: 155px;
+        margin-left: 5px;
+    }
+
+    .beerImageDiv h6 {
+        position: absolute;
+        margin-top: 175px;
+        margin-left: 5px;
+    }
+
     </style>
 
 <script language="javascript" type="text/javascript" src="jquery.js"></script>
 <script>
 
-
-    function showHint(str) {
+    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
+    function showHint(str, choice) {
         $("#result").show();
         if (str.length == 0) { 
-            document.getElementById("txtHint").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
             return;
         } else {
             var xmlhttp = new XMLHttpRequest();
@@ -35,7 +58,7 @@
                     document.getElementById("result").innerHTML = xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
             xmlhttp.send();
         }
     }
@@ -51,9 +74,8 @@
 <body>
     <p><b>Search for a beer below:</b></p>
     <form> 
-    Beer name: <input id="searchField" type="text" placeholder="Beer name" onkeyup="showHint(this.value)">
-
+    Search for a beer: <input id="searchField" type="text" placeholder="Beer name" onkeyup="showHint(this.value, 'image')">
     </form>
-    <div id="result"> </div>
+    <div id="result"> <!-- This div will display the results --> </div>
 </body>
 </html>
