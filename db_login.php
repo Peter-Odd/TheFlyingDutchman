@@ -44,10 +44,8 @@
                 $row[7] = stripslashes($row[7]);
                 $row[8] = stripslashes($row[8]);
                 $row[9] = stripslashes($row[9]);
-
                 if ($password != $row[2]) {
-
-                    header("Location:index.html");
+                    header("Location:passwordwrong.html");
                 } else if ($row[1] == 0) {
                     $hour = time() + 3600;
                     setcookie("user_id", $row[0], $hour);
@@ -61,6 +59,8 @@
                     setcookie("credit", $row[8], $hour);
                     setcookie("debt", $row[9], $hour);
                     header("Location:bartender.html");
+                    mysqli_close($db);
+                    exit;
                 } else if ($row[1] == 3) {
                     $hour = time() + 3600;
                     setcookie("user_id", $row[0], $hour);
@@ -74,13 +74,15 @@
                     setcookie("credit", $row[8], $hour);
                     setcookie("debt", $row[9], $hour);
                     header("Location:vip.html");
+                    mysqli_close($db);
+                    exit;
                 }
             }
         } else {
             echo "0 results";
 
         }
-        mysqli_close($db);
+
     }
 
     /* create a new user to this database if a new user is created in the API */
