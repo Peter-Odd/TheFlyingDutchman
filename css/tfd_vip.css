@@ -1,10 +1,13 @@
 html {
+	height: 97%;
 	background: rgb(11, 15, 17);
 	font-family: Palatino, serif;
 	color: white;
 }
 
 body {
+	height: 100%;
+    /*text-align: center;*/
 	margin: 0;
 }
 
@@ -163,12 +166,15 @@ color: white;
 	padding: 10px;
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
-	width: 200px;
+	width: 180px;
 	height: 475px;
 	margin-left: 20px;
 	border-radius: 15px;
 }
 
+#menu_button {
+cursor: pointer
+}
 table, th, td {
    border: 1px solid black;
    border-collapse: collapse;
@@ -185,31 +191,41 @@ th,td {
 
 #main {
 	padding: 10px;
+	background-image: url("C:\Users\JARIR\Desktop\TheFlyingDutchman\images\misc\beer_engine3.jpg");
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
-	width: 530px;
+	width: 550px;
 	height: 530px;
 	margin-left: 10px;
 	border-radius: 15px;
 	overflow: auto;
 }
 
-#thumbnail {
-	padding: 10px;
+.beer_desc  {	
 	background: black;
+	width: 152px;
+	height: 200px;
+	float: left;
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.beer_desc h4 {
+	margin-top: -50px;
+	margin-left: 0px;
+	color: red;
+}
+
+.thumbnail {
+	/*padding: 10px;*/
+	background: red;
 	float: left;
 	width: 130px;
 	height: 130px;
 	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 15px;
-	margin-bottom: 10px;
-}
-
-#thumbnail h4 {
-	margin-top: -30px;
-	margin-left: 0px;
-	color: white;
 }
 
 #order_area {
@@ -234,10 +250,8 @@ th,td {
 	color: white;
 }
 
-#orderbutton {
-	
-	/*background: rgba(17, 24, 27, 0.3);*/
-	background: black;
+#orderbutton {	
+	background: rgba(17, 24, 27, 0.3);
 	float: right;
 	border-rad ius: 15px;
 	margin-left: 0px;
