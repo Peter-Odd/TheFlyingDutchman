@@ -1,11 +1,11 @@
 <?php 
-  $func_id = $_POST['func_id'];
+  //$func_id = $_POST['func_id'];
 
-  if ($func_id == "0") {
+  /*if ($func_id == "0") {
     login();
   } elseif ($func_id == "1") {
     createUser();
-  }
+  }*/
 
   function db_connect() {
     $db = mysqli_connect("sql3.freesqldatabase.com", "sql368767", "kG4%mU7*", "sql368767");
@@ -17,8 +17,8 @@
     }
     return $db;
   }
-
-  function login() {
+if (isset($_POST['submit'])){
+  //function login() {
     $db = db_connect();
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -45,11 +45,11 @@
           {
               header("Location:vip.html");
           }
-          //TODO: Redirect the use to correct page
       }
     } else {
         echo "0 results";
-      }
+        //mysqli_close($db);
+    }
     }
 
     /* create a new user to this database if a new user is created in the API */
