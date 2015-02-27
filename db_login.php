@@ -103,6 +103,9 @@ Session_Start();
 
         }
 
+    }else
+    {
+        header("Location: index.html");
     }
 
     /* create a new user to this database if a new user is created in the API */
