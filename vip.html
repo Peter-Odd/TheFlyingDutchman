@@ -52,7 +52,7 @@
 				</div>
 				
 				<div id="header_right">
-					<button id="button"> LOG OUT </button>
+					<button id="button" onclick="logout()"> LOG OUT </button>
 					<button id="button"> HELP </button>
 					<button id="button"> ACCOUNTS </button>
 				</div>
@@ -123,5 +123,10 @@
 				<img id="logo_noship" src="images/main/tfd_logo_noship.png" alt=""/>
 			</div>
 		</div>
+        <script>
+            function logout(){
+                self.location="index.html";
+            }
+        </script>
 	</body>
 </html>
