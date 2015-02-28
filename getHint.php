@@ -309,7 +309,10 @@ if ($q !== "") {
                     $hint = "<div class='beerButton' onclick='alert($name)'>$nameUpperFirst</div><br>";
                 } else { 
                     $nameToShow = substr($nameUpperFirst,0,23); //used to limit the string length
-                    $hint = "<div class='beerImageDiv' style='background-image: url($image)'; > <h5>$nameToShow</h5><h6>XXX SEK</h6> </div>";
+                    $hint = "<div class='beerImageDiv' style='background-image: url($image)'>
+								<h5 style='color:black'>$nameToShow</h5>
+								<h6 style='color:black'>XXX SEK</h6>
+							</div>";
                 }
             } else {
                 //$name = addslashes($name);
@@ -319,7 +322,10 @@ if ($q !== "") {
                     $hint .= "<div class='beerButton' onclick='alert($name)' >$nameUpperFirst</div><br>";
                 } else {
                     $nameToShow = substr($nameUpperFirst,0,23); //used to limit the string length
-                    $hint .= "<div class='beerImageDiv' style='background-image: url($image)'; > <h5>$nameToShow</h5><h6>XXX SEK</h6> </div>";
+                    $hint .= "<div class='beerImageDiv' style='background-image: url($image)'> 
+								<h5 style='color:black'>$nameToShow</h5>
+								<h6 style='color:black'>XXX SEK</h6>
+							</div>";
                 }
             }
         }
