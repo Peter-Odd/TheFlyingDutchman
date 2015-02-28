@@ -24,8 +24,20 @@
 						for(var i = 0; i < beerArr.length; i++) {
 							var element = beerArr[i];
 							var beerName = element.innerHTML;
-					 		$('#searchBeer2').html('<div class ="beerButton" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
-					 		tmphtml = $('#searchBeer2').html();
+							var stock = getBeer(beerName)[2];
+
+							if(stock == 0){
+								$('#searchBeer2').html('<div class="beerButtonEmptyStock" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
+					 			tmphtml = $('#searchBeer2').html();
+							}
+							else if(stock < 10) {
+								$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
+					 			tmphtml = $('#searchBeer2').html();
+							}
+							else{
+								$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+beerName+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
+					 			tmphtml = $('#searchBeer2').html();
+					 		}
 	        			}
 	                }
 	            }
@@ -59,14 +71,21 @@
 		</div>
 		<div id="searchBeer2"></div>
  		<div id="main"></div>
+ 		
+ 		<div id="topMain">
+			<button id="undo">UNDO</button>
+			<button id="redo">REDO</button>
+			<button id="cancel" onclick="cancelOrder()">CANCEL</button>
+ 		</div>
+ 		
 		<div id="main_total">
 			<p id="total_text"> TOTAL: </p>
 		</div>
 		<div id="main_button_area"> 
-			<button class="main_button" onclick="finishOrder()">CASH</button>
-			<button class="main_button" onclick="finishOrder()">CARD</button>
 			<button class="main_button">BILL</button>
 			<button class="main_button" onclick="finishOrder()">CREDIT</button>
+			<button class="main_button" onclick="finishOrder()">CASH</button>
+			<button class="main_button" onclick="finishOrder()">CARD</button>
 		</div> 
 	</body>
 	</html>

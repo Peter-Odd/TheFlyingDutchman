@@ -1,13 +1,13 @@
 
 		var barInventory = null;
 		var purchases = null;
+		var sum = 0;
+		var orderArr = new Array();
 		
 		/* These should be set when user logs in */
 		var username = "ervtod";
 		var password = "ervtod";
-		var sum = 0;
-		var orderArr = new Array();
-
+		
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
 
@@ -118,54 +118,6 @@
 
 	
 
-			/* User specific functions (purchases) WORKS */
-/*		function getFiveLastPurchasesAdmin() {
-			var lastFive = new Set();
-
-			httpGet(api+'purchases_get_all', 
-			 	function callback_success(data) {
-			 		var i = 0;
-			 		var a = 0;
-			 		 while(lastFive.size < 5){
-			 			
-						 if(data.payload[i].namn == "") {
-						 	i++;
-						 }
-						 else{
-			 		 		lastFive.add(data.payload[i].namn);
-			 		 		i++;
-			 		 	}
-			 		 }
-
-			 		 for (item of lastFive) {
-
-				 		 var tmphtml = $('#searchBeer2').html();
-				 	
-				 		 $('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+item+'\'')">"+item+", "+getBeer(item)[0]+'' SEK</div><br>'');
-				 	//	 $('#searchBeer2').html(tmphtml+'<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+'</div><br>');
-				 		// console.log(item);
-
-				 		 a++;
-
-			 		}
-			 	},
-
-			 	function callback_error(data) {
-			 		console.log('An error occurred: ' + data);
-			 	});
-
-			// Data can be accessed this way:
-			// console.log(lastFive[0].namn);
-			// console.log(lastFive[0].namn2);
-			// console.log(lastFive[0].transaction_id);
-			// console.log(lastFive[0].user_id);
-			// console.log(lastFive[0].beer_id);
-			// console.log(lastFive[0].price);
-			// console.log(lastFive[0].timestamp);
-			return lastFive;
-		}
-*/
-
 	function getFiveLastPurchasesAdmin(){
 			$('#searchBeer2').html('<div class="searchBeer2"</div><br>');
 
@@ -188,11 +140,23 @@
 			 		 	i++;
 			 		}
 			 	}
-			 	for(a = 0; a < 5; a++){
+			 	for(a = 0; a < 5; a++){			 		
 					var txt = uniqueLastFive[a];
-					var tmphtml = $('#searchBeer2').html();
-				 	$('#searchBeer2').html('<div class="beerButtonSearch" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+					var b = getBeer(txt)[2];
+					console.log(b);
+					console.log(txt);
+
+					/*Sets darker backgroud if stock < 10*/
+					if(b < 10) {
+						var tmphtml = $('#searchBeer2').html();
+				 		$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+					}
+					else{
+						var tmphtml = $('#searchBeer2').html();
+				 		$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+			 		}
 			 	}
+
 			 		},
 
 			 	function callback_error(data) {
@@ -284,9 +248,13 @@
 			});
 		}
 
-
-
-
+		/*Empty OrderArr and delete divs from main */
+		function cancelOrder() {
+			orderArr.splice("", orderArr.length);
+			$('#main').html("<div class='main'></div><br>");
+			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+			sum = 0;
+		}
 
 
 		/* Returns user balance WORKS */
@@ -359,17 +327,12 @@
 		}
 
 
-		//NEW FUNCTIONS, SHOLUD MAYBE BE MOVED SOMEWHERE ELSE(?)
-
 		/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BOUGHT BEER FROM DATABASE */
 		function finishOrder() {
+			//buy beer from database
 
-			/*Deletes all beerButtons, change class on searchBeer2 if we dont wnat them to be deleted*/
-			//$( ".beerButton" ).remove();
-
-			/* Deletes only main, keeps beerButtons in searchBeer2 */
+			orderArr.splice("", orderArr.length);
 			$('#main').html("<div class='main'></div><br>");
-
 			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
 			sum = 0;
 		}

@@ -77,29 +77,87 @@ input:-moz-placeholder { color: white; }
 }
 
 #main {
+	background: white;
 	position: absolute;
 	margin-left: 600px;
-	top: 62px;
+	top: 112px;
 	padding: 10px;
 	width: 465px;
-	height: 375px;
+	height: 339px;
+	background: rgba(17, 24, 27, 0.3);
+	overflow:scroll;	
+}
+
+#topMain {
 	background: rgba(17, 24, 27, 0.3);
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	overflow:scroll;	
+	position: relative;
+	top: 61px;
+	left: 600px;
+	width: 485px;
+	height: 48px;
+}
+
+#undo {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	position: relative;
+	left: -285px;
+	top: 5px;
+	cursor: pointer;
+	padding: 13px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+   border:none;
+}
+
+#redo {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	position: relative;
+	left: -286px;
+	top: 5px;
+	cursor: pointer;
+	padding: 13px;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+   border:none;
+}
+
+#cancel {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	position: relative;
+	left: 116px;
+	top: -34px;
+	cursor: pointer;
+	padding: 13px;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+   border:none;
+
 }
 
 #main_total {
 	position: absolute;
 	margin-left: 600px;
-	top: 462px;
+	top: 475px;
 	padding: 10px;
 	width: 465px; 
-	height: 75px;
+	height: 60px;
 	background: rgba(17, 24, 27, 0.3);
 }
 
 #main_total p {
+	margin-left: 20px;
+	margin-top:20px;
+	font-size: 25px; 
+}
+
+#total_text {
 	margin-left: 20px;
 	margin-top:20px;
 	font-size: 25px; 
@@ -136,6 +194,30 @@ input:-moz-placeholder { color: white; }
 	cursor:pointer;
 	width: 90%;
 	display: inline-block;
+}
+
+.beerButtonLowStock {
+	background: rgba(255, 255, 0, 0.3);
+	padding: 10px;
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	border-bottom: solid 1px;
+	cursor:pointer;
+	width: 90%;
+	display: inline-block;
+}
+
+.beerButtonEmptyStock {
+/*	background: red; */
+	background: (255, 0, 0, 0.3); 
+	padding: 10px;
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	border-bottom: solid 1px;
+	cursor:pointer;
+	width: 90%;
+	display: inline-block;
+
 }
 
 .beerButtonOrder {
