@@ -331,25 +331,28 @@ th,td {
 	width: auto;
 }
 
+.beerImageDiv {
+	position: relative;
+	border-radius: 10px;
+	height: 200px;
+	width: 150px;
+	display: inline-block;
+	margin: 14px;
+	background-repeat: none;
+}
 
-    .beerImageDiv {
-        margin-top: 20px;
-        border-radius: 10px;
-        background: grey;
-        height: 200px;
-        width: 150px;
-        display: inline-block;
-        margin: 8px;
-    }
+.beerImageDiv h5 {
+	color: black;
+	position: relative;
+	padding-left: 5px;
+	padding-top: 135px;
+}
 
-    .beerImageDiv h5 {
-        position: absolute;
-        margin-top: 155px;
-        margin-left: 5px;
-    }
-
-    .beerImageDiv h6 {
-        position: absolute;
-        margin-top: 175px;
-        margin-left: 5px;
-    }
+.beerImageDiv h6 {
+	color: black;
+	padding-left: 5px;
+	margin-top: -15px;
+/*	position: absolute;
+	margin-top: 175px;
+	margin-left: 5px;*/
+}
