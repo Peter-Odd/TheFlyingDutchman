@@ -310,8 +310,8 @@ if ($q !== "") {
                 } else { 
                     $nameToShow = substr($nameUpperFirst,0,23); //used to limit the string length
                     $hint = "<div class='beerImageDiv' style='background-image: url($image)'>
-								<h5 style='color:black'>$nameToShow</h5>
-								<h6 style='color:black'>XXX SEK</h6>
+								<h4>$nameToShow</h4>
+								<h5>XXX SEK</h5>
 							</div>";
                 }
             } else {
@@ -323,8 +323,8 @@ if ($q !== "") {
                 } else {
                     $nameToShow = substr($nameUpperFirst,0,23); //used to limit the string length
                     $hint .= "<div class='beerImageDiv' style='background-image: url($image)'> 
-								<h5 style='color:black'>$nameToShow</h5>
-								<h6 style='color:black'>XXX SEK</h6>
+								<h4>$nameToShow</h4>
+								<h5>XXX SEK</h5>
 							</div>";
                 }
             }

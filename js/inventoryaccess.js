@@ -326,6 +326,14 @@
 			}
 		}
 
+		function vip_pay() {
+			alert("Lets pay!");
+		}
+
+		function vip_cancel() {
+			alert("I don't want to do this... abort!");
+		}
+
 
 		/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BOUGHT BEER FROM DATABASE */
 		function finishOrder() {

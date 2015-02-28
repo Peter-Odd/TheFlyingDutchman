@@ -2,26 +2,35 @@
 <html>
 	<head>
 		<title>The Flying Dutchman</title>
-		<link rel="stylesheet" href="css/tfd_main_new.css">
+		<link rel="stylesheet" href="css/tfd_main.css">
 		<link rel="shortcut icon" href="images/start/logo.png" />
+		<script src="js/settings.js"></script>
 	</head>
 
 	<body>
 		<div id="wrapper"> 
 			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" />
 			<div id="header">
-					<div id="header_left">
-						<h4> You are logged in as: username </h4>
-						<h5 id="credit"> Credit: user credit SEK </h5>
-					</div>
-					<div id="header_right">
-						<button id="button">HELP</button>
-						<button id="button">LOG OUT</button>
-						<button id="button">SETTINGS</button> 
-					</div>
+				<div id="header_left">
+					<h5 id="loggedInUser"> You are logged in as: username </h4>
+					<h5 id="userCredit"> Credit: user credit SEK </h5>
 				</div>
+				<div id="header_right">
+					<button class="button" id="logoutBtn" onclick="logout()">LOG OUT</button>
+					<button class="button" id="aboutBtn" onclick="about()">ABOUT</button>
+					<button class="button" id="settingsBtn" onclick="settings()">SETTINGS</button>
+					<button class="button" id="helpBtn" onclick="help()">HELP</button> 
+					<button class="button" id="homeBtn" onclick="home()">HOME</button> 
+					<!-- THIS SHOULD BE REMOVED ONLY FOR TESTING --><button class="button" onclick="bartender()">BARTENDER</button> 
+				</div>
+				<div id="language">
+					<img src="images/main/swedish.png" onclick="swedish()">
+					<img src="images/main/english.png" onclick="english()">
+				</div>
+			</div>
 			
-			<iframe id="content" src="bartender_content.html"></iframe>
+			<iframe id="content" src="vip_content.html"> You can't display iframes... </iframe>
+			<!-- <iframe id="content" src="bartender_content.html"></iframe> -->
 			
 			<div id="footer"> 
 				&copy; The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015 

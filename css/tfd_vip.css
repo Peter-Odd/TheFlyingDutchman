@@ -1,13 +1,9 @@
 html {
-	height: 97%;
-	background: rgb(11, 15, 17);
 	font-family: Palatino, serif;
 	color: white;
 }
 
 body {
-	height: 100%;
-    /*text-align: center;*/
 	margin: 0;
 }
 
@@ -17,78 +13,11 @@ body {
 :-ms-input-placeholder { color: white; } /* ie */
 input:-moz-placeholder { color: white; }
 
-#wrapper {
-	position: relative;
-	margin: 0 auto;
-}
-
-#wrapper img {
-	background-image: url(start_background_800.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	border: solid 1px #fff;
-}
-
-#header {
-	position: absolute;
-	top: 1px;
-	left: 1px;
-	height: 52px;
-	text-align: center;
-}
-
-#header_left{
-	float: left;
-	width: 300px;
-	height: 50px;
-	padding: 0px;
-	margin-left: 0px;
-}
-
-#welcome {
-margin-top: 7px;
-color: white;
-}
-
-#credit {
-margin-top: -20px;
-color: white;
-}
-
-#header_right {
-	float: right;
-	width: 480px;
-	margin-right: 20px;
-	height: 50px;
-	padding: 0px;
-	margin-left: 0px;
-	font-family: times;
-}
-
-#button {
-	background: rgba(17, 24, 27, 0.3);
-	color: white;
-	width: 100px;
-	padding: 5px;
-	text-align: center;
-	cursor: pointer;
-	float:right;
-	padding: 16px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-    margin-right: 2px;
-    margin-bottom: 1px;
-    border: none;
-}
 
 #logosearch {
 	position: absolute;
-	top: 56px;
 	left: 1px;
-	margin-top: 18px;
-	width: 1104px;
+	width: 1100px;
 	height: 74px;
 }
 
@@ -101,8 +30,7 @@ color: white;
 #ls_left #tfd_logo {
 	width: auto;
 	border: 0px;
-	margin-top: -16px;
-	margin-left: 170px;
+	margin-left: 190px;
 	height: 100px;
 	width: auto;
 }
@@ -115,10 +43,10 @@ color: white;
 	height: 40px;
 	border-radius: 15px;
 	padding: 10px;
+	margin-top: 20px;
 }
 
 #ls_main #magnify {
-	margin-top: 0px;
 	margin-left: 5px;
 	border: 0px;
 	height: 40px;
@@ -132,19 +60,11 @@ color: white;
 	font-size: 20px;
 	color: white;
 	border: 0px;
-	top: 10px;
 	background: rgba(17, 24, 27, 0);
 	margin-left: 15px;
 	height: 40px;
 	width: 400px;
 	padding-left: 10px;
-}
-
-#header, #footer {
-	max-width: 1103px;
-	display: block;
-	width: 100%;
-	background: rgba(17, 24, 27, 0.5);
 }
 
 #ls_right {
@@ -155,26 +75,21 @@ color: white;
 	margin-left: 0px;
 }
 
-#content {
-	position: absolute;
-	margin-top: 14px;
-	top: 145px;
-	left: 1px;
-}
-
 #menu {
 	padding: 10px;
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
 	width: 180px;
 	height: 475px;
-	margin-left: 20px;
+	margin-left: 10px;
 	border-radius: 15px;
+	margin-top: 110px;
 }
 
 #menu_button {
 cursor: pointer
 }
+
 table, th, td {
    border: 1px solid black;
    border-collapse: collapse;
@@ -191,13 +106,15 @@ th,td {
 
 #main {
 	padding: 10px;
+	padding-left: 15px;
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
 	width: 550px;
 	height: 530px;
-	margin-left: 10px;
+	margin-left: 15px;
 	border-radius: 15px;
 	overflow: auto;
+	margin-top: 110px;
 }
 
 #main::-webkit-scrollbar {
@@ -222,120 +139,60 @@ th,td {
 #main div {
     margin-top: 20px;
     border-radius: 10px;
-    background: grey;
     height: 200px;
     width: 150px;
     display: inline-block;
-    margin: 8px;
+    margin: 13px;
+    position: relative;
 	overflow: auto;
+	overflow-y: hidden;
 }
 
-#main h5 {
+#main h4 {
+	color: black;
     position: absolute;
     margin-top: 155px;
     margin-left: 5px;
 	overflow: auto;
 }
 
-#main h6 {
-    position: absolute;
+#main h5 {
+	color: black;
+	position: absolute;
     margin-top: 175px;
-    margin-left: 5px;
+    margin-left: 75px;
 	overflow: auto;
 }
 
-#order_area {
-	position: absolute;
-	left: 795px;
-	top: 0px;
-}
-
 #order {
+	float: left;
 	padding: 10px;
 	background: rgba(17, 24, 27, 0.3);
-	float: right;
 	width: 250px;
 	height: 475px;
-	margin-left: 20px;
-	border-radius: 15px;	
+	margin-left: 15px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	margin-top: 110px;
 }
 
 #order h4 {
-	margin-top: -30px;
+	margin-top: -25px;
 	margin-left: 0px;
 	color: white;
 }
 
-#orderbutton {	
+.orderbutton {	
 	background: rgba(17, 24, 27, 0.3);
-	float: right;
-	border-rad ius: 15px;
-	margin-left: 0px;
-	margin-top: 10px;
-	width: 130px;
+	float: left;
+	margin-left: 15px;
+	margin-top: 5px;
+	width: 127px;
 	padding: 5px;
 	text-align: center;
 	cursor: pointer;
 	color: white;
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
-    margin-right: 2px;
-    margin-bottom: 1px;
     border: none;
-}
-
-#space {
-	clear: both;
-	position: absolute;
-	top: 709px;
-	margin-top: 14px;
-	left: 1px;
-	width: 1104px;
-	height: 14px;
-}
-
-#footer {
-	position: absolute;
-	left: 1px;
-	top: 750px;
-	padding-top: 5px;
-	text-align: center;
-	font-size: 10px;
-	height: 45px;
-	color: grey;
-}
-
-#footer #logo_noship {
-	position: absolute;
-	margin-left: 200px;
-	margin-top: 3px;
-	border: 0px;
-	height: 35px;
-	width: auto;
-}
-
-.beerImageDiv {
-	position: relative;
-	border-radius: 10px;
-	height: 200px;
-	width: 150px;
-	display: inline-block;
-	margin: 14px;
-	background-repeat: none;
-}
-
-.beerImageDiv h5 {
-	color: black;
-	position: relative;
-	padding-left: 5px;
-	padding-top: 135px;
-}
-
-.beerImageDiv h6 {
-	color: black;
-	padding-left: 5px;
-	margin-top: -15px;
-/*	position: absolute;
-	margin-top: 175px;
-	margin-left: 5px;*/
 }

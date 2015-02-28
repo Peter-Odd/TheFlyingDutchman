@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>The Flying Dutchman</title>
-		<link rel="stylesheet" href="css/tfd_vip_new.css">
+		<link rel="stylesheet" href="css/tfd_vip.css">
 		<script src="js/inventoryaccess.js"></script>
 		<link rel="shortcut icon" href="images/start/logo.png" />
 		<script language="javascript" type="text/javascript" src="jquery.js"></script>
@@ -48,23 +48,32 @@
 	<body>
 
 		<div id="logosearch">
-				<div id="ls_left"> <img id="tfd_logo" src="images/main/tfd_logo.png" alt=""/> </div>
+				<div id="ls_left">
+					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt=""/> 
+				</div>
+					
 				<div id="ls_main">
 					<img id="magnify" src="images/main/magnify.png" alt=""/> 
-					<input id="search" type="text" placeholder="SEARCH FOR BEER">
+					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'image')">
 				</div>
-				<div id="ls_right"> </div>
-			</div>
-
-			<!-- <div id="content">
-				<div id="left"> </div>
-				<div id="main"></div>
-				<div id="order_area"> 
-					<div id="order"> <h4>ORDER LIST</h4> </div>
-					<div id="orderbutton"> PLACE ORDER </div>
+					
+				<div id="ls_right">
 				</div>
 			</div>
 
+			<div id="menu">
+				<table>
+					<tr>
+						<td id="menu_button"> POPULAR </td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="main"> Welcome to The Flying Dutchman </div>
+			
+			<div id="order"><h4> ORDER LIST </h4></div>
+			<button class="orderbutton" id="payBtn" onclick="vip_pay()"> PAY </button>
+			<button class="orderbutton" id="cancelBtn" onclick="vip_cancel()"> CANCEL </button>
 	</body>
 
 </html>
