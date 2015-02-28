@@ -5,15 +5,17 @@
 		<link rel="stylesheet" href="css/tfd_main.css">
 		<link rel="shortcut icon" href="images/start/logo.png" />
 		<script src="js/settings.js"></script>
+		<script src="js/inventoryaccess.js"></script>
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	</head>
 
-	<body>
+	<body onload="setUsername()">
 		<div id="wrapper"> 
 			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" />
 			<div id="header">
 				<div id="header_left">
-					<h5 id="loggedInUser"> You are logged in as: username </h4>
-					<h5 id="userCredit"> Credit: user credit SEK </h5>
+					<h5 id="loggedInUser"> </h4>
+					<h5 id="userCredit"> </h5>
 				</div>
 				<div id="header_right">
 					<button class="button" id="logoutBtn" onclick="logout()">LOG OUT</button>

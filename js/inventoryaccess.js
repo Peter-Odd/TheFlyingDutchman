@@ -77,6 +77,29 @@
 			});
 		}
 
+		function httpGetAsync(url, callback_success, callback_error) {
+		$.ajax({
+			url: url,
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			dataType: 'json',
+			async: true,
+			success: callback_success,
+			error: callback_error
+			});
+		}
+
+		function setUsername() {
+			httpGetAsync(api+'iou_get',
+				function callback_success(data) {
+					document.getElementById("loggedInUser").innerHTML = "Welcome " + data.payload[0].first_name + " " + data.payload[0].last_name;
+					document.getElementById("userCredit").innerHTML = "Credit: " + data.payload[0].assets + " sek.";
+				},
+				function callback_error(data) {
+					
+				});
+		};
+
 		/* Create a new user. OBS: THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
 		function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
 			//if ( new_password === re_password && validateEmail(email) && validatePhone(phone) ) {
