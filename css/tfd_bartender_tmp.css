@@ -14,7 +14,7 @@ body {
 input:-moz-placeholder { color: white; }
 
 #content {
-	border: 9px;
+	/*border: 9px;*/
 	width: 1104px;
 	height: 800px;
 	position: absolute;

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Flying Dutchman</title>
+		<link rel="stylesheet" href="css/tfd_vip_new.css">
+		<script src="js/inventoryaccess.js"></script>
+		<link rel="shortcut icon" href="images/start/logo.png" />
+		<script language="javascript" type="text/javascript" src="jquery.js"></script>
+
+        <script>
+            var credential = '<%=Session["credentials"] %>';
+            if(credential==null)
+            {
+                self.location='index.html';
+            }
+
+		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
+		    function showHint(str, choice) {
+		        if (str.length == 0) { 
+		            document.getElementById("main").innerHTML = "";
+		            return;
+		        } else {
+		            var xmlhttp = new XMLHttpRequest();
+		            xmlhttp.onreadystatechange = function() {
+		                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		                    document.getElementById("main").innerHTML = xmlhttp.responseText;
+		                }
+		            }
+		            xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
+		            xmlhttp.send();
+		        }
+		    }
+
+		    function getValue(name) {
+		        $("#searchField").val(name);
+		        showHint(name);
+		        $("#result").hide();
+		    }
+
+		    function logout(){
+		    	self.location="index.html";
+		    }
+
+	    </script>
+
+	</head>
+
+	<body>
+
+		<div id="logosearch">
+				<div id="ls_left"> <img id="tfd_logo" src="images/main/tfd_logo.png" alt=""/> </div>
+				<div id="ls_main">
+					<img id="magnify" src="images/main/magnify.png" alt=""/> 
+					<input id="search" type="text" placeholder="SEARCH FOR BEER">
+				</div>
+				<div id="ls_right"> </div>
+			</div>
+
+			<!-- <div id="content">
+				<div id="left"> </div>
+				<div id="main"></div>
+				<div id="order_area"> 
+					<div id="order"> <h4>ORDER LIST</h4> </div>
+					<div id="orderbutton"> PLACE ORDER </div>
+				</div>
+			</div>
+
+	</body>
+
+</html>
