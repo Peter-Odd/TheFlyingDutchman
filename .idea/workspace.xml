@@ -28,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1170">
+            <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1170">
               <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -52,35 +52,13 @@
       <file leaf-file-name="db_login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3497758" vertical-offset="972" max-vertical-offset="2772">
-              <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.51121074" vertical-offset="1098" max-vertical-offset="2772">
+              <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
               <folding>
                 <element signature="e#7#132#0#PHP" expanded="true" />
-                <marker date="1425078738429" expanded="true" signature="774:820" placeholder="SELECT * FRO..users..." />
-                <marker date="1425078738429" expanded="true" signature="5868:6048" placeholder="INSERT INTO ..." />
+                <marker date="1425081045753" expanded="true" signature="774:820" placeholder="SELECT * FRO..users..." />
+                <marker date="1425081045753" expanded="true" signature="5868:6048" placeholder="INSERT INTO ..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="passwordwrong.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/passwordwrong.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="612">
-              <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tdf_passwordwrong.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/tdf_passwordwrong.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="684">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -88,9 +66,27 @@
       <file leaf-file-name="vip.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vip.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2268">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.6153846" vertical-offset="0" max-vertical-offset="2376">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5384617" vertical-offset="0" max-vertical-offset="2052">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+              <folding>
+                <marker date="1424975368006" expanded="true" signature="872:941" placeholder="SELECT numbe..beers..." />
+                <marker date="1424975368006" expanded="true" signature="911:940" placeholder="SELECT max(n..beers..." />
+                <marker date="1424975368006" expanded="true" signature="1152:1197" placeholder="DELETE FROM ..." />
+                <marker date="1424975368006" expanded="true" signature="1440:1552" placeholder="INSERT INTO ..." />
+                <marker date="1424975368006" expanded="true" signature="1899:1968" placeholder="SELECT numbe..beers..." />
+                <marker date="1424975368006" expanded="true" signature="1938:1967" placeholder="SELECT min(n..beers..." />
+                <marker date="1424975368006" expanded="true" signature="2154:2189" placeholder="SELECT * FRO..beers..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,8 +94,8 @@
       <file leaf-file-name="bartender.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bartender.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="2268">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+            <state vertical-scroll-proportion="16.615385" vertical-offset="648" max-vertical-offset="2376">
+              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -136,7 +132,10 @@
         <option value="$PROJECT_DIR$/css/tfd_start.css" />
         <option value="$PROJECT_DIR$/css/tdf_passwordwrong.css" />
         <option value="$PROJECT_DIR$/passwordwrong.html" />
+        <option value="$PROJECT_DIR$/bartender_content.html" />
         <option value="$PROJECT_DIR$/db_login.php" />
+        <option value="$PROJECT_DIR$/vip.html" />
+        <option value="$PROJECT_DIR$/bartender.html" />
       </list>
     </option>
   </component>
@@ -306,15 +305,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -334,7 +333,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1552" height="842" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -348,13 +347,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35510203" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -380,13 +379,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="4541">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="855">
@@ -655,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1152">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/mysql.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34529147" vertical-offset="2451" max-vertical-offset="16182">
@@ -673,20 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="106.5" vertical-offset="3633" max-vertical-offset="4302">
           <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getHint.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7243402" vertical-offset="2540" max-vertical-offset="3222">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="27.0" vertical-offset="918" max-vertical-offset="2052">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -727,9 +698,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/getHint.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="211.38461" vertical-offset="5496" max-vertical-offset="6156">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1425063035797" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.58181816" vertical-offset="672" max-vertical-offset="1548">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/passwordwrong.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="612">
+        <state vertical-scroll-proportion="0.73900294" vertical-offset="0" max-vertical-offset="682">
           <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -737,18 +734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vip.html">
+    <entry file="file://$PROJECT_DIR$/bartender_content.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2268">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bartender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="2268">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.32286996" vertical-offset="0" max-vertical-offset="1386">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -761,9 +750,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bartender.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="16.615385" vertical-offset="648" max-vertical-offset="2376">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1170">
           <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -773,14 +770,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5384617" vertical-offset="0" max-vertical-offset="2052">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <marker date="1424975368006" expanded="true" signature="872:941" placeholder="SELECT numbe..beers..." />
+            <marker date="1424975368006" expanded="true" signature="911:940" placeholder="SELECT max(n..beers..." />
+            <marker date="1424975368006" expanded="true" signature="1152:1197" placeholder="DELETE FROM ..." />
+            <marker date="1424975368006" expanded="true" signature="1440:1552" placeholder="INSERT INTO ..." />
+            <marker date="1424975368006" expanded="true" signature="1899:1968" placeholder="SELECT numbe..beers..." />
+            <marker date="1424975368006" expanded="true" signature="1938:1967" placeholder="SELECT min(n..beers..." />
+            <marker date="1424975368006" expanded="true" signature="2154:2189" placeholder="SELECT * FRO..beers..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vip.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6153846" vertical-offset="0" max-vertical-offset="2376">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3497758" vertical-offset="972" max-vertical-offset="2772">
-          <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.51121074" vertical-offset="1098" max-vertical-offset="2772">
+          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
           <folding>
             <element signature="e#7#132#0#PHP" expanded="true" />
-            <marker date="1425078738429" expanded="true" signature="774:820" placeholder="SELECT * FRO..users..." />
-            <marker date="1425078738429" expanded="true" signature="5868:6048" placeholder="INSERT INTO ..." />
+            <marker date="1425081045753" expanded="true" signature="774:820" placeholder="SELECT * FRO..users..." />
+            <marker date="1425081045753" expanded="true" signature="5868:6048" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
