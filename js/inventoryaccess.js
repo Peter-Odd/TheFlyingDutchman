@@ -14,8 +14,8 @@
 		function inventoryObject() {
 			this.inven = Object.create(null);
 
-			this.setValue = function(name, price, id, count, country) {
-				this.inven[name] = [price, id, count, country];
+			this.setValue = function(name, price, id, count) {
+				this.inven[name] = [price, id, count];
 			}
 
 			/* If set count then make sure the API is updated */
@@ -336,9 +336,8 @@
 									item.namn.toLowerCase(), 
 									parseInt(item.pub_price.toLowerCase()), 
 									parseInt(item.beer_id.toLowerCase()), 
-									parseInt(item.count.toLowerCase()),
-									getBeerDetails(item.namn.toLowerCase())
-									);
+									parseInt(item.count.toLowerCase())
+								);
 							}
 					});
 				}, 
