@@ -1,4 +1,3 @@
-
 		var barInventory = null;
 		var purchases = null;
 		var sum = 0;
@@ -15,8 +14,8 @@
 		function inventoryObject() {
 			this.inven = Object.create(null);
 
-			this.setValue = function(name, price, id, count) {
-				this.inven[name] = [price, id, count];
+			this.setValue = function(name, price, id, count, country) {
+				this.inven[name] = [price, id, count, country];
 			}
 
 			/* If set count then make sure the API is updated */
@@ -64,7 +63,7 @@
 		}
 
 
-		/* Used to access the API */
+		/* Used to access the API, synchronus call (dont continue if data hasn't been fetched yet) - WORKS */
 		function httpGet(url, callback_success, callback_error) {
 		$.ajax({
 			url: url,
@@ -77,18 +76,19 @@
 			});
 		}
 
+		/* Used to access the API, asynchronus call (continues even if data has not been fetched yet) - WORKS */
 		function httpGetAsync(url, callback_success, callback_error) {
 		$.ajax({
 			url: url,
 			type: "POST",
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',
-			async: true,
 			success: callback_success,
 			error: callback_error
 			});
 		}
 
+		/* Used to set first and lastname + credit for that user in header on main page - WORKS */
 		function setUsername() {
 			httpGetAsync(api+'iou_get',
 				function callback_success(data) {
@@ -100,7 +100,7 @@
 				});
 		};
 
-		/* Create a new user. OBS: THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
+		/* Create a new user - WORKS, BUT THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
 		function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
 			//if ( new_password === re_password && validateEmail(email) && validatePhone(phone) ) {
 				//console.log(new_username + " " + new_password + " " + re_password + " " + first_name + " " + last_name + " " + email + " " + phone + ".");
@@ -116,38 +116,73 @@
 			// }
 		}
 
-		/* User specific functions (purchases) WORKS */
-		function getFiveLastPurchases() {
-			var lastFive = [];
-			httpGet(api+'purchases_get', 
-			 	function callback_success(data) {
-			 		for (var i=0; i<5; i++) {
-			 			lastFive[i] = data.payload[i];
-			 		}
-			 	},
-			 	function callback_error(data) {
-			 		console.log('An error occurred: ' + data);
-			 	});
-			// Data can be accessed this way:
-			// console.log(lastFive[0].namn);
-			// console.log(lastFive[0].namn2);
-			// console.log(lastFive[0].transaction_id);
-			// console.log(lastFive[0].user_id);
-			// console.log(lastFive[0].beer_id);
-			// console.log(lastFive[0].price);
-			// console.log(lastFive[0].timestamp);
-			return lastFive;
+
+		/* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
+		function getBeerImage(str, choice) {
+			if (str.length == 0) { 
+				document.getElementById("main").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("main").innerHTML = xmlhttp.responseText;
+						
+					}
+				}
+				xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
+				xmlhttp.send();
+			}
 		}
 
-	
+		/* Get the five last purchases for a user - NOT WORKING */
+		function getFiveLastPurchases() {
+			$('#search').val("");
 
-	function getFiveLastPurchasesAdmin(){
+			var lastFive = new Array();
+			var uniqueLastFive = new Array();
+
+			httpGetAsync(api+'purchases_get', 
+			 	function callback_success(data) {
+			 		var i = 0;
+
+				 	while(uniqueLastFive.length < 5){
+				 		if(data.payload[i].namn == "") {
+				 			i++;
+				 		}
+				 		else{
+				 			lastFive.push(data.payload[i].namn);
+				 		 	$.each(lastFive, function(i, el){
+	    					if($.inArray(el, uniqueLastFive) === -1) uniqueLastFive.push(el);
+							})
+				 		 	i++;
+				 		}
+			 	}
+				 	var mainTmp = "";
+				 	for(i = 0; i < 5; i++){			 		
+						$.get("getHint.php", {q: uniqueLastFive[i], choice: 'image'},
+							function(data) {                                          
+	  							$('#main').html(data+mainTmp);
+	  							mainTmp = $('#main').html();
+							}
+						);
+				 	}
+			 	},
+				function callback_error(data) {
+		 			console.log('An error occurred: ' + data);
+			 	});
+					return uniqueLastFive;
+				}
+
+	
+		/* Get five last purchases (for all users), this can be called if admin - WORKS */
+		function getFiveLastPurchasesAdmin(){
 			$('#searchBeer2').html('<div class="searchBeer2"</div><br>');
 
 			var lastFive = new Array();
 			var uniqueLastFive = new Array();
 
-			httpGet(api+'purchases_get_all', 
+			httpGetAsync(api+'purchases_get_all', 
 			 	function callback_success(data) {
 			 		var i = 0;
 
@@ -182,44 +217,41 @@
 
 			 		},
 
-			 	function callback_error(data) {
-			 		console.log('An error occurred: ' + data);
+				function callback_error(data) {
+		 			console.log('An error occurred: ' + data);
 			 	});
 					return uniqueLastFive;
-				}
+		}
 
 	
-	/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
-			function deleteFromlist(txt) {
-				var index = orderArr.indexOf(txt);
-				var amount = orderArr[index + 2];
-    			sum = sum - (orderArr[index+1] * amount);
-				$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+		/* DELETE BEER FROM ORDER LIST AND UPDATE SUM */
+		function deleteFromlist(txt) {
+			var index = orderArr.indexOf(txt);
+			var amount = orderArr[index + 2];
+    		sum = sum - (orderArr[index+1] * amount);
+			$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 
-				orderArr.splice(index, 3);
-				console.log(orderArr);
-			}
+			orderArr.splice(index, 3);
+			console.log(orderArr);
+		}
 
 
-			function incButton(txt) {
-				var index = orderArr.indexOf(txt);
-				orderArr[index + 2] += 1;
+		function incButton(txt) {
+			var index = orderArr.indexOf(txt);
+			orderArr[index + 2] += 1;
 
-				sum = sum + orderArr[index+1];
+			sum = sum + orderArr[index+1];
 
-		      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-
-			}
+	      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+		}
 
 		
-		function placeOrder(txt){
-
+		function placeOrder(txt) {
 			var index = orderArr.indexOf(txt);
 			if(index != -1){
 				orderArr[index + 2] += 1;
 			}
-			else{
-
+			else {
 				orderArr.push(txt);
 				orderArr.push(getBeer(txt)[0]);
 				orderArr.push(1);
@@ -235,12 +267,11 @@
 			};
 			console.log("----");
 
-
 			$('.deleteButton').on('click',function(){ 
     			$(this).parent('div.beerButtonOrder').remove();
 			});
 		
-			/* INCREASE INPUT WHEN + IS CLICKED*/
+			/* INCREASE INPUT WHEN + IS CLICKED */
 			$(".incButton").on("click",function() {
 
 				var index = orderArr.indexOf(txt);
@@ -280,7 +311,7 @@
 		}
 
 
-		/* Returns user balance WORKS */
+		/* Returns user balance - WORKS */
 		function getUserBalance(username) {
 			var userBalance = 0;
 			httpGet(api+'iou_get',
@@ -293,7 +324,7 @@
 			return parseInt(userBalance);
 		}
 
-		/* Create the inventory object WORKS */
+		/* Create the inventory object - WORKS */
 		function createInventory() {
 			barInventory = new inventoryObject();
 			httpGet(api+'inventory_get', 
@@ -301,10 +332,13 @@
 					$.each(data.payload, function(key, item) {
 						if (item.namn == "") { /* remove beers with no name */ } 
 							else {
-								barInventory.setValue(item.namn.toLowerCase(), 
-								parseInt(item.pub_price.toLowerCase()), 
-								parseInt(item.beer_id.toLowerCase()), 
-								parseInt(item.count.toLowerCase()));
+								barInventory.setValue(
+									item.namn.toLowerCase(), 
+									parseInt(item.pub_price.toLowerCase()), 
+									parseInt(item.beer_id.toLowerCase()), 
+									parseInt(item.count.toLowerCase()),
+									getBeerDetails(item.namn.toLowerCase())
+									);
 							}
 					});
 				}, 
@@ -313,7 +347,7 @@
 				});	
 		}
 
-		/* Buy a beer.. now it buys two. Why?! */
+		/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
 		function buyBeer(name) {
 			if (barInventory == null) { createInventory(); }
 			httpGet(api+'purchases_append&beer_id='+barInventory.getBeerInfo(name.toLowerCase())[1],
@@ -325,17 +359,26 @@
 				});
 		}
 
-		/*returns all beverages in the system WORKS */
+		/*returns all beverages in the system - WORKS */
 		function getAllBeverages() {
 			if (barInventory == null) { createInventory(); }
 			return barInventory.getAllInventory();
 		}
 
-		/* return data for specific beer. [0]=price, [1]=id, [2]=count WORKS*/
+		/* return data for specific beer. [0]=price, [1]=id, [2]=count - WORKS*/
 		function getBeer(beer) {
 			if (barInventory == null) { createInventory(); }
 			var beerData = barInventory.getBeerInfo(beer.toLowerCase());
 			return beerData;
+		}
+
+		function getBeerDetails(beer) {
+			httpGetAsync(api + "beer_data_get&beer_id=" + getBeer(beer)[1],
+				function callback_success(data) {
+					console.log(data.payload[0].ursprunglandnamn);
+				}, function callback_error(data) {
+					console.log("error");
+				});
 		}
 
 		/* Update the beer count for a specific beer */
