@@ -14,13 +14,21 @@
 		function inventoryObject() {
 			this.inven = Object.create(null);
 
+			/* This takes LONG! time... consider if we should do it or not. Perhaps at first loading? */
 			this.setValue = function(name, price, id, count) {
-				this.inven[name] = [price, id, count];
+				var country = "";
+				httpGet(api + "beer_data_get&beer_id=" + id,
+				function callback_success(data) {
+					country = data.payload[0].ursprunglandnamn;
+				}, function callback_error(data) {
+					console.log("error");
+				});
+
+				this.inven[name] = [price, id, count, country];
 			}
 
-			/* If set count then make sure the API is updated */
+			/* TODO: If set count then make sure the API is updated */
 			this.setCount = function(name, count) { 
-				console.log(this.getId("yeti") +" "+ this.getPrice("yeti"));
 				httpGet(api+'inventory_append&beer_id='+this.getId(name)+'&amount='+count+'&price='+this.getPrice(name), null);
 				this.inven[name][2] += count;
 				return true;
@@ -32,7 +40,7 @@
 				for (bev in this.inven) {
 					if (bev == "")
 						continue;
-					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2] ];
+					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2], this.inven[bev][3] ];
 				}
 				return inventory;
 			}
@@ -51,6 +59,24 @@
 
 			this.getCount = function(name) {
 				return this.inven[name][2];
+			}
+
+			// this.setCountry = function(name) {
+			// 	httpGetAsync(api+'beer_data_get&beer_id='+this.inven[name][1],
+			// 		function callback_success(data) {
+			// 			var country = data.payload[0].ursprunglandnamn;
+			// 			console.log(country);
+			// 			console.log(this.inven[name]);
+			// 			this.inven[name][3] = country;
+			// 		},
+			// 		function callback_error(data) {
+			// 			console.log("error");
+			// 		})
+				
+			// }
+
+			this.getCountry = function(name) {
+				return this.inven[name][3];
 			}
 			return this;
 		}
@@ -332,11 +358,13 @@
 					$.each(data.payload, function(key, item) {
 						if (item.namn == "") { /* remove beers with no name */ } 
 							else {
+								// console.log(getBeerDetails(item.namn));
 								barInventory.setValue(
 									item.namn.toLowerCase(), 
 									parseInt(item.pub_price.toLowerCase()), 
 									parseInt(item.beer_id.toLowerCase()), 
 									parseInt(item.count.toLowerCase())
+									//getBeerDetails(item.namn)
 								);
 							}
 					});
@@ -344,6 +372,7 @@
 				function callback_error(data) {
 					console.log('An error occurred: ' + data);
 				});	
+
 		}
 
 		/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
@@ -372,7 +401,8 @@
 		}
 
 		function getBeerDetails(beer) {
-			httpGetAsync(api + "beer_data_get&beer_id=" + getBeer(beer)[1],
+			//console.log(getBeer(beer)[1]);
+			httpGet(api + "beer_data_get&beer_id=" + getBeer(beer)[1],
 				function callback_success(data) {
 					console.log(data.payload[0].ursprunglandnamn);
 				}, function callback_error(data) {
