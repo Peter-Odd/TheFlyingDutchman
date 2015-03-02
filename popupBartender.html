@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<title>Pop up FAQ</title>
+</head>
+<script>
+
+$(document).ready(function	(){
+	$('.open_FAQ').click(function(){
+		$('#shadow').css({opacity:0.7});
+		$('#shadow').fadeIn(300);
+		$('#FAQ').fadeIn(1000);
+		
+		return false;
+	});
+	
+	$('#shadow, #close').click(function(){
+		$('#shadow, #FAQ').fadeOut(300);	
+	});
+});
+
+</script>
+
+<style type="text/css">
+*{ margin:0px; padding:0px; text-decoration:none;}
+.open_FAQ{ color:#000; font:bold 1.3em Arial, Helvetica, sans-serif;}
+
+#FAQ{ width:560px; min-height:320px; position:absolute; left:50%; top:50%; 
+margin-left:-290px; margin-top:-190px; z-index:1; display:none;
+border:20px solid #fff; border-radius:5px; -moz-border-radius:5px; -o-border-radius:5px; 
+-webkit-border-radius:5px;}
+
+#close{ width:50px; height:50px; position:absolute; top:-50px; right:-30px; color:#FFF; z-index:2;}
+
+#shadow{ width:100%; min-height:100%; background:#000; position:absolute; left:0px; top:0px; 
+z-index:0; display:none;}
+</style>
+<body>
+<a class="open_FAQ" href="#">FAQ</a>
+
+<div id="FAQ">
+<div id="close"><a href="#" onclick="return false"><img src="close.png" alt="EXIT" /></a></div>
+<iframe width="560" height="315" style="background: #6ea05f;" src="popupContent.html" frameborder="0" allowfullscreen>
+</iframe>
+</div>
+<div id="shadow"></div>
+</body>
+</html>
