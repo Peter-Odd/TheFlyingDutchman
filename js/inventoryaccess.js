@@ -1,4 +1,3 @@
-		var barInventory = null;
 		var purchases = null;
 		var sum = 0;
 		var orderArr = new Array();
@@ -10,86 +9,65 @@
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
 
-		/* Contains all data about the beverages in the bar */
-		function inventoryObject() {
-			this.inven = Object.create(null);
-
-			/* This takes LONG! time... consider if we should do it or not. Perhaps at first loading? */
-			this.setValue = function(name, price, id, count) {
-				var country = "";
-				httpGet(api + "beer_data_get&beer_id=" + id,
+		/* -== START: FUNCTIONS TO HANDLE THE INVENTORY ==- */
+		/* This takes LONG time when keeping track of country, so this should be done at login page perhaps?! */
+		function inventorySetValue(name, price, id, count) {
+			var country = "";
+			httpGet(api + "beer_data_get&beer_id=" + id,
 				function callback_success(data) {
 					country = data.payload[0].ursprunglandnamn;
 				}, function callback_error(data) {
 					console.log("error");
 				});
-
-				this.inven[name] = [price, id, count, country];
-			}
-
-			/* TODO: If set count then make sure the API is updated */
-			this.setCount = function(name, count) { 
-				httpGet(api+'inventory_append&beer_id='+this.getId(name)+'&amount='+count+'&price='+this.getPrice(name), null);
-				this.inven[name][2] += count;
-				return true;
-			}
-
-			/* returns array with all the beverages in the bar. [0]=price [1]=id [2]=amount */
-			this.getAllInventory = function() {
-				var inventory = new Object();
-				for (bev in this.inven) {
-					if (bev == "")
-						continue;
-					inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2], this.inven[bev][3] ];
-				}
-				return inventory;
-			}
-
-			this.getBeerInfo = function(name) {
-				return this.inven[name];
-			}
-
-			this.getPrice = function(name) {
-				return this.inven[name][0];
-			}
-
-			this.getId = function(name) {
-				return this.inven[name][1];
-			}
-
-			this.getCount = function(name) {
-				return this.inven[name][2];
-			}
-
-			// this.setCountry = function(name) {
-			// 	httpGetAsync(api+'beer_data_get&beer_id='+this.inven[name][1],
-			// 		function callback_success(data) {
-			// 			var country = data.payload[0].ursprunglandnamn;
-			// 			console.log(country);
-			// 			console.log(this.inven[name]);
-			// 			this.inven[name][3] = country;
-			// 		},
-			// 		function callback_error(data) {
-			// 			console.log("error");
-			// 		})
-				
-			// }
-
-			this.getCountry = function(name) {
-				return this.inven[name][3];
-			}
-			return this;
+			sessionStorage[name] = JSON.stringify([price, id, count, country]);
 		}
+		
 
-		/* Contains purchase data, NOT IMPLEMENTED */
-		function purchaseObject() {
-			this.purch = Object.create(null);
-
-			return this;
+		/* TODO: make sure the API is updated - NOT WORKING CORRECT */
+		function inventorySetCount(name, count) { 
+			var beer = JSON.parse(sessionStorage[name]);
+			console.log(beer[1]);
+			console.log(beer[0]);
+			httpGet(api+'inventory_append&beer_id='+beer[1]+'&amount='+count+'&price='+beer[0], null);
+			beer[2] += count;
+			sessionStorage[name] = JSON.stringify(beer);
+			return true;
 		}
 
 
-		/* Used to access the API, synchronus call (dont continue if data hasn't been fetched yet) - WORKS */
+		function inventoryGetBeerInfo(name) {
+			var beer = JSON.parse(sessionStorage[name]);
+			return beer;
+		}
+
+
+		function inventoryGetPrice(name) {
+			var beer = JSON.parse(sessionStorage[name]);
+			return beer[0];
+		}
+
+
+		function inventoryGetId(name) {
+			var beer = JSON.parse(sessionStorage[name]);
+			return beer[1];
+		}
+
+
+		function inventoryGetCount(name) {
+			var beer = JSON.parse(sessionStorage[name]);
+			return beer[2];
+		}
+
+
+		function inventoryGetCountry(name) {
+			var beer = JSON.parse(sessionStorage[name]);
+			return beer[3];
+		}
+		/* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
+
+
+
+		/* Used to access the API, SYNCHRONUS call - WORKS */
 		function httpGet(url, callback_success, callback_error) {
 		$.ajax({
 			url: url,
@@ -102,7 +80,8 @@
 			});
 		}
 
-		/* Used to access the API, asynchronus call (continues even if data has not been fetched yet) - WORKS */
+
+		/* Used to access the API, ASYNCHRONUS call - WORKS */
 		function httpGetAsync(url, callback_success, callback_error) {
 		$.ajax({
 			url: url,
@@ -114,33 +93,17 @@
 			});
 		}
 
+
 		/* Used to set first and lastname + credit for that user in header on main page - WORKS */
-		function setUsername() {
+		function getUsernameAndCredit() {
 			httpGetAsync(api+'iou_get',
 				function callback_success(data) {
 					document.getElementById("loggedInUser").innerHTML = "Welcome " + data.payload[0].first_name + " " + data.payload[0].last_name;
 					document.getElementById("userCredit").innerHTML = "Credit: " + data.payload[0].assets + " sek.";
 				},
 				function callback_error(data) {
-					
 				});
 		};
-
-		/* Create a new user - WORKS, BUT THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
-		function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
-			//if ( new_password === re_password && validateEmail(email) && validatePhone(phone) ) {
-				//console.log(new_username + " " + new_password + " " + re_password + " " + first_name + " " + last_name + " " + email + " " + phone + ".");
-				httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
-					function callback_success() { 
-						return true;
-					}, 
-					function callback_error(data) {
-						console.log('An error occurred: ' + data);
-					});
-			// } else {
-			// 	console.log("Password fields don't match");
-			// }
-		}
 
 
 		/* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
@@ -153,13 +116,13 @@
 				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("main").innerHTML = xmlhttp.responseText;
-						
 					}
 				}
 				xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
 				xmlhttp.send();
 			}
 		}
+		
 
 		/* Get the five last purchases for a user - NOT WORKING */
 		function getFiveLastPurchases() {
@@ -240,7 +203,6 @@
 				 		$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+txt+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 			 		}
 			 	}
-
 			 		},
 
 				function callback_error(data) {
@@ -271,7 +233,7 @@
 	      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 		}
 
-		
+
 		function placeOrder(txt) {
 			var index = orderArr.indexOf(txt);
 			if(index != -1){
@@ -328,6 +290,7 @@
 			});
 		}
 
+
 		/*Empty OrderArr and delete divs from main */
 		function cancelOrder() {
 			orderArr.splice("", orderArr.length);
@@ -350,21 +313,19 @@
 			return parseInt(userBalance);
 		}
 
+
 		/* Create the inventory object - WORKS */
 		function createInventory() {
-			barInventory = new inventoryObject();
 			httpGet(api+'inventory_get', 
 				function callback_success(data) {
 					$.each(data.payload, function(key, item) {
 						if (item.namn == "") { /* remove beers with no name */ } 
 							else {
-								// console.log(getBeerDetails(item.namn));
-								barInventory.setValue(
+								inventorySetValue(
 									item.namn.toLowerCase(), 
 									parseInt(item.pub_price.toLowerCase()), 
 									parseInt(item.beer_id.toLowerCase()), 
 									parseInt(item.count.toLowerCase())
-									//getBeerDetails(item.namn)
 								);
 							}
 					});
@@ -375,10 +336,11 @@
 
 		}
 
+
 		/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
 		function buyBeer(name) {
-			if (barInventory == null) { createInventory(); }
-			httpGet(api+'purchases_append&beer_id='+barInventory.getBeerInfo(name.toLowerCase())[1],
+			if (sessionStorage.length == 0) { createInventory(); }
+			httpGet(api+'purchases_append&beer_id='+inventoryGetBeerInfo(name.toLowerCase())[1],
 				function callback_success(data) {
 					console.log("You just bought yourself a beer!");
 					//subtract beer count for name by 1
@@ -388,42 +350,36 @@
 		}
 
 		/*returns all beverages in the system - WORKS */
-		function getAllBeverages() {
-			if (barInventory == null) { createInventory(); }
-			return barInventory.getAllInventory();
-		}
+		// function getAllBeverages() {
+		// 	if (barInventory == null) { createInventory(); }
+		// 	return barInventory.getAllInventory();
+		// }
 
-		/* return data for specific beer. [0]=price, [1]=id, [2]=count - WORKS*/
+
+		/* return data for specific beer. [0]=price, [1]=id, [2]=count, [3]=country - WORKS*/
 		function getBeer(beer) {
-			if (barInventory == null) { createInventory(); }
-			var beerData = barInventory.getBeerInfo(beer.toLowerCase());
+			if (sessionStorage.length == 0) { createInventory(); }
+			var beerData = inventoryGetBeerInfo(beer.toLowerCase());
 			return beerData;
 		}
 
-		function getBeerDetails(beer) {
-			//console.log(getBeer(beer)[1]);
-			httpGet(api + "beer_data_get&beer_id=" + getBeer(beer)[1],
-				function callback_success(data) {
-					console.log(data.payload[0].ursprunglandnamn);
-				}, function callback_error(data) {
-					console.log("error");
-				});
-		}
 
 		/* Update the beer count for a specific beer */
 		//NOT WORKING PERFECT
 		function setBeerCount(beer, newCount) {
 			if (newCount === parseInt(newCount, 10)) {
-				if (barInventory == null) { createInventory(); }
-				return barInventory.setCount(beer.toLowerCase(), newCount);
+				if (sessionStorage.length == 0) { createInventory(); }
+				return inventorySetCount(beer.toLowerCase(), newCount);
 			} else {
 				console.log(newCount + ' is not an integer.');
 			}
 		}
 
+
 		function vip_pay() {
 			alert("Lets pay!");
 		}
+
 
 		function vip_cancel() {
 			alert("I don't want to do this... abort!");
@@ -439,3 +395,18 @@
 			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
 			sum = 0;
 		}
+
+
+
+		/* TMP CODE BELOW */
+
+				/* returns array with all the beverages in the bar. [0]=price [1]=id [2]=amount */
+			// this.getAllInventory = function() {
+			// 	var inventory = new Object();
+			// 	for (bev in this.inven) {
+			// 		if (bev == "")
+			// 			continue;
+			// 		inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2], this.inven[bev][3] ];
+			// 	}
+			// 	return inventory;
+			// }

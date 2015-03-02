@@ -1,8 +1,10 @@
 <!DOCTYPE HTML> 
 <html>
 	<head>
+		<title>The Flying Dutchman</title>
 		<link rel="stylesheet" href="css/tfd_settings.css">
 		<script src="js/inventoryaccess.js"></script>
+		<script src="js/admin_settings.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
 		<script>
@@ -28,6 +30,17 @@
 	    				document.getElementById("resultphone").innerHTML = "<img class='valid' src='images/settings/notvalid.png' alt='Phone number not valid' title='Phone number not valid (Valid format [+][0-9])'>";
 	    		} else 
 	    			return re.test(phone);
+			}
+
+			/* Create a new user - WORKS, BUT THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
+			function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
+				httpGet(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
+					function callback_success() { 
+						return true;
+					}, 
+					function callback_error(data) {
+						console.log('An error occurred: ' + data);
+					});
 			}
 
 			/* Used to validate password, email and phone before the real API-function gets called */
