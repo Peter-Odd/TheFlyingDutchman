@@ -84,9 +84,10 @@ input:-moz-placeholder { color: white; }
 	margin-left: 10px;
 	border-radius: 15px;
 	margin-top: 110px;
+	overflow: auto;
 }
 
-#menu_button {
+.menuBtn {
 cursor: pointer
 }
 
