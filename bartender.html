@@ -48,7 +48,21 @@
 	        showHint(name);
 	        $("#result").hide();
 	    }
-    </script>
+        </script>
+
+        <script>
+            function readCookie(name) {
+                var cookiename = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++)
+                {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(cookiename) == 0) return c.substring(cookiename.length,c.length);
+                }
+                return null;
+            }
+        </script>
 
 
 	</head>
@@ -57,7 +71,10 @@
 			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" /> 
 				<div id="header">
 				<div id="header_left">
-					<h4> You are logged in as: XX </h4>
+					<h4> <script type="text/javascript">
+                        //var tmn=$_COOKIE["username"];
+                        document.write("You are logged in as: " + readCookie('fname')+" "+readCookie('lname'));
+                    </script> </h4>
 				</div>
 				<div id="header_right">
 				<button id="button">HELP</button>
@@ -123,7 +140,7 @@
 		</div>
     <script>
         function logout(){
-            self.location="index.html";
+            self.location="logout.php";
         }
     </script>
 	</body>
