@@ -37,14 +37,14 @@
 							var hej = beerName.replace(/\'/g, '&apos');
 							console.log(hej);
 
-							if(stock == 0){
+							if(stock < 1){
 								$('#searchBeer2').html('<div class="beerButtonEmptyStock">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
 							}
 							else if(stock < 10) {
-								$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+hej+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
+								$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+hej+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
 							}
 							else{
-								$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+hej+'\')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
+								$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+hej+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
 					 		}
 					 		tmphtml = $('#searchBeer2').html();
 

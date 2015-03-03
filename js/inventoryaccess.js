@@ -238,10 +238,10 @@
 				 		$('#searchBeer2').html('<div class="beerButtonEmptyStock">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 					}
 					if(stock < 10) {
-				 		$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+				 		$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 					}
 					else{
-				 		$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+' SEK</div><br>'+tmphtml);
+				 		$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+beerName+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+txt+', '+getBeer(txt)[0]+' SEK</div><br>'+tmphtml);
 			 		}
 			 	}
 
