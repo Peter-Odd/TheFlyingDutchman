@@ -9,8 +9,8 @@
 		var tmpOrderArr = new Array();
 		
 		/* These should be set when user logs in */
-		var username = "ervtod";
-		var password = "ervtod";
+		var username = readCookie('username');
+		var password = readCookie('username');
 		
 		var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 

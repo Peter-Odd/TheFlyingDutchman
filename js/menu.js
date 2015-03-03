@@ -11,7 +11,7 @@ function settings() {
 }
 
 function logout() {
-	alert("This doesn't work yet");
+    self.location="logout.php";
 }
 
 function about() {

@@ -82,7 +82,7 @@ ob_start();
                     setcookie("debt", $row[9], $hour);
                     //print_r($_COOKIE);
                     //echo $_COOKIE["username"];
-                    header("Location:bartender.html");
+                    header("Location:main.html");
                     mysqli_close($db);
                     exit;
                 } else if ($row[1] == 3) {
@@ -116,7 +116,7 @@ ob_start();
                     setcookie("phone", $row[7], $hour);
                     setcookie("credit", $row[8], $hour);
                     setcookie("debt", $row[9], $hour);
-                    header("Location:vip.html");
+                    header("Location:main.html");
                     mysqli_close($db);
                     exit;
                 }
