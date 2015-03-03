@@ -35,7 +35,7 @@
 							var stock = getBeer(beerName)[2];
 
 							var hej = beerName.replace(/\'/g, '&apos');
-							console.log(hej);
+						//	console.log(hej);
 
 							if(stock < 1){
 								$('#searchBeer2').html('<div class="beerButtonEmptyStock">'+beerName+', '+getBeer(beerName)[0]+' SEK</div><br>'+tmphtml);
@@ -102,8 +102,8 @@ $(document).ready(function	(){
  		<div id="main"></div>
  		
  		<div id="topMain">
-			<button id="undo">UNDO</button>
-			<button id="redo">REDO</button>
+			<button id="undo" onclick="undo()">UNDO</button>
+			<button id="redo" onclick="redo()">REDO</button>
 			<button id="cancel" onclick="cancelOrder()">CANCEL</button>
  		</div>
  		
