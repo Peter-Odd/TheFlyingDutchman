@@ -22,14 +22,38 @@
 		        } else {
 		            var xmlhttp = new XMLHttpRequest();
 		            xmlhttp.onreadystatechange = function() {
-		                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		                    document.getElementById("main").innerHTML = xmlhttp.responseText;
-		                }
+	        			var el = document.createElement( 'a' );
+						el.innerHTML = xmlhttp.responseText;
+	        			var beerArr = el.getElementsByTagName('div');
+	        			var tmphtml = "";
+
+						for(var i = 0; i < beerArr.length; i++) {
+							var element = beerArr[i];
+							var beerName = element.innerHTML;
+							var stock = getBeer(beerName)[2];
+							var escapedBeerName = beerName.replace(/\'/g, '&apos');
+							console.log(escapedBeerName);
+							console.log(getBeer(beerName)[1]);
+
+							if (stock < 1) {
+								$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+							}
+							else if(stock < 10) {
+								$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+							}
+							else {
+								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+					 		}
+					 		tmphtml = $('#main').html();
+
+	        			}
+	                }
+
 		            }
 		            xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
 		            xmlhttp.send();
 		        }
-		    }
+
 
 		    function getValue(name) {
 		        $("#searchField").val(name);
@@ -54,7 +78,7 @@
 					
 				<div id="ls_main">
 					<img id="magnify" src="images/main/magnify.png" alt=""/> 
-					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'image')">
+					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
 				</div>
 					
 				<div id="ls_right">

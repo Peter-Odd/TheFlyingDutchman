@@ -148,12 +148,13 @@ th,td {
     position: relative;
 	overflow: auto;
 	overflow-y: hidden;
+	float: left;
 }
 
 #main h4 {
 	color: black;
     position: absolute;
-    margin-top: 155px;
+    margin-top: 160px;
     margin-left: 5px;
 	overflow: auto;
 }
@@ -161,8 +162,8 @@ th,td {
 #main h5 {
 	color: black;
 	position: absolute;
-    margin-top: 175px;
-    margin-left: 75px;
+    margin-top: 20px;
+    margin-left: 100px;
 	overflow: auto;
 }
 
@@ -198,3 +199,28 @@ th,td {
 	border-bottom-right-radius: 15px;
     border: none;
 }
+
+.beerImage {
+	cursor: pointer;
+}
+
+.beerImageLowStock {
+	/*background: rgba(215, 219, 73, 0.3);*/
+	opacity: 0.3;
+	cursor: default;
+}
+
+.beerImageEmptyStock {
+	/*background-color: rgba(232, 44, 44, 0.2); */
+	opacity: 0.3;
+	cursor: default;
+}
+
+/*.imageFooter {
+	background: rgba(215, 219, 73, 0.3);
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	width: 150px;
+	height: 20px;
+}*/
