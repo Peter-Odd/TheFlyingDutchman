@@ -32,8 +32,8 @@
 							var beerName = element.innerHTML;
 							var stock = getBeer(beerName)[2];
 							var escapedBeerName = beerName.replace(/\'/g, '&apos');
-							console.log(escapedBeerName);
-							console.log(getBeer(beerName)[1]);
+							// console.log(escapedBeerName);
+							// console.log(getBeer(beerName)[1]);
 
 							if (stock < 1) {
 								$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
@@ -45,7 +45,6 @@
 								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
 					 		}
 					 		tmphtml = $('#main').html();
-
 	        			}
 	                }
 
@@ -88,22 +87,22 @@
 			<div id="menu">
 				<table>
 					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Argentina</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Australien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Belgien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Chile</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Frankrike</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Irland</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Italien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Kroatien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Nederländerna</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Spanien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Storbritannien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Sverige</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Sydafrika</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Tjeckien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">Tyskland</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry()">USA</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Argentina')">Argentina</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Australien')">Australien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Belgien')">Belgien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Chile')">Chile</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Frankrike')">Frankrike</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Irland')">Irland</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Italien')">Italien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Kroatien')">Kroatien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Nederländerna')">Nederländerna</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Spanien')">Spanien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Storbritannien')">Storbritannien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Sverige')">Sverige</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Sydafrika')">Sydafrika</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Tjeckien')">Tjeckien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Tyskland')">Tyskland</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('USA')">USA</td></tr>
 				</table>
 			</div>
 			

@@ -27,13 +27,6 @@
 			var returnBeer = new Array();
 			httpGet(api + "beer_data_get&beer_id=" + inventoryGetId(beer),
 				function callback_success(data) {
-					// console.log(data.payload[0].nr);
-					// console.log(data.payload[0].namn);
-					// console.log(data.payload[0].namn2);
-					// console.log(data.payload[0].varugrupp);
-					// console.log(data.payload[0].producent);
-					// console.log(data.payload[0].leverantor);
-					// console.log(data.payload[0].alkoholhalt);
 					returnBeer.push(data.payload[0].nr);
 					returnBeer.push(data.payload[0].namn);
 					returnBeer.push(data.payload[0].namn2);
@@ -148,6 +141,10 @@
 			}
 		}
 		
+		function getBeerByCountry(countryName) {
+			document.getElementById("main").innerHTML = countryName;
+		}
+
 
 		/* Get the five last purchases for a user - NOT WORKING */
 		function getFiveLastPurchases() {
@@ -173,14 +170,24 @@
 				 		}
 			 	}
 				 	var mainTmp = "";
-				 	for(i = 0; i < 5; i++){			 		
-						$.get("getHint.php", {q: uniqueLastFive[i], choice: 'image'},
-							function(data) {                                          
-	  							$('#main').html(data+mainTmp);
-	  							mainTmp = $('#main').html();
-							}
-						);
-				 	}
+				 	for(a = 0; a < 5; a++){			 		
+					var txt = uniqueLastFive[a];
+					var stock = getBeer(txt)[2];
+					var beerName = txt.replace(/\'/g, '&apos');
+
+					var tmphtml = $('#main').html();
+
+					if (stock < 1) {
+						$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+					}
+					else if(stock < 10) {
+						$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+					}
+					else {
+						$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+					}
+					tmphtml = $('#main').html();
+				}
 			 	},
 				function callback_error(data) {
 		 			console.log('An error occurred: ' + data);
@@ -424,12 +431,6 @@
 					console.log('An error occurred: ' + data);
 				});
 		}
-
-		/*returns all beverages in the system - WORKS */
-		// function getAllBeverages() {
-		// 	if (barInventory == null) { createInventory(); }
-		// 	return barInventory.getAllInventory();
-		// }
 
 
 		/* return data for specific beer. [0]=price, [1]=id, [2]=count, [3]=country - WORKS*/
