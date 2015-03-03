@@ -477,6 +477,30 @@
 		}
 
 
+		/* Add receipt to the sql db */
+		/*
+		<h3> Add receipt to system </h3>
+		<button id="addReceipt" onclick="addReceipt()" type="button"> Add Receipt </button>
+		*/
+		function addReceipt(str) {
+			$.ajax({      
+				type: 'POST',                        
+				url: 'settings.php',
+				data: { 
+					func_id : "0",
+					str : str 
+				},                        
+				dataType: 'json',
+				success: function(data) {
+					if (data.status == 'success') {
+						console.log("db query success");
+					} else {
+						console.log("db query failed");
+					}
+				}
+			});
+		}
+
 
 		/* TMP CODE BELOW */
 

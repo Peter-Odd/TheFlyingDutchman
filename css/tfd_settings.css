@@ -1,6 +1,24 @@
-.valid {
-	height: 15px;
-	width: auto;
-	position: relative;
-	top: 3px;
+body {
+	color: white;
+}
+
+#createNewUser { 
+	border-radius: 10px;
+	width: 300px;
+	height: 500px;
+	padding: 5px;
+	padding-left: 20px;
+	margin-left: 20px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+}
+
+#getLastFive {
+	border-radius: 10px;
+	width: 300px;
+	height: 500px;
+	padding: 5px;
+	margin-left: 20px;
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
 }

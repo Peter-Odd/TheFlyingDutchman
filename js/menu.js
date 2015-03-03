@@ -7,7 +7,7 @@ function help() {
 }
 
 function settings() {
-	document.getElementById('content').src = "vip_settings.html";
+	document.getElementById('content').src = "admin_settings.html";
 }
 
 function logout() {
