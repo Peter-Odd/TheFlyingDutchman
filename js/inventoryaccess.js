@@ -25,7 +25,7 @@
 
 		function getDetailedBeerInfo(beer) {
 			var returnBeer = new Array();
-			httpGet(api + "beer_data_get&beer_id=" + inventoryGetId(beer),
+			httpGet(api + "beer_data_get&beer_id=" + getBeerId(beer),
 				function callback_success(data) {
 					returnBeer.push(data.payload[0].nr);
 					returnBeer.push(data.payload[0].namn);
@@ -37,12 +37,13 @@
 				}, function callback_error(data) {
 					console.log(data);
 				});
+			returnBeer.push(getBeerCount(beer));
 			return returnBeer;
 		}
 		
 
 		/* TODO: make sure the API is updated - NOT WORKING CORRECT */
-		function inventorySetCount(name, count) { 
+		function setBeerCount(name, count) { 
 			var beer = JSON.parse(sessionStorage[name]);
 			console.log(beer[1]);
 			console.log(beer[0]);
@@ -53,33 +54,38 @@
 		}
 
 
-		function inventoryGetBeerInfo(name) {
-			var beer = JSON.parse(sessionStorage[name]);
-			return beer;
+		/* return data for specific beer. [0]=price, [1]=id, [2]=count, [3]=country - WORKS*/
+		function getBeer(beer) {
+			if (sessionStorage.length == 0) { createInventory(); }
+			return JSON.parse(sessionStorage[beer.toLowerCase()])
 		}
 
-
-		function inventoryGetPrice(name) {
-			var beer = JSON.parse(sessionStorage[name]);
-			return beer[0];
+		function getBeerId(name) {
+			if (sessionStorage.length == 0) { createInventory(); }
+			return JSON.parse(sessionStorage[name])[1];
 		}
 
-
-		function inventoryGetId(name) {
-			var beer = JSON.parse(sessionStorage[name]);
-			return beer[1];
+		function getBeerCount(name) {
+			if (sessionStorage.length == 0) { createInventory(); }
+			return JSON.parse(sessionStorage[name])[2];
 		}
 
-
-		function inventoryGetCount(name) {
-			var beer = JSON.parse(sessionStorage[name]);
-			return beer[2];
+		function getBeerCountry(name) {
+			if (sessionStorage.length == 0) { createInventory(); }
+			return JSON.parse(sessionStorage[name])[3];
 		}
 
+		/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
+		function buyBeer(name) {
+			if (sessionStorage.length == 0) { createInventory(); }
 
-		function inventoryGetCountry(name) {
-			var beer = JSON.parse(sessionStorage[name]);
-			return beer[3];
+			httpGet(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
+				function callback_success(data) {
+					console.log("You just bought yourself a beer!");
+					//subtract beer count for name by 1
+				}, function callback_error(data) {
+					console.log('An error occurred: ' + data);
+				});
 		}
 		/* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
 
@@ -228,7 +234,7 @@
 
 					var tmphtml = $('#searchBeer2').html();
 
-					if(stock == 0){
+					if(stock < 1){
 				 		$('#searchBeer2').html('<div class="beerButtonEmptyStock">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
 					}
 					if(stock < 10) {
@@ -418,39 +424,7 @@
 				});	
 
 		}
-
-
-		/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
-		function buyBeer(name) {
-			if (sessionStorage.length == 0) { createInventory(); }
-			httpGet(api+'purchases_append&beer_id='+inventoryGetBeerInfo(name.toLowerCase())[1],
-				function callback_success(data) {
-					console.log("You just bought yourself a beer!");
-					//subtract beer count for name by 1
-				}, function callback_error(data) {
-					console.log('An error occurred: ' + data);
-				});
-		}
-
-
-		/* return data for specific beer. [0]=price, [1]=id, [2]=count, [3]=country - WORKS*/
-		function getBeer(beer) {
-			if (sessionStorage.length == 0) { createInventory(); }
-			var beerData = inventoryGetBeerInfo(beer.toLowerCase());
-			return beerData;
-		}
-
-
-		/* Update the beer count for a specific beer */
-		//NOT WORKING PERFECT
-		function setBeerCount(beer, newCount) {
-			if (newCount === parseInt(newCount, 10)) {
-				if (sessionStorage.length == 0) { createInventory(); }
-				return inventorySetCount(beer.toLowerCase(), newCount);
-			} else {
-				console.log(newCount + ' is not an integer.');
-			}
-		}
+		
 
 
 		function vip_pay() {
