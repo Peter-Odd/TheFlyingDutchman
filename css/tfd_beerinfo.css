@@ -1,0 +1,29 @@
+body {
+	background: rgba(17, 24, 27, 1);
+	border-radius: 10px;
+	padding: 15px;
+}
+
+#information {
+	float: left;
+	width: 250px;
+	height: 180px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+#image {
+	border-radius: 10px;
+	float: left;
+	margin-right: 20px;
+}
+
+#orderForm {
+	float: left;
+	padding-top: 10px;
+}
+
+#amount {
+	margin-right: 5px;
+}

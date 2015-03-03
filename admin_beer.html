@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Flying Dutchman</title>
+		<link rel="stylesheet" href="css/tfd_settings.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="js/inventoryaccess.js"></script>
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+		<script>
+			function getInfo(beer) {
+				var htmlStr = "";
+				var tmp = getDetailedBeerInfo(beer);
+				console.log(tmp);
+				document.getElementById('beerPopup').contentWindow.document.getElementById('test').innerHTML = '<img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+inventoryGetCount(beer)+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button">ORDER</button></form></div>';
+			}
+
+			$(document).ready(function() {
+				$('.beerInfo').click(function() {
+					$('#backgroundShadow').css({opacity:0.7});
+					$('#backgroundShadow').fadeIn(100);
+					$('#info').fadeIn(300);
+					
+					return false;
+				});
+				
+				$('#backgroundShadow, #close').click(function() {
+					$('#backgroundShadow, #info').fadeOut(300);	
+				});
+			});
+		</script>
+
+		<style type="text/css">
+
+#info {
+	position:absolute; 
+	left:50%; 
+	top:50%; 
+	margin-left:-290px; 
+	margin-top:-190px; 
+	z-index:1; 
+	display:none;
+}
+
+#close img { 
+	position:absolute; 
+	width: 25px; 
+	height: 25px; 
+	top:-10px; 
+	right:-10px; 
+	z-index:2; 
+}
+
+#backgroundShadow { 
+	position:absolute; 
+	width:100%; 
+	min-height:100%; 
+	background:#000; 
+	left:0px; 
+	top:0px; 
+	z-index:0; 
+	display:none;
+}
+
+#beerInfo {
+	cursor: pointer;
+}
+
+iframe {
+	border-radius: 15px;
+	border: 0px;
+	width: 510px;
+	height: 315px;
+}
+
+</style>
+
+	</head>
+	<body>	
+		<a class="beerInfo" onclick="getInfo('staropramen')">INFO</a>
+		<div id="info">
+			<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
+			<iframe id="beerPopup" src="beerinfo.html"></iframe>
+		</div>
+		<div id="backgroundShadow"></div>
+</body>
+
+
+</html>

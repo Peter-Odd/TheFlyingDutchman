@@ -13,13 +13,38 @@
 		/* This takes LONG time when keeping track of country, so this should be done at login page perhaps?! */
 		function inventorySetValue(name, price, id, count) {
 			var country = "";
-			httpGet(api + "beer_data_get&beer_id=" + id,
-				function callback_success(data) {
-					country = data.payload[0].ursprunglandnamn;
-				}, function callback_error(data) {
-					console.log("error");
-				});
+			// httpGet(api + "beer_data_get&beer_id=" + id,
+			// 	function callback_success(data) {
+			// 		country = data.payload[0].ursprunglandnamn;
+			// 	}, function callback_error(data) {
+			// 		console.log("error");
+			// 	});
 			sessionStorage[name] = JSON.stringify([price, id, count, country]);
+		}
+
+
+		function getDetailedBeerInfo(beer) {
+			var returnBeer = new Array();
+			httpGet(api + "beer_data_get&beer_id=" + inventoryGetId(beer),
+				function callback_success(data) {
+					// console.log(data.payload[0].nr);
+					// console.log(data.payload[0].namn);
+					// console.log(data.payload[0].namn2);
+					// console.log(data.payload[0].varugrupp);
+					// console.log(data.payload[0].producent);
+					// console.log(data.payload[0].leverantor);
+					// console.log(data.payload[0].alkoholhalt);
+					returnBeer.push(data.payload[0].nr);
+					returnBeer.push(data.payload[0].namn);
+					returnBeer.push(data.payload[0].namn2);
+					returnBeer.push(data.payload[0].varugrupp);
+					returnBeer.push(data.payload[0].producent);
+					returnBeer.push(data.payload[0].leverantor);
+					returnBeer.push(data.payload[0].alkoholhalt);
+				}, function callback_error(data) {
+					console.log(data);
+				});
+			return returnBeer;
 		}
 		
 
