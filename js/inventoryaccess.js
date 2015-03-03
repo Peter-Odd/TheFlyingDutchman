@@ -175,24 +175,24 @@
 				 		 	i++;
 				 		}
 			 	}
-				 	var mainTmp = "";
+				 	var tmphtml = "";
 				 	for(a = 0; a < 5; a++){			 		
-					var txt = uniqueLastFive[a];
-					var stock = getBeer(txt)[2];
-					var beerName = txt.replace(/\'/g, '&apos');
+						var txt = uniqueLastFive[a];
+						var stock = getBeer(txt)[2];
+						var beerName = txt.replace(/\'/g, '&apos');
 
-					var tmphtml = $('#main').html();
+						// = $('#main').html();
 
-					if (stock < 1) {
-						$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
-					}
-					else if(stock < 10) {
-						$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
-					}
-					else {
-						$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
-					}
-					tmphtml = $('#main').html();
+						if (stock < 1) {
+							$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+						}
+						else if(stock < 10) {
+							$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+						}
+						else {
+							$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+						}
+						tmphtml = $('#main').html();
 				}
 			 	},
 				function callback_error(data) {
