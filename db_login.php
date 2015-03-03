@@ -1,23 +1,26 @@
-<?php 
+<?php
+ob_start();
 /*$func_id = $_POST['func_id'];
+=======
+	<?php 
+  $func_id = $_POST['func_id'];
+>>>>>>> Stashed changes
 
   if ($func_id == "0") {
     login();
   } elseif ($func_id == "1") {
     createUser();
   }*/
-
   function db_connect() {
     $db = mysqli_connect("sql3.freesqldatabase.com", "sql368767", "kG4%mU7*", "sql368767");
     if (mysql_errno()) {
-      printf("Connection failed: %s\n", mysqli_connect_error());
+      //printf("Connection failed: %s\n", mysqli_connect_error());
       exit();
     } else {
-      echo "Connection established", PHP_EOL;
+      //echo "Connection established", PHP_EOL;
     }
     return $db;
   }
-
     if (isset($_POST['submit'])) {
         //function login() {
         Session_Start();
@@ -28,7 +31,6 @@
         //echo PHP_EOL;
         $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($db, $sql);
-
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_row($result)) {
                 $password = stripslashes($password);
@@ -78,6 +80,8 @@
                     setcookie("phone", $row[7], $hour);
                     setcookie("credit", $row[8], $hour);
                     setcookie("debt", $row[9], $hour);
+                    //print_r($_COOKIE);
+                    //echo $_COOKIE["username"];
                     header("Location:bartender.html");
                     mysqli_close($db);
                     exit;
@@ -118,15 +122,13 @@
                 }
             }
         } else {
-            echo "0 results";
-
+            echo "Wrong username/password";
+            header("Refresh:5;url=index.html");
         }
-
     }else
     {
         header("Location: index.html");
     }
-
     /* create a new user to this database if a new user is created in the API */
     function createUser() {
       $db = db_connect();
@@ -143,6 +145,5 @@
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($db);
       }
-      mysqli_close($db);      
+      mysqli_close($db);
     }
-?>
