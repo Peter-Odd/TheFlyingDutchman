@@ -198,6 +198,62 @@ th,td {
 	margin-top: 110px;
 }
 
+#toporder {
+	background: rgba(17, 24, 27, 0.3);
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	width: 260px;
+	height: 42px;
+	left: -10px;
+	top: -24px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-right: 5px;
+	position: relative;
+}
+
+#undo {
+	background: rgba(17, 24, 27, 0.3);
+	top: 2px;
+	color: white;
+	position: relative;
+	float: left;
+	cursor: pointer;
+	padding: 10px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+   	border:none;
+   	margin-right: 3px;
+}
+
+#redo {
+	background: rgba(17, 24, 27, 0.3);
+	top: 2px;
+	color: white;
+	position: relative;
+	float: left;
+	cursor: pointer;
+	padding: 10px;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+   	border:none;
+}
+
+#cancel {
+	background: rgba(17, 24, 27, 0.3);
+	top: 2px;
+	color: white;
+	position: relative;
+	float: right;
+	cursor: pointer;
+	padding: 10px;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+   	border:none;
+}
+
 #order h4 {
 	margin-top: -25px;
 	margin-left: 0px;
@@ -209,7 +265,8 @@ th,td {
 	float: left;
 	margin-left: 15px;
 	margin-top: 5px;
-	width: 127px;
+	width: 270px;
+	height: 30px;
 	padding: 5px;
 	text-align: center;
 	cursor: pointer;
@@ -218,6 +275,9 @@ th,td {
 	border-bottom-right-radius: 15px;
     border: none;
 }
+
+
+
 
 .beerImage {
 	cursor: pointer;
@@ -234,6 +294,7 @@ th,td {
 	opacity: 0.3;
 	cursor: default;
 }
+
 
 /*.imageFooter {
 	background: rgba(215, 219, 73, 0.3);

@@ -89,31 +89,22 @@
 			<div id="menu">
 				<table>
 					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Argentina')">Argentina</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Australien')">Australia</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Belgien')">Belgium</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Chile')">Chile</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Frankrike')">France</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Irland')">Ireland</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Italien')">Italy</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Kroatien')">Croatia</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Nederländerna')">Netherlands</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Spanien')">Spain</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Storbritannien')">Great Britain</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Sverige')">Sweden</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Sydafrika')">South Africa</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Tjeckien')">Czech Republic</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Tyskland')">Germany</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('USA')">USA</td></tr>
+					
 				</table>
 			</div>
 			
 			<div id="main"> Welcome to the Flying Dutchman </div>
 			
-			<div id="order"><h4> ORDER LIST </h4></div>
-			<div id="order_total"><h4> TOTAL </h4></div>
-			<button class="orderbutton" id="cancelBtn" onclick="vip_cancel()"> CANCEL </button>
-			<button class="orderbutton" id="payBtn" onclick="vip_pay()"> PAY </button>
+			<div id="order"><h4> ORDER LIST </h4>
+				<div id="toporder">
+					<button id="undo" onclick="undo()">UNDO</button>
+					<button id="redo" onclick="redo()">REDO</button>
+					<button id="cancel" onclick="cancelOrder()">CANCEL</button>
+ 				</div>
+ 			</div>
+			
+			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
+			<button class="orderbutton" id="payBtn" onclick="vip_pay()"> <strong>PAY</strong> </button>
 	</body>
 
 </html>
