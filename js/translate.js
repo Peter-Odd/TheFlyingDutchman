@@ -5,7 +5,7 @@ i18n.init({lng: window.language } , function(t) {
   $(".manager").i18n();
 
   // programatical access
-  var appName = t("order.title");
+  var appName = t("manager.title");
 });
 // {lng: "sv-SE" },
 
@@ -17,7 +17,7 @@ function changeLanguage(){
   $(".manager").i18n();
 
   // programatical access
-  var appName = t("order.title");
+  var appName = t("manager.title");
 });
 	} else{
 		window.language="en";
@@ -26,7 +26,7 @@ function changeLanguage(){
   $(".manager").i18n();
 
   // programatical access
-  var appName = t("order.title");
+  var appName = t("manager.title");
 });
 	}
 }
