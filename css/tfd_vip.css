@@ -84,7 +84,7 @@ input:-moz-placeholder { color: white; }
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
 	width: 15%;
-	height: 79%;
+	height: 75%;
 	margin-left: 10px;
 	border-radius: 15px;
 	margin-top: 110px;
@@ -137,7 +137,7 @@ th,td {
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
 	width: 50%;
-	height: 79%;
+	height: 75%;
 	margin-left: 15px;
 	border-radius: 15px;
 	overflow: auto;
@@ -198,7 +198,7 @@ th,td {
 	padding: 10px;
 	background: rgba(17, 24, 27, 0.3);
 	width: 24%;
-	height: 75%;
+	height: 70%;
 	margin-left: 15px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
