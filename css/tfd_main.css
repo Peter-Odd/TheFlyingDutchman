@@ -2,9 +2,11 @@ html {
 	font-family: Palatino, serif;
 	background: rgba(17, 24, 27, 0.8);
 	color: white;
+	height: 97%;
 }
 
 body {
+	height: 100%;
 	margin: 0;
 }
 
