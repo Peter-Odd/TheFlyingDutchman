@@ -8,8 +8,11 @@ var deleteList = new Array();
 var tmpOrderArr = new Array();
 
 /* These should be set when user logs in */
-var username = readCookie('username');
-var password = readCookie('username');
+// var username = readCookie('username');
+// var password = readCookie('username');
+
+var username = "ervtod";
+var password = "ervtod";
 
 var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
@@ -23,10 +26,11 @@ function inventorySetValue(name, price, id, count) {
 			// 	}, function callback_error(data) {
 			// 		console.log("error");
 			// 	});
-sessionStorage[name] = JSON.stringify([price, id, count, country]);
+	sessionStorage[name] = JSON.stringify([price, id, count, country]);
 }
 
 function getDetailedBeerInfo(beer) {
+	beer = beer.toLowerCase();
 	var returnBeer = new Array();
 	httpGet(api + "beer_data_get&beer_id=" + getBeerId(beer),
 		function callback_success(data) {
@@ -167,11 +171,15 @@ function getFiveLastPurchases() {
 			var i = 0;
 
 			while(uniqueLastFive.length < 5){
+				if (typeof data.payload[i] == 'undefined') {
+					uniqueLastFive.push("");
+					continue;
+				}
+
 				if(data.payload[i].namn == "") {
 					i++;
 				}
 				else{
-					console.log("hej");
 					lastFive.push(data.payload[i].namn);
 					$.each(lastFive, function(i, el){
 						if($.inArray(el, uniqueLastFive) === -1) uniqueLastFive.push(el);
@@ -208,17 +216,23 @@ return uniqueLastFive;
 
 /* Get five last purchases (for all users), this can be called if admin - WORKS */
 function getFiveLastPurchasesAdmin(){
+	$('#search').val("");
 	$('#searchBeer2').html('<div class="searchBeer2"</div><br>');
 
 	var lastFive = new Array();
 	var uniqueLastFive = new Array();
 
 
-	httpGet(api+'purchases_get_all', 
+	httpGetAsync(api+'purchases_get_all', 
 		function callback_success(data) {
 			var i = 0;
 
 			while(uniqueLastFive.length < 5){
+				if (typeof data.payload[i] == 'undefined') {
+					uniqueLastFive.push("");
+					continue;
+				}
+
 				if(data.payload[i].namn == "") {
 					i++;
 				}
@@ -233,22 +247,22 @@ function getFiveLastPurchasesAdmin(){
 
 			for(a = 0; a < 5; a++) {			 		
 				var txt = uniqueLastFive[a];
+				console.log(getBeer(txt)[1]);
 				var stock = getBeer(txt)[2];
 				var beerName = txt.replace(/\'/g, '&apos');
 
 				var tmphtml = $('#searchBeer2').html();
 
 				if(stock < 1) {
-					$('#searchBeer2').html('<div class="beerButtonEmptyStock">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButtonEmptyStock">'+txt+', '+getBeer(txt)[0]+ ' SEK</div></div><br>'+tmphtml);
 				}
 				else if(stock < 10) {
-					$('#searchBeer2').html('<div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div><br>'+tmphtml);
+					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div></div><br>'+tmphtml);
 				}
 				else {
-					$('#searchBeer2').html('<div class="beerButton" onclick="placeOrder(\''+beerName+'\')"><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')">'+txt+', '+getBeer(txt)[0]+' SEK</div><br>'+tmphtml);
+					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButton" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+' SEK</div></div><br>'+tmphtml);
 				}
 			}
-
 
 		},
 
@@ -544,6 +558,11 @@ function cancelOrder() {
 		httpGet(api+'inventory_get', 
 			function callback_success(data) {
 				$.each(data.payload, function(key, item) {
+				// if (typeof data.payload == 'undefined') {
+				// 	uniqueLastFive.push("");
+				// 	continue;
+				// }
+
 				if (item.namn == "") { /* remove beers with no name */ } 
 					else {
 						inventorySetValue(
