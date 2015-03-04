@@ -289,7 +289,7 @@ function deleteFromlist(txt) {
 		var index = orderArr.indexOf(txt);
 		var amount = orderArr[index + 2];
 		sum = sum - (orderArr[index+1] * amount);
-		$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+		$('#order_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 
 		var deleted = orderArr.splice(index, 3);
 
@@ -532,8 +532,8 @@ function cancelOrder() {
 			console.log(undoArr);
 
 			orderArr.splice("", orderArr.length);
-			$('#main').html("<div class='main'></div><br>");
-			$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+			$('#order').html("<div class='order'></div><br>");
+			$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
 			sum = 0;
 		}
 	}
@@ -595,8 +595,8 @@ function cancelOrder() {
 	function finishOrder() {
 
 		orderArr.splice("", orderArr.length);
-		$('#main').html("<div class='main'></div><br>");
-		$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+		$('#order').html("<div class='order'></div><br>");
+		$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
 		sum = 0;
 	}
 
@@ -617,8 +617,8 @@ function cancelOrder() {
     			else{
     				//buy beer 
     				orderArr.splice("", orderArr.length);
-    				$('#main').html("<div class='main'></div><br>");
-    				$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+    				$('#order').html("<div class='order'></div><br>");
+    				$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
     				sum = 0;
 					//close popup
 					//add popup with confirmation? 

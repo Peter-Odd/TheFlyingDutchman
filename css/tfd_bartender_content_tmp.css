@@ -77,7 +77,7 @@ input:-moz-placeholder { color: white; }
 	overflow: scroll;	
 }
 
-#main {
+#order {
 	background: white;
 	position: absolute;
 	margin-left: 600px;
@@ -89,7 +89,7 @@ input:-moz-placeholder { color: white; }
 	overflow:scroll;	
 }
 
-#topMain {
+#toporder {
 	background: rgba(17, 24, 27, 0.3);
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
@@ -142,7 +142,7 @@ input:-moz-placeholder { color: white; }
 
 }
 
-#main_total {
+#order_total {
 	position: absolute;
 	margin-left: 600px;
 	top: 475px;
@@ -152,7 +152,7 @@ input:-moz-placeholder { color: white; }
 	background: rgba(17, 24, 27, 0.3);
 }
 
-#main_total p {
+#order_total p {
 	margin-left: 20px;
 	margin-top:20px;
 	font-size: 25px; 
@@ -164,7 +164,7 @@ input:-moz-placeholder { color: white; }
 	font-size: 25px; 
 }
 
-#main_button_area {
+#order_button_area {
 	position: absolute;
 	left: 600px;
 	width: 485;
@@ -174,7 +174,7 @@ input:-moz-placeholder { color: white; }
 	border-bottom-right-radius: 15px;
 }
 
-.main_button {
+.order_button {
 	background: rgba(17, 24, 27, 0.3);
 	color: white;
 	width: 118px;
@@ -315,7 +315,7 @@ th,td {
 
 
 
-.main_buttonCredit {
+.order_buttonCredit {
 	/*background-color: red;*/
 	background: rgba(17, 24, 27, 0.3);
 	color: white;
