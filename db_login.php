@@ -122,8 +122,7 @@ ob_start();
                 }
             }
         } else {
-            echo "Wrong username/password";
-            header("Refresh:5;url=index.html");
+            header("Location:nousers.html");
         }
     }else
     {
