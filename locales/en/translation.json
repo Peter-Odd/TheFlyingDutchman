@@ -8,5 +8,8 @@
         "help":"HELP",
         "home":"HOME",
         "footer":"The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015"
+    },
+    "order": {
+        "title": "Order your favorite Beers"
     }
 }

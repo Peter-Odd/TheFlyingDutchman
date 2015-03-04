@@ -8,5 +8,8 @@
         "help":"555",
         "home":"666",
         "footer":"T99999999999999999 2015"
+    },
+    "order": {
+        "title": "Order your favorite Beers"
     }
 }
