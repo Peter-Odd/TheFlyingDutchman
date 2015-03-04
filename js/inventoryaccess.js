@@ -199,10 +199,10 @@ function getFiveLastPurchases() {
 							$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
 						}
 						else if(stock < 10) {
-							$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+							$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
 						}
 						else {
-							$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+							$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
 						}
 						tmphtml = $('#main').html();
 					}
@@ -409,8 +409,8 @@ function deleteFromlist(txt) {
 					console.log(orderArr);
 
 					if(orderArr == ""){
-						$('#main').html("<div class='main'></div><br>");
-						$('#main_total').html("<div id='total_text'>TOTAL:</div>"); 
+						$('#order').html("<div class='order'></div><br>");
+						$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
 					}
 
 
@@ -426,9 +426,9 @@ function deleteFromlist(txt) {
 
 							var tempBeerName = orderArr[i].replace(/\'/g, '&apos');
 
-							$('#main').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity"><input type="image" class="incButton" onclick="incButton(\''+tempBeerName+'\')" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value='+orderArr[i+2]+'><input type="image" class="decButton" src="images/bartender/minus.png" onclick="decButton(\''+tempBeerName+'\')" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" onclick="deleteFromlist(\''+tempBeerName+'\')" alt="Delete"></input></div>');
-							tmphtml = $('#main').html();
-							$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+							$('#order').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity"><input type="image" class="incButton" onclick="incButton(\''+tempBeerName+'\')" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value='+orderArr[i+2]+'><input type="image" class="decButton" src="images/bartender/minus.png" onclick="decButton(\''+tempBeerName+'\')" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" onclick="deleteFromlist(\''+tempBeerName+'\')" alt="Delete"></input></div>');
+							tmphtml = $('#order').html();
+							$('#order_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 						};
 
 						$('.deleteButton').on('click',function(){ 
@@ -466,9 +466,9 @@ function deleteFromlist(txt) {
 						var id = orderArr[i].replace(/\s+/g, "_");   
 						var tempBeerName = orderArr[i].replace(/\'/g, '&apos');
 
-						$('#main').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity"><input type="image" class="incButton" id='+id+' onclick="incButton(\''+tempBeerName+'\')" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value='+orderArr[i+2]+'><input type="image" class="decButton" src="images/bartender/minus.png" onclick="decButton(\''+tempBeerName+'\')" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" onclick="deleteFromlist(\''+tempBeerName+'\')" alt="Delete"></input></div>');
-						tmphtml = $('#main').html();
-						$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
+						$('#order').html(tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity"><input type="image" class="incButton" id='+id+' onclick="incButton(\''+tempBeerName+'\')" src="images/bartender/plus.png" alt="Increase"><input type="text" name="quantityInput" id="quantityInput" value='+orderArr[i+2]+'><input type="image" class="decButton" src="images/bartender/minus.png" onclick="decButton(\''+tempBeerName+'\')" alt="Decrease"></div><input type="image" class="deleteButton" src="images/bartender/delete.png" onclick="deleteFromlist(\''+tempBeerName+'\')" alt="Delete"></input></div>');
+						tmphtml = $('#order').html();
+						$('#order_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 					};
 
 

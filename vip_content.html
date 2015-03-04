@@ -3,6 +3,7 @@
 	<head>
 		<title>The Flying Dutchman</title>
 		<link rel="stylesheet" href="css/tfd_vip.css">
+		<!-- <link rel="stylesheet" href="css/tfd_bartender_content_tmp.css"> -->
 		<script src="js/inventoryaccess.js"></script>
 		<link rel="shortcut icon" href="images/start/logo.png" />
 		<script language="javascript" type="text/javascript" src="jquery.js"></script>
@@ -40,10 +41,10 @@
 								$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
 							}
 							else if(stock < 10) {
-								$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+								$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
 							}
 							else {
-								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
 							}
 							tmphtml = $('#main').html();
 						}
@@ -110,6 +111,7 @@
 			<div id="main"> Welcome to the Flying Dutchman </div>
 			
 			<div id="order"><h4> ORDER LIST </h4></div>
+			<div id="order_total"><h4> TOTAL </h4></div>
 			<button class="orderbutton" id="cancelBtn" onclick="vip_cancel()"> CANCEL </button>
 			<button class="orderbutton" id="payBtn" onclick="vip_pay()"> PAY </button>
 	</body>
