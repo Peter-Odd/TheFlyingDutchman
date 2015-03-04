@@ -12,7 +12,7 @@ ob_start();
     createUser();
   }*/
   function db_connect() {
-    $db = mysqli_connect("sql3.freesqldatabase.com", "sql368767", "kG4%mU7*", "sql368767");
+    $db = mysqli_connect("sql3.freemysqlhosting.net", "sql369433", "eC1!wM9*", "sql369433");
     if (mysql_errno()) {
       //printf("Connection failed: %s\n", mysqli_connect_error());
       exit();

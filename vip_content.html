@@ -19,14 +19,15 @@
 		        if (str.length == 0) { 
 		            document.getElementById("main").innerHTML = "";
 		            return;
-		        } else {
+		        }
+				
+				else {
 		            var xmlhttp = new XMLHttpRequest();
 		            xmlhttp.onreadystatechange = function() {
-	        			var el = document.createElement( 'a' );
+						var el = document.createElement( 'a' );
 						el.innerHTML = xmlhttp.responseText;
-	        			var beerArr = el.getElementsByTagName('div');
-	        			var tmphtml = "";
-
+						var beerArr = el.getElementsByTagName('div');
+						var tmphtml = "";
 						for(var i = 0; i < beerArr.length; i++) {
 							var element = beerArr[i];
 							var beerName = element.innerHTML;
@@ -43,15 +44,15 @@
 							}
 							else {
 								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrderVip(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
-					 		}
-					 		tmphtml = $('#main').html();
-	        			}
-	                }
+							}
+							tmphtml = $('#main').html();
+						}
+					}
 
-		            }
-		            xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
-		            xmlhttp.send();
-		        }
+				}
+		        xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
+		        xmlhttp.send();
+		    }
 
 
 		    function getValue(name) {
@@ -88,20 +89,20 @@
 				<table>
 					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
 					<tr class="menuBtn"><td onclick="getBeerByCountry('Argentina')">Argentina</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Australien')">Australien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Belgien')">Belgien</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Australien')">Australia</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Belgien')">Belgium</td></tr>
 					<tr class="menuBtn"><td onclick="getBeerByCountry('Chile')">Chile</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Frankrike')">Frankrike</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Irland')">Irland</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Italien')">Italien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Kroatien')">Kroatien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Nederländerna')">Nederländerna</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Spanien')">Spanien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Storbritannien')">Storbritannien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Sverige')">Sverige</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Sydafrika')">Sydafrika</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Tjeckien')">Tjeckien</td></tr>
-					<tr class="menuBtn"><td onclick="getBeerByCountry('Tyskland')">Tyskland</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Frankrike')">France</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Irland')">Ireland</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Italien')">Italy</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Kroatien')">Croatia</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Nederländerna')">Netherlands</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Spanien')">Spain</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Storbritannien')">Great Britain</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Sverige')">Sweden</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Sydafrika')">South Africa</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Tjeckien')">Czech Republic</td></tr>
+					<tr class="menuBtn"><td onclick="getBeerByCountry('Tyskland')">Germany</td></tr>
 					<tr class="menuBtn"><td onclick="getBeerByCountry('USA')">USA</td></tr>
 				</table>
 			</div>
