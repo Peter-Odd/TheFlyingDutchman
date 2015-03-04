@@ -8,11 +8,11 @@ var deleteList = new Array();
 var tmpOrderArr = new Array();
 
 /* These should be set when user logs in */
-// var username = readCookie('username');
-// var password = readCookie('username');
+var username = readCookie('username');
+var password = readCookie('username');
 
-var username = "ervtod";
-var password = "ervtod";
+// var username = "ervtod";
+// var password = "ervtod";
 
 var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
