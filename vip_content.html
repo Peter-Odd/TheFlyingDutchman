@@ -9,7 +9,6 @@
         <script src="js/i18next.js"></script>
         <script src="js/i18next.min.js"></script>
         <script src="js/translate.js"></script>
-        
 
         <script>
             var credential = '<%=Session["credentials"] %>';
@@ -72,7 +71,7 @@
 
 	</head>
 
-	<body>
+	<body onload="getFiveLastPurchases()">
 
 		<div id="logosearch">
 				<div id="ls_left">
