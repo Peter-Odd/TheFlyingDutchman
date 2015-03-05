@@ -354,10 +354,14 @@ th,td {
 	top: 30%;
 	left: 25%;
 	text-align: center;
-	-ms-transform: rotate(-7deg); 
+	/*-ms-transform: rotate(-7deg); 
     -webkit-transform: rotate(-7deg);
-    transform: rotate(-7deg);
+    transform: rotate(-7deg);*/
 	color: orange;
+	background: black;
+	border-radius: 5px;
+	padding: 5px;
+	opacity: 0.8;
 }
 
 .beerImageLowStock h4 {
@@ -387,10 +391,14 @@ th,td {
 	top: 30%;
 	left: 25%;
 	text-align: center;
-	-ms-transform: rotate(-7deg); 
+	/*-ms-transform: rotate(-7deg); 
     -webkit-transform: rotate(-7deg);
-    transform: rotate(-7deg);
+    transform: rotate(-7deg);*/
 	color: red;
+	background: black;
+	border-radius: 5px;
+	padding: 5px;
+	opacity: 0.8;
 }
 
 .beerImageEmptyStock h4 {
@@ -439,12 +447,12 @@ th,td {
 
 
 .beerButtonOrder {
-	padding: 10px; 
+	padding: 5px; 
 	border-bottom-color: white;
 	margin-bottom: 0px;
 	margin-top: 0px;
 	border-bottom: solid 1px;
-	width: 100%;
+	width: 95%;
 	display: inline-block;
 }
 
@@ -491,7 +499,47 @@ float:right;
 	padding-top: 18px;
 }
 
+/*POPUP RELATED*/
+#info {
+	position:absolute; 
+	left:50%; 
+	top:50%; 
+	margin-left:-290px; 
+	margin-top:-190px; 
+	z-index:1; 
+	display:none;
+}
 
+#close img { 
+	position:absolute; 
+	cursor: pointer;
+	width: 25px; 
+	height: 25px; 
+	top:-10px; 
+	right:-10px; 
+	z-index:2; 
+}
 
+#backgroundShadow { 
+	position:absolute; 
+	width:100%; 
+	min-height:100%; 
+	background:#000; 
+	left:0px; 
+	top:0px; 
+	z-index:0; 
+	display:none;
+}
+
+#beerInfo {
+	cursor: pointer;
+}
+
+iframe {
+	border-radius: 15px;
+	border: 0px;
+	width: 510px;
+	height: 315px;
+}
 
 
