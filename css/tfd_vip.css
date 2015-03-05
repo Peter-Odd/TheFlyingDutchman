@@ -79,6 +79,12 @@ input:-moz-placeholder { color: white; }
 	margin-left: 0px;
 }
 
+#ls_right h4 {
+	position: relative;
+	top: 70%;
+	left: -35%;
+}
+
 #menu {
 	padding: 10px;
 	background: rgba(17, 24, 27, 0.3);
@@ -164,7 +170,7 @@ th,td {
 	margin-top: 8px;
 }
 
-#main div {
+/*#main div {
     margin-top: 20px;
     border-radius: 10px;
     height: 200px;
@@ -175,49 +181,21 @@ th,td {
 	overflow: auto;
 	overflow-y: hidden;
 	float: left;
-}
-
-#main h4 {
-	color: black;
-    position: absolute;
-    margin-top: 160px;
-    margin-left: 5px;
-	overflow: auto;
-}
-
-#main h5 {
-	color: black;
-	position: absolute;
-    margin-top: 20px;
-    margin-left: 100px;
-	overflow: auto;
-}
-
-#order {
-	float: left;
-	padding: 10px;
-	background: rgba(17, 24, 27, 0.3);
-	width: 24%;
-	height: 70%;
-	margin-left: 15px;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	margin-top: 110px;
-	text-align: left;
-}
+}*/
 
 #toporder {
 	background: rgba(17, 24, 27, 0.3);
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	width: 260px;
+	width: 24%;
 	height: 42px;
-	left: -10px;
-	top: -24px;
-	padding-left: 5px;
+	margin-top: 110px;
+	margin-left: 15px;
+	padding: 5px;
+	/*padding-left: 5px;
 	padding-top: 5px;
-	padding-right: 5px;
-	position: relative;
+	padding-right: 5px;*/
+	float: left;
 }
 
 #undo {
@@ -263,9 +241,35 @@ th,td {
 }
 
 #order h4 {
-	margin-top: -30px;
-	margin-left: 0px;
+	margin-top: -29%;
+	margin-left: 0%;
 	color: white;
+}
+
+#order {
+	float: left;
+	padding: 5px;
+	background: rgba(17, 24, 27, 0.3);
+	width: 24%;
+	height: 55%;
+	margin-top: 3px;
+	margin-left: 15px;
+	overflow: auto;
+	text-align: left;
+}
+
+#order_total {
+	background: rgba(17, 24, 27, 0.3);
+	float: left;
+	height: 8%;
+	margin-top: 3px;
+	margin-left: 15px;
+	width: 24.8%;
+}
+
+#order_total h4 {
+	float: left;
+	margin-left: 10px;
 }
 
 .orderbutton {	
@@ -273,7 +277,7 @@ th,td {
 	float: left;
 	margin-left: 15px;
 	margin-top: 5px;
-	width: 270px;
+	width: 24.8%;
 	height: 30px;
 	padding: 5px;
 	text-align: center;
@@ -285,30 +289,209 @@ th,td {
 }
 
 
+.beerInfoImage {
+	position: absolute;
+	z-index: 3;
+	width: 35px;
+	height: 35px;
+}
 
+.beerInfoImage img {
+	cursor: pointer;
+	z-index: 3;
+	width: 35px;
+	height: 35px;
+	margin-left: 4px;
+	margin-top: 4px;
+}
+
+.beerWrapper {
+	z-index: 0;
+	margin-top: 20px;
+    border-radius: 10px;
+    height: 200px;
+    width: 150px;
+    display: inline-block;
+    margin: 13px;
+    position: relative;
+	overflow: auto;
+	overflow-y: hidden;
+}
 
 .beerImage {
+	position: absolute;
 	cursor: pointer;
+	z-index: 2;
+	height: 200px;
+	width: 150px;
+}
+
+.beerImage h4 {
+	position: absolute;
+	top: 140px;
+	color: black;
+}
+
+.beerImage h5 {
+	position: absolute;
+	top: 0px;
+	left: 90px;
+	color: black;
 }
 
 .beerImageLowStock {
-	/*background: rgba(215, 219, 73, 0.3);*/
-	opacity: 0.7;
+	opacity: 0.9;
 	cursor: pointer;
+	position: absolute;
+	cursor: pointer;
+	z-index: 2;
+	height: 200px;
+	width: 150px;
+}
+
+.beerImageLowStock h3 {
+	position: absolute;
+	top: 30%;
+	left: 25%;
+	text-align: center;
+	-ms-transform: rotate(-7deg); 
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+	color: orange;
+}
+
+.beerImageLowStock h4 {
+	position: absolute;
+	top: 140px;
+	color: black;
+}
+
+.beerImageLowStock h5 {
+	position: absolute;
+	top: 0px;
+	left: 90px;
+	color: black;
 }
 
 .beerImageEmptyStock {
-	/*background-color: rgba(232, 44, 44, 0.2); */
 	opacity: 0.3;
 	cursor: default;
+	position: absolute;
+	z-index: 2;
+	height: 200px;
+	width: 150px;
+}
+
+.beerImageEmptyStock h3 {
+	position: absolute;
+	top: 30%;
+	left: 25%;
+	text-align: center;
+	-ms-transform: rotate(-7deg); 
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+	color: red;
+}
+
+.beerImageEmptyStock h4 {
+	position: absolute;
+	top: 140px;
+	color: black;
+}
+
+.beerImageEmptyStock h5 {
+	position: absolute;
+	top: 0px;
+	left: 90px;
+	color: black;
 }
 
 
-/*.imageFooter {
-	background: rgba(215, 219, 73, 0.3);
-	position: absolute;
-	top: 10px;
-	left: 0px;
-	width: 150px;
+#info {
+	position:absolute; 
+	left:50%; 
+	top:50%; 
+	margin-left:-290px; 
+	margin-top:-190px; 
+	z-index:1; 
+	display:none;
+}
+
+#close img { 
+	position:absolute; 
+	width: 25px; 
+	height: 25px; 
+	top:-10px; 
+	right:-10px; 
+	z-index:2; 
+}
+
+#backgroundShadow { 
+	position:absolute; 
+	width:100%; 
+	min-height:100%; 
+	background:#000; 
+	left:0px; 
+	top:0px; 
+	z-index:0; 
+	display:none;
+}
+
+
+.beerButtonOrder {
+	padding: 10px; 
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	border-bottom: solid 1px;
+	width: 100%;
+	display: inline-block;
+}
+
+.orderText {
+	width: 170px;
+	float: left;
+	padding: 12px;
+}
+
+.quantity {
+	float: left;
+	width: 30px;
+	height: 60px;
+}
+
+#quantityInput {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	width: 15px;
+}
+
+.deleteButton{
+	width: 20px;
 	height: 20px;
-}*/
+	float: left;
+	cursor: pointer;
+}
+
+input[type="image"] {
+	width: 20px;
+	height: 20px; 
+	float: right;
+}
+
+input[type="text"] {
+width: 12%;
+height: 15px;
+font-size: 12px;
+border: 0px;
+float:right;
+}
+
+#total_text {
+	padding-top: 18px;
+}
+
+
+
+
+

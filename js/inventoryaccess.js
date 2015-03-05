@@ -533,7 +533,7 @@ function cancelOrder() {
 
 			orderArr.splice("", orderArr.length);
 			$('#order').html("<div class='order'></div><br>");
-			$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
+			$('#order_total').html("<div id='total_text'>TOTAL: 0 SEK</div>"); 
 			sum = 0;
 		}
 	}
@@ -698,5 +698,23 @@ function cancelOrder() {
 	}
 
 
+	/* Generates popup for beer details */
+	function getInfo(beer) {
+				var htmlStr = "";
+				var tmp = getDetailedBeerInfo(beer);
+				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button">ORDER</button></form></div>';
 
+				
+			$('.beerInfoImage').on("click",function() {
+					$('#backgroundShadow').css({opacity:0.7});
+					$('#backgroundShadow').fadeIn(100);
+					$('#info').fadeIn(300);
+					
+					return false;
+				});
+				
+				$('#backgroundShadow, #close').on("click",function() {
+					$('#backgroundShadow, #info').fadeOut(300);	
+				});
+			}
 
