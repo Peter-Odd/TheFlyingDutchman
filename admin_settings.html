@@ -52,10 +52,10 @@
 					//CALL createUser in db_login.php to create user in our local DB as well
 					$.ajax({      
 				      type: 'POST',                        
-				      url: 'db_login.php',
+				      url: 'settings.php',
 				      data: 
 				      { 
-				        func_id : "1",
+				        func_id : "2",
 				        uname : uname,
 				        pword : pword,
 				        firstname : firstname,
@@ -130,6 +130,17 @@
 			<h3> Get five last purchases </h3>
 			<button id="getLastFivePurchases" onclick="getLastFive()" type="button"> Get Last Five Purchases </button>
 			<br><span id="output"> <br>  </span>
+		</div>
+
+		<div id="addCreditUserDiv">
+			<h3> Add credit to user </h3>
+			<form id="addCreditUserForm">
+				<select name="user">
+					<option value="ervin">Ervin</option>
+				<select>
+				<button onclick="addCredit(user)"> Add credit </button>
+
+			</form>
 		</div>
 
 	</body>

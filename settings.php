@@ -7,10 +7,12 @@ if ($func_id == "0") {
 	addReceipt();
 } elseif ($func_id == "1") {
 	getLastFive();
+} elseif ($func_id == "2") {
+	createUser();
 }
 
 function db_connect() {
-	$db = mysqli_connect("sql3.freesqldatabase.com", "sql368767", "kG4%mU7*", "sql368767");
+	$db = mysqli_connect("sql3.freemysqlhosting.net", "sql369433", "eC1!wM9*", "sql369433");
 	if (mysql_errno()) {
 		printf("Connection failed: %s\n", mysqli_connect_error());
 		exit();
@@ -105,6 +107,25 @@ function getLastFive() {
     mysqli_close($db);
     print json_encode($receipt);   
 }
+
+	/* create a new user to this database if a new user is created in the API */
+    function createUser() {
+      $db = db_connect();
+      $uname = mysqli_real_escape_string($db, $_POST['uname']);
+      $pword = mysqli_real_escape_string($db, $_POST['pword']);
+      $firstname = mysqli_real_escape_string($db, $_POST['firstname']);
+      $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
+      $email = mysqli_real_escape_string($db, $_POST['email']);
+      $phone = mysqli_real_escape_string($db, $_POST['phone']);
+      $password = md5($pword);
+      $sql = "INSERT INTO users(credentials, password, username, first_name, last_name, email, phone, credit, debt) VALUES (3,'$password','$uname','$firstname','$lastname','$email','$phone',0,0)";
+      if (mysqli_query($db, $sql)) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($db);
+      }
+      mysqli_close($db);
+    }
 
 
 
