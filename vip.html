@@ -6,13 +6,6 @@
 		<link rel="shortcut icon" href="images/start/logo.png" />
 		<script src="js/inventoryaccess.js"></script>
 		<script language="javascript" type="text/javascript" src="jquery.js"></script>
-        <script>
-            var credential = '<%=Session["credentials"] %>';
-            if(credential==null)
-            {
-                self.location='index.html';
-            }
-        </script>
 	<script>
 
     /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
@@ -38,9 +31,6 @@
         $("#result").hide();
     }
 
-    function logout(){
-    	self.location="index.html";
-    }
 
     </script>
 

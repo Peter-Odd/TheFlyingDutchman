@@ -43,15 +43,25 @@ input:-moz-placeholder { color: white; }
 #loggedInUser {
 	position: absolute;
 	top: -15px;
-	left: 30px;
+	left: 96px;
 }
-
+#loggedInUser1
+{
+    position: absolute;
+    top: -15px;
+    left: 30px;
+}
 #userCredit {
 	position: absolute;
 	top: 5px;
-	left: 30px;
+	left: 96px;
 }
-
+#userCredit1
+{
+    position: absolute;
+    top: 5px;
+    left: 30px;
+}
 #header_right {
 	float: left;
 	width: 580px;

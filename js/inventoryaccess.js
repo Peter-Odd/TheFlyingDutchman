@@ -129,8 +129,8 @@ function httpGetAsync(url, callback_success, callback_error) {
 function getUsernameAndCredit() {
 	httpGetAsync(api+'iou_get',
 		function callback_success(data) {
-			document.getElementById("loggedInUser").innerHTML = "Welcome " + data.payload[0].first_name + " " + data.payload[0].last_name;
-			document.getElementById("userCredit").innerHTML = "Credit: " + data.payload[0].assets + " sek.";
+			document.getElementById("loggedInUser").innerHTML = data.payload[0].first_name + " " + data.payload[0].last_name;
+			document.getElementById("userCredit").innerHTML = data.payload[0].assets + " sek.";
 		},
 		function callback_error(data) {
 		});

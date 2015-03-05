@@ -13,11 +13,6 @@
         <script src="js/translate.js"></script>
 
         <script>
-            var credential = '<%=Session["credentials"] %>';
-            if(credential==null)
-            {
-                self.location='index.html';
-            }
 
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
@@ -66,9 +61,6 @@
 		        $("#result").hide();
 		    }
 
-		    function logout(){
-		    	self.location="index.html";
-		    }
 
 	    </script>
 
@@ -92,24 +84,24 @@
 
 			<div id="menu">
 				<table>
-					<tr class="menuBtn"><td>All Beers</td></tr>
-					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
+					<tr class="menuBtn" data-i18n="menuBtn.allbeers"><td>All Beers</td></tr>
+					<tr class="menuBtn" data-i18n="menuBtn.purchases"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
 					
 				</table>
 			</div>
 			
-			<div id="main"> Welcome to the Flying Dutchman </div>
+			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
 			
-			<div id="order"><h4> ORDER LIST </h4>
-				<div id="toporder">
-					<button id="undo" onclick="undo()">UNDO</button>
-					<button id="redo" onclick="redo()">REDO</button>
-					<button id="cancel" onclick="cancelOrder()">CANCEL</button>
+			<div id="order" class="manager" data-i18n="manager.order"><h4> ORDER LIST </h4>
+				<div id="toporder" class="manager">
+					<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
+					<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
+					<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
  				</div>
  			</div>
 			
 			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
-			<button class="orderbutton" id="payBtn" onclick="vip_pay()"> <strong>PAY</strong> </button>
+			<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
 	</body>
 
 </html>
