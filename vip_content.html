@@ -13,13 +13,10 @@
         <script src="js/translate.js"></script>
 
         <script>
-<<<<<<< HEAD
             var credential = '<%=Session["credentials"] %>';
             if(credential==null) {
                 self.location='index.html';
             }
-=======
->>>>>>> origin/master
 
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
@@ -134,49 +131,30 @@
 			</div>
 			
 <<<<<<< HEAD
-			<div id="main"> Welcome to the Flying Dutchman </div>
+			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
 			
-			<div id="order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
+			<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
 				<div id="toporder">
-					<button id="undo" onclick="undo()">UNDO</button>
-					<button id="redo" onclick="redo()">REDO</button>
-					<button id="cancel" onclick="cancelOrder()">CANCEL</button>
+					<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
+					<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
+					<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
  				</div>
 				<div id="orderlist" ondrop="drop(event)" ondragover="allowDrop(event)">
 					Nothing
 					Nothing
 				</div>
  			</div>
-=======
-			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
-<<<<<<< HEAD
 
-        <div id="toporder">
-            <button id="undo" onclick="undo()">UNDO</button>
-            <button id="redo" onclick="redo()">REDO</button>
-            <button id="cancel" onclick="cancelOrder()">CANCEL</button>
-        </div>
-        <div id="order">
+			<div id="order">
 
-            <!-- Placeholder for popup -->
-            <div id="info">
-                <div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
-                <iframe id="beerPopup" src="beerinfo.html"></iframe>
-            </div>
-            <div id="backgroundShadow"></div>
-            </div>
->>>>>>> origin/master
-=======
-			
-			<div id="order" class="manager" data-i18n="manager.order"><h4> ORDER LIST </h4>
-				<div id="toporder" class="manager">
-					<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO </button>
-					<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
-					<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
- 				</div>
- 			</div>
->>>>>>> parent of 06bd2b6... conflict back
-			
+				<!-- Placeholder for popup -->
+				<div id="info">
+					<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
+					<iframe id="beerPopup" src="beerinfo.html"></iframe>
+				</div>
+            
+				<div id="backgroundShadow"></div>
+			</div>			
 			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
 			<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
 	</body>
