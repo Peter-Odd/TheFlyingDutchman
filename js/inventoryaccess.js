@@ -127,6 +127,8 @@ function httpGetAsync(url, callback_success, callback_error) {
 
 /* Used to set first and lastname + credit for that user in header on main page - WORKS */
 function getUsernameAndCredit() {
+	console.log(username);
+	console.log(password);
 	httpGetAsync(api+'iou_get',
 		function callback_success(data) {
 			document.getElementById("loggedInUser").innerHTML = data.payload[0].first_name + " " + data.payload[0].last_name;
@@ -483,7 +485,6 @@ function deleteFromlist(txt) {
 
 
 				$('.deleteButton').on('click',function(){ 
-					alert("hej");
 					$(this).parent('div.beerButtonOrder').remove();
 				});
 

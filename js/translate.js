@@ -7,6 +7,8 @@ i18n.init({lng: window.language } , function(t) {
   $(".menuBtn").i18n();
     $(".orderbutton").i18n();
 
+    // document.getElementById('iframeID').contentWindow.document.getElementById('idinsideiframe')
+
   // programatical access
   var appName = t("index.title");
 });
