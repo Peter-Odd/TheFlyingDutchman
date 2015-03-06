@@ -16,7 +16,6 @@ body {
 :-ms-input-placeholder { color: white; } /* ie */
 input:-moz-placeholder { color: white; }
 
-
 #logosearch {
 	position: absolute;
 	left: 1px;
