@@ -24,9 +24,10 @@
     "orderbutton":{
         "pay":"PAY"
     },
-    "content":{
-        "allbeers":"All Beers",
-        "purchases":"Recent purchases"
+    "vip_content":{
+        "menuBtn":[
+            "<td>All Beers</td>"
+        ]
     },
     "index": {
         "title": "The Flying Dutchman"

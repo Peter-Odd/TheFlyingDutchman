@@ -24,9 +24,10 @@
     "orderbutton":{
         "pay":"BETALA"
     },
-    "content":{
-        "allbeers":"000000",
-        "purchases":"000000"
+    "vip_content":{
+        "menuBtn":[
+            "<td>All Beers</td>"
+        ]
     },
     "index": {
         "title": "The Flying Dutchman"
