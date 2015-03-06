@@ -2,29 +2,29 @@
     "manager": {
         "title":"The Flying Dutchman",
         "welcome":"Välkommen till The Flying Dutchman",
-        "order":"needs SV",
-        "undo":"needs SV",
-        "redo":"needs SV",
-        "cancel":"needs SV",
-        "userinfo":"needs SV ",
-        "usercredit":"needs SV:",
-        "footer":"needs SV 2015"
+        "order":"ATT BESTÄLLA",
+        "undo":"ÅNGRA",
+        "redo":"GÖR OM",
+        "cancel":"RENSA",
+        "userinfo":"Välkommen ",
+        "usercredit":"Till godo:",
+        "footer":"The Flying Dutchman. Uppsalas bäst bar!"
     },
     "button":{
-        "logout":"needs SV",
-        "about":"needs SV",
-        "settings":"needs SV",
-        "help":"needs SV",
-        "home":"needs SV"
+        "logout":"AVSLUTA",
+        "about":"OM",
+        "settings":"INSTÄLLNINGAR",
+        "help":"HJÄLP",
+        "home":"HEM"
     },
     "menuBtn":{
-        "allbeers":"needs SV",
-        "purchases":"needs SV"
+        "allbeers":"Alla öl",
+        "purchases":"Senaste köp"
     },
     "orderbutton":{
-        "pay":"needs SV"
+        "pay":"BETALA"
     },
     "index": {
-        "title": "needs SV"
+        "title": "The Flying Dutchman"
     }
 }
