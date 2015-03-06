@@ -6,7 +6,7 @@ i18n.init({lng: window.language } , function(t) {
   $(".button").i18n();
   $(".menuBtn").i18n();
     $(".orderbutton").i18n();
-
+    $(".content").i18n();
     // document.getElementById('iframeID').contentWindow.document.getElementById('idinsideiframe')
 
   // programatical access
@@ -23,6 +23,7 @@ function changeLanguage(){
   $(".button").i18n();
             $(".menuBtn").i18n();
             $(".orderbutton").i18n();
+            $(".content").i18n();
 
   // programatical access
   var appName = t("index.title");
@@ -35,6 +36,7 @@ function changeLanguage(){
   $(".button").i18n();
             $(".menuBtn").i18n();
             $(".orderbutton").i18n();
+            $(".content").i18n();
   // programatical access
   var appName = t("index.title");
 });
