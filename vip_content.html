@@ -1,30 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>The Flying Dutchman</title>
-		<link rel="stylesheet" href="css/tfd_vip.css">
-		<!-- <link rel="stylesheet" href="css/tfd_bartender_content_tmp.css"> -->
-		<script src="js/inventoryaccess.js"></script>
-		<link rel="shortcut icon" href="images/start/logo.png" />
-        <script src="js/jquery.js"></script>
-		<script src="jquery.js"></script>
+        <title>The Flying Dutchman</title>
+        <link rel="stylesheet" href="css/tfd_vip.css">
+        <!-- <link rel="stylesheet" href="css/tfd_bartender_content_tmp.css"> -->
+        <script src="js/inventoryaccess.js"></script>
+        <link rel="shortcut icon" href="images/start/logo.png" />
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js/i18next.js"></script>
         <script src="js/i18next.min.js"></script>
         <script src="js/translate.js"></script>
 
         <script>
-            var credential = '<%=Session["credentials"] %>';
-            if(credential==null) {
-                self.location='index.html';
-            }
-
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
-		        if (str.length == 0) { 
+		        if (str.length == 0) {
 		            document.getElementById("main").innerHTML = "";
 		            return;
 		        }
-				
+
 				else {
 		            var xmlhttp = new XMLHttpRequest();
 		            xmlhttp.onreadystatechange = function() {
@@ -37,17 +32,15 @@
 							var beerName = element.innerHTML;
 							var stock = getBeer(beerName)[2];
 							var escapedBeerName = beerName.replace(/\'/g, '&apos');
-							// console.log(escapedBeerName);
-							// console.log(getBeer(beerName)[1]);
 
 							if (stock < 1) {
-								$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+                                $('#main').html('<div class="beerWrapper"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 							}
 							else if(stock < 10) {
-								$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+                                $('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 							}
 							else {
-								$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+escapedBeerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+                                $('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 							}
 							tmphtml = $('#main').html();
 						}
@@ -58,17 +51,12 @@
 		        xmlhttp.send();
 		    }
 
-<<<<<<< HEAD
-		    function getValue(name) {
-		        $("#searchField").val(name);
-		        showHint(name);
-		        $("#result").hide();
-		    }
+		   // function getValue(name) {
+		    //    $("#searchField").val(name);
+		     //   showHint(name);
+		     //   $("#result").hide();
+		    //}
 
-		    function logout(){
-		    	self.location="index.html";
-		    }
-			
 			function allowDrop(ev) {
 				ev.preventDefault();
 			}
@@ -92,33 +80,28 @@
 				document.querySelector('#listan').appendChild(li);
 				beerArray.push(beer);
 			}
-=======
-
-		    function getValue(name) {
-		        $("#searchField").val(name);
-		        showHint(name);
-		        $("#result").hide();
-		    }
-
->>>>>>> origin/master
-
+		    //function getValue(name) {
+		     //   $("#searchField").val(name);
+		     //   showHint(name);
+		     //   $("#result").hide();
+		   // }
 	    </script>
 
 	</head>
 
-	<body>
+    <body onload="getFiveLastPurchases()">
 
 		<div id="logosearch">
 				<div id="ls_left">
-					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/> 
+					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/>
 				</div>
-					
+
 				<div id="ls_main">
-					<img id="magnify" src="images/main/magnify.png" alt=""/> 
+					<img id="magnify" src="images/main/magnify.png" alt=""/>
 					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
 				</div>
-					
-				<div id="ls_right">
+
+                <div id="ls_right"><h4> ORDER LIST </h4>
 				</div>
 			</div>
 
@@ -126,36 +109,30 @@
 				<table>
 					<tr class="menuBtn"><td>All Beers</td></tr>
 					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
-					
+
 				</table>
 			</div>
-			
-<<<<<<< HEAD
-			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
-			
-			<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
-				<div id="toporder">
-					<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
-					<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
-					<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
- 				</div>
-				<div id="orderlist" ondrop="drop(event)" ondragover="allowDrop(event)">
-					Nothing
-					Nothing
-				</div>
- 			</div>
 
-			<div id="order">
+			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
+        <div id="toporder">
+            <button id="undo" onclick="undo()" >UNDO</button>
+            <button id="redo" onclick="redo()" >REDO</button>
+            <button id="cancel" onclick="cancelOrder()">CANCEL</button>
+        </div>
+
+			<div id="order" ondrop="drop(event)" ondragover="allowDrop(event)">
+
 
 				<!-- Placeholder for popup -->
 				<div id="info">
 					<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
 					<iframe id="beerPopup" src="beerinfo.html"></iframe>
 				</div>
-            
+
 				<div id="backgroundShadow"></div>
-			</div>			
+			</div>
 			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
+            <div id="order_total"><div id='total_text'> TOTAL: 0 SEK</div></div>
 			<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
 	</body>
 

@@ -245,15 +245,10 @@ th,td {
    	border:none;
 }
 
-<<<<<<< HEAD
-#orderlist {
-	display: list-item;
-=======
 #order h4 {
 	margin-top: -29%;
 	margin-left: 0%;
 	color: white;
->>>>>>> origin/master
 }
 
 #order {
@@ -298,8 +293,6 @@ th,td {
     border: none;
 }
 
-<<<<<<< HEAD
-=======
 
 .beerInfoImage {
 	position: absolute;
@@ -330,7 +323,6 @@ th,td {
 	overflow-y: hidden;
 }
 
->>>>>>> origin/master
 .beerImage {
 	position: absolute;
 	cursor: pointer;

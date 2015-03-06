@@ -1,16 +1,5 @@
 {
     "manager": {
-<<<<<<< HEAD
-        "title":"The Flying Dutchman",
-        "welcome":"Välkommen till The Flying Dutchman",
-        "order":"ATT BESTÄLLA",
-        "undo":"ÅNGRA",
-        "redo":"GÖR OM",
-        "cancel":"RENSA",
-        "userinfo":"Välkommen ",
-        "usercredit":"Till godo:",
-        "footer":"The Flying Dutchman. Uppsalas bäst bar!"
-=======
         "title":"needs SV",
         "welcome":" needs SV ",
         "order":"needs SV",
@@ -20,7 +9,6 @@
         "userinfo":"needs SV ",
         "usercredit":"needs SV:",
         "footer":"needs SV 2015"
->>>>>>> parent of b009be1... VIP beer buy now works
     },
     "button":{
         "logout":"AVSLUTA",
