@@ -206,6 +206,12 @@ th,td {
 	text-align: left;
 }
 
+#order h4 {
+	margin-top: -30px;
+	margin-left: 0px;
+	color: white;
+}
+
 #toporder {
 	background: rgba(17, 24, 27, 0.3);
 	border-top-left-radius: 15px;
@@ -262,10 +268,8 @@ th,td {
    	border:none;
 }
 
-#order h4 {
-	margin-top: -30px;
-	margin-left: 0px;
-	color: white;
+#orderlist {
+	display: list-item;
 }
 
 .orderbutton {	
@@ -283,9 +287,6 @@ th,td {
 	border-bottom-right-radius: 15px;
     border: none;
 }
-
-
-
 
 .beerImage {
 	cursor: pointer;

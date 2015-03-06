@@ -10,8 +10,7 @@
 
         <script>
             var credential = '<%=Session["credentials"] %>';
-            if(credential==null)
-            {
+            if(credential==null) {
                 self.location='index.html';
             }
 
@@ -55,7 +54,6 @@
 		        xmlhttp.send();
 		    }
 
-
 		    function getValue(name) {
 		        $("#searchField").val(name);
 		        showHint(name);
@@ -65,6 +63,30 @@
 		    function logout(){
 		    	self.location="index.html";
 		    }
+			
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+
+			function drag(ev) {
+				ev.dataTransfer.setData("text", ev.target.id);
+			}
+
+			function drop(ev) {
+				ev.preventDefault();
+				//var data = ev.dataTransfer.getData("text");
+				//ev.target.appendChild(document.getElementById(data));
+				var li = document.createElement('li');
+				li.textContent = event.dataTransfer.getData('text');
+				document.querySelector('#listan').appendChild(li);
+			}
+
+			function clicked(beer) {
+				var li = document.createElement("li");
+				li.textContent = beer;
+				document.querySelector('#listan').appendChild(li);
+				beerArray.push(beer);
+			}
 
 	    </script>
 
@@ -74,7 +96,7 @@
 
 		<div id="logosearch">
 				<div id="ls_left">
-					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt=""/> 
+					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/> 
 				</div>
 					
 				<div id="ls_main">
@@ -96,12 +118,16 @@
 			
 			<div id="main"> Welcome to the Flying Dutchman </div>
 			
-			<div id="order"><h4> ORDER LIST </h4>
+			<div id="order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
 				<div id="toporder">
 					<button id="undo" onclick="undo()">UNDO</button>
 					<button id="redo" onclick="redo()">REDO</button>
 					<button id="cancel" onclick="cancelOrder()">CANCEL</button>
  				</div>
+				<div id="orderlist" ondrop="drop(event)" ondragover="allowDrop(event)">
+					Nothing
+					Nothing
+				</div>
  			</div>
 			
 			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
