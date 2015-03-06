@@ -28,9 +28,13 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67713004" vertical-offset="843" max-vertical-offset="1512">
-              <caret line="72" column="28" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.51121074" vertical-offset="0" max-vertical-offset="2286">
+              <caret line="19" column="200" selection-start-line="19" selection-start-column="200" selection-end-line="19" selection-end-column="200" />
+              <folding>
+                <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,17 +43,7 @@
         <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2358">
-              <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vip_content.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vip_content.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-86.53846" vertical-offset="0" max-vertical-offset="2466">
-              <caret line="125" column="49" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
+              <caret line="118" column="25" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -782,27 +776,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
+    <entry file="file://$PROJECT_DIR$/vip_content.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2358">
-          <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+        <state vertical-scroll-proportion="2.6950672" vertical-offset="447" max-vertical-offset="2466">
+          <caret line="125" column="49" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vip_content.html">
+    <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-86.53846" vertical-offset="0" max-vertical-offset="2466">
-          <caret line="125" column="49" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2358">
+          <caret line="118" column="25" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67713004" vertical-offset="843" max-vertical-offset="1512">
-          <caret line="72" column="28" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="28" />
-          <folding />
+        <state vertical-scroll-proportion="0.51121074" vertical-offset="0" max-vertical-offset="2286">
+          <caret line="19" column="200" selection-start-line="19" selection-start-column="200" selection-end-line="19" selection-end-column="200" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
