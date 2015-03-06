@@ -88,7 +88,7 @@
 		.rect {
 			width: 100px;
 			height: 125px;
-			background: rgb(0,22,53);
+			background: /*rgb(0,22,53)*/ black;
 			margin: 20px;
 			display: inline-block;
 			border-radius: 5px;
@@ -143,9 +143,9 @@
 		}
 
 		function drag(ev) {
-			ev.dataTransfer.setData("text", ev.target.alt);
+			ev.dataTransfer.setData("text", ev.target.id);
 		}
-
+	
 		function drop(ev) {
 			ev.preventDefault();
 			var li = document.createElement('li');
@@ -202,7 +202,7 @@
 				<div class="rect"><img onclick="clicked(alt);" ondragstart="drag(event)" id="Beer9" src="images/beer3.png" alt="Guiness"></div>
 
 				<div id="drophere"  ondrop="drop(event)" ondragover="allowDrop(event)">
-					<ul id="listan"></ul>
+					<ul id="listan" ></ul>
 				</div>
 			</div>
 			<div id="footer">Footer</div>
