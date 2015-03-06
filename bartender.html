@@ -6,13 +6,6 @@
 		<link rel="shortcut icon" href="images/start/logo.png"/>
 		<script src="js/inventoryaccess.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script>
-            var credential = '<%=Session["credentials"] %>';
-            if(credential==null||credential==3)
-            {
-                self.location='index.html';
-            }
-        </script>
 
 		<script>
 		function showHint(str, choice) {
@@ -138,11 +131,6 @@
 				<img id="logo_noship" src="images/main/tfd_logo_noship.png" alt=""/>
 			</div> -->
 		</div>
-    <script>
-        function logout(){
-            self.location="logout.php";
-        }
-    </script>
 	</body>
 
 </html>

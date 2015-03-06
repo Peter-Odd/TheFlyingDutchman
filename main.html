@@ -1,43 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>The Flying Dutchman</title>
+		<title class="manager" data-i18n="manager.title">The Flying Dutchman</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/tfd_main.css">
 		<link rel="shortcut icon" href="images/start/logo.png" />
+        <script src="js/jquery.js"></script>
 		<script src="js/menu.js"></script>
 		<script src="js/inventoryaccess.js"></script>
-		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<!--<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>-->
+        <script src="js/i18next.js"></script>
+        <script src="js/i18next.min.js"></script>
+        <script src="js/translate.js"></script>
 
 	</head>
 
 	<body onload="getUsernameAndCredit()">
-		<div id="wrapper"> 
+		<div id="wrapper">
 			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" />
 			<div id="header">
 				<div id="header_left">
-					<h5 id="loggedInUser"> Loading user & credit information... </h5>
-					<h5 id="userCredit"> </h5>
+                    <h5 id="loggedInUser"></h5>
+					<h5 id="loggedInUser1" class="manager" data-i18n="manager.userinfo"> Loading user & credit information... </h5>
+                    <h5 id="userCredit"></h5>
+					<h5 id="userCredit1" class="manager" data-i18n="manager.usercredit"> </h5>
 				</div>
 				<div id="header_right">
-					<button class="button" id="logoutBtn" onclick="logout()">LOG OUT</button>
-					<button class="button" id="aboutBtn" onclick="about()">ABOUT</button>
-					<button class="button" id="settingsBtn" onclick="settings()">SETTINGS</button>
-					<button class="button" id="helpBtn" onclick="help()">HELP</button>
-					<button class="button" id="homeBtn" onclick="home()">HOME</button> 
+					<button class="button" id="logoutBtn" onclick="logout()" data-i18n="button.logout">LOG OUT</button>
+					<button class="button" id="aboutBtn" onclick="about()" data-i18n="button.about">ABOUT</button>
+					<button class="button" id="settingsBtn" onclick="settings()" data-i18n="button.settings">SETTINGS</button>
+					<button class="button" id="helpBtn" onclick="help()" data-i18n="button.help">HELP</button>
+					<button class="button" id="homeBtn" onclick="home()" data-i18n="button.home">HOME</button>
 					<!-- THIS SHOULD BE REMOVED ONLY FOR TESTING --><button class="button" onclick="bartender()">BARTENDER</button>
 				</div>
 				<div id="language">
-					<img src="images/main/swedish.png" onclick="swedish()">
-					<img src="images/main/english.png" onclick="english()">
+					<img src="images/main/flags.png" onclick="changeLanguage()">
+
 				</div>
 			</div>
 			
-			<iframe id="content" src="vip_content.html"> You can't display iframes... </iframe>
+			<iframe id="content" src="vip_content.html" class="content"> You can't display iframes... </iframe>
 			<!-- <iframe id="content" src="bartender_content.html"></iframe> -->
 
-			<div id="footer"> 
-				&copy; The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015 
+			<div id="footer" class="manager" data-i18n="manager.footer">
+				&copy; The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit.2015
 				<img id="logo_noship" src="images/main/tfd_logo_noship.png" alt=""/>
 			</div>
 		</div>

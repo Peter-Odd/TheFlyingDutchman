@@ -127,10 +127,12 @@ function httpGetAsync(url, callback_success, callback_error) {
 
 /* Used to set first and lastname + credit for that user in header on main page - WORKS */
 function getUsernameAndCredit() {
+	console.log(username);
+	console.log(password);
 	httpGetAsync(api+'iou_get',
 		function callback_success(data) {
-			document.getElementById("loggedInUser").innerHTML = "Welcome " + data.payload[0].first_name + " " + data.payload[0].last_name;
-			document.getElementById("userCredit").innerHTML = "Credit: " + data.payload[0].assets + " sek.";
+			document.getElementById("loggedInUser").innerHTML = data.payload[0].first_name + " " + data.payload[0].last_name;
+			document.getElementById("userCredit").innerHTML = data.payload[0].assets + " sek.";
 		},
 		function callback_error(data) {
 		});
@@ -189,21 +191,31 @@ function getFiveLastPurchases() {
 			}
 			var tmphtml = "";
 			for(a = 0; a < 5; a++){			 		
-				var txt = uniqueLastFive[a];
-				var stock = getBeer(txt)[2];
-				var beerName = txt.replace(/\'/g, '&apos');
+				var beerName = uniqueLastFive[a];
+				var stock = getBeer(beerName)[2];
+				// var beerName = element.innerHTML;
+				var escapedBeerName = beerName.replace(/\'/g, '&apos');
 
 						// = $('#main').html();
+				if (stock < 1) {
+					$('#main').html('<div class="beerWrapper"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				else if(stock < 10) {
+					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				else {
+					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
 
-						if (stock < 1) {
-							$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
-						}
-						else if(stock < 10) {
-							$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
-						}
-						else {
-							$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
-						}
+						// if (stock < 1) {
+						// 	$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
+						// }
+						// else if(stock < 10) {
+						// 	$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+						// }
+						// else {
+						// 	$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
+						// }
 						tmphtml = $('#main').html();
 					}
 				},
@@ -472,9 +484,9 @@ function deleteFromlist(txt) {
 					};
 
 
-					$('.deleteButton').on('click',function(){ 
-						$(this).parent('div.beerButtonOrder').remove();
-					});
+				$('.deleteButton').on('click',function(){ 
+					$(this).parent('div.beerButtonOrder').remove();
+				});
 
 					/* INCREASE INPUT WHEN + IS CLICKED*/
 		/*	$(".incButton").on("click",function() {
@@ -533,7 +545,7 @@ function cancelOrder() {
 
 			orderArr.splice("", orderArr.length);
 			$('#order').html("<div class='order'></div><br>");
-			$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
+			$('#order_total').html("<div id='total_text'>TOTAL: 0 SEK</div>"); 
 			sum = 0;
 		}
 	}
@@ -698,5 +710,23 @@ function cancelOrder() {
 	}
 
 
+	/* Generates popup for beer details */
+	function getInfo(beer) {
+				var htmlStr = "";
+				var tmp = getDetailedBeerInfo(beer);
+				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>';
 
+				
+			$('.beerInfoImage').on("click",function() {
+					$('#backgroundShadow').css({opacity:0.7});
+					$('#backgroundShadow').fadeIn(100);
+					$('#info').fadeIn(300);
+					
+					return false;
+				});
+				
+				$('#backgroundShadow, #close').on("click",function() {
+					$('#backgroundShadow, #info').fadeOut(300);	
+				});
+			}
 

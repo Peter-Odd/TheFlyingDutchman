@@ -128,21 +128,21 @@ ob_start();
     {
         header("Location: index.html");
     }
-    /* create a new user to this database if a new user is created in the API */
-    function createUser() {
-      $db = db_connect();
-      $uname = mysqli_real_escape_string($db, $_POST['uname']);
-      $pword = mysqli_real_escape_string($db, $_POST['pword']);
-      $firstname = mysqli_real_escape_string($db, $_POST['firstname']);
-      $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
-      $email = mysqli_real_escape_string($db, $_POST['email']);
-      $phone = mysqli_real_escape_string($db, $_POST['phone']);
-      $password = md5($pword);
-      $sql = "INSERT INTO users(credentials, password, username, first_name, last_name, email, phone, credit, debt) VALUES (3,'$password','$uname','$firstname','$lastname','$email','$phone',0,0)";
-      if (mysqli_query($db, $sql)) {
-        echo "New record created successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($db);
-      }
-      mysqli_close($db);
-    }
+    // /* create a new user to this database if a new user is created in the API */
+    // function createUser() {
+    //   $db = db_connect();
+    //   $uname = mysqli_real_escape_string($db, $_POST['uname']);
+    //   $pword = mysqli_real_escape_string($db, $_POST['pword']);
+    //   $firstname = mysqli_real_escape_string($db, $_POST['firstname']);
+    //   $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
+    //   $email = mysqli_real_escape_string($db, $_POST['email']);
+    //   $phone = mysqli_real_escape_string($db, $_POST['phone']);
+    //   $password = md5($pword);
+    //   $sql = "INSERT INTO users(credentials, password, username, first_name, last_name, email, phone, credit, debt) VALUES (3,'$password','$uname','$firstname','$lastname','$email','$phone',0,0)";
+    //   if (mysqli_query($db, $sql)) {
+    //     echo "New record created successfully";
+    //   } else {
+    //     echo "Error: " . $sql . "<br>" . mysqli_error($db);
+    //   }
+    //   mysqli_close($db);
+    // }

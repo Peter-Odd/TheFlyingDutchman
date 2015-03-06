@@ -8,7 +8,7 @@
         "cancel":"CANCEL",
         "userinfo":"Welcome ",
         "usercredit":"Credit:",
-        "footer":"The Flying Dutchman. The best bar in Uppsala!"
+        "footer":"The Flying Dutchman. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2015"
     },
     "button":{
         "logout":"LOG OUT",
@@ -23,10 +23,6 @@
     },
     "orderbutton":{
         "pay":"PAY"
-    },
-    "content":{
-        "allbeers":"All Beers",
-        "purchases":"Recent purchases"
     },
     "index": {
         "title": "The Flying Dutchman"
