@@ -115,11 +115,11 @@ body
 {
     height: 270px;
     width: 270px;
-    opacity: .8;
+    /*opacity: .8;*/
     padding-bottom: 50px;
-    background-image: url("../images/start/tfd_logo_beer.png");
+    /*background-image: url("../images/start/tfd_logo_beer.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain;*/
     margin:0 auto;
 }
