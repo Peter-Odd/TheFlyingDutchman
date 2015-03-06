@@ -482,9 +482,10 @@ function deleteFromlist(txt) {
 					};
 
 
-					$('.deleteButton').on('click',function(){ 
-						$(this).parent('div.beerButtonOrder').remove();
-					});
+				$('.deleteButton').on('click',function(){ 
+					alert("hej");
+					$(this).parent('div.beerButtonOrder').remove();
+				});
 
 					/* INCREASE INPUT WHEN + IS CLICKED*/
 		/*	$(".incButton").on("click",function() {
