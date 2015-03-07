@@ -82,17 +82,19 @@ function getBeerCountry(name) {
 	return JSON.parse(sessionStorage[name])[3];
 }
 
-/* Buy a beer.. now it buys two. Why?! - DOESN'T WORK */
+/* Buy a beer.. now it buys two - problems in the API -  WORKS but buys two */
 function buyBeer(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
-
-	httpGet(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
+	// console.log(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1]);
+	httpGetAsync(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
 		function callback_success(data) {
 			console.log("You just bought yourself a beer!");
 					//subtract beer count for name by 1
 				}, function callback_error(data) {
 					console.log('An error occurred: ' + data);
 				});
+	sessionStorage.clear();
+	createInventory();
 }
 /* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
 
@@ -154,12 +156,33 @@ function getBeerImage(str, choice) {
 	}
 }
 
-function getBeerByCountry(countryName) {
-	document.getElementById("main").innerHTML = countryName;
+/* List all beers and show in main div */
+function getAllBeers() {
+	$('#search').val("");
+	if (sessionStorage.length == 0) { createInventory() }
+	var tmphtml = "";
+	for (var i = sessionStorage.length-1; i >= 0; i--) {
+		// console.log(sessionStorage.getItem(sessionStorage.key(i)));
+		var stock = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+		stock = stock[2];
+		// console.log("stock: " + stock);
+		var beerName = sessionStorage.key(i);
+		var escapedBeerName = beerName.replace(/\'/g, '&apos');
+		if (stock > 1) {
+			if(stock < 10) {
+				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+			}
+			else {
+				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+			}
+			tmphtml = $('#main').html();
+		}
+	};
+		
+
 }
 
-
-/* Get the five last purchases for a user - NOT WORKING */
+/* Get the five last purchases for a user */
 function getFiveLastPurchases() {
 	$('#search').val("");
 
@@ -194,7 +217,6 @@ function getFiveLastPurchases() {
 				// var beerName = element.innerHTML;
 				var escapedBeerName = beerName.replace(/\'/g, '&apos');
 
-						// = $('#main').html();
 				if (stock < 1) {
 					$('#main').html('<div class="beerWrapper"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
@@ -204,17 +226,7 @@ function getFiveLastPurchases() {
 				else {
 					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
-
-						// if (stock < 1) {
-						// 	$('#main').html('<div class="beerImageEmptyStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div>'+tmphtml);
-						// }
-						// else if(stock < 10) {
-						// 	$('#main').html('<div class="beerImageLowStock" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
-						// }
-						// else {
-						// 	$('#main').html('<div class="beerImage" style="background-image: url(images/beersearch/'+getBeer(beerName)[1]+'.png)" onclick="placeOrder(\''+beerName+'\')"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5><img src="images/misc/info_bw.png" onclick="getInfo('+beerName+')"></div>'+tmphtml);
-						// }
-						tmphtml = $('#main').html();
+					tmphtml = $('#main').html();
 					}
 				},
 				function callback_error(data) {

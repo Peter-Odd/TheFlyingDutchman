@@ -7,96 +7,14 @@
 		<script src="js/admin_settings.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
-		<script>
-			/* Validate email address */
-			function validateEmail(email, htmlresult) { 
-    			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    			if (htmlresult == '1') {
-	    			if (re.test(email))
-	    				document.getElementById("resultemail").innerHTML = "<img class='valid' src='images/settings/valid.png' alt='Email valid' title='Email valid'>";
-	    			else 
-	    				document.getElementById("resultemail").innerHTML = "<img class='valid' src='images/settings/notvalid.png' alt='Email not valid' title='Email not valid'>";
-	    		} else 
-	    			return re.test(email);
-			} 
-
-			/* Validate phone */
-			function validatePhone(phone, htmlresult) {
-				re = /^\+?(0|[0-9]\d*)$/;;
-				if (htmlresult == '1') {
-					if (re.test(phone))
-	    				document.getElementById("resultphone").innerHTML = "<img class='valid' src='images/settings/valid.png' alt='Phone number valid' title='Phone number valid'>";
-	    			else 
-	    				document.getElementById("resultphone").innerHTML = "<img class='valid' src='images/settings/notvalid.png' alt='Phone number not valid' title='Phone number not valid (Valid format [+][0-9])'>";
-	    		} else 
-	    			return re.test(phone);
-			}
-
-			/* Create a new user - WORKS, BUT THERE IS NO WAY TO ADD CREDIT TO A USER IN THE API */
-			function createNewUser(new_username, new_password, re_password, first_name, last_name, email, phone) {
-				httpGetAsync(api+'user_edit&new_username='+new_username+'&new_password='+new_password+'&first_name='+first_name+'&last_name='+last_name+'&email='+email+'&phone='+phone, 
-					function callback_success() { 
-						return true;
-					}, 
-					function callback_error(data) {
-						console.log('An error occurred: ' + data);
-					});
-			}
-
-			/* Used to validate password, email and phone before the real API-function gets called */
-			function callCreateNewUser(uname, pword, re_password, firstname, lastname, email, phone) {
-				if ( (pword == re_password) && (validateEmail(email, '0')) && (validatePhone(phone, '0')) ) {
-					console.log("It works");
-					//uncomment row below before presentation
-					//createNewUser(uname, pword, re_password, firstname, lastname, email, phone)
-					//CALL createUser in db_login.php to create user in our local DB as well
-					$.ajax({      
-				      type: 'POST',                        
-				      url: 'settings.php',
-				      data: 
-				      { 
-				        func_id : "2",
-				        uname : uname,
-				        pword : pword,
-				        firstname : firstname,
-				        lastname : lastname,
-				        email : email,
-				        phone : phone 
-				      },                        
-				      dataType: 'json'
-				    });
-				} else 
-					console.log("Either not matching password-fields, incorrect email or phone");
-			}
-
-			/* Queries the db for five last receipts */
-			function getLastFive() {
-				$('#output').html('<br> Receipts are being loaded...');
-			    $.ajax({      
-			      type: 'POST',                        
-			      url: 'settings.php',
-			      data: { 
-			        func_id : "1" 
-			      },                        
-			      dataType: 'json',
-			      success: function(data) {
-			      	if (data.status == 'success') {
-			      		$('#output').html('<br>'+data[0]+'<br> '+data[1]+'<br> '+data[2]+'<br> '+data[3]+'<br> '+data[4]+'');
-			      	} else {
-			      		console.log("db query not correct");	
-			      	}
-			      }
-			    });
-  			}
-
-		</script>
+		
 	</head>
 
 	<body>
-		<p>THIS IS THE ADMIN SETTING PAGE... not aesthetically nice but...</p>
+		<div id="settingHeader"><strong>SETTINGS</strong></div>
 
 		<div id="createNewUser">
-			<h3> Create a new user </h3>
+			<h4> CREATE A NEW USER </h4>
 			<form id="newUserForm">
 				<label for="firstname">Enter first name</label>	<br>
 				<input id="firstname" type="text" placeholder="Enter first name" required>
@@ -127,20 +45,21 @@
 		</div>
 
 		<div id="getLastFive">
-			<h3> Get five last purchases </h3>
+			<h4> GET FIVE LAST PURCHASES </h4>
 			<button id="getLastFivePurchases" onclick="getLastFive()" type="button"> Get Last Five Purchases </button>
 			<br><span id="output"> <br>  </span>
 		</div>
 
 		<div id="addCreditUserDiv">
-			<h3> Add credit to user </h3>
+			Since we can't add credit to a user in the API I suggest we skip this feature.
+			<!-- <h4> ADD CREDIT TO USER </h4>
 			<form id="addCreditUserForm">
 				<select name="user">
 					<option value="ervin">Ervin</option>
 				<select>
 				<button onclick="addCredit(user)"> Add credit </button>
 
-			</form>
+			</form> -->
 		</div>
 
 	</body>
