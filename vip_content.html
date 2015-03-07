@@ -11,7 +11,6 @@
         <script src="js/i18next.js"></script>
         <script src="js/i18next.min.js"></script>
         <script src="js/translate.js"></script>
-
         <script>
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
@@ -45,7 +44,6 @@
 							tmphtml = $('#main').html();
 						}
 					}
-
 				}
 		        xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
 		        xmlhttp.send();
@@ -87,8 +85,9 @@
 				<img id="magnify" src="images/main/magnify.png" alt=""/> 
 				<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
 			</div>
-		
+
 			<div id="ls_right">
+				<h4> MY ORDER LIST </h4>
 			</div>
 		</div>
 
@@ -109,31 +108,27 @@
 			<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
  		</div>
 		
-		<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
+		<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)">
+		
+			<h4> MY ORDER LIST </h4>
 		
 			<div id="orderlist" ondrop="drop(event)" ondragover="allowDrop(event)">
 				Nothing
 				Nothing
-				<div id="ls_main">
-					<img id="magnify" src="images/main/magnify.png" alt=""/>
-					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
-				</div>
-
-                <div id="ls_right"><h4> ORDER LIST </h4>
-				</div>
 			</div>
 
 			<!-- Placeholder for popup -->
-			<div id="info">
+			<!--<div id="info">
 				<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
 				<iframe id="beerPopup" src="beerinfo.html"></iframe>
 			</div>
 
-			<div id="backgroundShadow"></div>
+			<div id="backgroundShadow"></div>-->
 		</div>
 		
 		<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
         <div id="order_total"><div id='total_text'> TOTAL: 0 SEK</div></div>
+		
 		<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
 		
 	</body>
