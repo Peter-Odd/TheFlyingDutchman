@@ -77,18 +77,12 @@
 	    </script>
 	</head>
 
-<<<<<<< HEAD
-	<body>
-=======
     <body onload="getAllBeers()">
-
->>>>>>> origin/master
 		<div id="logosearch">
-				<div id="ls_left">
-					<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/>
-				</div>
+			<div id="ls_left">
+				<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/>
+			</div>
 
-<<<<<<< HEAD
 			<div id="ls_main">
 				<img id="magnify" src="images/main/magnify.png" alt=""/> 
 				<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
@@ -100,7 +94,7 @@
 
 		<div id="menu">
 			<table>
-				<tr class="menuBtn"><td>All Beers</td></tr>
+				<tr class="menuBtn"><td onclick="getAllBeers()">All available beers</td></tr>
 				<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
 			</table>
 		</div>
@@ -109,17 +103,17 @@
 			Welcome to the Flying Dutchman
 		</div>
 
+		<div id="toporder">
+			<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
+			<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
+			<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
+ 		</div>
+		
 		<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
-			<div id="toporder">
-				<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
-				<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
-				<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
- 			</div>
 		
 			<div id="orderlist" ondrop="drop(event)" ondragover="allowDrop(event)">
 				Nothing
 				Nothing
-=======
 				<div id="ls_main">
 					<img id="magnify" src="images/main/magnify.png" alt=""/>
 					<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
@@ -127,37 +121,20 @@
 
                 <div id="ls_right"><h4> ORDER LIST </h4>
 				</div>
->>>>>>> origin/master
 			</div>
 
-			<div id="menu">
-				<table>
-					<tr class="menuBtn"><td onclick="getAllBeers()">All available beers</td></tr>
-					<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
-
-				</table>
+			<!-- Placeholder for popup -->
+			<div id="info">
+				<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
+				<iframe id="beerPopup" src="beerinfo.html"></iframe>
 			</div>
 
-			<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
-        <div id="toporder">
-            <button id="undo" onclick="undo()" >UNDO</button>
-            <button id="redo" onclick="redo()" >REDO</button>
-            <button id="cancel" onclick="cancelOrder()">CANCEL</button>
-        </div>
-
-			<div id="order" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-
-				<!-- Placeholder for popup -->
-				<div id="info">
-					<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
-					<iframe id="beerPopup" src="beerinfo.html"></iframe>
-				</div>
-
-				<div id="backgroundShadow"></div>
-			</div>
-			<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
-            <div id="order_total"><div id='total_text'> TOTAL: 0 SEK</div></div>
-			<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
+			<div id="backgroundShadow"></div>
+		</div>
+		
+		<!-- <div id="order_total"><h4> TOTAL </h4></div> -->
+        <div id="order_total"><div id='total_text'> TOTAL: 0 SEK</div></div>
+		<button class="orderbutton" id="payBtn" onclick="vip_pay()" data-i18n="orderbutton.pay"> <strong>PAY</strong> </button>
+		
 	</body>
 </html>
