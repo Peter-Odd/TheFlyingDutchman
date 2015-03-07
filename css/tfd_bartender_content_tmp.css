@@ -311,10 +311,19 @@ th,td {
     cursor: pointer;
 }
 
+.order_buttonPrint {
+	background: rgba(17, 24, 27, 0.3);
+	color: white;
+	width: 118px;
+	text-align: center;
+	cursor: pointer;
+	padding: 16px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+    margin-bottom: 1px;
+    border: none;
 
-
-
-
+}
 .order_buttonCredit {
 	/*background-color: red;*/
 	background: rgba(17, 24, 27, 0.3);
@@ -329,6 +338,7 @@ th,td {
     border: none;
 }
 
+/*POPUP RELATED*/
 #info {
 	position:absolute; 
 	left:50%; 
@@ -341,6 +351,7 @@ th,td {
 
 #close img { 
 	position:absolute; 
+	cursor: pointer;
 	width: 25px; 
 	height: 25px; 
 	top:-10px; 
@@ -369,4 +380,9 @@ iframe {
 	width: 510px;
 	height: 315px;
 }
+
+
+
+
+
 

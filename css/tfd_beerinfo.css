@@ -27,3 +27,80 @@ body {
 #amount {
 	margin-right: 5px;
 }
+
+/*POPUP BILL */
+
+.beerButtonOrder {
+	padding: 10px; 
+	border-bottom-color: white;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	width: 350px;
+	height: 20px;
+	display: inline-block;
+}
+
+.orderText {
+	width: 200px;
+	position: absolute;
+	display: inline-block; 
+	padding: 10px;
+	color: white;
+}
+
+.quantity {
+	padding: 10px;
+	position: absolute;
+	left: 250px;
+	width: 50px;
+	color: white;
+	display: inline-block; 
+}
+
+.printButton {
+	position: relative;
+  	left:200px;
+
+}
+
+/*POPUP CREDIT*/
+
+#popupInput{
+	background: white;
+	width: 100px;
+	position: relative;
+	top: 50px;
+	left: 175px;
+	margin-top: 5px;
+}
+
+#popupSubmit {
+	width: 100px;
+	height: 60px;
+	position: relative;
+	top: 50px;
+	left: 80px;
+
+}
+
+#popupText {
+	width: 100%;
+	position: relative;
+	top: 50px;
+	left: 10px;
+	color: white;
+	text-align: center;
+}
+
+#popupButton {
+	background: white;
+	color: black;
+	width: 60px;
+	position: relative;
+	left: 235px;
+	top: 5px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 12px;
+   	border:none;
+}
