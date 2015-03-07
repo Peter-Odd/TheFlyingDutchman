@@ -91,17 +91,10 @@
 				document.querySelector('#listan').appendChild(li);
 				beerArray.push(beer);
 			}
-
-		    function getValue(name) {
-		        $("#searchField").val(name);
-		        showHint(name);
-		        $("#result").hide();
-		    }
 	    </script>
 	</head>
 
 	<body>
-
 		<div id="logosearch">
 			<div id="ls_left">
 				<img id="tfd_logo" src="images/start/tfd_logo_beer.png" alt="" draggable="true" ondragstart="drag(event)"/> 
@@ -123,8 +116,10 @@
 			</table>
 		</div>
 
-		<div id="main" class="manager" data-i18n="manager.welcome"> Welcome to the Flying Dutchman </div>
-			
+		<div id="main" class="manager" data-i18n="manager.welcome">
+			Welcome to the Flying Dutchman
+		</div>
+
 		<div id="order" class="manager" data-i18n="manager.order" ondrop="drop(event)" ondragover="allowDrop(event)"><h4> ORDER LIST </h4>
 			<div id="toporder">
 				<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
