@@ -106,6 +106,7 @@ function getLastFive() {
     }   
     mysqli_close($db);
     print json_encode($receipt);   
+
 }
 
 	/* create a new user to this database if a new user is created in the API */
