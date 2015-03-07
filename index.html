@@ -11,12 +11,14 @@
 	<body>
 		<div id="main">
 			<div id="top"> </div>
-			<div id="logo"></div>
+            <img id="logo" src="images/start/tfd_logo_beer.png" style="display: none">
+			<canvas id="logo">
+                </canvas>
 			<div id="logoin">
-                <form  action="db_login.php" method="post" id="log_frm">
+                <form  action="db_login.php" method="post" id="log_frm" >
                     <table id='login_table'>
                         <tr><th colspan=2 style="color: white; font-family: times; font-size: 130%"> Please, Login below! </th></tr>
-                        <tr><td><input type="text" id="usernameFiled" name="username" required maxlength="40" placeholder="Enter your username" onclick="color(this)"></td></tr>
+                        <tr><td><input type="text" id="usernameFiled" name="username" required maxlength="40" placeholder="Enter your username" onclick="color(this)" onfocus="fly()"></td></tr>
                         <tr><td><input type="password" id="passwordFiled" required name="password" maxlength="50" placeholder="Enter your pasword" onclick="color(this)"></td></tr>
                         <tr><td colspan="2" align="right"><br><input type="submit" id="submit_btn" name="submit"></td></tr>
                         <!--<tr><td colspan="2" align="center" style="color: white; font-size: 120%"> press <a href="" style="color: blue"> here </a> to continue as a guest</td></tr>-->
@@ -58,4 +60,76 @@
 			});
 		}
 	</script>
+    <script type="text/javascript">
+        function fly(){
+            var myImage=document.getElementById("logo");
+            var cxt = myImage.getContext("2d");
+            var img = new Image();
+            img.src="images/start/tfd_logo_beer.png";
+
+            //执行旋转的特效
+            function spfly(){
+                cxt.drawImage(img,400,700);
+                cxt.translate(-80,60);  //中心点
+                cxt.rotate(-0.1);
+                //clearInterval(timer);
+            }
+
+            var timer =setInterval(spfly,60);
+        }
+    </script>
+    <script type="text/javascript">
+        function rotateImg(pid, direction) {
+            //最小与最大旋转方向，图片旋转4次后回到原方向
+            var min_step = 0;
+            var max_step = 3;
+            var img = document.getElementById(pid);
+            if (img == null)return;
+            //img的高度和宽度不能在img元素隐藏后获取，否则会出错
+            var height = img.height;
+            var width = img.width;
+            var step = img.getAttribute('step');
+            if (step == null) {
+                step = min_step;
+            }
+            if (direction == 'right') {
+                step++;
+                //旋转到原位置，即超过最大值
+                step > max_step && (step = min_step);
+            } else {
+                step--;
+                step < min_step && (step = max_step);
+            }
+            img.setAttribute('step', step);
+            var canvas = document.getElementById(pid);
+            //旋转角度以弧度值为参数
+            var degree = step * 90 * Math.PI / 180;
+            var ctx = canvas.getContext('2d');
+            switch (step) {
+                case 0:
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0);
+                    break;
+                case 1:
+                    canvas.width = height;
+                    canvas.height = width;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, 0, -height);
+                    break;
+                case 2:
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, -width, -height);
+                    break;
+                case 3:
+                    canvas.width = height;
+                    canvas.height = width;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, -width, 0);
+                    break;
+            }
+        }
+    </script>
 </html>
