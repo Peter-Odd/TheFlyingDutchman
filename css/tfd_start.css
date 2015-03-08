@@ -123,3 +123,16 @@ body
     background-size: contain;
     margin:0 auto;
 }
+
+#canvaslogo
+{
+    height: 270px;
+    width: 270px;
+    opacity: .8;
+    margin:0 auto;
+    padding-bottom: 50px;
+    /*background-image: url("../images/start/tfd_logo_beer.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;*/
+}

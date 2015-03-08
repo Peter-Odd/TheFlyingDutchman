@@ -11,14 +11,13 @@
 	<body>
 		<div id="main">
 			<div id="top"> </div>
-            <img id="logo" src="images/start/tfd_logo_beer.png" style="display: none">
-			<canvas id="logo">
-                </canvas>
+            <!--<img id="logo" src="images/start/tfd_logo_beer.png" style="display: none">-->
+			<canvas id="canvaslogo"></canvas>
 			<div id="logoin">
                 <form  action="db_login.php" method="post" id="log_frm" >
                     <table id='login_table'>
                         <tr><th colspan=2 style="color: white; font-family: times; font-size: 130%"> Please, Login below! </th></tr>
-                        <tr><td><input type="text" id="usernameFiled" name="username" required maxlength="40" placeholder="Enter your username" onclick="color(this)" onfocus="fly()"></td></tr>
+                        <tr><td><input type="text" id="usernameFiled" name="username" required maxlength="40" placeholder="Enter your username" onclick="color(this)" onfocus="anime()"></td></tr>
                         <tr><td><input type="password" id="passwordFiled" required name="password" maxlength="50" placeholder="Enter your pasword" onclick="color(this)"></td></tr>
                         <tr><td colspan="2" align="right"><br><input type="submit" id="submit_btn" name="submit"></td></tr>
                         <!--<tr><td colspan="2" align="center" style="color: white; font-size: 120%"> press <a href="" style="color: blue"> here </a> to continue as a guest</td></tr>-->
@@ -61,17 +60,18 @@
 		}
 	</script>
     <script type="text/javascript">
-        function fly(){
-            var myImage=document.getElementById("logo");
+        function anime(){
+            var myImage=document.getElementById("canvaslogo");
             var cxt = myImage.getContext("2d");
             var img = new Image();
             img.src="images/start/tfd_logo_beer.png";
 
             //执行旋转的特效
             function spfly(){
-                cxt.drawImage(img,400,700);
-                cxt.translate(-80,60);  //中心点
-                cxt.rotate(-0.1);
+                cxt.drawImage(img,270,270);
+                var degree =360 * Math.PI / 180;
+                cxt.translate(135,-135);  //中心点
+                cxt.rotate(degree);
                 //clearInterval(timer);
             }
 
