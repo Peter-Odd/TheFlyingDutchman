@@ -11,22 +11,12 @@ var tmpOrderArr = new Array();
 var username = readCookie('username');
 var password = readCookie('username');
 
-// var username = "ervtod";
-// var password = "ervtod";
-
 var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
 /* -== START: FUNCTIONS TO HANDLE THE INVENTORY ==- */
-/* This takes LONG time when keeping track of country, so this should be done at login page perhaps?! */
+/* The last argument in the JSON below is for rating */
 function inventorySetValue(name, price, id, count) {
-	var country = "";
-			// httpGet(api + "beer_data_get&beer_id=" + id,
-			// 	function callback_success(data) {
-			// 		country = data.payload[0].ursprunglandnamn;
-			// 	}, function callback_error(data) {
-			// 		console.log("error");
-			// 	});
-	sessionStorage[name] = JSON.stringify([price, id, count, country]);
+	sessionStorage[name] = JSON.stringify([price, id, count, 0]);
 }
 
 function getDetailedBeerInfo(beer) {
@@ -61,7 +51,7 @@ function setBeerCount(name, count) {
 }
 
 
-/* return data for specific beer. [0]=price, [1]=id, [2]=count, [3]=country - WORKS*/
+/* return data for specific beer. [0]=price, [1]=id, [2]=count - WORKS*/
 function getBeer(beer) {
 	if (sessionStorage.length == 0) { createInventory(); }
 	return JSON.parse(sessionStorage[beer.toLowerCase()])
@@ -77,7 +67,7 @@ function getBeerCount(name) {
 	return JSON.parse(sessionStorage[name])[2];
 }
 
-function getBeerCountry(name) {
+function getBeerRating(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
 	return JSON.parse(sessionStorage[name])[3];
 }
@@ -629,7 +619,7 @@ function cancelOrder() {
 
 
 	function finishOrderCredit() {
-
+		// console.log(orderArr);
 		var VIPname = $('#VIPnameInput').val();
 	//	console.log(VIPname);
 		
@@ -677,6 +667,7 @@ function cancelOrder() {
 
 
 		function creditPopup() {
+			// console.log(orderArr);
 			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>';
 
 			$('.order_buttonCredit').on("click",function() {
