@@ -232,8 +232,8 @@ function getFiveLastPurchases() {
 				function callback_error(data) {
 					console.log('An error occurred: ' + data);
 				});
-return uniqueLastFive;
-}
+		return uniqueLastFive;
+	}
 
 
 /* Get five last purchases (for all users), this can be called if admin - WORKS */
@@ -483,7 +483,6 @@ function deleteFromlist(txt) {
 
 					sum = sum + orderArr[updateIndex + 1];
 
-
 					for (var i = 0; i < orderArr.length; i+=3) {
 						var id = orderArr[i].replace(/\s+/g, "_");   
 						var tempBeerName = orderArr[i].replace(/\'/g, '&apos');
@@ -495,46 +494,9 @@ function deleteFromlist(txt) {
 
 
 				$('.deleteButton').on('click',function(){ 
-					alert("hej");
+				//	alert("hej");
 					$(this).parent('div.beerButtonOrder').remove();
 				});
-
-					/* INCREASE INPUT WHEN + IS CLICKED*/
-		/*	$(".incButton").on("click",function() {
-			
-				var $button = $(this);
-				var value = $button.parent().find("input").val;
-				$button.parent().find("input").val = value;
-
-
-			//	var amount = incButton(txt);
-
-			/*	var index = orderArr.indexOf(txt);
-				orderArr[index + 2] += 1;
-
-				var $button = $(this);
-		 		$button.parent().find("input").val(orderArr[index + 2]);
-
-				sum = sum + orderArr[index+1];
-		      	$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-
-		 		console.log(orderArr); 
-		 	}); */
-
-/* DECREASE INPUT WHEN - IS CLICKED*/
-			/*	$(".decButton").on("click", function() {
-					var $button = $(this);
-					var index = orderArr.indexOf(txt);
-					 
-					if(orderArr[index +2] > 1){
-						orderArr[index +2] -= 1;
-					}
-
-	      			sum = sum - orderArr[index +1];
-		      		$('#main_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
-	 				$button.parent().find("input").val(orderArr[index + 2]);
-	 			//	console.log(orderArr);
-	 		});*/
 }
 
 
@@ -585,6 +547,7 @@ function cancelOrder() {
 				// 	uniqueLastFive.push("");
 				// 	continue;
 				// }
+				//console.log(item);
 
 				if (item.namn == "") { /* remove beers with no name */ } 
 					else {
@@ -614,8 +577,48 @@ function cancelOrder() {
 	}
 
 
-	/* EMPTY THE ORDER COLUMN, RESET THE TOTAL SUM AND DELETE BOUGHT BEER FROM DATABASE */
+	function printBill(){
+		var tmphtml = "";
+
+		for(var i = 0; i < orderArr.length; i+=3){
+			var beer = orderArr[i];
+			console.log(beer);
+			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity">'+orderArr[i+2]+'</div></div></br>';
+			tmphtml = document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML;
+		}
+			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<br><br><div class="beerButtonOrder"><div class ="orderText">TOTAL: '+sum+' SEK</div></div></br><br><button class="printButton">PRINT</button>';
+		
+		$('.order_buttonPrint').on("click",function() {
+			$('#backgroundShadow').css({opacity:0.7});
+			$('#backgroundShadow').fadeIn(100);
+			$('#info').fadeIn(300);
+					
+			return false;
+		});
+				
+		$('#backgroundShadow, #close').on("click",function() {
+			$('#backgroundShadow, #info').fadeOut(300);	
+		});
+	}
+
+
 	function finishOrder() {
+
+		for(var i = 0; i < orderArr.length; i+=3){
+    		var name = orderArr[i];
+    		console.log(name);
+    		console.log("here");
+   			var amount = orderArr[i+2];
+    		var stock = getBeer(name)[2];
+
+    			if(stock < amount){
+  					console.log("Not enough in stock of: " + name+". Only "+stock+" left");
+   					alert("Not enough in stock of: " + name+". Only "+stock+" left.");
+   				}
+ 				else {
+    				buyBeer(name);
+    			}
+    	}
 
 		orderArr.splice("", orderArr.length);
 		$('#order').html("<div class='order'></div><br>");
@@ -623,35 +626,76 @@ function cancelOrder() {
 		sum = 0;
 	}
 
+
+
 	function finishOrderCredit() {
 
 		var VIPname = $('#VIPnameInput').val();
-		console.log(VIPname);
-
-		if (VIPname.length > 1) {
-			var balance = getUserBalance(VIPname);
-    			//sum = 10;
-
+	//	console.log(VIPname);
+		
+		if(VIPname.length > 1) {
+		//	var balance = getUserBalance(VIPname);
+			//console.log(balance);
+			var balance = 1000000000;
     			//SOFT BALANCE ???
     			if(balance < sum ) {
-    				console.log("not enough!")
+    				console.log("not enough credit!")
     				alert("Not enough credit!");
     			}
-    			else{
-    				//buy beer 
+    			else {
+    				console.log(orderArr.length);    			
+    				// CHeck if all beers in oderArr are in stock before buying
+					for(var i = 0; i < orderArr.length; i+=3){
+    					var name = orderArr[i];
+    					console.log(name);
+    					console.log("here");
+    					var amount = orderArr(i+2);
+    					var stock = getBeer(name)[2];
+
+    					if(stock < amount){
+    						console.log("Not enough in stock of: " + beer+". Only "+stock+" left");
+    						alert("Not enough in stock of: " + beer+". Only "+stock+" left");
+    					}
+    					else {}
+    					//	buyBeer(name);
+    					// delete credit from user
+    				} 
+
     				orderArr.splice("", orderArr.length);
     				$('#order').html("<div class='order'></div><br>");
     				$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
     				sum = 0;
-					//close popup
-					//add popup with confirmation? 
+
 				}
-			}
-			else{
-				alert("No username!");
-				console.log("inget namn");
-			}
 		}
+		
+		else{
+			alert("Wrong username!");
+			console.log("Wrong username");
+		}	
+	}
+
+
+		function creditPopup() {
+			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>';
+
+			$('.order_buttonCredit').on("click",function() {
+					$('#backgroundShadow').css({opacity:0.7});
+					$('#backgroundShadow').fadeIn(100);
+					$('#info').fadeIn(300);
+					
+					return false;
+				});
+				
+				$('#backgroundShadow, #close').on("click",function() {
+					$('#backgroundShadow, #info').fadeOut(300);	
+				});
+		
+		}
+
+
+
+
 
 
 		/* Add receipt to the sql db */

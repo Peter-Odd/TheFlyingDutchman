@@ -109,20 +109,21 @@
 			<p id="total_text"> TOTAL: </p>
 		</div>
 		<div id="order_button_area"> 
-			<button class="order_button">BILL</button>
+			<button class="order_buttonPrint" onclick="printBill()">BILL</button>
 	<!--		<button class="order_button" onclick="finishOrderCredit()">CREDIT</button> -->
-			<button class="order_buttonCredit" href="#">CREDIT</button>
+			<button class="order_buttonCredit" onclick="creditPopup()">CREDIT</button>
+			<!--href="#" -->
 
-			<div id="info">
-				<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
-				<iframe id="beerPopup" src="beerinfo.html"></iframe>
-			</div>
-			<div id="backgroundShadow"></div>
-			
+				<div id="info">
+					<div id="close"><img src="images/misc/close_bw.png" alt="EXIT" /></a></div>
+					<iframe id="beerPopup" src="beerinfo.html"></iframe>
+				</div>
+
+				<div id="backgroundShadow"></div>
+
 			<button class="order_button" onclick="finishOrder()">CASH</button>
 			<button class="order_button" onclick="finishOrder()">CARD</button>
 		</div> 
-		<!--<div id="shadow"></div>-->
 
 	</body>
 	</html>
