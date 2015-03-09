@@ -164,10 +164,10 @@ function getAllBeers() {
 		var escapedBeerName = beerName.replace(/\'/g, '&apos');
 		if (stock > 1) {
 			if(stock < 10) {
-				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			else {
-				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			tmphtml = $('#main').html();
 		}
@@ -218,10 +218,10 @@ function getFiveLastPurchases() {
 					$('#main').html('<div class="beerWrapper"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else if(stock < 10) {
-					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else {
-					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfo(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 					tmphtml = $('#main').html();
 					}
@@ -628,7 +628,7 @@ function cancelOrder() {
 
 
 	function finishOrderCredit() {
-		// console.log(orderArr);
+		console.log(window.top.orderArr);
 		var VIPname = $('#VIPnameInput').val();
 	//	console.log(VIPname);
 		
@@ -759,26 +759,52 @@ function cancelOrder() {
                 }
             }
 
+	// /* Modal related function, click outside to close modal */
+	// $(document).on('click', '.modal-backdrop', function (event) {
+	//     bootbox.hideAll()
+	// });
 
+	// /* Modal related function, press Esc to close modal */
+	// $(document).keyup(function(e) {
+ // 		if (e.keyCode == 27) { bootbox.hideAll(); }   // esc
+	// });
 
-	/* Generates popup for beer details */
+	/* Creates a modal (popup) with beer data */
 	function getInfo(beer) {
-				var htmlStr = "";
-				var tmp = getDetailedBeerInfo(beer);
-				/* Sets content of popup window: */
-				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div class="rating"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div> <img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>';
+		var htmlStr = "";
+	 			var tmp = getDetailedBeerInfo(beer);
+	 			var box = bootbox.dialog({
+	 				title: tmp[1] + ' ' + tmp[2],
+  					message: 	
+  					'<div id="container">' +
+  					'<img style="border-radius: 15px;" id="image" src="images/beersearch/'+tmp[0]+'.png">'+
+  					'<div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br>'+
+  					'<strong>ID:</strong> '+tmp[0]+'<br>'+
+  					'<strong>Sort:</strong> '+tmp[3]+'<br>'+
+  					'<strong>Producer:</strong> '+tmp[4]+'<br>'+
+  					'<strong>Reseller:</strong> '+tmp[5]+'<br>'+
+  					'<strong>Alcohol:</strong> '+tmp[6]+'<br>'+
+  					'<strong>In stock:</strong> '+tmp[7]+
+  					'<form style="padding-top:15px;" id="orderForm"><label for="orderBeers">Order more beers</label><br>'+
+  					'<input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>' +
+  					'</div>'
+  				});
+	 		}
 
-				
-			$('.beerInfoImage').on("click",function() {
-					$('#backgroundShadow').css({opacity:0.7});
-					$('#backgroundShadow').fadeIn(100);
-					$('#info').fadeIn(300);
-					
-					return false;
-				});
-				
-				$('#backgroundShadow, #close').on("click",function() {
-					$('#backgroundShadow, #info').fadeOut(300);	
-				});
-			}
-
+	 /* Creates a modal (popup) with beer data */
+	function getInfoVip(beer) {
+		var htmlStr = "";
+	 			var tmp = getDetailedBeerInfo(beer);
+	 			bootbox.dialog({
+	 				title: tmp[1] + ' ' + tmp[2],
+  					message: 	
+  					'<img style="border-radius: 15px; padding-bottom:10px;" id="image" src="images/beersearch/'+tmp[0]+'.png"><br>'+
+  					'<div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br>'+
+  					'<strong>ID:</strong> '+tmp[0]+'<br>'+
+  					'<strong>Sort:</strong> '+tmp[3]+'<br>'+
+  					'<strong>Producer:</strong> '+tmp[4]+'<br>'+
+  					'<strong>Reseller:</strong> '+tmp[5]+'<br>'+
+  					'<strong>Alcohol:</strong> '+tmp[6]+'<br>'+
+  					'<strong>In stock:</strong> '+tmp[7]
+  				}).addClass("modalHeight");
+	 		}
