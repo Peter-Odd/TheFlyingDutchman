@@ -764,8 +764,18 @@ function cancelOrder() {
 	    }
 	}
 
+            //in case of go to main.html without login
+            function checkstatus(){
+                var s =readCookie('username');
+                if(s==null){
+                alert("you can not go to this page without login !");
+                window.location.href='index.html';
+                }
+            }
 
-	/* Generates popup for beer details */
+
+
+/* Generates popup for beer details */
 	function getInfo(beer) {
 				var htmlStr = "";
 				var tmp = getDetailedBeerInfo(beer);
