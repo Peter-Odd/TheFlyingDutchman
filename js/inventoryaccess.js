@@ -604,8 +604,21 @@ function cancelOrder() {
 
 	function finishOrder() {
 
-		//check if all beers in orderArr are in stock before buying
-		// buy beers
+		for(var i = 0; i < orderArr.length; i+=3){
+    		var name = orderArr[i];
+    		console.log(name);
+    		console.log("here");
+   			var amount = orderArr[i+2];
+    		var stock = getBeer(name)[2];
+
+    			if(stock < amount){
+  					console.log("Not enough in stock of: " + name+". Only "+stock+" left");
+   					alert("Not enough in stock of: " + name+". Only "+stock+" left.");
+   				}
+ 				else {
+    				buyBeer(name);
+    			}
+    	}
 
 		orderArr.splice("", orderArr.length);
 		$('#order').html("<div class='order'></div><br>");
@@ -616,28 +629,43 @@ function cancelOrder() {
 
 
 	function finishOrderCredit() {
+
 		var VIPname = $('#VIPnameInput').val();
-		console.log(VIPname);
+	//	console.log(VIPname);
 		
 		if(VIPname.length > 1) {
-			var balance = getUserBalance(VIPname);
-			console.log(balance);
-
+		//	var balance = getUserBalance(VIPname);
+			//console.log(balance);
+			var balance = 1000000000;
     			//SOFT BALANCE ???
     			if(balance < sum ) {
     				console.log("not enough credit!")
     				alert("Not enough credit!");
     			}
-    			else{
+    			else {
+    				console.log(orderArr.length);    			
+    				// CHeck if all beers in oderArr are in stock before buying
+					for(var i = 0; i < orderArr.length; i+=3){
+    					var name = orderArr[i];
+    					console.log(name);
+    					console.log("here");
+    					var amount = orderArr(i+2);
+    					var stock = getBeer(name)[2];
+
+    					if(stock < amount){
+    						console.log("Not enough in stock of: " + beer+". Only "+stock+" left");
+    						alert("Not enough in stock of: " + beer+". Only "+stock+" left");
+    					}
+    					else {}
+    					//	buyBeer(name);
+    					// delete credit from user
+    				} 
+
     				orderArr.splice("", orderArr.length);
     				$('#order').html("<div class='order'></div><br>");
     				$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
     				sum = 0;
 
-    				// CHeck if all beers in oderArr are in stock before buying
-    				//BUY BEER and empty orderArr
-					//close popup
-					//add popup with confirmation? 
 				}
 		}
 		
@@ -649,12 +677,8 @@ function cancelOrder() {
 
 
 		function creditPopup() {
-			console.log("here");
-			//var htmlStr = "";
-
 			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>';
 
-				
 			$('.order_buttonCredit').on("click",function() {
 					$('#backgroundShadow').css({opacity:0.7});
 					$('#backgroundShadow').fadeIn(100);
@@ -666,6 +690,7 @@ function cancelOrder() {
 				$('#backgroundShadow, #close').on("click",function() {
 					$('#backgroundShadow, #info').fadeOut(300);	
 				});
+		
 		}
 
 
