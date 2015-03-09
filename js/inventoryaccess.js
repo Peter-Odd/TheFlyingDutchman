@@ -40,13 +40,18 @@ function getDetailedBeerInfo(beer) {
 }
 
 
-/* TODO: make sure the API is updated - NOT WORKING CORRECT */
+/* 	Sets a beers count - NOT WORKING CORRECT but thats because of the API
+	if a user wants to buy 1 beer two beers will be bought in the API, this is because
+	the API first gets a OPTION-request and executes the request on the server
+	then the GET or POST-request is executed and another request is made */
+	/* This will update both the inventory and the sessionStorage */
 function setBeerCount(name, count) { 
 	var beer = JSON.parse(sessionStorage[name]);
-	console.log(beer[1]);
-	console.log(beer[0]);
+	// console.log(beer[1]);
+	// console.log(beer[0]);
 	httpGet(api+'inventory_append&beer_id='+beer[1]+'&amount='+count+'&price='+beer[0], null);
 	beer[2] += count;
+	beer[2] += count; //this is done because of the error mentioned above
 	sessionStorage[name] = JSON.stringify(beer);
 	return true;
 }
@@ -76,10 +81,10 @@ function getBeerRating(name) {
 	return JSON.parse(sessionStorage[name])[3];
 }
 
-/* Buy a beer.. now it buys two - problems in the API -  WORKS but buys two */
+/* Buy a beer.. now it buys two - problems in the API -  WORKS but buys two 
+	sessionStorage will have the same amount as the API, ie. buys two */
 function buyBeer(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
-	// console.log(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1]);
 	httpGetAsync(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
 		function callback_success(data) {
 			console.log("You just bought yourself a beer!");
@@ -87,8 +92,12 @@ function buyBeer(name) {
 				}, function callback_error(data) {
 					console.log('An error occurred: ' + data);
 				});
-	sessionStorage.clear();
-	createInventory();
+	var beer = JSON.parse(sessionStorage[name]);
+	 console.log("beer: "+ beer);
+	 beer[2] -= 2;
+	 console.log("beer: "+ beer);
+	 
+	sessionStorage[name] = JSON.stringify(beer);
 }
 /* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
 
@@ -134,34 +143,32 @@ function getUsernameAndCredit() {
 
 
 /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
-function getBeerImage(str, choice) {
-	if (str.length == 0) { 
-		document.getElementById("main").innerHTML = "";
-		return;
-	} else {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("main").innerHTML = xmlhttp.responseText;
-			}
-		}
-		xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
-		xmlhttp.send();
-	}
-}
+// function getBeerImage(str, choice) {
+// 	if (str.length == 0) { 
+// 		document.getElementById("main").innerHTML = "";
+// 		return;
+// 	} else {
+// 		var xmlhttp = new XMLHttpRequest();
+// 		xmlhttp.onreadystatechange = function() {
+// 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+// 				document.getElementById("main").innerHTML = xmlhttp.responseText;
+// 			}
+// 		}
+// 		xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
+// 		xmlhttp.send();
+// 	}
+// }
 
 /* List all beers and show in main div */
 function getAllBeers() {
 	$('#search').val("");
 	if (sessionStorage.length == 0) { createInventory() }
 	var tmphtml = "";
-	for (var i = sessionStorage.length-1; i >= 0; i--) {
-		// console.log(sessionStorage.getItem(sessionStorage.key(i)));
+	for (var i = sessionStorage.length-1; i >= 0; i--) { //go through sessionStorage and list all beers in main div
 		var stock = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
 		stock = stock[2];
-		// console.log("stock: " + stock);
 		var beerName = sessionStorage.key(i);
-		var escapedBeerName = beerName.replace(/\'/g, '&apos');
+		var escapedBeerName = beerName.replace(/\'/g, '&apos'); //make sure to escape '-chars
 		if (stock > 1) {
 			if(stock < 10) {
 				$('#main').html('<div class="beerWrapper"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
@@ -542,12 +549,6 @@ function cancelOrder() {
 		httpGet(api+'inventory_get', 
 			function callback_success(data) {
 				$.each(data.payload, function(key, item) {
-				// if (typeof data.payload == 'undefined') {
-				// 	uniqueLastFive.push("");
-				// 	continue;
-				// }
-				//console.log(item);
-
 				if (item.namn == "") { /* remove beers with no name */ } 
 					else {
 						inventorySetValue(
@@ -562,7 +563,6 @@ function cancelOrder() {
 			function callback_error(data) {
 				console.log('An error occurred: ' + data);
 			});	
-
 	}
 
 	/*  */
@@ -769,27 +769,37 @@ function cancelOrder() {
  // 		if (e.keyCode == 27) { bootbox.hideAll(); }   // esc
 	// });
 
+	var countA = 1;
+	function dummy(value) {
+		countA = value;
+		// console.log(countA);
+	}
+
+	function dummy2(beer) {
+		setBeerCount(beer, countA);
+	}
+
 	/* Creates a modal (popup) with beer data */
 	function getInfo(beer) {
 		var htmlStr = "";
-	 			var tmp = getDetailedBeerInfo(beer);
-	 			var box = bootbox.dialog({
-	 				title: tmp[1] + ' ' + tmp[2],
-  					message: 	
-  					'<div id="container">' +
-  					'<img style="border-radius: 15px;" id="image" src="images/beersearch/'+tmp[0]+'.png">'+
-  					'<div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br>'+
-  					'<strong>ID:</strong> '+tmp[0]+'<br>'+
-  					'<strong>Sort:</strong> '+tmp[3]+'<br>'+
-  					'<strong>Producer:</strong> '+tmp[4]+'<br>'+
-  					'<strong>Reseller:</strong> '+tmp[5]+'<br>'+
-  					'<strong>Alcohol:</strong> '+tmp[6]+'<br>'+
-  					'<strong>In stock:</strong> '+tmp[7]+
-  					'<form style="padding-top:15px;" id="orderForm"><label for="orderBeers">Order more beers</label><br>'+
-  					'<input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>' +
-  					'</div>'
-  				});
-	 		}
+		var tmp = getDetailedBeerInfo(beer);
+		var box = bootbox.dialog({
+			title: tmp[1] + ' ' + tmp[2],
+			message: 	
+			'<div id="container">' +
+			'<img style="border-radius: 15px;" id="image" src="images/beersearch/'+tmp[0]+'.png">'+
+			'<div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br>'+
+			'<strong>ID:</strong> '+tmp[0]+'<br>'+
+			'<strong>Sort:</strong> '+tmp[3]+'<br>'+
+			'<strong>Producer:</strong> '+tmp[4]+'<br>'+
+			'<strong>Reseller:</strong> '+tmp[5]+'<br>'+
+			'<strong>Alcohol:</strong> '+tmp[6]+'<br>'+
+			'<strong>In stock:</strong> '+tmp[7]+
+			'<form style="padding-top:15px;" id="orderForm"><label for="orderBeers">Order more beers</label><br>'+
+			'<input id="amount" type="number" onchange="dummy(this.value)" value="1" required><button id="orderBtn" type="button" onclick="dummy2(\''+beer.toLowerCase()+'\')">ORDER</button></form></div>' +
+			'</div>'
+		});
+	}
 
 	 /* Creates a modal (popup) with beer data */
 	function getInfoVip(beer) {
