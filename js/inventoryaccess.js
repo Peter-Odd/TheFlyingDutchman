@@ -14,11 +14,12 @@ var password = readCookie('username');
 var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
 /* -== START: FUNCTIONS TO HANDLE THE INVENTORY ==- */
-/* The last argument in the JSON below is for rating */
+/* Sets sessionStorage values indexed by beername, the last argument in the JSON below is for rating a beer */
 function inventorySetValue(name, price, id, count) {
 	sessionStorage[name] = JSON.stringify([price, id, count, 0]);
 }
 
+/* Returns information like id, name, producer, alcohol etc for a specific beer */
 function getDetailedBeerInfo(beer) {
 	beer = beer.toLowerCase();
 	var returnBeer = new Array();
@@ -57,16 +58,19 @@ function getBeer(beer) {
 	return JSON.parse(sessionStorage[beer.toLowerCase()])
 }
 
+/* Return beer id */
 function getBeerId(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
 	return JSON.parse(sessionStorage[name])[1];
 }
 
+/* return beer count - how many in stock */
 function getBeerCount(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
 	return JSON.parse(sessionStorage[name])[2];
 }
 
+/* return beer rating */
 function getBeerRating(name) {
 	if (sessionStorage.length == 0) { createInventory(); }
 	return JSON.parse(sessionStorage[name])[3];
@@ -172,9 +176,9 @@ function getAllBeers() {
 
 }
 
-/* Get the five last purchases for a user */
+/* Get the five last purchases for a user and display in main div */
 function getFiveLastPurchases() {
-	$('#search').val("");
+	$('#search').val(""); //clear search field
 
 	var lastFive = new Array();
 	var uniqueLastFive = new Array();
@@ -183,13 +187,15 @@ function getFiveLastPurchases() {
 		function callback_success(data) {
 			var i = 0;
 
+			/* 	make sure to skip multiple versions of a beer if a user bought the same beer so
+				we only shows one image per beer in the main div */
 			while(uniqueLastFive.length < 5){
 				if (typeof data.payload[i] == 'undefined') {
 					uniqueLastFive.push("");
 					continue;
 				}
 
-				if(data.payload[i].namn == "") {
+				if(data.payload[i].namn == "") { //if the API name-field is empty
 					i++;
 				}
 				else{
@@ -201,6 +207,7 @@ function getFiveLastPurchases() {
 				}
 			}
 			var tmphtml = "";
+			/* go through all uniqe beers and add it to the main div. Checks stock and adds text above image to indicate low stock */
 			for(a = 0; a < 5; a++){			 		
 				var beerName = uniqueLastFive[a];
 				var stock = getBeer(beerName)[2];
@@ -239,6 +246,8 @@ function getFiveLastPurchasesAdmin(){
 		function callback_success(data) {
 			var i = 0;
 
+			/* 	make sure to skip multiple versions of a beer if a user bought the same beer so
+				we only shows one image per beer in the main div */
 			while(uniqueLastFive.length < 5){
 				if (typeof data.payload[i] == 'undefined') {
 					uniqueLastFive.push("");
@@ -256,7 +265,7 @@ function getFiveLastPurchasesAdmin(){
 					i++;
 				}
 			}
-
+			/* go through all uniqe beers and add it to the main div. Checks stock and adds text above image to indicate low stock */
 			for(a = 0; a < 5; a++) {			 		
 				var txt = uniqueLastFive[a];
 				console.log(getBeer(txt)[1]);
@@ -556,12 +565,12 @@ function cancelOrder() {
 
 	}
 
-
+	/*  */
 	function vip_pay() {
 		alert("Lets pay!");
 	}
 
-
+	/*  */
 	function vip_cancel() {
 		alert("I don't want to do this... abort!");
 	}
@@ -691,6 +700,7 @@ function cancelOrder() {
 
 		/* Add receipt to the sql db */
 		/*
+		usage:
 		<h3> Add receipt to system </h3>
 		<button id="addReceipt" onclick="addReceipt()" type="button"> Add Receipt </button>
 		*/
@@ -712,21 +722,6 @@ function cancelOrder() {
 				}
 			});
 		}
-
-
-		/* TMP CODE BELOW */
-
-		/* returns array with all the beverages in the bar. [0]=price [1]=id [2]=amount */
-			// this.getAllInventory = function() {
-			// 	var inventory = new Object();
-			// 	for (bev in this.inven) {
-			// 		if (bev == "")
-			// 			continue;
-			// 		inventory[bev] = [ this.inven[bev][0], this.inven[bev][1], this.inven[bev][2], this.inven[bev][3] ];
-			// 	}
-			// 	return inventory;
-			// }
-
 
 
 			/* COOKIE-RELATED FUNCTIONS */
@@ -766,10 +761,11 @@ function cancelOrder() {
 
 
 
-/* Generates popup for beer details */
+	/* Generates popup for beer details */
 	function getInfo(beer) {
 				var htmlStr = "";
 				var tmp = getDetailedBeerInfo(beer);
+				/* Sets content of popup window: */
 				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div class="rating"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div> <img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>';
 
 				
