@@ -27,3 +27,8 @@ body {
 #amount {
 	margin-right: 5px;
 }
+
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}

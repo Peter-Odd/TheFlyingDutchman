@@ -101,14 +101,12 @@
 			</table>
 		</div>
 
-		<div id="main" class="manager" data-i18n="manager.welcome">
-			Welcome to the Flying Dutchman
-		</div>
+		<div id="main" class="manager" data-i18n="manager.welcome"></div>
 
 		<div id="toporder">
-			<button id="undo" onclick="undo()" data-i18n="manager.undo">UNDO</button>
-			<button id="redo" onclick="redo()" data-i18n="manager.redo">REDO</button>
-			<button id="cancel" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
+			<button id="undo" class="manager" onclick="undo()" data-i18n="manager.undo">UNDO</button>
+			<button id="redo" class="manager" onclick="redo()" data-i18n="manager.redo">REDO</button>
+			<button id="cancel" class="manager" onclick="cancelOrder()" data-i18n="manager.cancel">CANCEL</button>
  		</div>
 		
 		<div id="order" class="manager" data-i18n="manager.order" ondragover="allowDrop(event)" ondrop="drop(event)">

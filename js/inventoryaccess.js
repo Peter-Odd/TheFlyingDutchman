@@ -725,7 +725,7 @@ function cancelOrder() {
 	function getInfo(beer) {
 				var htmlStr = "";
 				var tmp = getDetailedBeerInfo(beer);
-				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>';
+				document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div class="rating"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div> <img id="image" src="images/beersearch/'+tmp[0]+'.png"><div id="information"><strong>'+tmp[1]+' '+tmp[2]+'</strong><br><strong>ID:</strong> '+tmp[0]+'<br><strong>Sort:</strong> '+tmp[3]+'<br><strong>Producer:</strong> '+tmp[4]+'<br><strong>Reseller:</strong> '+tmp[5]+'<br><strong>Alcohol:</strong> '+tmp[6]+'<br><strong>In stock:</strong> '+tmp[7]+'<form id="orderForm"><label for="orderBeers">Order more beers</label><br><input id="amount" type="number" placeholder="How many beers?" required><button id="orderBtn" type="button" onclick="alert(\'Not implemented yet\')">ORDER</button></form></div>';
 
 				
 			$('.beerInfoImage').on("click",function() {
