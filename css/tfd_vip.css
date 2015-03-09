@@ -245,10 +245,8 @@ th,td {
    	border:none;
 }
 
-#order h4 {
-	margin-top: -29%;
-	margin-left: 0%;
-	color: white;
+#orderlist {
+	display: list-item;
 }
 
 #order {
@@ -261,6 +259,12 @@ th,td {
 	margin-left: 15px;
 	overflow: auto;
 	text-align: left;
+}
+
+#order h4 {
+	margin-top: -29%;
+	margin-left: 0%;
+	color: white;
 }
 
 #order_total {
@@ -293,15 +297,11 @@ th,td {
     border: none;
 }
 
-
 .beerInfoImage {
 	position: absolute;
 	z-index: 3;
 	width: 35px;
 	height: 35px;
-}
-
-.beerInfoImage img {
 	cursor: pointer;
 	z-index: 3;
 	width: 35px;
@@ -546,5 +546,3 @@ iframe {
 	width: 510px;
 	height: 315px;
 }
-
-
