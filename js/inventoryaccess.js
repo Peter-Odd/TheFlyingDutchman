@@ -567,9 +567,9 @@ function cancelOrder() {
 
 
 	/* Returns user balance - WORKS */
-	function getUserBalance(username) {
+	function getUserBalance(user) {
 		var userBalance = 0;
-		httpGet(api+'iou_get',
+		httpGet('http://pub.jamaica-inn.net/fpdb/api.php?username='+user+'&password='+user+'&action=iou_get',
 			function callback_success(data) {
 				userBalance = data.payload[0].assets;
 			},
