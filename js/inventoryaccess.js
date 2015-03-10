@@ -221,17 +221,10 @@ function getAllBeers() {
 		var escapedBeerName = beerName.replace(/\'/g, '&apos'); //make sure to escape '-chars
 		if (stock > 1) {
 			if(stock < 10) {
-<<<<<<< HEAD
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			else {
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
-=======
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
-			}
-			else {
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
->>>>>>> origin/master
+				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			tmphtml = $('#main').html();
 		}
@@ -280,17 +273,10 @@ function getFiveLastPurchases() {
 					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else if(stock < 10) {
-<<<<<<< HEAD
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else {
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
-=======
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
-				}
-				else {
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
->>>>>>> origin/master
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 					tmphtml = $('#main').html();
 					}
@@ -347,10 +333,10 @@ function getFiveLastPurchasesAdmin(){
 					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButtonEmptyStock">'+txt+', '+getBeer(txt)[0]+ ' SEK</div></div><br>'+tmphtml);
 				}
 				else if(stock < 10) {
-					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')" draggable="true" ondragstart="drag(event)">'+txt+', '+getBeer(txt)[0]+ ' SEK</div></div><br>'+tmphtml);
+					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButtonLowStock" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+ ' SEK</div></div><br>'+tmphtml);
 				}
 				else {
-					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButton" onclick="placeOrder(\''+beerName+'\')" draggable="true" ondragstart="drag(event)">'+txt+', '+getBeer(txt)[0]+' SEK</div></div><br>'+tmphtml);
+					$('#searchBeer2').html('<div class="beerWrapper"><div class="beerInfoImage" onclick="getInfo(\''+beerName+'\')"><img id="beerInfoImage2" src="images/beersearch/'+getBeer(txt)[1]+'.png"></div><div class="beerButton" onclick="placeOrder(\''+beerName+'\')">'+txt+', '+getBeer(txt)[0]+' SEK</div></div><br>'+tmphtml);
 				}
 			}
 		},
@@ -565,11 +551,9 @@ function cancelOrder() {
 		console.log("nothing to cancel!");
 	}
 	else{
-<<<<<<< HEAD
 
 			//	if(sista i undo är cancelorder -> gör allt men lägg inte till ngon ny) !!!
-=======
->>>>>>> origin/master
+			origin/master
 			var tmp = orderArr.slice();
 			tmpOrderArr.push(tmp);
 			undoArr.push("cancelOrder");
