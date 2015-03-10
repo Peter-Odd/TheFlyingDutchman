@@ -576,31 +576,25 @@ function cancelOrder() {
 	}
 
 
-	function printBill(){
+function printBill(){
 		var tmphtml = "";
 
-		for(var i = 0; i < orderArr.length; i+=3){
-			var beer = orderArr[i];
-			console.log(beer);
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity">'+orderArr[i+2]+'</div></div></br>';
-			tmphtml = document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML;
+			for(var i = 0; i < orderArr.length; i+=3){
+				var content = tmphtml+'<div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity">'+orderArr[i+2]+'</div><br><br>';
+				tmphtml = content;
+  			}
+  			content = tmphtml+'<br><br><div class ="orderText">TOTAL: '+sum+' SEK</div></br><br><div class="quantity"><button id="printButton">PRINT</button></div>';
+  			console.log(content);
+
+		var htmlStr = "";
+	 			bootbox.dialog({
+	 				title: "PRINT BILL",
+  					message: content,
+						
+  				}).addClass("modalHeight");
+
 		}
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<br><br><div class="beerButtonOrder"><div class ="orderText">TOTAL: '+sum+' SEK</div></div></br><br><button class="printButton">PRINT</button>';
 		
-		$('.order_buttonPrint').on("click",function() {
-			$('#backgroundShadow').css({opacity:0.7});
-			$('#backgroundShadow').fadeIn(100);
-			$('#info').fadeIn(300);
-					
-			return false;
-		});
-				
-		$('#backgroundShadow, #close').on("click",function() {
-			$('#backgroundShadow, #info').fadeOut(300);	
-		});
-	}
-
-
 	function finishOrder() {
 
 		for(var i = 0; i < orderArr.length; i+=3){
@@ -658,6 +652,7 @@ function cancelOrder() {
     					else {}
     					//	buyBeer(name);
     					// delete credit from user
+    					// add receipt
     				} 
 
     				orderArr.splice("", orderArr.length);
@@ -675,24 +670,14 @@ function cancelOrder() {
 	}
 
 
-		function creditPopup() {
-			// console.log(orderArr);
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>';
-
-			$('.order_buttonCredit').on("click",function() {
-					$('#backgroundShadow').css({opacity:0.7});
-					$('#backgroundShadow').fadeIn(100);
-					$('#info').fadeIn(300);
-					
-					return false;
-				});
-				
-				$('#backgroundShadow, #close').on("click",function() {
-					$('#backgroundShadow, #info').fadeOut(300);	
-				});
-		
-		}
-
+function creditPopup() {
+		var htmlStr = "";
+	 			bootbox.dialog({
+	 				title: "CHECK CREDIT",
+  					message: 	
+  					'<div id="popupText">Enter VIP username:<input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>'
+  				}).addClass("modalHeight");
+	 		}
 
 
 
