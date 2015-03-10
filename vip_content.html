@@ -61,6 +61,33 @@
 			$(window).keyup(function(e) {
 		 		if (e.keyCode == 27) { bootbox.hideAll(); }   // esc
 			});
+
+
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+			function drag(ev) {
+				console.log("drag"+ev);
+				ev.dataTransfer.setData("text", ev);
+			}
+			function drop(ev) {
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text");
+				console.log("drop"+ev);
+				//placeOrder(data);
+				//ev.target.appendChild(document.getElementById(data));
+				/*var li = document.createElement('li');
+				li.textContent = event.dataTransfer.getData('text');
+				document.querySelector('#listan').appendChild(li);*/
+			}
+			function clicked(beer) {
+				var li = document.createElement("li");
+				li.textContent = beer;
+				document.querySelector('#listan').appendChild(li);
+				beerArray.push(beer);
+			}
+
+
 	    </script>
 	</head>
 
