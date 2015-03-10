@@ -155,6 +155,18 @@ function httpGetAsync(url, callback_success, callback_error) {
 	});
 }
 
+/* 	Withdraw amount of money from a users account - this doens't work because the API says not enough credentials but according
+	to the API-pdf all needed credentials are given. Doesn't work in browser either. */
+function withdrawUserCredit(user, amount) {
+	httpGetAsync('http://pub.jamaica-inn.net/fpdb/api.php?username='+user+'&password='+user+'&action=payments_append&amount=' + amount,
+		function callback_success(data) {
+			console.log("Withdrawn " + amount + " SEK from " + user);
+		},
+		function callback_error(data) {
+			console.log("Couldn't withdrawn " + amount + " SEK from " + user + ". Error: " + data);	
+		});
+}
+
 
 /* Used to set first and lastname + credit for that user in header on main page - WORKS */
 function getUsernameAndCredit() {
@@ -167,7 +179,7 @@ function getUsernameAndCredit() {
 		});
 };
 
-
+/* Used to display a users favorite beers in the main div. Beers are favorite if a users has dragged a beer glass to it */
 function getUserFavorites() {
 	$('#search').val("");
 	if (sessionStorage.length == 0) { alert("Unfortunately you have no favorite beers"); }
@@ -191,7 +203,7 @@ function getUserFavorites() {
 			}
 		}
 	};
-	console.log("favo: " + favo);
+	// console.log("favo: " + favo);
 	if (favo == 0) {
 		$('#main').html('<br><br><h3> Seems you dont have any favorite beer?<br>You can drag the beer glasses next to the search field to a beer of your liking!</h3>');
 	}
