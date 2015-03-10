@@ -142,22 +142,34 @@ function getUsernameAndCredit() {
 };
 
 
-/* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
-// function getBeerImage(str, choice) {
-// 	if (str.length == 0) { 
-// 		document.getElementById("main").innerHTML = "";
-// 		return;
-// 	} else {
-// 		var xmlhttp = new XMLHttpRequest();
-// 		xmlhttp.onreadystatechange = function() {
-// 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-// 				document.getElementById("main").innerHTML = xmlhttp.responseText;
-// 			}
-// 		}
-// 		xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
-// 		xmlhttp.send();
-// 	}
-// }
+function getUserFavorites() {
+	$('#search').val("");
+	if (sessionStorage.length == 0) { alert("Unfortunately you have no favorite beers"); }
+	var tmphtml = "";
+	var favo = 0;
+	for (var i = sessionStorage.length-1; i >= 0; i--) { //go through sessionStorage and list all beers in main div
+		var beer = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+		if (beer[3] > 0) {
+			favo = 1;
+			stock = beer[2];
+			var beerName = sessionStorage.key(i);
+			var escapedBeerName = beerName.replace(/\'/g, '&apos'); //make sure to escape '-chars
+			if (stock > 0) {
+				if(stock < 10) {
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				else {
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				tmphtml = $('#main').html();
+			}
+		}
+	};
+	console.log("favo: " + favo);
+	if (favo == 0) {
+		$('#main').html('<br><br><h3> Seems you dont have any favorite beer?<br>You can drag the beer glasses next to the search field to a beer of your liking!</h3>');
+	}
+}
 
 /* List all beers and show in main div */
 function getAllBeers() {
@@ -179,8 +191,6 @@ function getAllBeers() {
 			tmphtml = $('#main').html();
 		}
 	};
-		
-
 }
 
 /* Get the five last purchases for a user and display in main div */
