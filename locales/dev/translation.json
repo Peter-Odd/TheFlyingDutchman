@@ -2,7 +2,7 @@
     "manager": {
         "title":"The Flying Dutchman",
         "welcome":" Welcome to the Flying Dutchman ",
-        "order":"ORDER LIST",
+        "order":"",
         "undo":"UNDO",
         "redo":"REDO",
         "cancel":"CANCEL",

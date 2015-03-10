@@ -80,13 +80,21 @@ input:-moz-placeholder { color: white; }
 
 #ls_right h4 {
 	position: relative;
-	top: -10%;
-	left: -3%;
+	top: 35%;
+	left: -8%;
 }
 
 #ls_right img {
 	width: 30px;
 	height: auto;
+}
+
+#rating {
+	float: left;
+	width: 200px;
+	height: 54px;
+	padding: 32px;
+	margin-left: 0px;
 }
 
 #menu {
