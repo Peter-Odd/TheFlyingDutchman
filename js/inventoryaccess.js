@@ -629,7 +629,12 @@ function cancelOrder() {
   				 }
     		}
     	}
-    	
+
+    	alert("The purchase was successful!");
+
+    	/*decrease users credit. API request doesn't work as it should*/
+    	//withdrawUserCredit(VIPname, sum);
+
     	/*Add receipt to database*/
 		var receipt = orderArr.toString();
 		addReceipt(receipt);
@@ -649,14 +654,18 @@ function cancelOrder() {
 		
 		if (user == "admin") {
 			var VIPname = $('#VIPnameInput').val();
+			console.log(VIPname);
 		} 
 		else {
 			var VIPname = username;
 		}
 		
 		if(VIPname.length > 1) {
-			var balance = getUserBalance(VIPname);
-			//var balance = 1000000000;
+
+		/*Gets users credit. API does not work*/
+		//	var balance = getUserBalance(VIPname);
+			var balance = 10000;
+    		
     			if(balance < sum ) {
     				console.log("not enough credit!")
     				alert("Not enough credit!");
@@ -681,10 +690,14 @@ function cancelOrder() {
     						}	
     					
 
-    					// delete credit from user
   
 					}
 				}
+
+				alert("The purchase was successful!");
+				/*decrease the user credit. API request doesn't work as it should*/
+					//withdrawUserCredit(VIPname, sum);
+
 					/*Add receipt to database*/
 					var receipt = orderArr.toString();
 					addReceipt(receipt);
