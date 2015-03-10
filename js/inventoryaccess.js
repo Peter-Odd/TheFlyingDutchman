@@ -155,6 +155,18 @@ function httpGetAsync(url, callback_success, callback_error) {
 	});
 }
 
+/* 	Withdraw amount of money from a users account - this doens't work because the API says not enough credentials but according
+	to the API-pdf all needed credentials are given. Doesn't work in browser either. */
+function withdrawUserCredit(user, amount) {
+	httpGetAsync('http://pub.jamaica-inn.net/fpdb/api.php?username='+user+'&password='+user+'&action=payments_append&amount=' + amount,
+		function callback_success(data) {
+			console.log("Withdrawn " + amount + " SEK from " + user);
+		},
+		function callback_error(data) {
+			console.log("Couldn't withdrawn " + amount + " SEK from " + user + ". Error: " + data);	
+		});
+}
+
 
 /* Used to set first and lastname + credit for that user in header on main page - WORKS */
 function getUsernameAndCredit() {
@@ -167,23 +179,35 @@ function getUsernameAndCredit() {
 		});
 };
 
-
-/* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
-// function getBeerImage(str, choice) {
-// 	if (str.length == 0) { 
-// 		document.getElementById("main").innerHTML = "";
-// 		return;
-// 	} else {
-// 		var xmlhttp = new XMLHttpRequest();
-// 		xmlhttp.onreadystatechange = function() {
-// 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-// 				document.getElementById("main").innerHTML = xmlhttp.responseText;
-// 			}
-// 		}
-// 		xmlhttp.open("GET", "gethint.php?q=" + str +"&choice=" + choice, true);
-// 		xmlhttp.send();
-// 	}
-// }
+/* Used to display a users favorite beers in the main div. Beers are favorite if a users has dragged a beer glass to it */
+function getUserFavorites() {
+	$('#search').val("");
+	if (sessionStorage.length == 0) { alert("Unfortunately you have no favorite beers"); }
+	var tmphtml = "";
+	var favo = 0;
+	for (var i = sessionStorage.length-1; i >= 0; i--) { //go through sessionStorage and list all beers in main div
+		var beer = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+		if (beer[3] > 0) {
+			favo = 1;
+			stock = beer[2];
+			var beerName = sessionStorage.key(i);
+			var escapedBeerName = beerName.replace(/\'/g, '&apos'); //make sure to escape '-chars
+			if (stock > 0) {
+				if(stock < 10) {
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				else {
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				}
+				tmphtml = $('#main').html();
+			}
+		}
+	};
+	// console.log("favo: " + favo);
+	if (favo == 0) {
+		$('#main').html('<br><br><h3> Seems you dont have any favorite beer?<br>You can drag the beer glasses next to the search field to a beer of your liking!</h3>');
+	}
+}
 
 /* List all beers and show in main div */
 function getAllBeers() {
@@ -197,16 +221,14 @@ function getAllBeers() {
 		var escapedBeerName = beerName.replace(/\'/g, '&apos'); //make sure to escape '-chars
 		if (stock > 1) {
 			if(stock < 10) {
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+stock+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			else {
-				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+				$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			tmphtml = $('#main').html();
 		}
 	};
-		
-
 }
 
 /* Get the five last purchases for a user and display in main div */
@@ -248,13 +270,13 @@ function getFiveLastPurchases() {
 				var escapedBeerName = beerName.replace(/\'/g, '&apos');
 
 				if (stock < 1) {
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerImageEmptyStock"><h3>OUT<br>OF<br>STOCK</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else if(stock < 10) {
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImageLowStock" onclick="placeOrder(\''+escapedBeerName+'\')"><h3>ONLY<br>'+getBeer(beerName)[2]+'<br>LEFT</h3><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 				else {
-					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" ><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
+					$('#main').html('<div class="beerWrapper" ondrop="dropRating(event)" ondragover="event.preventDefault()"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 				}
 					tmphtml = $('#main').html();
 					}
@@ -545,9 +567,9 @@ function cancelOrder() {
 
 
 	/* Returns user balance - WORKS */
-	function getUserBalance(username) {
+	function getUserBalance(user) {
 		var userBalance = 0;
-		httpGet(api+'iou_get',
+		httpGet('http://pub.jamaica-inn.net/fpdb/api.php?username='+user+'&password='+user+'&action=iou_get',
 			function callback_success(data) {
 				userBalance = data.payload[0].assets;
 			},
