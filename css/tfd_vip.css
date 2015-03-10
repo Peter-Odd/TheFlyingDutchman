@@ -80,8 +80,13 @@ input:-moz-placeholder { color: white; }
 
 #ls_right h4 {
 	position: relative;
-	top: 70%;
-	left: -35%;
+	top: -10%;
+	left: -3%;
+}
+
+#ls_right img {
+	width: 30px;
+	height: auto;
 }
 
 #menu {
