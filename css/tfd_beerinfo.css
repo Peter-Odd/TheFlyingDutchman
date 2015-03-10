@@ -34,7 +34,7 @@ body {
 }
 
 /*POPUP BILL */
-
+/*
 .beerButtonOrder {
 	padding: 10px; 
 	border-bottom-color: white;
@@ -43,6 +43,8 @@ body {
 	width: 350px;
 	height: 20px;
 	display: inline-block;
+	border: hidden;
+	background-color: red;
 }
 
 .orderText {
@@ -51,6 +53,8 @@ body {
 	display: inline-block; 
 	padding: 10px;
 	color: white;
+	border: none;
+	background-color: red;
 }
 
 .quantity {
@@ -60,16 +64,17 @@ body {
 	width: 50px;
 	color: white;
 	display: inline-block; 
+	border: none;
 }
 
 .printButton {
 	position: relative;
   	left:200px;
 
-}
+}*/
 
 /*POPUP CREDIT*/
-
+/*
 #popupInput{
 	background: white;
 	width: 100px;
@@ -109,4 +114,5 @@ body {
 	border-radius: 12px;
    	border:none;
 }
+*/
 

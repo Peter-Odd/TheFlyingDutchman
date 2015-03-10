@@ -83,24 +83,50 @@ function getBeerRating(name) {
 
 /* Buy a beer.. now it buys two - problems in the API -  WORKS but buys two 
 	sessionStorage will have the same amount as the API, ie. buys two */
-function buyBeer(name) {
+/*function buyBeer(name) {
+	
 	if (sessionStorage.length == 0) { createInventory(); }
 	httpGetAsync(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
+
 		function callback_success(data) {
 			console.log("You just bought yourself a beer!");
+			//console.log(name);
 					//subtract beer count for name by 1
 				}, function callback_error(data) {
 					console.log('An error occurred: ' + data);
 				});
+
 	var beer = JSON.parse(sessionStorage[name]);
 	 console.log("beer: "+ beer);
 	 beer[2] -= 2;
 	 console.log("beer: "+ beer);
 	 
 	sessionStorage[name] = JSON.stringify(beer);
-}
-/* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
+} */
 
+function buyBeer(name) {
+	
+	if (sessionStorage.length == 0) { createInventory(); }
+	httpGetAsync(api+'purchases_append&beer_id='+JSON.parse(sessionStorage[name.toLowerCase()])[1],
+
+		function callback_success(data) {
+			console.log("You just bought yourself a beer!");
+			console.log(name);
+			var beer = JSON.parse(sessionStorage[name]);
+			console.log("beer: "+ beer);
+			beer[2] -= 2;
+			console.log("beer: "+ beer);
+			 
+			sessionStorage[name] = JSON.stringify(beer);
+			return ;
+			//console.log(name);
+					//subtract beer count for name by 1
+				}, function callback_error(data) {
+					console.log('An error occurred: ' + data);
+				});
+}
+
+/* -== END: FUNCTIONS TO HANDLE THE INVENTORY ==- */
 
 
 /* Used to access the API, SYNCHRONUS call - WORKS */
@@ -318,12 +344,8 @@ function deleteFromlist(txt) {
 
 	var tmp = orderArr.slice();
 	tmpOrderArr.push(tmp);
-		//	console.log("tmp:");
-		//	console.log(tmp);
-		undoArr.push("deleteFromlist");
-		//	console.log("nya undo");
-		//	console.log(undoArr);
 
+		undoArr.push("deleteFromlist");
 		var index = orderArr.indexOf(txt);
 		var amount = orderArr[index + 2];
 		sum = sum - (orderArr[index+1] * amount);
@@ -332,13 +354,10 @@ function deleteFromlist(txt) {
 		var deleted = orderArr.splice(index, 3);
 
 		deleteList.push(deleted[0]);
-		//	console.log("new orderarr efter delete");
-		//	console.log(orderArr);
-		//	console.log("deletedArr");
-		//	console.log(deleteList);
+	
 	}
 
-
+/*Increase amount in OrderArr and call updatePlaceOrder to view updated OrderArr*/
 	function incButton(txt) {
 		var name = txt.replace('&apos', "'");
 		var index = orderArr.indexOf(name);
@@ -350,7 +369,7 @@ function deleteFromlist(txt) {
 
 	}
 
-
+/*Decrease amount in OrderArr and call updatePlaceOrder to view updated OrderArr*/
 	function decButton(txt) {
 		var name = txt.replace('&apos', "'");
 		var index = orderArr.indexOf(name);
@@ -362,7 +381,7 @@ function deleteFromlist(txt) {
 		}
 	}
 
-
+/*check the latest push to undoArr and redo what was undone*/
 	function redo() {
 		var length = redoArr.length;
 
@@ -370,18 +389,16 @@ function deleteFromlist(txt) {
 			console.log("nothing to redo!");
 		}	
 
+	/* check latest undo and push latest redo to undoArr again*/
 		else{
-
 			var redo = redoArr.splice(length-1, 1);
 			undoArr.push(redo[0]);
-			console.log("nya redo");
-			console.log(redoArr);
-			console.log("-----------");
 
-
+	/*set latest push to tmpOrderArr as OrderArr and updated the view by calling updatePlaceOrder*/
 			if(redo == "placeOrder"){
 				var redo = redoArr[length - 1];
 				var length = tmpOrderArr.length;
+
 				var tmp = tmpOrderArr[length -1];
 				orderArr = tmp.slice();
 				tmpOrderArr.splice(length -1, 1);
@@ -391,19 +408,18 @@ function deleteFromlist(txt) {
 			else if(redo == "cancelOrder"){
 				cancelOrder();
 			}
-
+	
+	/*If redo == deleteFromList. delete selected row and update the view by calling updatelaceOrder */
 			else{
 				var length = deleteList.length;
 				var txt = deleteList[length -1];
-				console.log("txt:");
-				console.log(txt);
 				deleteFromlist(txt);
 				updatePlaceOrder();
 			}
 		}
 	}
 
-
+/*chech undoArr and undo what was latest push to undoArr. Add it to redoArr */
 	function undo() {
 		var length = undoArr.length;
 		if(length < 1) {
@@ -440,11 +456,9 @@ function deleteFromlist(txt) {
 					}
 				}
 
-
+			/*creates divs for all beers in orderArr to be able to view them in the order area*/
 				function updatePlaceOrder() {
 					sum = 0;
-					console.log("updateplaceorderbutton");
-					console.log(orderArr);
 
 					if(orderArr == ""){
 						$('#order').html("<div class='order'></div><br>");
@@ -477,7 +491,7 @@ function deleteFromlist(txt) {
 				}
 
 
-
+			/*Adds rows with beers to order by creating divs*/
 				function placeOrder(txt){
 					undoArr.push("placeOrder");
 					console.log("nya undo");
@@ -485,9 +499,11 @@ function deleteFromlist(txt) {
 
 					var beerName = txt.replace('&apos', "'");
 					var index = orderArr.indexOf(beerName);
+					/*checks if beer is already in orderArr. If not, add beer to orderArr*/
 					if(index != -1){
 						orderArr[index + 2] += 1;
 					}
+					/*If the beers already exist in orderArr, add amount to that beer*/
 					else{
 						orderArr.push(beerName);
 						orderArr.push(getBeer(beerName)[0]);
@@ -499,6 +515,7 @@ function deleteFromlist(txt) {
 
 					sum = sum + orderArr[updateIndex + 1];
 
+					/*creats a div for every beer in orderArr*/
 					for (var i = 0; i < orderArr.length; i+=3) {
 						var id = orderArr[i].replace(/\s+/g, "_");   
 						var tempBeerName = orderArr[i].replace(/\'/g, '&apos');
@@ -508,9 +525,8 @@ function deleteFromlist(txt) {
 						$('#order_total').html("<div id='total_text'>TOTAL: "+sum+" SEK</div>");
 					};
 
-
+					/*delets a div if delet button at the div is clicked*/
 				$('.deleteButton').on('click',function(){ 
-				//	alert("hej");
 					$(this).parent('div.beerButtonOrder').remove();
 				});
 }
@@ -524,8 +540,6 @@ function cancelOrder() {
 		console.log("nothing to cancel!");
 	}
 	else{
-
-			//	if(sista i undo är cancelorder -> gör allt men lägg inte till ngon ny)
 			var tmp = orderArr.slice();
 			tmpOrderArr.push(tmp);
 			undoArr.push("cancelOrder");
@@ -585,96 +599,108 @@ function cancelOrder() {
 		alert("I don't want to do this... abort!");
 	}
 
-
+	/*Creates a pop up with all beers in orderArr*/
 	function printBill(){
 		var tmphtml = "";
 
-		for(var i = 0; i < orderArr.length; i+=3){
-			var beer = orderArr[i];
-			console.log(beer);
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<div class="beerButtonOrder"><div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity">'+orderArr[i+2]+'</div></div></br>';
-			tmphtml = document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML;
-		}
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = tmphtml+'<br><br><div class="beerButtonOrder"><div class ="orderText">TOTAL: '+sum+' SEK</div></div></br><br><button class="printButton">PRINT</button>';
-		
-		$('.order_buttonPrint').on("click",function() {
-			$('#backgroundShadow').css({opacity:0.7});
-			$('#backgroundShadow').fadeIn(100);
-			$('#info').fadeIn(300);
-					
-			return false;
-		});
-				
-		$('#backgroundShadow, #close').on("click",function() {
-			$('#backgroundShadow, #info').fadeOut(300);	
-		});
+			for(var i = 0; i < orderArr.length; i+=3){
+				var content = tmphtml+'<div class ="orderText">'+orderArr[i]+', '+orderArr[i+1]+' SEK</div><div class="quantity">'+orderArr[i+2]+'</div><br><br>';
+				tmphtml = content;
+  			}
+  		content = tmphtml+'<br><br><div class ="orderText">TOTAL: '+sum+' SEK</div></br><br><div class="quantity"><button id="printButton">PRINT</button></div>';
+  		console.log(content);
+
+		var htmlStr = "";
+	 	bootbox.dialog({
+	 		title: "PRINT BILL",
+  			message: content,
+		}).addClass("modalHeight");
+
 	}
 
-
+	/*bye all beers in orderArr if stock > amount*/
 	function finishOrder() {
 
+		console.log(orderArr.length);
 		for(var i = 0; i < orderArr.length; i+=3){
     		var name = orderArr[i];
-    		console.log(name);
-    		console.log("here");
    			var amount = orderArr[i+2];
     		var stock = getBeer(name)[2];
 
-    			if(stock < amount){
-  					console.log("Not enough in stock of: " + name+". Only "+stock+" left");
+    			if(stock < amount){ 
+    				console.log("Not enough in stock of: " + name+". Only "+stock+" left");
    					alert("Not enough in stock of: " + name+". Only "+stock+" left.");
+   					return ;
    				}
- 				else {
-    				buyBeer(name);
-    			}
-    	}
 
+ 			else{
+ 				for(var a = 0; a < amount; a++){
+  				 	buyBeer(name);
+  				 }
+    		}
+    	}
+    	
+    	/*Add receipt to database*/
+		var receipt = orderArr.toString();
+		addReceipt(receipt);
+
+		/*empty orderArr, update sum and clear view*/
 		orderArr.splice("", orderArr.length);
 		$('#order').html("<div class='order'></div><br>");
 		$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
-		sum = 0;
+		sum = 0; 
+		console.log(orderArr);
 	}
 
 
-
+	/*Checks the user balance and byes beer in orderArr*/
 	function finishOrderCredit(user) {
-		console.log(window.top.orderArr);
+		console.log(orderArr);
+		
 		if (user == "admin") {
 			var VIPname = $('#VIPnameInput').val();
-		} else {
+		} 
+		else {
 			var VIPname = username;
 		}
-	//	console.log(VIPname);
 		
 		if(VIPname.length > 1) {
-		//	var balance = getUserBalance(VIPname);
-			//console.log(balance);
-			var balance = 1000000000;
-    			//SOFT BALANCE ???
+			var balance = getUserBalance(VIPname);
+			//var balance = 1000000000;
     			if(balance < sum ) {
     				console.log("not enough credit!")
     				alert("Not enough credit!");
     			}
-    			else {
-    				console.log(orderArr.length);    			
-    				// CHeck if all beers in oderArr are in stock before buying
+    			else {		
+
+    				/* Checks if all beers in oderArr are in stock before buying */
 					for(var i = 0; i < orderArr.length; i+=3){
     					var name = orderArr[i];
-    					console.log(name);
-    					console.log("here");
     					var amount = orderArr[i+2];
     					var stock = getBeer(name)[2];
 
     					if(stock < amount){
-    						console.log("Not enough in stock of: " + beer+". Only "+stock+" left");
-    						alert("Not enough in stock of: " + beer+". Only "+stock+" left");
+    						console.log("Not enough in stock of " + name+". Only "+stock+" left");
+    						alert("Not enough in stock of " + name+". Only "+stock+" left");
+    						return ;
     					}
-    					else {}
-    					//	buyBeer(name);
-    					// delete credit from user
-    				} 
 
-    				orderArr.splice("", orderArr.length);
+						else {
+    						for(var a =0; a < amount; a++){
+	    						buyBeer(name); 
+    						}	
+    					
+
+    					// delete credit from user
+  
+					}
+				}
+					/*Add receipt to database*/
+					var receipt = orderArr.toString();
+					addReceipt(receipt);
+
+					/*empty orderArr and sum. Clean order area*/
+					orderArr.splice("", orderArr.length);
     				$('#order').html("<div class='order'></div><br>");
     				$('#order_total').html("<div id='total_text'>TOTAL:</div>"); 
     				sum = 0;
@@ -686,27 +712,21 @@ function cancelOrder() {
 			alert("Wrong username!");
 			console.log("Wrong username");
 		}	
+		console.log("slutet");
 	}
 
 
-		function creditPopup() {
-			// console.log(orderArr);
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit("admin")"> OK </button></div>';
-
-			$('.order_buttonCredit').on("click",function() {
-					$('#backgroundShadow').css({opacity:0.7});
-					$('#backgroundShadow').fadeIn(100);
-					$('#info').fadeIn(300);
-					
-					return false;
-				});
-				
-				$('#backgroundShadow, #close').on("click",function() {
-					$('#backgroundShadow, #info').fadeOut(300);	
-				});
-		
-		}
-
+	/*ceates popup to enter username to be able to buy on credit*/
+	var admin = "admin";
+	function creditPopup() {
+	//	var htmlStr = "";
+	 	bootbox.dialog({
+			title: "CHECK CREDIT",
+  			message:
+  			'<div id="popupText">Enter VIP username:<input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit('+admin+')"> OK </button></div>'
+  		}).addClass("modalHeight");
+  		console.log("popup");
+	}
 
 
 
