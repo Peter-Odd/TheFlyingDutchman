@@ -627,9 +627,13 @@ function cancelOrder() {
 
 
 
-	function finishOrderCredit() {
+	function finishOrderCredit(user) {
 		console.log(window.top.orderArr);
-		var VIPname = $('#VIPnameInput').val();
+		if (user == "admin") {
+			var VIPname = $('#VIPnameInput').val();
+		} else {
+			var VIPname = username;
+		}
 	//	console.log(VIPname);
 		
 		if(VIPname.length > 1) {
@@ -648,7 +652,7 @@ function cancelOrder() {
     					var name = orderArr[i];
     					console.log(name);
     					console.log("here");
-    					var amount = orderArr(i+2);
+    					var amount = orderArr[i+2];
     					var stock = getBeer(name)[2];
 
     					if(stock < amount){
@@ -677,7 +681,7 @@ function cancelOrder() {
 
 		function creditPopup() {
 			// console.log(orderArr);
-			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>';
+			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit("admin")"> OK </button></div>';
 
 			$('.order_buttonCredit').on("click",function() {
 					$('#backgroundShadow').css({opacity:0.7});
