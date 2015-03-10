@@ -621,15 +621,19 @@ function printBill(){
 
 
 
-	function finishOrderCredit() {
+	function finishOrderCredit(user) {
 		console.log(window.top.orderArr);
-		var VIPname = $('#VIPnameInput').val();
+		if (user == "admin") {
+			var VIPname = $('#VIPnameInput').val();
+		} else {
+			var VIPname = username;
+		}
 	//	console.log(VIPname);
 		
 		if(VIPname.length > 1) {
 		//	var balance = getUserBalance(VIPname);
 			//console.log(balance);
-			var balance = 1000000000;
+		//	var balance = 1000000000;
     			//SOFT BALANCE ???
     			if(balance < sum ) {
     				console.log("not enough credit!")
@@ -642,7 +646,7 @@ function printBill(){
     					var name = orderArr[i];
     					console.log(name);
     					console.log("here");
-    					var amount = orderArr(i+2);
+    					var amount = orderArr[i+2];
     					var stock = getBeer(name)[2];
 
     					if(stock < amount){
@@ -670,15 +674,34 @@ function printBill(){
 	}
 
 
+
 function creditPopup() {
 		var htmlStr = "";
 	 			bootbox.dialog({
 	 				title: "CHECK CREDIT",
   					message: 	
-  					'<div id="popupText">Enter VIP username:<input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit()"> OK </button></div>'
+  					'<div id="popupText">Enter VIP username:<input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit("admin")"> OK </button></div>'
   				}).addClass("modalHeight");
 	 		}
+/*
+		function creditPopup() {
+			// console.log(orderArr);
+			document.getElementById('beerPopup').contentWindow.document.getElementById('beerContent').innerHTML = '<div id="popupText">Enter VIP username:<br></div><div id="popupInput"><input id="VIPnameInput" type="text" name="username"></div><div id="popupSubmit"><br><button id="popupButton" onclick="finishOrderCredit("admin")"> OK </button></div>';
 
+			$('.order_buttonCredit').on("click",function() {
+					$('#backgroundShadow').css({opacity:0.7});
+					$('#backgroundShadow').fadeIn(100);
+					$('#info').fadeIn(300);
+					
+					return false;
+				});
+				
+				$('#backgroundShadow, #close').on("click",function() {
+					$('#backgroundShadow, #info').fadeOut(300);	
+				});
+		
+		}
+*/
 
 
 

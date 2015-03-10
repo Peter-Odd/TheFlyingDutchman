@@ -382,17 +382,16 @@ iframe {
 }
 
 /*POPUP BILL */
-
+/*
 .beerButtonOrder {
 	padding: 10px; 
-/*	border-bottom-color: white;*/
+	border-bottom-color: white;
 	margin-bottom: 0px;
 	margin-top: 0px;
 	width: 350px;
 	height: 20px;
 	display: inline-block;
 	border: hidden;
-	background-color: red;
 }
 
 .orderText {
@@ -419,7 +418,7 @@ iframe {
 	position: absolute;
 	float: right;
 }
-
+*/
 
 
 
