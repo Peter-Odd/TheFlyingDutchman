@@ -1,10 +1,10 @@
 /* Functions for rating beers using drag n drop */
 function dragBeerRating(ev) {
-	ev.target.style.opacity = "0.3";
+	// ev.target.style.opacity = "0.3";
 }
 
 function dragEndRating(t) {
-	t.draggable = false;
+	// t.draggable = false;
 }
 
 function dropRating(ev) {
