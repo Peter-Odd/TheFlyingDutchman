@@ -553,7 +553,6 @@ function cancelOrder() {
 	else{
 
 			//	if(sista i undo är cancelorder -> gör allt men lägg inte till ngon ny) !!!
-			origin/master
 			var tmp = orderArr.slice();
 			tmpOrderArr.push(tmp);
 			undoArr.push("cancelOrder");
