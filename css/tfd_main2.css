@@ -1,0 +1,133 @@
+html {
+	font-family: Palatino, serif;
+	background: rgba(17, 24, 27, 0.8);
+	color: orange;
+}
+
+body {
+	margin: 0;
+}
+
+/* font color input field place holder text */
+::-webkit-input-placeholder { color: orange; }
+::-moz-placeholder { color: orange; } /* firefox 19+ */
+:-ms-input-placeholder { color: orange; } /* ie */
+input:-moz-placeholder { color: orange; }
+
+#wrapper {
+	position: relative;
+	margin-top: 50px;
+	margin-left: 50px;
+	background-image: url(/images/main/start_background_800_white.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	/*border: solid 1px #fff;*/
+}
+
+#header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	/*text-align: center;*/
+}
+
+#header_left {
+	float: left;
+	width: 450px;
+	height: 50px;
+}
+
+#loggedInUser {
+	position: absolute;
+	top: -15px;
+	left: 110px;
+}
+#loggedInUser1
+{
+    position: absolute;
+    top: -15px;
+    left: 30px;
+}
+#userCredit {
+	position: absolute;
+	top: 5px;
+	left: 96px;
+}
+#userCredit1
+{
+    position: absolute;
+    top: 5px;
+    left: 30px;
+}
+#header_right {
+	float: left;
+	width: 580px;
+	/*margin-right: 20px;*/
+	height: 50px;
+}
+
+#language {
+	padding-top: 14px;
+}
+
+#language img {
+	height: 20px;
+	width: auto;
+	padding-left: 7px;
+	cursor: pointer;
+}
+
+.button {
+	background: rgba(17, 24, 27, 0.3);
+	color: orange;
+	width: 90px;
+	padding: 5px;
+	text-align: center;
+	cursor: pointer;
+	float:right;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+    margin-right: 2px;
+    margin-bottom: 1px;
+    border: none;
+}
+
+#header, #footer {
+	width: 1104px;
+	/*display: block;*/
+	/*width: 100%;*/
+	background: rgba(17, 24, 27, 0.5);
+}
+
+#content {
+	border: 0px;
+	width: 1101px;
+	height: 695px;
+	position: absolute;
+	top: 50px;
+	left: 1px;
+	padding-top: 15px;
+}
+
+#footer {
+	position: absolute;
+	left: 1px;
+	top: 755px;
+	padding-top: 5px;
+	text-align: center;
+	font-size: 10px;
+	height: 40px;
+	color: orange;
+}
+
+#footer #logo_noship {
+	position: absolute;
+	margin-left: 200px;
+	margin-top: 3px;
+	border: 0px;
+	height: 35px;
+	width: auto;
+}

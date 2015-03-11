@@ -1,0 +1,9 @@
+/* COLOR CHANGER */
+#colorchanger { float:right; }
+.colorbox { width:20px; height:20px; border:1px solid #050505; float:left; margin:5px; cursor:pointer; display:block; }
+.colorblue { background-color:#bfe1f1; }
+.colorblue:hover { background-color:#90bcd0; }
+.colororange { background-color:#F69C3A; }
+.colororange:hover { background-color:#FF5C01; }
+.colorgreen { background-color:#78A848; }
+.colorgreen:hover { background-color:#189048; }
