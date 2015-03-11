@@ -5,6 +5,7 @@ function dragBeerRating(ev) {
 
 function dragEndRating(t) {
 	//t.draggable = false;
+	// ev.target.style.opacity = "0.3";
 }
 
 function dropRating(ev) {
