@@ -80,7 +80,7 @@ input:-moz-placeholder { color: white; }
 
 #ls_right h4 {
 	position: relative;
-	top: 35%;
+	top: 15%;
 	left: -8%;
 }
 
@@ -93,8 +93,12 @@ input:-moz-placeholder { color: white; }
 	float: left;
 	width: 200px;
 	height: 54px;
-	padding: 32px;
 	margin-left: 0px;
+}
+
+#rating h6 {
+	margin-top: -18%;
+	margin-left: 19%;
 }
 
 #menu {
@@ -324,7 +328,7 @@ th,td {
 }
 
 .beerWrapper {
-	z-index: 0;
+	z-index: 8;
 	margin-top: 20px;
     border-radius: 10px;
     height: 200px;
