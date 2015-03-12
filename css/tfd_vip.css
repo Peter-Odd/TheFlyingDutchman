@@ -73,8 +73,10 @@ input:-moz-placeholder { color: white; }
 #ls_right {
 	float: left;
 	width: 225px;
-	height: 54px;
-	padding: 32px;
+	height: 84px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
 	margin-left: 0px;
 }
 
@@ -562,4 +564,19 @@ iframe {
 	border: 0px;
 	width: 510px;
 	height: 315px;
+}
+
+#language {
+    position: relative;
+    height: 20px;
+    width: 47px;
+    padding-top: 14px;
+    left: 50px;
+}
+
+#language img {
+    height: 20px;
+    width: 47px;
+    padding-left: 7px;
+    cursor: pointer;
 }
