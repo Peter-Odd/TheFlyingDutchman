@@ -3,7 +3,7 @@
 	<head>
 		<title class="manager" data-i18n="manager.title">The Flying Dutchman</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/tfd_main.css">
+		<link id="css" rel="stylesheet" href="css/tfd_main.css">
 		<link rel="shortcut icon" href="images/start/logo.png" />
         <script src="js/jquery.js"></script>
 		<script src="js/menu.js"></script>
@@ -13,7 +13,7 @@
         <script src="js/i18next.min.js"></script>
         <script src="js/translate.js"></script>
         <style type="text/css">@import url("style.css");</style>
-    	<link href='css/tfd_main.css' rel='stylesheet' type='text/css' />
+    	<!-- <link href='css/tfd_main.css' rel='stylesheet' type='text/css' /> -->
     	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
     	<script src="script.js" type="text/javascript"></script>
 
@@ -21,7 +21,8 @@
 
 	<body onload="getUsernameAndCredit()">
 		<div id="wrapper">
-			<img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" />
+			<img src="images/main/start_background_800_white.jpg">
+			<!-- <img id="start_background_image" src="images/main/start_background_800_white.jpg" alt="" /> -->
 			<div id="header">
 				<div id="header_left">
                     <h5 id="loggedInUser"></h5>
@@ -31,6 +32,7 @@
 				</div>
 				<div id="header_right">
 					<button class="button" id="logoutBtn" onclick="logout()" data-i18n="button.logout">LOG OUT</button>
+					<button class="button" id="themeChangeBtn" onclick="themeChange()" data-i18n="button.theme">CHANGE<br>THEME</button>
 					<button class="button" id="aboutBtn" onclick="about()" data-i18n="button.about">ABOUT</button>
 					<button class="button" id="settingsBtn" onclick="settings()" data-i18n="button.settings">SETTINGS</button>
 					<button class="button" id="helpBtn" onclick="help()" data-i18n="button.help">HELP</button>
@@ -59,6 +61,20 @@
     <script>
         switchcontent();
         checkstatus();
+
+        var themeChanged = 0;
+        function themeChange() {
+        	var ifrm = parent.document.getElementById('content');
+        	if (themeChanged == 0) {
+        		document.getElementById("css").href = "css/tfd_main_notransparent.css";
+        		ifrm.contentDocument.getElementById("css").href = "css/tfd_vip_notransparency.css";
+        		themeChanged = 1;
+        	} else {
+        		document.getElementById("css").href = "css/tfd_main.css";
+        		ifrm.contentDocument.getElementById("css").href = "css/tfd_vip.css";
+        		themeChanged = 0;
+        	}
+		};
     </script>
 
 
