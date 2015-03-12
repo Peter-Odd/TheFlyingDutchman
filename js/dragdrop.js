@@ -17,19 +17,19 @@ function dropRating(ev) {
 	sessionStorage[beer.toLowerCase()] = JSON.stringify(tmp);				
 }
 
-function allowDrop(ev) {
+/*function allowDrop(ev) {
 	ev.preventDefault();
 }
 
 function drag(ev) {
 	//ev.dataTransfer.setData("text", ev.target.escapedBeerName);
-	console.log(txt); 
-	//ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
+	ev.dataTransfer.setData("text", ev.target.id));
+	console.log(alt); 
 }
 
 function drop(ev) {
 	ev.preventDefault();
-	console.log(ev);
+	console.log(text);
 	var data = ev.dataTransfer.getData("text");
 	//ev.target.appendChild(document.getElementById(data));
 
@@ -41,5 +41,5 @@ function drop(ev) {
 	//('+orderArr[i]+', '+orderArr[i+1]+' SEK)
 	/*var li = document.createElement('li');
 	li.textContent = event.dataTransfer.getData('text');
-	document.querySelector('#listan').appendChild(li);*/
-}
+	document.querySelector('#listan').appendChild(li);
+}*/

@@ -68,17 +68,18 @@
 			}
 			function drag(ev) {
 				//ev.dataTransfer.setData("text", ev.target.escapedBeerName);
-				console.log(txt); 
-				//ev.dataTransfer.setData("text", ev.target.getAttribute('id'));
+				ev.dataTransfer.setData("text", ev.target.alt);
+				//console.log(ev); 
 			}
 			function drop(ev) {
 				ev.preventDefault();
-				console.log(ev);
 				var data = ev.dataTransfer.getData("text");
-				//ev.target.appendChild(document.getElementById(data));
-				
 				placeOrder(data);
 				
+				//console.log(ev);
+				console.log(data);
+				//console.log(alt)
+				//ev.target.appendChild(document.getElementById(data));				
 				//event.target.textContent = data;
 				
 				
