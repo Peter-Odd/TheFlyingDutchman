@@ -8,6 +8,9 @@
         "cancel":"CANCEL",
         "userinfo":"Welcome ",
         "usercredit":"Credit:",
+        "search":"style.placeholder='SEARCH FOR BEER'",
+        "h6":"YOU CAN DRAG THIS TO RATE A BEER",
+        "h4":"ORDER LIST",
         "footer":"The Flying Dutchman. The best bar in Uppsala!"
     },
     "button":{
@@ -18,8 +21,9 @@
         "home":"HOME"
     },
     "menuBtn":{
-        "allbeers":"All Beers",
-        "purchases":"Recent purchases"
+        "allbeers":"All available beers",
+        "purchases":"Recent purchases",
+        "favorite":"Get your favorites"
     },
     "orderbutton":{
         "pay":"PAY"

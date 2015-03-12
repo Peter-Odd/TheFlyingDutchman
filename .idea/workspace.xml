@@ -25,35 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="2520">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#b#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bartender.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bartender.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.5" vertical-offset="789" max-vertical-offset="2592">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2639296" vertical-offset="432" max-vertical-offset="1602">
-              <caret line="34" column="111" selection-start-line="34" selection-start-column="111" selection-end-line="34" selection-end-column="111" />
+            <state vertical-scroll-proportion="-15.230769" vertical-offset="324" max-vertical-offset="1602">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -62,8 +38,28 @@
       <file leaf-file-name="vip_content.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vip_content.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="1710" max-vertical-offset="2934">
-              <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+            <state vertical-scroll-proportion="-27.807692" vertical-offset="1941" max-vertical-offset="2934">
+              <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="translation.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/locales/en/translation.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="792">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="translation.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/locales/sv-SE/translation.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923" vertical-offset="110" max-vertical-offset="792">
+              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -89,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="translate.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="translate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/translate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.3898305" vertical-offset="174" max-vertical-offset="882">
+              <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -126,8 +122,6 @@
         <option value="$PROJECT_DIR$/vip.html" />
         <option value="$PROJECT_DIR$/locales/dev/translation.json" />
         <option value="$PROJECT_DIR$/js/inventoryaccess.js" />
-        <option value="$PROJECT_DIR$/locales/en/translation.json" />
-        <option value="$PROJECT_DIR$/locales/sv-SE/translation.json" />
         <option value="$PROJECT_DIR$/admin_about.html" />
         <option value="$PROJECT_DIR$/admin_help.html" />
         <option value="$PROJECT_DIR$/locales/sv/translation.json" />
@@ -138,8 +132,10 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/bartender.html" />
         <option value="$PROJECT_DIR$/css/tfd_vip.css" />
-        <option value="$PROJECT_DIR$/vip_content.html" />
         <option value="$PROJECT_DIR$/main.html" />
+        <option value="$PROJECT_DIR$/locales/en/translation.json" />
+        <option value="$PROJECT_DIR$/locales/sv-SE/translation.json" />
+        <option value="$PROJECT_DIR$/vip_content.html" />
       </list>
     </option>
   </component>
@@ -291,56 +287,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheFlyingDutchman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -479,21 +425,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2358">
-          <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/translate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="741">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="133" max-vertical-offset="2470">
@@ -746,24 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/locales/sv-SE/translation.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7181818" vertical-offset="12" max-vertical-offset="720">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0762331" vertical-offset="0" max-vertical-offset="2772">
           <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/locales/en/translation.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40469208" vertical-offset="12" max-vertical-offset="720">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -802,14 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/translate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/tfd_start.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1884" max-vertical-offset="2592">
@@ -826,6 +735,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="686">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4723032" vertical-offset="0" max-vertical-offset="686">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/tfd_vip.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1040" max-vertical-offset="10584">
@@ -834,18 +759,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vip_content.html">
+    <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="1710" max-vertical-offset="2934">
-          <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+        <state vertical-scroll-proportion="-15.230769" vertical-offset="324" max-vertical-offset="1602">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.html">
+    <entry file="file://$PROJECT_DIR$/locales/sv-SE/translation.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2639296" vertical-offset="432" max-vertical-offset="1602">
-          <caret line="34" column="111" selection-start-line="34" selection-start-column="111" selection-end-line="34" selection-end-column="111" />
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="110" max-vertical-offset="792">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locales/en/translation.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="792">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vip_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.807692" vertical-offset="1941" max-vertical-offset="2934">
+          <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/translate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3898305" vertical-offset="174" max-vertical-offset="882">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
           <folding />
         </state>
       </provider>

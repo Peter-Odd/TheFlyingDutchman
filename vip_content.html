@@ -99,7 +99,7 @@
 
 			<div id="ls_main">
 				<img id="magnify" src="images/main/magnify.png" alt=""/> 
-				<input id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')">
+				<input class="manager" id="search" type="text" placeholder="SEARCH FOR BEER" onkeyup="showHint(this.value, 'text')" data-i18n="manager.search">
 			</div>
 
 			<div id="ls_right">
@@ -108,18 +108,18 @@
                         <img src="images/main/flags.png" onclick="changeLanguage()">
                     </div>
 					<img draggable="true" ondragstart="dragBeerRating(event)" ondragend="dragEndRating(this)" src="images/misc/beerglass.png" alt="Beer rating">
-					<h6>YOU CAN DRAG THIS TO RATE A BEER</h6>
+					<h6 class="manager" data-i18n="manager.h6">YOU CAN DRAG THIS TO RATE A BEER</h6>
 				</div>
                 <br>
-				<h4> ORDER LIST</h4>
+				<h4 class="manager" data-i18n="manager.h4"> ORDER LIST</h4>
 			</div>
 		</div>
 
 		<div id="menu">
 			<table>
-				<tr class="menuBtn"><td onclick="getAllBeers()">All available beers</td></tr>
-				<tr class="menuBtn"><td onclick="getFiveLastPurchases()">Recent purchases</td></tr>
-				<tr class="menuBtn"><td onclick="getUserFavorites()">Get your favorites</td></tr>
+				<tr class="menuBtn" ><td onclick="getAllBeers()" data-i18n="menuBtn.allbeers">All available beers</td></tr>
+				<tr class="menuBtn" ><td onclick="getFiveLastPurchases()" data-i18n="menuBtn.purchases">Recent purchases</td></tr>
+				<tr class="menuBtn" ><td onclick="getUserFavorites()" data-i18n="menuBtn.favorite">Get your favorites</td></tr>
 			</table>
 		</div>
 
