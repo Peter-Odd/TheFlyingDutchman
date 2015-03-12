@@ -99,7 +99,7 @@ input:-moz-placeholder { color: orange; }
 	width: 1104px;
 	/*display: block;*/
 	/*width: 100%;*/
-	background: rgba(17, 24, 27, 0.5);
+	background: rgba(255, 153, 0, 0.5);
 }
 
 #content {
