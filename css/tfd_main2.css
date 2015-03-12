@@ -1,7 +1,7 @@
 html {
 	font-family: Palatino, serif;
 	background: rgba(17, 24, 27, 0.8);
-	color: orange;
+	color: black;
 }
 
 body {
@@ -9,10 +9,10 @@ body {
 }
 
 /* font color input field place holder text */
-::-webkit-input-placeholder { color: orange; }
-::-moz-placeholder { color: orange; } /* firefox 19+ */
-:-ms-input-placeholder { color: orange; } /* ie */
-input:-moz-placeholder { color: orange; }
+::-webkit-input-placeholder { color: black; }
+::-moz-placeholder { color: black; } /* firefox 19+ */
+:-ms-input-placeholder { color: black; } /* ie */
+input:-moz-placeholder { color: black; }
 
 #wrapper {
 	position: relative;
@@ -81,8 +81,8 @@ input:-moz-placeholder { color: orange; }
 }
 
 .button {
-	background: rgba(17, 24, 27, 0.3);
-	color: orange;
+	background: rgba(255, 251, 208, 0.3);
+	color: black;
 	width: 90px;
 	padding: 5px;
 	text-align: center;
@@ -99,7 +99,7 @@ input:-moz-placeholder { color: orange; }
 	width: 1104px;
 	/*display: block;*/
 	/*width: 100%;*/
-	background: rgba(17, 24, 27, 0.5);
+	background: rgba(255, 153, 0, 0.5);
 }
 
 #content {
@@ -120,7 +120,7 @@ input:-moz-placeholder { color: orange; }
 	text-align: center;
 	font-size: 10px;
 	height: 40px;
-	color: orange;
+	color: black;
 }
 
 #footer #logo_noship {
