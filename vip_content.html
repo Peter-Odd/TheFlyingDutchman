@@ -15,6 +15,16 @@
         <script src="js/dragdrop.js"></script>
         <script src="js/inventoryaccess.js"></script>
         <script>
+            var headEl,
+                    doc = this.contentDocument.documentElement.document;
+                // first we get the head element
+                headEl = doc.getElementsByTagName('themeChangeBtn')[0];
+                //document.getElementById('iframeID').contentWindow.document.getElementById('idinsideiframe')
+                // next we create a script element
+                //scriptEl = doc.createElement('script');
+                // now we add it to the head element (DOM)
+        </script>
+        <script>
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
 		        if (str.length == 0) {
