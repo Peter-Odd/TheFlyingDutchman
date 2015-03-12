@@ -227,7 +227,7 @@ function getAllBeers() {
 				$('#main').html('<div class="beerWrapper" title="'+escapedBeerName+'" ondrop="dropRating(event)" ondragover="event.preventDefault()" draggable="true" ondragstart="drag(event)"><div class="beerInfoImage"><img src="images/misc/info_bw.png" onclick="getInfoVip(\''+escapedBeerName+'\')"></div><div class="beerImage" onclick="placeOrder(\''+escapedBeerName+'\')"><img src="images/beersearch/'+getBeer(beerName)[1]+'.png" alt="'+escapedBeerName+'"><h4>'+beerName+'</h4><h5>'+getBeer(beerName)[0]+' SEK</h5></div></div>'+tmphtml);
 			}
 			tmphtml = $('#main').html();
-			console.log(escapedBeerName);
+			// console.log(escapedBeerName);
 		}
 	};
 }
