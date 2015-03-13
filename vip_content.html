@@ -73,31 +73,17 @@
 		 		if (e.keyCode == 27) { bootbox.hideAll(); }   // esc
 			});
 
-			function allowDrop(ev) {
-				ev.preventDefault();
-			}
-			function drag(ev) {
-				//ev.dataTransfer.setData("text", ev.target.escapedBeerName);
-				ev.dataTransfer.setData("text", ev.target.alt);
-				//console.log(ev); 
-			}
-			function drop(ev) {
-				ev.preventDefault();
-				var data = ev.dataTransfer.getData("text");
-				placeOrder(data);
-				
-				//console.log(ev);
-				console.log(data);
-				//console.log(alt)
-				//ev.target.appendChild(document.getElementById(data));				
-				//event.target.textContent = data;
-				
-				
-				//('+orderArr[i]+', '+orderArr[i+1]+' SEK)
-				/*var li = document.createElement('li');
-				li.textContent = event.dataTransfer.getData('text');
-				document.querySelector('#listan').appendChild(li);*/
-			}
+			// function allowDrop(ev) {
+			// 	ev.preventDefault();
+			// }
+			// function drag(ev) {
+			// 	ev.dataTransfer.setData("text", ev.target.alt);
+			// }
+			// function drop(ev) {
+			// 	ev.preventDefault();
+			// 	var data = ev.dataTransfer.getData("text");
+			// 	placeOrder(data);
+			// }
 	    </script>
 	</head>
 

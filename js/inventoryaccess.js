@@ -879,3 +879,21 @@ function cancelOrder() {
   					'<strong>In stock:</strong> '+tmp[7]
   				}).addClass("modalHeight");
 	 		}
+
+
+
+/* THEME CHANGE BELOW */ 
+
+        var themeChanged = 0;
+        function themeChange() {
+        	var ifrm = parent.document.getElementById('content');
+        	if (themeChanged == 0) {
+        		document.getElementById("css").href = "css/tfd_main_notransparent.css";
+        		ifrm.contentDocument.getElementById("css").href = "css/tfd_vip_notransparency.css";
+        		themeChanged = 1;
+        	} else {
+        		document.getElementById("css").href = "css/tfd_main.css";
+        		ifrm.contentDocument.getElementById("css").href = "css/tfd_vip.css";
+        		themeChanged = 0;
+        	}
+		}
