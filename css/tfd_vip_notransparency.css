@@ -73,14 +73,16 @@ input:-moz-placeholder { color: white; }
 #ls_right {
 	float: left;
 	width: 225px;
-	height: 54px;
-	padding: 32px;
+	height: 84px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
 	margin-left: 0px;
 }
 
 #ls_right h4 {
 	position: relative;
-	top: 15%;
+	top: 10%;
 	left: -8%;
 }
 
@@ -350,15 +352,24 @@ th,td {
 
 .beerImage h4 {
 	position: absolute;
-	top: 140px;
-	color: black;
-}
+	top: 130px;
+	color: white;
+	background: rgba(17, 24, 27, 0.7);
+	display: block;
+	width: 147px;
+	height: 37px;
+	padding-top: 5px;
+	padding-left: 3px;
+}	
 
 .beerImage h5 {
 	position: absolute;
 	top: 0px;
 	left: 90px;
-	color: black;
+	background: rgba(17, 24, 27, 0.7);
+	border-radius: 4px;
+	padding: 4px;
+	color: white;
 }
 
 .beerImageLowStock {
@@ -388,15 +399,24 @@ th,td {
 
 .beerImageLowStock h4 {
 	position: absolute;
-	top: 140px;
-	color: black;
+	top: 130px;
+	color: white;
+	background: rgba(17, 24, 27, 0.7);
+	display: block;
+	width: 147px;
+	height: 37px;
+	padding-top: 5px;
+	padding-left: 3px;
 }
 
 .beerImageLowStock h5 {
 	position: absolute;
 	top: 0px;
 	left: 90px;
-	color: black;
+	background: rgba(17, 24, 27, 0.7);
+	border-radius: 4px;
+	padding: 4px;
+	color: white;
 }
 
 .beerImageEmptyStock {
@@ -425,15 +445,24 @@ th,td {
 
 .beerImageEmptyStock h4 {
 	position: absolute;
-	top: 140px;
-	color: black;
+	top: 130px;
+	color: white;
+	background: rgba(17, 24, 27, 0.7);
+	display: block;
+	width: 147px;
+	height: 37px;
+	padding-top: 5px;
+	padding-left: 3px;
 }
 
 .beerImageEmptyStock h5 {
 	position: absolute;
 	top: 0px;
 	left: 90px;
-	color: black;
+	background: rgba(17, 24, 27, 0.7);
+	border-radius: 4px;
+	padding: 4px;
+	color: white;
 }
 
 
@@ -555,6 +584,21 @@ float:right;
 
 #beerInfo {
 	cursor: pointer;
+}
+
+#language {
+    position: relative;
+    height: 20px;
+    width: 47px;
+    padding-top: 14px;
+    left: 200px;
+}
+
+#language img {
+    height: 20px;
+    width: 47px;
+    padding-left: 7px;
+    cursor: pointer;
 }
 
 iframe {

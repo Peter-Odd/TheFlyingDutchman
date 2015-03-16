@@ -13,6 +13,12 @@ var password = readCookie('username');
 
 var api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
 
+function setUserPass(u) {
+	username = u;
+	password = u;
+	api = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+password+"&action=";
+}
+
 /* -== START: FUNCTIONS TO HANDLE THE INVENTORY ==- */
 /* Sets sessionStorage values indexed by beername, the last argument in the JSON below is for rating a beer */
 function inventorySetValue(name, price, id, count) {
@@ -589,6 +595,7 @@ function cancelOrder() {
 				$.each(data.payload, function(key, item) {
 				if (item.namn == "") { /* remove beers with no name */ } 
 					else {
+						// console.log(item);
 						inventorySetValue(
 							item.namn.toLowerCase(), 
 							parseInt(item.pub_price.toLowerCase()), 
@@ -654,7 +661,7 @@ function cancelOrder() {
     		}
     	}
 
-    	alert("The purchase was successful!");
+    	// alert("The purchase was successful!");
 
     	/*decrease users credit. API request doesn't work as it should*/
     	//withdrawUserCredit(VIPname, sum);

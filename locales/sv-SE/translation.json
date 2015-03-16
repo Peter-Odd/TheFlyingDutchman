@@ -1,17 +1,17 @@
 {
     "manager": {
         "title":"The Flying Dutchman",
-        "welcome":"",
-        "order":"",
+        "welcome":"Välkommen till The Flying Dutchman",
+        "order":"ATT BESTÄLLA",
         "undo":"ÅNGRA",
         "redo":"GÖR OM",
         "cancel":"RENSA",
         "userinfo":"Välkommen ",
         "usercredit":"Till godo:",
-        "search":"style.placeholder='SV'",
-        "h6":"SV",
-        "h4":"SV",
-        "footer":"The Flying Dutchman. Uppsalas bäst bar!"
+        "search":"style.placeholder='SÖK ÖL'",
+        "h6":"DRA DENNA TILL EN ÖL FÖR ATT GÖRA SOM FAVORIT",
+        "h4":"ORDERLISTA",
+        "footer":"The Flying Dutchman. Uppsalas bästa bar!"
     },
     "button":{
         "logout":"AVSLUTA",
@@ -22,8 +22,8 @@
     },
     "menuBtn":{
         "allbeers":"Alla öl",
-        "purchases":"Senaste köp",
-        "favorite":"SV"
+        "purchases":"Senaste köp"
+        "favorite":"Dina favoriter"
     },
     "orderbutton":{
         "pay":"BETALA"

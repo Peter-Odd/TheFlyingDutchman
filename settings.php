@@ -12,7 +12,7 @@ if ($func_id == "0") {
 }
 
 function db_connect() {
-	$db = mysqli_connect("sql3.freemysqlhosting.net", "sql369433", "eC1!wM9*", "sql369433");
+	$db = mysqli_connect("sql3.freemysqlhosting.net", "sql370793", "jF8*tW6*", "sql370793");
 	if (mysql_errno()) {
 		printf("Connection failed: %s\n", mysqli_connect_error());
 		exit();

@@ -14,7 +14,7 @@
 		<script src="js/bootbox.min.js"></script>
         <script src="js/dragdrop.js"></script>
         <script src="js/inventoryaccess.js"></script>
-        <script>
+      <!--  <script>
             var headEl,
                     doc = this.contentDocument.documentElement.document;
                 // first we get the head element
@@ -23,7 +23,7 @@
                 // next we create a script element
                 //scriptEl = doc.createElement('script');
                 // now we add it to the head element (DOM)
-        </script>
+        </script> -->
         <script>
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
@@ -99,10 +99,8 @@
 			</div>
 
 			<div id="ls_right">
+				<div id="language"><img src="images/main/flags.png" onclick="changeLanguage()"></div>
 				<div id="rating">
-                    <div id="language">
-                        <img src="images/main/flags.png" onclick="changeLanguage()">
-                    </div>
 					<img draggable="true" ondragstart="dragBeerRating(event)" ondragend="dragEndRating(this)" src="images/misc/beerglass.png" alt="Beer rating">
 					<h6 class="manager" data-i18n="manager.h6">YOU CAN DRAG THIS TO RATE A BEER</h6>
 				</div>
