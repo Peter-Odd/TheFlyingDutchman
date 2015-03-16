@@ -212,7 +212,7 @@ input:-moz-placeholder { color: white; }
 .beerButton {
 	padding: 10px;
 	cursor:pointer;
-	width: 190px;
+	width: 170px;
 	display: inline-block;
 	float: right;
 }
@@ -221,7 +221,7 @@ input:-moz-placeholder { color: white; }
 	background: rgba(215, 219, 73, 0.3);
 	padding: 10px;
 	cursor:pointer;
-	width: 190px;
+	width: 170px;
 	display: inline-block;
 	float: right;
 }
@@ -231,7 +231,7 @@ input:-moz-placeholder { color: white; }
 /*	background: (255, 0, 0, 0.3); */
 	padding: 10px;
 	cursor:pointer;
-	width: 190px;
+	width: 170px;
 	display: inline-block;
 	float: right;
 }
