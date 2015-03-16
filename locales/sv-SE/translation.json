@@ -2,7 +2,7 @@
     "manager": {
         "title":"The Flying Dutchman",
         "welcome":"Välkommen till The Flying Dutchman",
-        "order":"ATT BESTÄLLA",
+        "order":"",
         "undo":"ÅNGRA",
         "redo":"GÖR OM",
         "cancel":"RENSA",

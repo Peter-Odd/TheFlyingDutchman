@@ -2,7 +2,7 @@
     "manager": {
         "title":"The Flying Dutchman",
         "welcome":"Välkommen till The Flying Dutchman",
-        "order":"ATT BESTÄLLA",
+        "order":"",
         "undo":"ÅNGRA",
         "redo":"GÖR OM",
         "cancel":"RENSA",
@@ -22,7 +22,7 @@
     },
     "menuBtn":{
         "allbeers":"Alla öl",
-        "purchases":"Senaste köp"
+        "purchases":"Senaste köp",
         "favorite":"Dina favoriter"
     },
     "orderbutton":{
