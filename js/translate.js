@@ -7,12 +7,6 @@ i18n.init({lng: window.language } , function(t) {
   $(".menuBtn").i18n();
     $(".orderbutton").i18n();
     $(".content").i18n();
-    var doc;
-    var headEl;
-    doc = document.getElementById('content').contentDocument.documentElement.document;
-    headEl=doc.getElementsByTagName('logoutBtn')[0];
-    headEl.i18n();
-    $("#logoutBtn").i18n();
     // document.getElementById('iframeID').contentWindow.document.getElementById('idinsideiframe')
 
   // programatical access
@@ -30,12 +24,6 @@ function changeLanguage(){
             $(".menuBtn").i18n();
             $(".orderbutton").i18n();
             $(".content").i18n();
-            $("#logoutBtn").i18n();
-            var doc;
-            var headEl;
-            doc = document.getElementById('content').contentDocument.documentElement.document;
-            headEl=doc.getElementsByTagName('logoutBtn')[0];
-            headEl.i18n();
   // programatical access
   var appName = t("index.title");
 });
@@ -48,12 +36,6 @@ function changeLanguage(){
             $(".menuBtn").i18n();
             $(".orderbutton").i18n();
             $(".content").i18n();
-            $("#logoutBtn").i18n();
-            var doc;
-            var headEl;
-            doc = document.getElementById('content').contentDocument.documentElement.document;
-            headEl=doc.getElementsByTagName('logoutBtn')[0];
-            headEl.i18n();
   // programatical access
   var appName = t("index.title");
 });

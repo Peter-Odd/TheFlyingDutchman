@@ -1,7 +1,7 @@
 {
     "manager": {
         "title":"The Flying Dutchman",
-        "welcome":"  ",
+        "welcome":"",
         "order":"",
         "undo":"UNDO",
         "redo":"REDO",
