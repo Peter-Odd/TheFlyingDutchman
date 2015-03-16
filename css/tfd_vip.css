@@ -286,6 +286,26 @@ th,td {
 	color: white;
 }
 
+#order::-webkit-scrollbar {
+    width: 10px;
+	border-radius: 15px;
+}
+
+#order::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(17,24,27,0.3);*/
+	border-radius:15px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+#order::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 15px;
+  margin-top: 8px;
+  height: 50px
+}
+
 #order_total {
 	background: rgba(17, 24, 27, 0.3);
 	float: left;
