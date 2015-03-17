@@ -14,16 +14,6 @@
 		<script src="js/bootbox.min.js"></script>
         <script src="js/dragdrop.js"></script>
         <script src="js/inventoryaccess.js"></script>
-      <!--  <script>
-            var headEl,
-                    doc = this.contentDocument.documentElement.document;
-                // first we get the head element
-                headEl = doc.getElementsByTagName('themeChangeBtn')[0];
-                //document.getElementById('iframeID').contentWindow.document.getElementById('idinsideiframe')
-                // next we create a script element
-                //scriptEl = doc.createElement('script');
-                // now we add it to the head element (DOM)
-        </script> -->
         <script>
 		    /* set choice to 'text' if you want text to be shown on search, otherwise you can use 'image' to show images */
 		    function showHint(str, choice) {
@@ -73,17 +63,6 @@
 		 		if (e.keyCode == 27) { bootbox.hideAll(); }   // esc
 			});
 
-			// function allowDrop(ev) {
-			// 	ev.preventDefault();
-			// }
-			// function drag(ev) {
-			// 	ev.dataTransfer.setData("text", ev.target.alt);
-			// }
-			// function drop(ev) {
-			// 	ev.preventDefault();
-			// 	var data = ev.dataTransfer.getData("text");
-			// 	placeOrder(data);
-			// }
 	    </script>
 	</head>
 
@@ -117,7 +96,7 @@
 			</table>
 		</div>
 
-		<div id="main" class="manager" data-i18n="manager.welcome"></div>
+		<div id="main" class="manager"></div>
 
 		<div id="toporder">
 			<button id="undo" class="manager" onclick="undo()" data-i18n="manager.undo">UNDO</button>
