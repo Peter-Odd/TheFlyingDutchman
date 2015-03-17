@@ -661,7 +661,8 @@ function cancelOrder() {
     		}
     	}
 
-    	// alert("The purchase was successful!");
+    	thankYou();
+    	 // alert("The purchase was successful!");
 
     	/*decrease users credit. API request doesn't work as it should*/
     	//withdrawUserCredit(VIPname, sum);
@@ -725,7 +726,8 @@ function cancelOrder() {
 					}
 				}
 
-				alert("The purchase was successful!");
+				thankYou();
+				// alert("The purchase was successful!");
 				/*decrease the user credit. API request doesn't work as it should*/
 					//withdrawUserCredit(VIPname, sum);
 
@@ -866,6 +868,16 @@ function cancelOrder() {
 			'<form style="padding-top:15px;" id="orderForm"><label for="orderBeers">Order more beers</label><br>'+
 			'<input id="amount" type="number" onchange="dummy(this.value)" value="1" required><button id="orderBtn" type="button" onclick="dummy2(\''+beer.toLowerCase()+'\')">ORDER</button></form></div>' +
 			'</div>'
+		});
+	}
+
+	function thankYou() {
+		bootbox.dialog({
+			title: "Thank you",
+			message: 
+			'<br><img style="border-radius: 15px; padding-bottom:10px;" id="image" src="images/misc/thankyou.png"><br><br>'+
+			'Thank you for your purchase. <br> Enjoy your drink! <br>'+
+			'<br><br> Click outside this box to close it. '
 		});
 	}
 
