@@ -51,23 +51,19 @@
 		}
 	</script>
     <script type="text/javascript">
+        //animetion function using canvas to create a image then scale the image and set the interval
         function anime(){
             var myImage=document.getElementById("canvaslogo");
             var cxt = myImage.getContext("2d");
             var img = new Image();
             img.src="images/start/tfd_logo_beer.png";
 
-            //执行旋转的特效
+            //create image and scale the image
             function spfly(){
                 myImage.style.backgroundImage="none";
                 cxt.drawImage(img,0,0,300,151);
-                cxt.translate(72,40);  //中心点
+                cxt.translate(72,40);//translate the scale point
                 cxt.scale(0.7,0.7);
-                //cxt.rotate(90 * Math.PI / 180);
-                //clearInterval(timer);
-                //myImage.style.display="none";
-                //var logoimage=document.getElementById("logo");
-                //logoimage.style.display="";
             }
 
             var timer =setInterval(spfly,50);
@@ -80,18 +76,11 @@
             var img = new Image();
             img.src="images/start/tfd_logo_beer.png";
 
-            //执行旋转的特效
+            //same functions for password
             function spfly(){
                 myImage.style.backgroundImage="none";
-                //cxt.clearRect(0,0,300,151);
                 cxt.drawImage(img,0,0,300,151);
-                //cxt.translate(72,40);  //中心点
                 cxt.scale(0.7,0.7);
-                //cxt.rotate(90 * Math.PI / 180);
-                //clearInterval(timer);
-                //myImage.style.display="none";
-                //var logoimage=document.getElementById("logo");
-                //logoimage.style.display="";
             }
 
             var timer =setInterval(spfly,50);
